@@ -21,7 +21,7 @@ import (
 	"github.com/cosmos/ibc-go/v3/testing/simapp"
 
 	ethermint "github.com/tharsis/ethermint/types"
-	torqueapp "github.com/olegtropinin/torque/v4/app"
+	torqueapp "github.com/hardiksa/torque/v4/app"
 )
 
 var DefaultTestingAppInit func() (ibcgotesting.TestingApp, map[string]json.RawMessage) = torqueapp.SetupTestingApp

@@ -36,10 +36,10 @@ import (
 	ethermint "github.com/tharsis/ethermint/types"
 	evm "github.com/tharsis/ethermint/x/evm/types"
 
-	"github.com/olegtropinin/torque/v4/app"
-	"github.com/olegtropinin/torque/v4/contracts"
-	epochstypes "github.com/olegtropinin/torque/v4/x/epochs/types"
-	"github.com/olegtropinin/torque/v4/x/incentives/types"
+	"github.com/hardiksa/torque/v4/app"
+	"github.com/hardiksa/torque/v4/contracts"
+	epochstypes "github.com/hardiksa/torque/v4/x/epochs/types"
+	"github.com/hardiksa/torque/v4/x/incentives/types"
 )
 
 var (

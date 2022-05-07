@@ -15,7 +15,7 @@ This documentation page is currently under work in progress.
 :::
 
 - Documentation (this site): [https://torque.dev/](https://torque.dev/)
-- Open Source Codebase: [https://github.com/olegtropinin/torque](https://github.com/olegtropinin/torque)
+- Open Source Codebase: [https://github.com/hardiksa/torque](https://github.com/hardiksa/torque)
 - Website: [https://torque.org/](https://torque.org/)
 - Blog: [https://torque.blog/](https://torque.blog/)
 - Ethermint: [https://github.com/tharsis/ethermint](https://github.com/tharsis/ethermint)

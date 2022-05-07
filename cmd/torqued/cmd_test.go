@@ -9,8 +9,8 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/genutil/client/cli"
 	"github.com/stretchr/testify/require"
 
-	"github.com/olegtropinin/torque/v4/app"
-	torqued "github.com/olegtropinin/torque/v4/cmd/torqued"
+	"github.com/hardiksa/torque/v4/app"
+	torqued "github.com/hardiksa/torque/v4/cmd/torqued"
 )
 
 func TestInitCmd(t *testing.T) {

@@ -5,7 +5,7 @@ import "gogoproto/gogo.proto";
 
 import "torque/inflation/v1/inflation.proto";
 
-option go_package = "github.com/olegtropinin/torque/v4/x/inflation/types";
+option go_package = "github.com/hardiksa/torque/v4/x/inflation/types";
 
 // GenesisState defines the inflation module's genesis state.
 message GenesisState {

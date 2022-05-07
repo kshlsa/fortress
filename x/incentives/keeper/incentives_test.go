@@ -5,7 +5,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 
-	"github.com/olegtropinin/torque/v4/x/incentives/types"
+	"github.com/hardiksa/torque/v4/x/incentives/types"
 )
 
 func (suite *KeeperTestSuite) TestGetAllIncentives() {

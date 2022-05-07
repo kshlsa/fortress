@@ -15,8 +15,8 @@ import (
 
 	"github.com/tharsis/ethermint/server/config"
 
-	"github.com/olegtropinin/torque/v4/testutil/network"
-	"github.com/olegtropinin/torque/v4/x/erc20/types"
+	"github.com/hardiksa/torque/v4/testutil/network"
+	"github.com/hardiksa/torque/v4/x/erc20/types"
 )
 
 // var _ = Describe("E2e", func() {

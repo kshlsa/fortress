@@ -5,8 +5,8 @@ import (
 	authkeeper "github.com/cosmos/cosmos-sdk/x/auth/keeper"
 	"github.com/ethereum/go-ethereum/common"
 
-	"github.com/olegtropinin/torque/v4/x/fees/keeper"
-	"github.com/olegtropinin/torque/v4/x/fees/types"
+	"github.com/hardiksa/torque/v4/x/fees/keeper"
+	"github.com/hardiksa/torque/v4/x/fees/types"
 )
 
 // InitGenesis import module genesis

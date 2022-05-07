@@ -39,9 +39,9 @@ import (
 	servercfg "github.com/tharsis/ethermint/server/config"
 	srvflags "github.com/tharsis/ethermint/server/flags"
 
-	"github.com/olegtropinin/torque/v4/app"
-	cmdcfg "github.com/olegtropinin/torque/v4/cmd/config"
-	torquekr "github.com/olegtropinin/torque/v4/crypto/keyring"
+	"github.com/hardiksa/torque/v4/app"
+	cmdcfg "github.com/hardiksa/torque/v4/cmd/config"
+	torquekr "github.com/hardiksa/torque/v4/crypto/keyring"
 )
 
 const (

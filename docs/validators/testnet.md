@@ -12,10 +12,10 @@ You specify the network you want to join by setting the **genesis file** and **s
 
 | Testnet Chain ID | Description                       | Site                                                                       | Version                                                                      | Status  |
 | ---------------- | --------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ------- |
-| `torque_9000-4`   | Torque_9000-4 Testnet              | [Torque 9000-4](https://github.com/tharsis/testnets/tree/main/torque_9000-4) | [`v3.0.0`](https://github.com/olegtropinin/torque/releases/tag/v3.0.0)             | `Live`  |
-| `torque_9000-3`   | Torque_9000-3 Testnet              | [Torque 9000-3](https://github.com/tharsis/testnets/tree/main/torque_9000-3) | [`v1.0.0-beta1`](https://github.com/olegtropinin/torque/releases/tag/v1.0.0-beta1) | `Stale` |
-| `torque_9000-2`   | Olympus Mons Incentivized Testnet | [Olympus Mons](https://github.com/tharsis/testnets/tree/main/olympus_mons) | [`v0.3.x`](https://github.com/olegtropinin/torque/releases)                        | `Stale` |
-| `torque_9000-1`   | Arsia Mons Testnet                | [Arsia Mons](https://github.com/tharsis/testnets/tree/main/arsia_mons)     | [`v0.1.x`](https://github.com/olegtropinin/torque/releases)                        | `Stale` |
+| `torque_9000-4`   | Torque_9000-4 Testnet              | [Torque 9000-4](https://github.com/tharsis/testnets/tree/main/torque_9000-4) | [`v3.0.0`](https://github.com/hardiksa/torque/releases/tag/v3.0.0)             | `Live`  |
+| `torque_9000-3`   | Torque_9000-3 Testnet              | [Torque 9000-3](https://github.com/tharsis/testnets/tree/main/torque_9000-3) | [`v1.0.0-beta1`](https://github.com/hardiksa/torque/releases/tag/v1.0.0-beta1) | `Stale` |
+| `torque_9000-2`   | Olympus Mons Incentivized Testnet | [Olympus Mons](https://github.com/tharsis/testnets/tree/main/olympus_mons) | [`v0.3.x`](https://github.com/hardiksa/torque/releases)                        | `Stale` |
+| `torque_9000-1`   | Arsia Mons Testnet                | [Arsia Mons](https://github.com/tharsis/testnets/tree/main/arsia_mons)     | [`v0.1.x`](https://github.com/hardiksa/torque/releases)                        | `Stale` |
 
 ## Install `torqued`
 

@@ -3,8 +3,8 @@ package recovery
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/olegtropinin/torque/v4/x/recovery/keeper"
-	"github.com/olegtropinin/torque/v4/x/recovery/types"
+	"github.com/hardiksa/torque/v4/x/recovery/keeper"
+	"github.com/hardiksa/torque/v4/x/recovery/types"
 )
 
 // InitGenesis import module genesis

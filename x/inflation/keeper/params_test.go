@@ -1,7 +1,7 @@
 package keeper_test
 
 import (
-	"github.com/olegtropinin/torque/v4/x/inflation/types"
+	"github.com/hardiksa/torque/v4/x/inflation/types"
 )
 
 func (suite *KeeperTestSuite) TestParams() {

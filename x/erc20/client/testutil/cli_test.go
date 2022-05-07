@@ -16,8 +16,8 @@ import (
 
 	"github.com/tharsis/ethermint/testutil/network"
 
-	torquenetwork "github.com/olegtropinin/torque/v4/testutil/network"
-	"github.com/olegtropinin/torque/v4/x/erc20/client/cli"
+	torquenetwork "github.com/hardiksa/torque/v4/testutil/network"
+	"github.com/hardiksa/torque/v4/x/erc20/client/cli"
 )
 
 type IntegrationTestSuite struct {

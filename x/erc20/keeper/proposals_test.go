@@ -12,9 +12,9 @@ import (
 	"github.com/tharsis/ethermint/tests"
 	evmtypes "github.com/tharsis/ethermint/x/evm/types"
 
-	"github.com/olegtropinin/torque/v4/x/erc20/keeper"
-	"github.com/olegtropinin/torque/v4/x/erc20/types"
-	inflationtypes "github.com/olegtropinin/torque/v4/x/inflation/types"
+	"github.com/hardiksa/torque/v4/x/erc20/keeper"
+	"github.com/hardiksa/torque/v4/x/erc20/types"
+	inflationtypes "github.com/hardiksa/torque/v4/x/inflation/types"
 )
 
 const (

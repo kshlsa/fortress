@@ -13,7 +13,7 @@ import (
 
 	evmtypes "github.com/tharsis/ethermint/x/evm/types"
 
-	"github.com/olegtropinin/torque/v4/x/claims/types"
+	"github.com/hardiksa/torque/v4/x/claims/types"
 )
 
 var (

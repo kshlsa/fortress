@@ -23,7 +23,7 @@ All the following instructions have been tested on *Ubuntu 18.04.2 LTS* with *Do
 Clone `torque`:
 
 ``` bash
-git clone git@github.com:olegtropinin/torque.git
+git clone git@github.com:hardiksa/torque.git
 ```
 
 Checkout the commit, branch, or release tag you want to build (eg `v0.4.0`):

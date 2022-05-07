@@ -52,4 +52,4 @@ aside: false
 
 ## Contribute
 
-See [this file](https://github.com/olegtropinin/torque/blob/main/docs/DOCS_README.md) for details of the build process and considerations when making changes.
+See [this file](https://github.com/hardiksa/torque/blob/main/docs/DOCS_README.md) for details of the build process and considerations when making changes.

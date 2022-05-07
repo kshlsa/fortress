@@ -14,9 +14,9 @@ import (
 	host "github.com/cosmos/ibc-go/v3/modules/core/24-host"
 	"github.com/cosmos/ibc-go/v3/modules/core/exported"
 
-	"github.com/olegtropinin/torque/v4/ibc"
-	torque "github.com/olegtropinin/torque/v4/types"
-	"github.com/olegtropinin/torque/v4/x/recovery/types"
+	"github.com/hardiksa/torque/v4/ibc"
+	torque "github.com/hardiksa/torque/v4/types"
+	"github.com/hardiksa/torque/v4/x/recovery/types"
 )
 
 // OnRecvPacket performs an IBC receive callback. It returns the tokens that

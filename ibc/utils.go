@@ -7,7 +7,7 @@ import (
 	transfertypes "github.com/cosmos/ibc-go/v3/modules/apps/transfer/types"
 	channeltypes "github.com/cosmos/ibc-go/v3/modules/core/04-channel/types"
 
-	torque "github.com/olegtropinin/torque/v4/types"
+	torque "github.com/hardiksa/torque/v4/types"
 )
 
 // GetTransferSenderRecipient returns the sender and recipient sdk.AccAddresses

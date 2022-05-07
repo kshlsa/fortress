@@ -3,7 +3,7 @@ package keeper_test
 import (
 	"time"
 
-	"github.com/olegtropinin/torque/v4/x/epochs/types"
+	"github.com/hardiksa/torque/v4/x/epochs/types"
 )
 
 func (suite *KeeperTestSuite) TestEpochLifeCycle() {

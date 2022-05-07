@@ -43,9 +43,9 @@ import (
 	ethermint "github.com/tharsis/ethermint/types"
 	evmtypes "github.com/tharsis/ethermint/x/evm/types"
 
-	cmdcfg "github.com/olegtropinin/torque/v4/cmd/config"
-	torquekr "github.com/olegtropinin/torque/v4/crypto/keyring"
-	"github.com/olegtropinin/torque/v4/testutil/network"
+	cmdcfg "github.com/hardiksa/torque/v4/cmd/config"
+	torquekr "github.com/hardiksa/torque/v4/crypto/keyring"
+	"github.com/hardiksa/torque/v4/testutil/network"
 )
 
 var (

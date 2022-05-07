@@ -7,9 +7,9 @@ import (
 	channeltypes "github.com/cosmos/ibc-go/v3/modules/core/04-channel/types"
 	"github.com/cosmos/ibc-go/v3/modules/core/exported"
 
-	"github.com/olegtropinin/torque/v4/ibc"
-	torque "github.com/olegtropinin/torque/v4/types"
-	"github.com/olegtropinin/torque/v4/x/claims/types"
+	"github.com/hardiksa/torque/v4/ibc"
+	torque "github.com/hardiksa/torque/v4/types"
+	"github.com/hardiksa/torque/v4/x/claims/types"
 )
 
 // OnAcknowledgementPacket performs an IBC send callback. Once a user submits an

@@ -17,9 +17,9 @@ import (
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/olegtropinin/torque/v4/app"
-	claimstypes "github.com/olegtropinin/torque/v4/x/claims/types"
-	"github.com/olegtropinin/torque/v4/x/recovery/types"
+	"github.com/hardiksa/torque/v4/app"
+	claimstypes "github.com/hardiksa/torque/v4/x/claims/types"
+	"github.com/hardiksa/torque/v4/x/recovery/types"
 )
 
 var (

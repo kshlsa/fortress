@@ -19,9 +19,9 @@ import (
 
 	evm "github.com/tharsis/ethermint/x/evm/types"
 
-	"github.com/olegtropinin/torque/v4/app"
-	epochstypes "github.com/olegtropinin/torque/v4/x/epochs/types"
-	"github.com/olegtropinin/torque/v4/x/inflation/types"
+	"github.com/hardiksa/torque/v4/app"
+	epochstypes "github.com/hardiksa/torque/v4/x/epochs/types"
+	"github.com/hardiksa/torque/v4/x/inflation/types"
 )
 
 var denomMint = types.DefaultInflationDenom
