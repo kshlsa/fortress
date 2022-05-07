@@ -1,6 +1,6 @@
 module.exports = {
   theme: 'cosmos',
-  title: 'Evmos Documentation',
+  title: 'Torque Documentation',
   locales: {
     '/': {
       lang: 'en-US'
@@ -44,39 +44,39 @@ module.exports = {
     // ['link', { rel: "apple-touch-icon-precomposed", href: "/apple-touch-icon-precomposed.png" }],
   ],
   themeConfig: {
-    repo: 'tharsis/evmos',
-    docsRepo: 'tharsis/evmos',
+    repo: 'olegtropinin/torque',
+    docsRepo: 'olegtropinin/torque',
     docsBranch: 'main',
     docsDir: 'docs',
     editLinks: true,
     custom: true,
     project: {
-      name: 'Evmos',
-      denom: 'Evmos',
-      ticker: 'EVMOS',
-      binary: 'evmosd',
-      testnet_denom: 'tEvmos',
-      testnet_ticker: 'tEVMOS',
-      rpc_url: 'https://eth.bd.evmos.org:8545',
-      rpc_url_testnet: 'https://eth.bd.evmos.dev:8545',
+      name: 'Torque',
+      denom: 'Torque',
+      ticker: 'TORQUE',
+      binary: 'torqued',
+      testnet_denom: 'tTorque',
+      testnet_ticker: 'tTORQUE',
+      rpc_url: 'https://eth.bd.torque.org:8545',
+      rpc_url_testnet: 'https://eth.bd.torque.dev:8545',
       rpc_url_local: 'http://localhost:8545/',
       chain_id: '9001',
       testnet_chain_id: '9000',
       latest_version: 'v3.0.0-beta1',
       version_number: '2',
       testnet_version_number: '4',
-      testnet_evm_explorer_url: 'https://evm.evmos.dev',
-      evm_explorer_url: 'https://evm.evmos.org',
-      testnet_cosmos_explorer_url: 'https://explorer.evmos.dev/',
-      cosmos_explorer_url: 'https://www.mintscan.io/evmos',
+      testnet_evm_explorer_url: 'https://evm.torque.dev',
+      evm_explorer_url: 'https://evm.torque.org',
+      testnet_cosmos_explorer_url: 'https://explorer.torque.dev/',
+      cosmos_explorer_url: 'https://www.mintscan.io/torque',
     },
     logo: {
-      src: '/evmos-black.svg',
+      src: '/torque-black.svg',
     },
     algolia: {
       id: 'BH4D9OD16A',
       key: 'a5d55fe5f540cc3bd28fa2c72f2b5bd8',
-      index: 'evmos'
+      index: 'torque'
     },
     topbar: {
       banner: false
@@ -85,7 +85,7 @@ module.exports = {
       auto: false,
       nav: [
         {
-          title: 'About Evmos',
+          title: 'About Torque',
           children: [
             {
               title: 'Introduction',
@@ -93,11 +93,11 @@ module.exports = {
               path: '/about/intro'
             },
             {
-              title: 'Evmos Ecosystem',
-              path: 'https://evmos.space/'
+              title: 'Torque Ecosystem',
+              path: 'https://torque.space/'
             },
             {
-              title: 'Awesome Evmos',
+              title: 'Awesome Torque',
               path: 'https://github.com/tharsis/awesome'
             },
           ]
@@ -141,7 +141,7 @@ module.exports = {
               path: '/developers/connect'
             },
             {
-              title: 'Evmos Clients',
+              title: 'Torque Clients',
               directory: false,
               path: '/developers/clients'
             },
@@ -172,7 +172,7 @@ module.exports = {
             },
             {
               title: 'Cosmos gRPC & REST',
-              path: 'https://api.evmos.dev/'
+              path: 'https://api.torque.dev/'
             },
             {
               title: 'Tendermint RPC',
@@ -189,15 +189,15 @@ module.exports = {
               path: '/modules'
             },
             {
-              title: 'Evmos Go API',
-              path: 'https://pkg.go.dev/github.com/tharsis/evmos'
+              title: 'Torque Go API',
+              path: 'https://pkg.go.dev/github.com/olegtropinin/torque'
             },
             {
               title: 'Ethermint Library Go API',
               path: 'https://pkg.go.dev/github.com/tharsis/ethermint'
             },
             {
-              title: 'Evmos Protobuf',
+              title: 'Torque Protobuf',
               directory: false,
               path: '/protocol/proto-docs'
             }
@@ -242,7 +242,7 @@ module.exports = {
               path: '/validators/upgrades'
             },
             {
-              title: 'Evmos Governance',
+              title: 'Torque Governance',
               directory: true,
               path: '/validators/governance'
             },
@@ -262,11 +262,11 @@ module.exports = {
             },
             {
               title: 'Blockscout (EVM)',
-              path: 'https://evm.evmos.org'
+              path: 'https://evm.torque.org'
             },
             {
               title: 'Mintscan (Cosmos)',
-              path: 'https://www.mintscan.io/evmos/'
+              path: 'https://www.mintscan.io/torque/'
             },
           ]
         },
@@ -276,14 +276,14 @@ module.exports = {
       title: 'Help & Support',
       chat: {
         title: 'Discord Channel',
-        text: 'Chat with Evmos users and team on Discord.',
-        url: 'https://discord.gg/evmos',
+        text: 'Chat with Torque users and team on Discord.',
+        url: 'https://discord.gg/torque',
         bg: 'linear-gradient(103.75deg, #1B1E36 0%, #22253F 100%)'
       },
       forum: {
         title: 'Commonwealth Forum',
-        text: 'Join the Evmos Commonwealth forum',
-        url: 'https://commonwealth.im/evmos', 
+        text: 'Join the Torque Commonwealth forum',
+        url: 'https://commonwealth.im/torque', 
         bg: 'linear-gradient(221.79deg, #3D6B99 -1.08%, #336699 95.88%)',
       },
       github: {
@@ -293,23 +293,23 @@ module.exports = {
       }
     },
     footer: {
-      logo: '/evmos-black.svg',
+      logo: '/torque-black.svg',
       textLink: {
-        text: "evmos.org",
-        url: 'https://evmos.org'
+        text: "torque.org",
+        url: 'https://torque.org'
       },
       services: [
         {
           service: "github",
-          url: 'https://github.com/tharsis/evmos'
+          url: 'https://github.com/olegtropinin/torque'
         },
         {
           service: "twitter",
-          url: "https://twitter.com/EvmosOrg",
+          url: "https://twitter.com/TorqueOrg",
         },
         {
           service: "telegram",
-          url: "https://t.me/EvmosOrg",
+          url: "https://t.me/TorqueOrg",
         },
         {
           service: "linkedin",
@@ -317,7 +317,7 @@ module.exports = {
         },
         {
           service: "medium",
-          url: "https://evmos.blog/",
+          url: "https://torque.blog/",
         },
       ],
       smallprint: 'This website is maintained by Tharsis Labs Ltd.',
@@ -342,20 +342,20 @@ module.exports = {
         title: 'Community',
         children: [
           {
-            title: 'Evmos Discord Community',
-            url: 'https://discord.gg/evmos'
+            title: 'Torque Discord Community',
+            url: 'https://discord.gg/torque'
           },
           {
-            title: 'Evmos Commonwealth Forum',
-            url: 'https://commonwealth.im/evmos'
+            title: 'Torque Commonwealth Forum',
+            url: 'https://commonwealth.im/torque'
           },
         ]
       },
       {
-        title: 'Evmos',
+        title: 'Torque',
         children: [
           {
-            title: 'Jobs at Evmos',
+            title: 'Jobs at Torque',
             url: 'https://tharsis.notion.site/'
           }
         ]

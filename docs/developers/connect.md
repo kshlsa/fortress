@@ -4,11 +4,11 @@ order: 2
 
 # Quick Connect
 
-Quickly connect your app or client to Evmos services {synopsis}
+Quickly connect your app or client to Torque services {synopsis}
 
 ## Public Available Endpoints
 
-Below is a list of publicly available endpoints that you can use to connect to the Evmos mainnet and
+Below is a list of publicly available endpoints that you can use to connect to the Torque mainnet and
 public testnets:
 
 ::: tip
@@ -20,20 +20,20 @@ You can also use [chainlist.org](https://chainlist.org/) to add the node directl
 
 | Address                                                                        | Category               | Maintainer                              |
 | ------------------------------------------------------------------------------ | ---------------------- | --------------------------------------- |
-| [https://grpc.bd.evmos.org:9090](https://grpc.bd.evmos.org:9090)               | `Cosmos` `gRPC`        | [Blockdaemon](https://blockdaemon.com/) |
-| [https://rest.bd.evmos.org:1317](https://rest.bd.evmos.org:1317)               | `Cosmos` `REST`        | [Blockdaemon](https://blockdaemon.com/) |
-| [https://tendermint.bd.evmos.org:26657](https://tendermint.bd.evmos.org:26657) | `Tendermint` `RPC`     | [Blockdaemon](https://blockdaemon.com/) |
-| [https://eth.bd.evmos.org:8545](https://eth.bd.evmos.org:8545)                 | `Ethereum` `JSON-RPC`  | [Blockdaemon](https://blockdaemon.com/) |
-| `wss://eth.bd.evmos.org:8546`                                                  | `Ethereum` `Websocket` | [Blockdaemon](https://blockdaemon.com/) |
+| [https://grpc.bd.torque.org:9090](https://grpc.bd.torque.org:9090)               | `Cosmos` `gRPC`        | [Blockdaemon](https://blockdaemon.com/) |
+| [https://rest.bd.torque.org:1317](https://rest.bd.torque.org:1317)               | `Cosmos` `REST`        | [Blockdaemon](https://blockdaemon.com/) |
+| [https://tendermint.bd.torque.org:26657](https://tendermint.bd.torque.org:26657) | `Tendermint` `RPC`     | [Blockdaemon](https://blockdaemon.com/) |
+| [https://eth.bd.torque.org:8545](https://eth.bd.torque.org:8545)                 | `Ethereum` `JSON-RPC`  | [Blockdaemon](https://blockdaemon.com/) |
+| `wss://eth.bd.torque.org:8546`                                                  | `Ethereum` `Websocket` | [Blockdaemon](https://blockdaemon.com/) |
 :::
 ::: tab Testnet
 
 | Address                                                                        | Category               | Maintainer                              |
 | ------------------------------------------------------------------------------ | ---------------------- | --------------------------------------- |
-| [https://grpc.bd.evmos.org:9090](https://grpc.bd.evmos.org:9090)               | `Cosmos` `gRPC`        | [Blockdaemon](https://blockdaemon.com/) |
-| [https://rest.bd.evmos.org:1317](https://rest.bd.evmos.org:1317)               | `Cosmos` `REST`        | [Blockdaemon](https://blockdaemon.com/) |
-| [https://tendermint.bd.evmos.org:26657](https://tendermint.bd.evmos.org:26657) | `Tendermint` `RPC`     | [Blockdaemon](https://blockdaemon.com/) |
-| [https://eth.bd.evmos.org:8545](https://eth.bd.evmos.org:8545)                 | `Ethereum` `JSON-RPC`  | [Blockdaemon](https://blockdaemon.com/) |
-| `wss://eth.bd.evmos.dev:8546`                                                  | `Ethereum` `Websocket` | [Blockdaemon](https://blockdaemon.com/) |
+| [https://grpc.bd.torque.org:9090](https://grpc.bd.torque.org:9090)               | `Cosmos` `gRPC`        | [Blockdaemon](https://blockdaemon.com/) |
+| [https://rest.bd.torque.org:1317](https://rest.bd.torque.org:1317)               | `Cosmos` `REST`        | [Blockdaemon](https://blockdaemon.com/) |
+| [https://tendermint.bd.torque.org:26657](https://tendermint.bd.torque.org:26657) | `Tendermint` `RPC`     | [Blockdaemon](https://blockdaemon.com/) |
+| [https://eth.bd.torque.org:8545](https://eth.bd.torque.org:8545)                 | `Ethereum` `JSON-RPC`  | [Blockdaemon](https://blockdaemon.com/) |
+| `wss://eth.bd.torque.dev:8546`                                                  | `Ethereum` `Websocket` | [Blockdaemon](https://blockdaemon.com/) |
 :::
 ::::

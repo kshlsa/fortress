@@ -106,38 +106,38 @@ import (
 	feemarkettypes "github.com/tharsis/ethermint/x/feemarket/types"
 
 	// unnamed import of statik for swagger UI support
-	_ "github.com/tharsis/evmos/v4/client/docs/statik"
+	_ "github.com/olegtropinin/torque/v4/client/docs/statik"
 
-	"github.com/tharsis/evmos/v4/app/ante"
-	v2 "github.com/tharsis/evmos/v4/app/upgrades/mainnet/v2"
-	v3 "github.com/tharsis/evmos/v4/app/upgrades/mainnet/v3"
-	tv3 "github.com/tharsis/evmos/v4/app/upgrades/testnet/v3"
-	"github.com/tharsis/evmos/v4/x/claims"
-	claimskeeper "github.com/tharsis/evmos/v4/x/claims/keeper"
-	claimstypes "github.com/tharsis/evmos/v4/x/claims/types"
-	"github.com/tharsis/evmos/v4/x/epochs"
-	epochskeeper "github.com/tharsis/evmos/v4/x/epochs/keeper"
-	epochstypes "github.com/tharsis/evmos/v4/x/epochs/types"
-	"github.com/tharsis/evmos/v4/x/erc20"
-	erc20client "github.com/tharsis/evmos/v4/x/erc20/client"
-	erc20keeper "github.com/tharsis/evmos/v4/x/erc20/keeper"
-	erc20types "github.com/tharsis/evmos/v4/x/erc20/types"
-	"github.com/tharsis/evmos/v4/x/fees"
-	feeskeeper "github.com/tharsis/evmos/v4/x/fees/keeper"
-	feestypes "github.com/tharsis/evmos/v4/x/fees/types"
-	"github.com/tharsis/evmos/v4/x/incentives"
-	incentivesclient "github.com/tharsis/evmos/v4/x/incentives/client"
-	incentiveskeeper "github.com/tharsis/evmos/v4/x/incentives/keeper"
-	incentivestypes "github.com/tharsis/evmos/v4/x/incentives/types"
-	"github.com/tharsis/evmos/v4/x/inflation"
-	inflationkeeper "github.com/tharsis/evmos/v4/x/inflation/keeper"
-	inflationtypes "github.com/tharsis/evmos/v4/x/inflation/types"
-	"github.com/tharsis/evmos/v4/x/recovery"
-	recoverykeeper "github.com/tharsis/evmos/v4/x/recovery/keeper"
-	recoverytypes "github.com/tharsis/evmos/v4/x/recovery/types"
-	"github.com/tharsis/evmos/v4/x/vesting"
-	vestingkeeper "github.com/tharsis/evmos/v4/x/vesting/keeper"
-	vestingtypes "github.com/tharsis/evmos/v4/x/vesting/types"
+	"github.com/olegtropinin/torque/v4/app/ante"
+	v2 "github.com/olegtropinin/torque/v4/app/upgrades/mainnet/v2"
+	v3 "github.com/olegtropinin/torque/v4/app/upgrades/mainnet/v3"
+	tv3 "github.com/olegtropinin/torque/v4/app/upgrades/testnet/v3"
+	"github.com/olegtropinin/torque/v4/x/claims"
+	claimskeeper "github.com/olegtropinin/torque/v4/x/claims/keeper"
+	claimstypes "github.com/olegtropinin/torque/v4/x/claims/types"
+	"github.com/olegtropinin/torque/v4/x/epochs"
+	epochskeeper "github.com/olegtropinin/torque/v4/x/epochs/keeper"
+	epochstypes "github.com/olegtropinin/torque/v4/x/epochs/types"
+	"github.com/olegtropinin/torque/v4/x/erc20"
+	erc20client "github.com/olegtropinin/torque/v4/x/erc20/client"
+	erc20keeper "github.com/olegtropinin/torque/v4/x/erc20/keeper"
+	erc20types "github.com/olegtropinin/torque/v4/x/erc20/types"
+	"github.com/olegtropinin/torque/v4/x/fees"
+	feeskeeper "github.com/olegtropinin/torque/v4/x/fees/keeper"
+	feestypes "github.com/olegtropinin/torque/v4/x/fees/types"
+	"github.com/olegtropinin/torque/v4/x/incentives"
+	incentivesclient "github.com/olegtropinin/torque/v4/x/incentives/client"
+	incentiveskeeper "github.com/olegtropinin/torque/v4/x/incentives/keeper"
+	incentivestypes "github.com/olegtropinin/torque/v4/x/incentives/types"
+	"github.com/olegtropinin/torque/v4/x/inflation"
+	inflationkeeper "github.com/olegtropinin/torque/v4/x/inflation/keeper"
+	inflationtypes "github.com/olegtropinin/torque/v4/x/inflation/types"
+	"github.com/olegtropinin/torque/v4/x/recovery"
+	recoverykeeper "github.com/olegtropinin/torque/v4/x/recovery/keeper"
+	recoverytypes "github.com/olegtropinin/torque/v4/x/recovery/types"
+	"github.com/olegtropinin/torque/v4/x/vesting"
+	vestingkeeper "github.com/olegtropinin/torque/v4/x/vesting/keeper"
+	vestingtypes "github.com/olegtropinin/torque/v4/x/vesting/types"
 )
 
 func init() {
@@ -146,19 +146,19 @@ func init() {
 		panic(err)
 	}
 
-	DefaultNodeHome = filepath.Join(userHomeDir, ".evmosd")
+	DefaultNodeHome = filepath.Join(userHomeDir, ".torqued")
 
-	// manually update the power reduction by replacing micro (u) -> atto (a) evmos
+	// manually update the power reduction by replacing micro (u) -> atto (a) torque
 	sdk.DefaultPowerReduction = ethermint.PowerReduction
 }
 
 const (
 	// Name defines the application binary name
-	Name = "evmosd"
-	// MainnetChainID defines the Evmos EIP155 chain ID for mainnet
-	MainnetChainID = "evmos_9001"
-	// TestnetChainID defines the Evmos EIP155 chain ID for testnet
-	TestnetChainID = "evmos_9000"
+	Name = "torqued"
+	// MainnetChainID defines the Torque EIP155 chain ID for mainnet
+	MainnetChainID = "torque_9001"
+	// TestnetChainID defines the Torque EIP155 chain ID for testnet
+	TestnetChainID = "torque_9000"
 )
 
 var (
@@ -178,7 +178,7 @@ var (
 		gov.NewAppModuleBasic(
 			paramsclient.ProposalHandler, distrclient.ProposalHandler, upgradeclient.ProposalHandler, upgradeclient.CancelProposalHandler,
 			ibcclientclient.UpdateClientProposalHandler, ibcclientclient.UpgradeProposalHandler,
-			// Evmos proposal types
+			// Torque proposal types
 			erc20client.RegisterCoinProposalHandler, erc20client.RegisterERC20ProposalHandler, erc20client.ToggleTokenConversionProposalHandler,
 			incentivesclient.RegisterIncentiveProposalHandler, incentivesclient.CancelIncentiveProposalHandler,
 		),
@@ -226,15 +226,15 @@ var (
 )
 
 var (
-	_ servertypes.Application = (*Evmos)(nil)
-	_ simapp.App              = (*Evmos)(nil)
-	_ ibctesting.TestingApp   = (*Evmos)(nil)
+	_ servertypes.Application = (*Torque)(nil)
+	_ simapp.App              = (*Torque)(nil)
+	_ ibctesting.TestingApp   = (*Torque)(nil)
 )
 
-// Evmos implements an extended ABCI application. It is an application
+// Torque implements an extended ABCI application. It is an application
 // that may process transactions through Ethereum's EVM running atop of
 // Tendermint consensus.
-type Evmos struct {
+type Torque struct {
 	*baseapp.BaseApp
 
 	// encoding
@@ -274,7 +274,7 @@ type Evmos struct {
 	EvmKeeper       *evmkeeper.Keeper
 	FeeMarketKeeper feemarketkeeper.Keeper
 
-	// Evmos keepers
+	// Torque keepers
 	InflationKeeper  inflationkeeper.Keeper
 	ClaimsKeeper     *claimskeeper.Keeper
 	Erc20Keeper      erc20keeper.Keeper
@@ -296,8 +296,8 @@ type Evmos struct {
 	tpsCounter *tpsCounter
 }
 
-// NewEvmos returns a reference to a new initialized Ethermint application.
-func NewEvmos(
+// NewTorque returns a reference to a new initialized Ethermint application.
+func NewTorque(
 	logger log.Logger,
 	db dbm.DB,
 	traceStore io.Writer,
@@ -308,7 +308,7 @@ func NewEvmos(
 	encodingConfig simappparams.EncodingConfig,
 	appOpts servertypes.AppOptions,
 	baseAppOptions ...func(*baseapp.BaseApp),
-) *Evmos {
+) *Torque {
 	appCodec := encodingConfig.Marshaler
 	cdc := encodingConfig.Amino
 	interfaceRegistry := encodingConfig.InterfaceRegistry
@@ -336,7 +336,7 @@ func NewEvmos(
 		ibchost.StoreKey, ibctransfertypes.StoreKey,
 		// ethermint keys
 		evmtypes.StoreKey, feemarkettypes.StoreKey,
-		// evmos keys
+		// torque keys
 		inflationtypes.StoreKey, erc20types.StoreKey, incentivestypes.StoreKey,
 		epochstypes.StoreKey, claimstypes.StoreKey, vestingtypes.StoreKey,
 		feestypes.StoreKey,
@@ -346,7 +346,7 @@ func NewEvmos(
 	tkeys := sdk.NewTransientStoreKeys(paramstypes.TStoreKey, evmtypes.TransientKey)
 	memKeys := sdk.NewMemoryStoreKeys(capabilitytypes.MemStoreKey)
 
-	app := &Evmos{
+	app := &Torque{
 		BaseApp:           bApp,
 		cdc:               cdc,
 		appCodec:          appCodec,
@@ -431,7 +431,7 @@ func NewEvmos(
 		app.AccountKeeper, app.BankKeeper, &stakingKeeper, govRouter,
 	)
 
-	// Evmos Keeper
+	// Torque Keeper
 	app.InflationKeeper = inflationkeeper.NewKeeper(
 		keys[inflationtypes.StoreKey], appCodec, app.GetSubspace(inflationtypes.ModuleName),
 		app.AccountKeeper, app.BankKeeper, app.DistrKeeper, &stakingKeeper,
@@ -588,7 +588,7 @@ func NewEvmos(
 		// Ethermint app modules
 		evm.NewAppModule(app.EvmKeeper, app.AccountKeeper),
 		feemarket.NewAppModule(app.FeeMarketKeeper),
-		// Evmos app modules
+		// Torque app modules
 		inflation.NewAppModule(app.InflationKeeper, app.AccountKeeper, app.StakingKeeper),
 		erc20.NewAppModule(app.Erc20Keeper, app.AccountKeeper),
 		incentives.NewAppModule(app.IncentivesKeeper, app.AccountKeeper),
@@ -660,7 +660,7 @@ func NewEvmos(
 		feegrant.ModuleName,
 		paramstypes.ModuleName,
 		upgradetypes.ModuleName,
-		// Evmos modules
+		// Torque modules
 		vestingtypes.ModuleName,
 		inflationtypes.ModuleName,
 		erc20types.ModuleName,
@@ -695,7 +695,7 @@ func NewEvmos(
 		upgradetypes.ModuleName,
 		// Ethermint modules
 		evmtypes.ModuleName, feemarkettypes.ModuleName,
-		// Evmos modules
+		// Torque modules
 		vestingtypes.ModuleName,
 		inflationtypes.ModuleName,
 		erc20types.ModuleName,
@@ -794,21 +794,21 @@ func NewEvmos(
 }
 
 // Name returns the name of the App
-func (app *Evmos) Name() string { return app.BaseApp.Name() }
+func (app *Torque) Name() string { return app.BaseApp.Name() }
 
 // BeginBlocker updates every begin block
-func (app *Evmos) BeginBlocker(ctx sdk.Context, req abci.RequestBeginBlock) abci.ResponseBeginBlock {
+func (app *Torque) BeginBlocker(ctx sdk.Context, req abci.RequestBeginBlock) abci.ResponseBeginBlock {
 	BeginBlockForks(ctx, app)
 	return app.mm.BeginBlock(ctx, req)
 }
 
 // EndBlocker updates every end block
-func (app *Evmos) EndBlocker(ctx sdk.Context, req abci.RequestEndBlock) abci.ResponseEndBlock {
+func (app *Torque) EndBlocker(ctx sdk.Context, req abci.RequestEndBlock) abci.ResponseEndBlock {
 	return app.mm.EndBlock(ctx, req)
 }
 
 // We are intentionally decomposing the DeliverTx method so as to calculate the transactions per second.
-func (app *Evmos) DeliverTx(req abci.RequestDeliverTx) (res abci.ResponseDeliverTx) {
+func (app *Torque) DeliverTx(req abci.RequestDeliverTx) (res abci.ResponseDeliverTx) {
 	defer func() {
 		// TODO: Record the count along with the code and or reason so as to display
 		// in the transactions per second live dashboards.
@@ -823,7 +823,7 @@ func (app *Evmos) DeliverTx(req abci.RequestDeliverTx) (res abci.ResponseDeliver
 }
 
 // InitChainer updates at chain initialization
-func (app *Evmos) InitChainer(ctx sdk.Context, req abci.RequestInitChain) abci.ResponseInitChain {
+func (app *Torque) InitChainer(ctx sdk.Context, req abci.RequestInitChain) abci.ResponseInitChain {
 	var genesisState simapp.GenesisState
 	if err := json.Unmarshal(req.AppStateBytes, &genesisState); err != nil {
 		panic(err)
@@ -835,12 +835,12 @@ func (app *Evmos) InitChainer(ctx sdk.Context, req abci.RequestInitChain) abci.R
 }
 
 // LoadHeight loads state at a particular height
-func (app *Evmos) LoadHeight(height int64) error {
+func (app *Torque) LoadHeight(height int64) error {
 	return app.LoadVersion(height)
 }
 
 // ModuleAccountAddrs returns all the app's module account addresses.
-func (app *Evmos) ModuleAccountAddrs() map[string]bool {
+func (app *Torque) ModuleAccountAddrs() map[string]bool {
 	modAccAddrs := make(map[string]bool)
 	for acc := range maccPerms {
 		modAccAddrs[authtypes.NewModuleAddress(acc).String()] = true
@@ -851,7 +851,7 @@ func (app *Evmos) ModuleAccountAddrs() map[string]bool {
 
 // BlockedAddrs returns all the app's module account addresses that are not
 // allowed to receive external tokens.
-func (app *Evmos) BlockedAddrs() map[string]bool {
+func (app *Torque) BlockedAddrs() map[string]bool {
 	blockedAddrs := make(map[string]bool)
 	for acc := range maccPerms {
 		blockedAddrs[authtypes.NewModuleAddress(acc).String()] = !allowedReceivingModAcc[acc]
@@ -860,64 +860,64 @@ func (app *Evmos) BlockedAddrs() map[string]bool {
 	return blockedAddrs
 }
 
-// LegacyAmino returns Evmos's amino codec.
+// LegacyAmino returns Torque's amino codec.
 //
 // NOTE: This is solely to be used for testing purposes as it may be desirable
 // for modules to register their own custom testing types.
-func (app *Evmos) LegacyAmino() *codec.LegacyAmino {
+func (app *Torque) LegacyAmino() *codec.LegacyAmino {
 	return app.cdc
 }
 
-// AppCodec returns Evmos's app codec.
+// AppCodec returns Torque's app codec.
 //
 // NOTE: This is solely to be used for testing purposes as it may be desirable
 // for modules to register their own custom testing types.
-func (app *Evmos) AppCodec() codec.Codec {
+func (app *Torque) AppCodec() codec.Codec {
 	return app.appCodec
 }
 
-// InterfaceRegistry returns Evmos's InterfaceRegistry
-func (app *Evmos) InterfaceRegistry() types.InterfaceRegistry {
+// InterfaceRegistry returns Torque's InterfaceRegistry
+func (app *Torque) InterfaceRegistry() types.InterfaceRegistry {
 	return app.interfaceRegistry
 }
 
 // GetKey returns the KVStoreKey for the provided store key.
 //
 // NOTE: This is solely to be used for testing purposes.
-func (app *Evmos) GetKey(storeKey string) *sdk.KVStoreKey {
+func (app *Torque) GetKey(storeKey string) *sdk.KVStoreKey {
 	return app.keys[storeKey]
 }
 
 // GetTKey returns the TransientStoreKey for the provided store key.
 //
 // NOTE: This is solely to be used for testing purposes.
-func (app *Evmos) GetTKey(storeKey string) *sdk.TransientStoreKey {
+func (app *Torque) GetTKey(storeKey string) *sdk.TransientStoreKey {
 	return app.tkeys[storeKey]
 }
 
 // GetMemKey returns the MemStoreKey for the provided mem key.
 //
 // NOTE: This is solely used for testing purposes.
-func (app *Evmos) GetMemKey(storeKey string) *sdk.MemoryStoreKey {
+func (app *Torque) GetMemKey(storeKey string) *sdk.MemoryStoreKey {
 	return app.memKeys[storeKey]
 }
 
 // GetSubspace returns a param subspace for a given module name.
 //
 // NOTE: This is solely to be used for testing purposes.
-func (app *Evmos) GetSubspace(moduleName string) paramstypes.Subspace {
+func (app *Torque) GetSubspace(moduleName string) paramstypes.Subspace {
 	subspace, _ := app.ParamsKeeper.GetSubspace(moduleName)
 	return subspace
 }
 
 // SimulationManager implements the SimulationApp interface
-func (app *Evmos) SimulationManager() *module.SimulationManager {
+func (app *Torque) SimulationManager() *module.SimulationManager {
 	return app.sm
 }
 
 // RegisterAPIRoutes registers all application module routes with the provided
 // API server.
-func (app *Evmos) RegisterAPIRoutes(apiSvr *api.Server, apiConfig config.APIConfig) {
+func (app *Torque) RegisterAPIRoutes(apiSvr *api.Server, apiConfig config.APIConfig) {
 	clientCtx := apiSvr.ClientCtx
 	rpc.RegisterRoutes(clientCtx, apiSvr.Router)
 
@@ -938,38 +938,38 @@ func (app *Evmos) RegisterAPIRoutes(apiSvr *api.Server, apiConfig config.APIConf
 	}
 }
 
-func (app *Evmos) RegisterTxService(clientCtx client.Context) {
+func (app *Torque) RegisterTxService(clientCtx client.Context) {
 	authtx.RegisterTxService(app.BaseApp.GRPCQueryRouter(), clientCtx, app.BaseApp.Simulate, app.interfaceRegistry)
 }
 
-func (app *Evmos) RegisterTendermintService(clientCtx client.Context) {
+func (app *Torque) RegisterTendermintService(clientCtx client.Context) {
 	tmservice.RegisterTendermintService(app.BaseApp.GRPCQueryRouter(), clientCtx, app.interfaceRegistry)
 }
 
 // IBC Go TestingApp functions
 
 // GetBaseApp implements the TestingApp interface.
-func (app *Evmos) GetBaseApp() *baseapp.BaseApp {
+func (app *Torque) GetBaseApp() *baseapp.BaseApp {
 	return app.BaseApp
 }
 
 // GetStakingKeeper implements the TestingApp interface.
-func (app *Evmos) GetStakingKeeper() stakingkeeper.Keeper {
+func (app *Torque) GetStakingKeeper() stakingkeeper.Keeper {
 	return app.StakingKeeper
 }
 
 // GetIBCKeeper implements the TestingApp interface.
-func (app *Evmos) GetIBCKeeper() *ibckeeper.Keeper {
+func (app *Torque) GetIBCKeeper() *ibckeeper.Keeper {
 	return app.IBCKeeper
 }
 
 // GetScopedIBCKeeper implements the TestingApp interface.
-func (app *Evmos) GetScopedIBCKeeper() capabilitykeeper.ScopedKeeper {
+func (app *Torque) GetScopedIBCKeeper() capabilitykeeper.ScopedKeeper {
 	return app.ScopedIBCKeeper
 }
 
 // GetTxConfig implements the TestingApp interface.
-func (app *Evmos) GetTxConfig() client.TxConfig {
+func (app *Torque) GetTxConfig() client.TxConfig {
 	cfg := encoding.MakeConfig(ModuleBasics)
 	return cfg.TxConfig
 }
@@ -1014,7 +1014,7 @@ func initParamsKeeper(
 	// ethermint subspaces
 	paramsKeeper.Subspace(evmtypes.ModuleName)
 	paramsKeeper.Subspace(feemarkettypes.ModuleName)
-	// evmos subspaces
+	// torque subspaces
 	paramsKeeper.Subspace(inflationtypes.ModuleName)
 	paramsKeeper.Subspace(erc20types.ModuleName)
 	paramsKeeper.Subspace(claimstypes.ModuleName)
@@ -1024,7 +1024,7 @@ func initParamsKeeper(
 	return paramsKeeper
 }
 
-func (app *Evmos) setupUpgradeHandlers() {
+func (app *Torque) setupUpgradeHandlers() {
 	// v2 upgrade handler
 	app.UpgradeKeeper.SetUpgradeHandler(
 		v2.UpgradeName,

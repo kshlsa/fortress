@@ -12,9 +12,9 @@ import (
 	"github.com/tharsis/ethermint/tests"
 	evmtypes "github.com/tharsis/ethermint/x/evm/types"
 
-	"github.com/tharsis/evmos/v4/x/erc20/keeper"
-	"github.com/tharsis/evmos/v4/x/erc20/types"
-	inflationtypes "github.com/tharsis/evmos/v4/x/inflation/types"
+	"github.com/olegtropinin/torque/v4/x/erc20/keeper"
+	"github.com/olegtropinin/torque/v4/x/erc20/types"
+	inflationtypes "github.com/olegtropinin/torque/v4/x/inflation/types"
 )
 
 const (
@@ -202,27 +202,27 @@ func (suite KeeperTestSuite) TestRegisterCoin() {
 			false,
 		},
 		{
-			"evm denom registration - evmos",
+			"evm denom registration - torque",
 			func() {
-				metadata.Base = "evmos"
+				metadata.Base = "torque"
 				err := suite.app.BankKeeper.MintCoins(suite.ctx, inflationtypes.ModuleName, sdk.Coins{sdk.NewInt64Coin(metadata.Base, 1)})
 				suite.Require().NoError(err)
 			},
 			false,
 		},
 		{
-			"evm denom registration - aevmos",
+			"evm denom registration - atorque",
 			func() {
-				metadata.Base = "aevmos"
+				metadata.Base = "atorque"
 				err := suite.app.BankKeeper.MintCoins(suite.ctx, inflationtypes.ModuleName, sdk.Coins{sdk.NewInt64Coin(metadata.Base, 1)})
 				suite.Require().NoError(err)
 			},
 			false,
 		},
 		{
-			"evm denom registration - wevmos",
+			"evm denom registration - wtorque",
 			func() {
-				metadata.Base = "wevmos"
+				metadata.Base = "wtorque"
 				err := suite.app.BankKeeper.MintCoins(suite.ctx, inflationtypes.ModuleName, sdk.Coins{sdk.NewInt64Coin(metadata.Base, 1)})
 				suite.Require().NoError(err)
 			},

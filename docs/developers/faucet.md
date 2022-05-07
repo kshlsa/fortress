@@ -4,9 +4,9 @@ order: 3
 
 # Faucet
 
-Check how to obtain testnet tokens from the Evmos faucet website {synopsis}
+Check how to obtain testnet tokens from the Torque faucet website {synopsis}
 
-The Evmos Testnet Faucet distributes small amounts of {{ $themeConfig.project.testnet_denom }} to anyone who can provide a valid testnet address for free. Request funds from the faucet either by using the [Keplr Wallet](../guides/keys-wallets/keplr.md) or follow the instructions on this page.
+The Torque Testnet Faucet distributes small amounts of {{ $themeConfig.project.testnet_denom }} to anyone who can provide a valid testnet address for free. Request funds from the faucet either by using the [Keplr Wallet](../guides/keys-wallets/keplr.md) or follow the instructions on this page.
 
 ::: tip
 Follow the [Metamask](./../guides/keys-wallets/metamask.md), [Keplr](./../users/wallets/keplr.md) or [Keyring](./../users/keys/keyring.md) guides for more info on how to setup your wallet account.
@@ -14,22 +14,22 @@ Follow the [Metamask](./../guides/keys-wallets/metamask.md), [Keplr](./../users/
 
 ## Request Testnet tokens
 
-Once you are signed in to the Keplr extension, visit the [Faucet](https://faucet.evmos.dev/) to request tokens for the testnet. Click the `Request Funds with Keplr` button. Then approve the both following pop ups `Chain Add Request` and `Request Connection` to add the {{ $themeConfig.project.name }} testnet chain (`evmos_{{ $themeConfig.project.testnet_chain_id }}-{{ $themeConfig.project.testnet_version_number }}`) to Keplr and approve the connection.
+Once you are signed in to the Keplr extension, visit the [Faucet](https://faucet.torque.dev/) to request tokens for the testnet. Click the `Request Funds with Keplr` button. Then approve the both following pop ups `Chain Add Request` and `Request Connection` to add the {{ $themeConfig.project.name }} testnet chain (`torque_{{ $themeConfig.project.testnet_chain_id }}-{{ $themeConfig.project.testnet_version_number }}`) to Keplr and approve the connection.
 
 ![chain add request](./../img/keplr_approve_chain.png)
 
-After approval, you can see a transaction confirmation informing you that {{ $themeConfig.project.testnet_denom }} have been successfully transferred to your [evmos address](../../users/technical_concepts/accounts#address-formats-for-clients) on the testnet.
+After approval, you can see a transaction confirmation informing you that {{ $themeConfig.project.testnet_denom }} have been successfully transferred to your [torque address](../../users/technical_concepts/accounts#address-formats-for-clients) on the testnet.
 
 ::: warning
-**Note**: only Ethereum compatible addresses (i.e `eth_secp256k1` keys) are supported on Evmos.
+**Note**: only Ethereum compatible addresses (i.e `eth_secp256k1` keys) are supported on Torque.
 :::
 
 ![chain add request](./../img/keplr_transaction.png)
 
-Alternatively you can also fill in your address on the input field in Bech32 (`evmos1...`) or Hex (`0x...`) format.
+Alternatively you can also fill in your address on the input field in Bech32 (`torque1...`) or Hex (`0x...`) format.
 
 ::: warning
-If you use your Bech32 address, make sure you input the [account address](./../technical_concepts/accounts#addresses-and-public-keys) (`evmos1...`) and **NOT** the validator operator address (`evmosvaloper1...`)
+If you use your Bech32 address, make sure you input the [account address](./../technical_concepts/accounts#addresses-and-public-keys) (`torque1...`) and **NOT** the validator operator address (`torquevaloper1...`)
 :::
 
 ![faucet site](./../img/faucet_web_page.png)
@@ -46,7 +46,7 @@ View your account balance either by clicking on the Keplr extension or by [inter
 All addresses **MUST** be authenticated using ReCAPTCHA before requesting tokens.
 :::
 
-To prevent the faucet account from draining the available funds, the Evmos testnet faucet imposes a maximum number of requests for a period of time. By default, the faucet service accepts 1 request per day per address. You can request {{ $themeConfig.project.testnet_denom }} from the [Faucet](./../../developers/faucet) for each address only once every 24h. If you try to request multiple times within the 24h cooldown phase, no transaction will be initiated. Please try again in 24 hours.
+To prevent the faucet account from draining the available funds, the Torque testnet faucet imposes a maximum number of requests for a period of time. By default, the faucet service accepts 1 request per day per address. You can request {{ $themeConfig.project.testnet_denom }} from the [Faucet](./../../developers/faucet) for each address only once every 24h. If you try to request multiple times within the 24h cooldown phase, no transaction will be initiated. Please try again in 24 hours.
 
 ## Amount
 
@@ -56,5 +56,5 @@ For each request, the faucet transfers 1 {{ $themeConfig.project.testnet_denom }
 
 The public faucet addresses for the testnet are:
 
-- **Hex**: [`0xBaE9A7A2210F94511F5050348251d0d7113E2cE3`](https://evm.evmos.dev/address/0xBaE9A7A2210F94511F5050348251d0d7113E2cE3/transactions)
-- **Bech32**: [`evmos1ht560g3pp729z86s2q6gy5ws6ugnut8r4uhyth`](https://testnet.mintscan.io/evmos/account/evmos1ht560g3pp729z86s2q6gy5ws6ugnut8r4uhyth)
+- **Hex**: [`0xBaE9A7A2210F94511F5050348251d0d7113E2cE3`](https://evm.torque.dev/address/0xBaE9A7A2210F94511F5050348251d0d7113E2cE3/transactions)
+- **Bech32**: [`torque1ht560g3pp729z86s2q6gy5ws6ugnut8r4uhyth`](https://testnet.mintscan.io/torque/account/torque1ht560g3pp729z86s2q6gy5ws6ugnut8r4uhyth)

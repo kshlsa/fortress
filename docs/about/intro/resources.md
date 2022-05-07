@@ -4,7 +4,7 @@ order: 3
 
 # Resources
 
-Learn about Evmos with the list of official resources. {synopsis}
+Learn about Torque with the list of official resources. {synopsis}
 
 ::: tip
 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧
@@ -14,10 +14,10 @@ This documentation page is currently under work in progress.
 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧
 :::
 
-- Documentation (this site): [https://evmos.dev/](https://evmos.dev/)
-- Open Source Codebase: [https://github.com/tharsis/evmos](https://github.com/tharsis/evmos)
-- Website: [https://evmos.org/](https://evmos.org/)
-- Blog: [https://evmos.blog/](https://evmos.blog/)
+- Documentation (this site): [https://torque.dev/](https://torque.dev/)
+- Open Source Codebase: [https://github.com/olegtropinin/torque](https://github.com/olegtropinin/torque)
+- Website: [https://torque.org/](https://torque.org/)
+- Blog: [https://torque.blog/](https://torque.blog/)
 - Ethermint: [https://github.com/tharsis/ethermint](https://github.com/tharsis/ethermint)
 
 ## Workshops and Videos
@@ -53,4 +53,4 @@ Note: most of these articles are outdated as they refer to the previous Ethermin
 
 ## Next {hide}
 
-Learn how to run an Evmos [node](./../quickstart/run_node.md) {hide}
+Learn how to run an Torque [node](./../quickstart/run_node.md) {hide}

@@ -1,4 +1,4 @@
-# Evmos Contributor Guidelines
+# Torque Contributor Guidelines
 
 * [General Procedure](#general_procedure)
 * [Architecture Decision Records (ADR)](#adr)
@@ -17,20 +17,20 @@
 
 ## <span id="general_procedure">General Procedure</span>
 
-Thank you for considering making contributions to Evmos and related repositories!
+Thank you for considering making contributions to Torque and related repositories!
 
-Evmos uses [Tendermint’s coding repo](https://github.com/tendermint/coding) for overall information on repository
+Torque uses [Tendermint’s coding repo](https://github.com/tendermint/coding) for overall information on repository
 workflow and standards.
 
 Contributing to this repo can mean many things such as participating in discussion or proposing code changes. To ensure
 a smooth workflow for all contributors, the following general procedure for contributing has been established:
 
-1. Either [open](https://github.com/tharsis/evmos/issues/new/choose)
-   or [find](https://github.com/tharsis/evmos/issues) an issue you have identified and would like to contribute to
+1. Either [open](https://github.com/olegtropinin/torque/issues/new/choose)
+   or [find](https://github.com/olegtropinin/torque/issues) an issue you have identified and would like to contribute to
    resolving.
 2. Participate in thoughtful discussion on that issue.
 3. If you would like to contribute:
-    1. If the issue is a proposal, ensure that the proposal has been accepted by the Evmos team.
+    1. If the issue is a proposal, ensure that the proposal has been accepted by the Torque team.
     2. Ensure that nobody else has already begun working on the same issue. If someone already has, please make sure to
        contact the individual to collaborate.
     3. If nobody has been assigned the issue and you would like to work on it, make a comment on the issue to inform the
@@ -38,7 +38,7 @@ a smooth workflow for all contributors, the following general procedure for cont
        if you are eager and do not get a prompt response, feel free to dive on in!
     4. Follow standard Github best practices:
         1. Fork the repo
-        2. Branch from the HEAD of `development`(For core developers working within the evmos repo, to ensure a
+        2. Branch from the HEAD of `development`(For core developers working within the torque repo, to ensure a
            clear ownership of branches, branches must be named with the convention `{moniker}/{issue#}-branch-name`).
         3. Make commits
         4. Submit a PR to `development`
@@ -49,7 +49,7 @@ a smooth workflow for all contributors, the following general procedure for cont
        format).
     8. Please make sure to run `make format` before every commit - the easiest way to do this is having your editor run
        it for you upon saving a file. Additionally, please ensure that your code is lint compliant by running `make lint`
-       . There are CI tests built into the Evmos repository and all PR’s will require that these tests pass before
+       . There are CI tests built into the Torque repository and all PR’s will require that these tests pass before
        they are able to be merged.
 
 **Note**: for very small or blatantly obvious problems (such as typos), it is not required to open an issue to submit a
@@ -57,12 +57,12 @@ PR, but be aware that for more complex problems/features, if a PR is opened befo
 taken place in a github issue, that PR runs a high likelihood of being rejected.
 
 Looking for a good place to start contributing? How about checking out
-some [good first issues](https://github.com/tharsis/evmos/issues?q=label%3A%22good+first+issue%22).
+some [good first issues](https://github.com/olegtropinin/torque/issues?q=label%3A%22good+first+issue%22).
 
 ## <span id="adr">Architecture Decision Records (ADR)</span>
 
-When proposing an architecture decision for Evmos, please create
-an [ADR](https://github.com/tharsis/evmos/blob/main/docs/architecture/README.md) so further discussions can be
+When proposing an architecture decision for Torque, please create
+an [ADR](https://github.com/olegtropinin/torque/blob/main/docs/architecture/README.md) so further discussions can be
 made. We are following this process so all involved parties are in agreement before any party begins coding the proposed
 implementation. If you would like to see some examples of how these are written refer
 to [Tendermint ADRs](https://github.com/tendermint/tendermint/tree/master/docs/architecture).
@@ -70,19 +70,19 @@ to [Tendermint ADRs](https://github.com/tendermint/tendermint/tree/master/docs/a
 ## <span id="forking">Forking</span>
 
 Please note that Go requires code to live under absolute paths, which complicates forking. While my fork lives
-at `https://github.com/tharsis/evmos`, the code should never exist
-at `$GOPATH/src/github.com/tharsis/evmos`. Instead, we use `git remote` to add the fork as a new remote for the
-original repo,`$GOPATH/src/github.com/tharsis/evmos`, and do all the work there.
+at `https://github.com/olegtropinin/torque`, the code should never exist
+at `$GOPATH/src/github.com/olegtropinin/torque`. Instead, we use `git remote` to add the fork as a new remote for the
+original repo,`$GOPATH/src/github.com/olegtropinin/torque`, and do all the work there.
 
 For instance, to create a fork and work on a branch of it, you would:
 
 1. Create the fork on github, using the fork button.
-2. Go to the original repo checked out locally. (i.e. `$GOPATH/src/github.com/tharsis/evmos`)
+2. Go to the original repo checked out locally. (i.e. `$GOPATH/src/github.com/olegtropinin/torque`)
 3. `git remote rename origin upstream`
-4. `git remote add origin git@github.com:tharsis/evmos.git`
+4. `git remote add origin git@github.com:olegtropinin/torque.git`
 
-Now `origin` refers to my fork and `upstream` refers to the evmos version. So I can `git push -u origin master` to
-update my fork, and make pull requests to evmos from there. Of course, replace `tharsis` with your git handle.
+Now `origin` refers to my fork and `upstream` refers to the torque version. So I can `git push -u origin master` to
+update my fork, and make pull requests to torque from there. Of course, replace `tharsis` with your git handle.
 
 To pull in updates from the origin repo, run:
 
@@ -104,7 +104,7 @@ on `go mod tidy -v`.
 ## <span id="protobuf">Protobuf</span>
 
 We use [Protocol Buffers](https://developers.google.com/protocol-buffers) along
-with [gogoproto](https://github.com/gogo/protobuf) to generate code for use in Evmos.
+with [gogoproto](https://github.com/gogo/protobuf) to generate code for use in Torque.
 
 For deterministic behavior around Protobuf tooling, everything is containerized using Docker. Make sure to have Docker
 installed on your machine, or head to [Docker's website](https://docs.docker.com/get-docker/) to install it.
@@ -140,17 +140,17 @@ For example, in vscode your `.vscode/settings.json` should look like:
 2. `development` must never
    fail `make lint, make test, make test-race, make test-rpc, make test-import`
 3. No `--force` onto `development` (except when reverting a broken commit, which should seldom happen).
-4. Create your feature branch from `development` either on `github.com/tharsis/evmos`, or your fork (
+4. Create your feature branch from `development` either on `github.com/olegtropinin/torque`, or your fork (
    using `git remote add origin`).
 5. Before submitting a pull request, begin `git rebase` on top of `development`.
 
 ## <span id="testing">Testing</span>
 
-Evmos uses [GitHub Actions](https://github.com/features/actions) for automated testing.
+Torque uses [GitHub Actions](https://github.com/features/actions) for automated testing.
 
 ## <span id="updating_doc">Updating Documentation</span>
 
-If you open a PR on the Evmos repo, it is mandatory to update the relevant documentation in `/docs`. Please refer to
+If you open a PR on the Torque repo, it is mandatory to update the relevant documentation in `/docs`. Please refer to
 the docs subdirectory and make changes accordingly. Prior to approval, the Code owners/approvers may request some
 updates to specific docs.
 
@@ -160,7 +160,7 @@ User-facing repos should adhere to the [trunk based development branching model]
 
 Libraries need not follow the model strictly, but would be wise to.
 
-Evmos utilizes [semantic versioning](https://semver.org/).
+Torque utilizes [semantic versioning](https://semver.org/).
 
 ### <span id="pr_targeting">PR Targeting</span>
 
@@ -215,5 +215,5 @@ All PRs require two Reviews before merge. When reviewing PRs, please use the fol
 8. Tag the release (use `git tag -a`) and create a release in Github.
 9. Delete the `RC` branches.
 
-**Note**: tharsis’s Evmos team currently cuts releases on a need to have basis. We will announce a more
+**Note**: tharsis’s Torque team currently cuts releases on a need to have basis. We will announce a more
 standardized release schedule as we near production readiness.

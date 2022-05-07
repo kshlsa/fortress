@@ -13,7 +13,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	ethermint "github.com/tharsis/ethermint/types"
 
-	"github.com/tharsis/evmos/v4/x/fees/types"
+	"github.com/olegtropinin/torque/v4/x/fees/types"
 )
 
 var _ types.QueryServer = Keeper{}
@@ -125,7 +125,7 @@ func (k Keeper) DevFeeInfosPerDeployer(
 	if err != nil {
 		return nil, status.Errorf(
 			codes.InvalidArgument,
-			"invalid format for deployer %s, should be bech32 ('evmos...')", req.DeployerAddress,
+			"invalid format for deployer %s, should be bech32 ('torque...')", req.DeployerAddress,
 		)
 	}
 

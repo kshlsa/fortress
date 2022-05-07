@@ -16,8 +16,8 @@ import (
 
 	"github.com/tharsis/ethermint/testutil/network"
 
-	evmosnetwork "github.com/tharsis/evmos/v4/testutil/network"
-	"github.com/tharsis/evmos/v4/x/erc20/client/cli"
+	torquenetwork "github.com/olegtropinin/torque/v4/testutil/network"
+	"github.com/olegtropinin/torque/v4/x/erc20/client/cli"
 )
 
 type IntegrationTestSuite struct {
@@ -39,7 +39,7 @@ func (s *IntegrationTestSuite) SetupSuite() {
 	s.T().Log("setting up integration test suite")
 
 	var err error
-	s.cfg = evmosnetwork.DefaultConfig()
+	s.cfg = torquenetwork.DefaultConfig()
 	s.cfg.NumValidators = 1
 
 	s.network, err = network.New(s.T(), s.T().TempDir(), s.cfg)
