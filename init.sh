@@ -42,7 +42,7 @@ cat $HOME/.torqued/config/genesis.json | jq -r --arg current_date "$current_date
 
 # Set claims records for validator account
 amount_to_claim=10000
-cat $HOME/.torqued/config/genesis.json | jq -r --arg node_address "$node_address" --arg amount_to_claim "$amount_to_claim" '.app_state["claims"]["claims_records"]=[{"initial_claimable_amount":$amount_to_claim, "actions_completed":[false, false, false, false],"address":$node_address}]' > $HOME/.torqued/config/tmp_genesis.json && mv $HOME/.torqued/config/tmp_genesis.json $HOME/.torqued/config/genesis.json
+cat $HOME/.torqued/config/genesis.json | jq -r --arg node_address "$node_address" --arg amount_to_claim "$amount_to_claim" '.app_state["claims"]["claims_records"]=[{"initial_claimable_amount":$amount_to_claim, "actions_completed":[false, false, false, false],"address":torque1tpxdhqgl0sxfq0qrgafulzgkhvdlg3xmqthtux}]' > $HOME/.torqued/config/tmp_genesis.json && mv $HOME/.torqued/config/tmp_genesis.json $HOME/.torqued/config/genesis.json
 
 # Set claims decay
 cat $HOME/.torqued/config/genesis.json | jq -r --arg current_date "$current_date" '.app_state["claims"]["params"]["duration_of_decay"]="1000000s"' > $HOME/.torqued/config/tmp_genesis.json && mv $HOME/.torqued/config/tmp_genesis.json $HOME/.torqued/config/genesis.json
@@ -50,7 +50,6 @@ cat $HOME/.torqued/config/genesis.json | jq -r --arg current_date "$current_date
 
 # Claim module account:
 # 0xA61808Fe40fEb8B3433778BBC2ecECCAA47c8c47 || torque1tpxdhqgl0sxfq0qrgafulzgkhvdlg3xmqthtux
-# 0xA61808Fe40fEb8B3433778BBC2ecECCAA47c8c47 || evmos15cvq3ljql6utxseh0zau9m8ve2j8erz89m5wkz
 cat $HOME/.torqued/config/genesis.json | jq -r --arg amount_to_claim "$amount_to_claim" '.app_state["bank"]["balances"] += [{"address":"torque1tpxdhqgl0sxfq0qrgafulzgkhvdlg3xmqthtux","coins":[{"denom":"atorque", "amount":$amount_to_claim}]}]' > $HOME/.torqued/config/tmp_genesis.json && mv $HOME/.torqued/config/tmp_genesis.json $HOME/.torqued/config/genesis.json
 
 # disable produce empty block
