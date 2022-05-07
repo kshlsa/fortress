@@ -68,7 +68,7 @@ The following chat channels and forums are a great spot to ask questions about T
 - [Torque Twitter](https://twitter.com/TorqueOrg)
 - [Torque Discord](https://discord.gg/torque)
 - [Torque Forum](https://commonwealth.im/torque)
-- [Tharsis Twitter](https://twitter.com/TharsisHQ)
+- [Tharsis Twitter](https://twitter.com/torque)
 
 ## Contributing
 
