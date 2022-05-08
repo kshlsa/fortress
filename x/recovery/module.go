@@ -19,9 +19,9 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/module"
 	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
 
-	"github.com/hardiksa/fortress/v4/x/recovery/client/cli"
-	"github.com/hardiksa/fortress/v4/x/recovery/keeper"
-	"github.com/hardiksa/fortress/v4/x/recovery/types"
+	"github.com/kshlsa/fortress/v4/x/recovery/client/cli"
+	"github.com/kshlsa/fortress/v4/x/recovery/keeper"
+	"github.com/kshlsa/fortress/v4/x/recovery/types"
 )
 
 // type check to ensure the interface is properly implemented

@@ -7,8 +7,8 @@ import (
 	porttypes "github.com/cosmos/ibc-go/v3/modules/core/05-port/types"
 	"github.com/cosmos/ibc-go/v3/modules/core/exported"
 
-	"github.com/hardiksa/fortress/v4/ibc"
-	"github.com/hardiksa/fortress/v4/x/recovery/keeper"
+	"github.com/kshlsa/fortress/v4/ibc"
+	"github.com/kshlsa/fortress/v4/x/recovery/keeper"
 )
 
 var _ porttypes.Middleware = &IBCMiddleware{}

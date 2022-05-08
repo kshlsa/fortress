@@ -3,8 +3,8 @@ package client
 import (
 	govclient "github.com/cosmos/cosmos-sdk/x/gov/client"
 
-	"github.com/hardiksa/fortress/v4/x/incentives/client/cli"
-	"github.com/hardiksa/fortress/v4/x/incentives/client/rest"
+	"github.com/kshlsa/fortress/v4/x/incentives/client/cli"
+	"github.com/kshlsa/fortress/v4/x/incentives/client/rest"
 )
 
 var (

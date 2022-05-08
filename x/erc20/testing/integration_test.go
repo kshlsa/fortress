@@ -15,8 +15,8 @@ import (
 
 	"github.com/tharsis/ethermint/server/config"
 
-	"github.com/hardiksa/fortress/v4/testutil/network"
-	"github.com/hardiksa/fortress/v4/x/erc20/types"
+	"github.com/kshlsa/fortress/v4/testutil/network"
+	"github.com/kshlsa/fortress/v4/x/erc20/types"
 )
 
 // var _ = Describe("E2e", func() {

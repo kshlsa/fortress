@@ -2,8 +2,8 @@ package inflation
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/hardiksa/fortress/v4/x/inflation/keeper"
-	"github.com/hardiksa/fortress/v4/x/inflation/types"
+	"github.com/kshlsa/fortress/v4/x/inflation/keeper"
+	"github.com/kshlsa/fortress/v4/x/inflation/types"
 )
 
 // InitGenesis import module genesis

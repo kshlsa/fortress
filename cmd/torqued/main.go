@@ -7,8 +7,8 @@ import (
 	svrcmd "github.com/cosmos/cosmos-sdk/server/cmd"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/hardiksa/fortress/v4/app"
-	cmdcfg "github.com/hardiksa/fortress/v4/cmd/config"
+	"github.com/kshlsa/fortress/v4/app"
+	cmdcfg "github.com/kshlsa/fortress/v4/cmd/config"
 )
 
 func main() {

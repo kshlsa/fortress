@@ -1,6 +1,6 @@
 FROM golang:stretch AS build-env
 
-WORKDIR /go/src/github.com/hardiksa/fortress
+WORKDIR /go/src/github.com/kshlsa/fortress
 
 RUN apt update
 RUN apt install git -y
@@ -16,7 +16,7 @@ RUN apt install ca-certificates jq -y
 
 WORKDIR /root
 
-COPY --from=build-env /go/src/github.com/hardiksa/fortress/build/fortressd /usr/bin/fortressd
+COPY --from=build-env /go/src/github.com/kshlsa/fortress/build/fortressd /usr/bin/fortressd
 
 EXPOSE 26656 26657 1317 9090
 

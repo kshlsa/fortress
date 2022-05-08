@@ -3,7 +3,7 @@ package keeper_test
 import (
 	"time"
 
-	"github.com/hardiksa/fortress/v4/x/epochs/types"
+	"github.com/kshlsa/fortress/v4/x/epochs/types"
 )
 
 func (suite *KeeperTestSuite) TestEpochLifeCycle() {

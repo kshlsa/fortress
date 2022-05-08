@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/suite"
-	epochstypes "github.com/hardiksa/fortress/v4/x/epochs/types"
+	epochstypes "github.com/kshlsa/fortress/v4/x/epochs/types"
 )
 
 type GenesisTestSuite struct {

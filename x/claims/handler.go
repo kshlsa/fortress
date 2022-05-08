@@ -6,8 +6,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 
-	"github.com/hardiksa/fortress/v4/x/claims/keeper"
-	"github.com/hardiksa/fortress/v4/x/claims/types"
+	"github.com/kshlsa/fortress/v4/x/claims/keeper"
+	"github.com/kshlsa/fortress/v4/x/claims/types"
 )
 
 // NewHandler returns claim module messages

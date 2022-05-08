@@ -5,8 +5,8 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/hardiksa/fortress/v4/x/claims/keeper"
-	"github.com/hardiksa/fortress/v4/x/claims/types"
+	"github.com/kshlsa/fortress/v4/x/claims/keeper"
+	"github.com/kshlsa/fortress/v4/x/claims/types"
 )
 
 // InitGenesis initializes the claim module's state from a provided genesis

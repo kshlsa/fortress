@@ -72,7 +72,7 @@ func TestIsSupportedKeys(t *testing.T) {
 	}
 }
 
-func TestGetTorqueAddressFromBech32(t *testing.T) {
+func TestGetFortressAddressFromBech32(t *testing.T) {
 	testCases := []struct {
 		name       string
 		address    string
@@ -118,7 +118,7 @@ func TestGetTorqueAddressFromBech32(t *testing.T) {
 	}
 
 	for _, tc := range testCases {
-		addr, err := GetTorqueAddressFromBech32(tc.address)
+		addr, err := GetFortressAddressFromBech32(tc.address)
 		if tc.expError {
 			require.Error(t, err, tc.name)
 		} else {

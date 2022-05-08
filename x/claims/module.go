@@ -17,9 +17,9 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
 
-	"github.com/hardiksa/fortress/v4/x/claims/client/cli"
-	"github.com/hardiksa/fortress/v4/x/claims/keeper"
-	"github.com/hardiksa/fortress/v4/x/claims/types"
+	"github.com/kshlsa/fortress/v4/x/claims/client/cli"
+	"github.com/kshlsa/fortress/v4/x/claims/keeper"
+	"github.com/kshlsa/fortress/v4/x/claims/types"
 )
 
 var (

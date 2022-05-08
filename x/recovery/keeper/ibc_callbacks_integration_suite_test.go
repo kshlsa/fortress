@@ -15,13 +15,13 @@ import (
 	channeltypes "github.com/cosmos/ibc-go/v3/modules/core/04-channel/types"
 	ibcgotesting "github.com/cosmos/ibc-go/v3/testing"
 
-	ibctesting "github.com/hardiksa/fortress/v4/ibc/testing"
+	ibctesting "github.com/kshlsa/fortress/v4/ibc/testing"
 
 	minttypes "github.com/cosmos/cosmos-sdk/x/mint/types"
-	"github.com/hardiksa/fortress/v4/app"
-	claimtypes "github.com/hardiksa/fortress/v4/x/claims/types"
-	inflationtypes "github.com/hardiksa/fortress/v4/x/inflation/types"
-	"github.com/hardiksa/fortress/v4/x/recovery/types"
+	"github.com/kshlsa/fortress/v4/app"
+	claimtypes "github.com/kshlsa/fortress/v4/x/claims/types"
+	inflationtypes "github.com/kshlsa/fortress/v4/x/inflation/types"
+	"github.com/kshlsa/fortress/v4/x/recovery/types"
 )
 
 type IBCTestingSuite struct {
@@ -29,12 +29,12 @@ type IBCTestingSuite struct {
 	coordinator *ibcgotesting.Coordinator
 
 	// testing chains used for convenience and readability
-	TorqueChain      *ibcgotesting.TestChain
+	FortressChain      *ibcgotesting.TestChain
 	IBCOsmosisChain *ibcgotesting.TestChain
 	IBCCosmosChain  *ibcgotesting.TestChain
 
-	pathOsmosisTorque  *ibcgotesting.Path
-	pathCosmosTorque   *ibcgotesting.Path
+	pathOsmosisFortress  *ibcgotesting.Path
+	pathCosmosFortress   *ibcgotesting.Path
 	pathOsmosisCosmos *ibcgotesting.Path
 }
 
@@ -52,19 +52,19 @@ func TestIBCTestingSuite(t *testing.T) {
 func (suite *IBCTestingSuite) SetupTest() {
 	// initializes 3 test chains
 	suite.coordinator = ibctesting.NewCoordinator(suite.T(), 1, 2)
-	suite.TorqueChain = suite.coordinator.GetChain(ibcgotesting.GetChainID(1))
+	suite.FortressChain = suite.coordinator.GetChain(ibcgotesting.GetChainID(1))
 	suite.IBCOsmosisChain = suite.coordinator.GetChain(ibcgotesting.GetChainID(2))
 	suite.IBCCosmosChain = suite.coordinator.GetChain(ibcgotesting.GetChainID(3))
-	suite.coordinator.CommitNBlocks(suite.TorqueChain, 2)
+	suite.coordinator.CommitNBlocks(suite.FortressChain, 2)
 	suite.coordinator.CommitNBlocks(suite.IBCOsmosisChain, 2)
 	suite.coordinator.CommitNBlocks(suite.IBCCosmosChain, 2)
 
 	// Mint coins locked on the fortress account generated with secp.
-	coinTorque := sdk.NewCoin("afortress", sdk.NewInt(10000))
-	coins := sdk.NewCoins(coinTorque)
-	err := suite.TorqueChain.App.(*app.Fortress).BankKeeper.MintCoins(suite.TorqueChain.GetContext(), inflationtypes.ModuleName, coins)
+	coinFortress := sdk.NewCoin("afortress", sdk.NewInt(10000))
+	coins := sdk.NewCoins(coinFortress)
+	err := suite.FortressChain.App.(*app.Fortress).BankKeeper.MintCoins(suite.FortressChain.GetContext(), inflationtypes.ModuleName, coins)
 	suite.Require().NoError(err)
-	err = suite.TorqueChain.App.(*app.Fortress).BankKeeper.SendCoinsFromModuleToAccount(suite.TorqueChain.GetContext(), inflationtypes.ModuleName, suite.IBCOsmosisChain.SenderAccount.GetAddress(), coins)
+	err = suite.FortressChain.App.(*app.Fortress).BankKeeper.SendCoinsFromModuleToAccount(suite.FortressChain.GetContext(), inflationtypes.ModuleName, suite.IBCOsmosisChain.SenderAccount.GetAddress(), coins)
 	suite.Require().NoError(err)
 
 	// Mint coins on the osmosis side which we'll use to unlock our afortress
@@ -84,23 +84,23 @@ func (suite *IBCTestingSuite) SetupTest() {
 	suite.Require().NoError(err)
 
 	claimparams := claimtypes.DefaultParams()
-	claimparams.AirdropStartTime = suite.TorqueChain.GetContext().BlockTime()
+	claimparams.AirdropStartTime = suite.FortressChain.GetContext().BlockTime()
 	claimparams.EnableClaims = true
-	suite.TorqueChain.App.(*app.Fortress).ClaimsKeeper.SetParams(suite.TorqueChain.GetContext(), claimparams)
+	suite.FortressChain.App.(*app.Fortress).ClaimsKeeper.SetParams(suite.FortressChain.GetContext(), claimparams)
 
 	params := types.DefaultParams()
 	params.EnableRecovery = true
-	suite.TorqueChain.App.(*app.Fortress).RecoveryKeeper.SetParams(suite.TorqueChain.GetContext(), params)
+	suite.FortressChain.App.(*app.Fortress).RecoveryKeeper.SetParams(suite.FortressChain.GetContext(), params)
 
-	suite.pathOsmosisTorque = ibctesting.NewTransferPath(suite.IBCOsmosisChain, suite.TorqueChain) // clientID, connectionID, channelID empty
-	suite.pathCosmosTorque = ibctesting.NewTransferPath(suite.IBCCosmosChain, suite.TorqueChain)
+	suite.pathOsmosisFortress = ibctesting.NewTransferPath(suite.IBCOsmosisChain, suite.FortressChain) // clientID, connectionID, channelID empty
+	suite.pathCosmosFortress = ibctesting.NewTransferPath(suite.IBCCosmosChain, suite.FortressChain)
 	suite.pathOsmosisCosmos = ibctesting.NewTransferPath(suite.IBCCosmosChain, suite.IBCOsmosisChain)
-	suite.coordinator.Setup(suite.pathOsmosisTorque) // clientID, connectionID, channelID filled
-	suite.coordinator.Setup(suite.pathCosmosTorque)
+	suite.coordinator.Setup(suite.pathOsmosisFortress) // clientID, connectionID, channelID filled
+	suite.coordinator.Setup(suite.pathCosmosFortress)
 	suite.coordinator.Setup(suite.pathOsmosisCosmos)
-	suite.Require().Equal("07-tendermint-0", suite.pathOsmosisTorque.EndpointA.ClientID)
-	suite.Require().Equal("connection-0", suite.pathOsmosisTorque.EndpointA.ConnectionID)
-	suite.Require().Equal("channel-0", suite.pathOsmosisTorque.EndpointA.ChannelID)
+	suite.Require().Equal("07-tendermint-0", suite.pathOsmosisFortress.EndpointA.ClientID)
+	suite.Require().Equal("connection-0", suite.pathOsmosisFortress.EndpointA.ConnectionID)
+	suite.Require().Equal("channel-0", suite.pathOsmosisFortress.EndpointA.ChannelID)
 }
 
 var (

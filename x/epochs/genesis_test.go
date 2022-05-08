@@ -8,9 +8,9 @@ import (
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 	feemarkettypes "github.com/tharsis/ethermint/x/feemarket/types"
 
-	simapp "github.com/hardiksa/fortress/v4/app"
-	"github.com/hardiksa/fortress/v4/x/epochs"
-	"github.com/hardiksa/fortress/v4/x/epochs/types"
+	simapp "github.com/kshlsa/fortress/v4/app"
+	"github.com/kshlsa/fortress/v4/x/epochs"
+	"github.com/kshlsa/fortress/v4/x/epochs/types"
 )
 
 func TestEpochsExportGenesis(t *testing.T) {

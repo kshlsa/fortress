@@ -13,7 +13,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	ethermint "github.com/tharsis/ethermint/types"
 
-	"github.com/hardiksa/fortress/v4/x/fees/types"
+	"github.com/kshlsa/fortress/v4/x/fees/types"
 )
 
 var _ types.QueryServer = Keeper{}

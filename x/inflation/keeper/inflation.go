@@ -7,8 +7,8 @@ import (
 
 	ethermint "github.com/tharsis/ethermint/types"
 
-	incentivestypes "github.com/hardiksa/fortress/v4/x/incentives/types"
-	"github.com/hardiksa/fortress/v4/x/inflation/types"
+	incentivestypes "github.com/kshlsa/fortress/v4/x/incentives/types"
+	"github.com/kshlsa/fortress/v4/x/inflation/types"
 )
 
 // 200M token at year 4 allocated to the team

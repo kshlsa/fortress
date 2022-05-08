@@ -7,7 +7,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/tendermint/tendermint/libs/log"
 
-	"github.com/hardiksa/fortress/v4/x/vesting/types"
+	"github.com/kshlsa/fortress/v4/x/vesting/types"
 )
 
 // Keeper of this module maintains collections of vesting.

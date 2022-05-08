@@ -14,7 +14,7 @@ import (
 	ibcgotesting "github.com/cosmos/ibc-go/v3/testing"
 	ibcmock "github.com/cosmos/ibc-go/v3/testing/mock"
 
-	"github.com/hardiksa/fortress/v4/x/claims/types"
+	"github.com/kshlsa/fortress/v4/x/claims/types"
 )
 
 var timeoutHeight = clienttypes.NewHeight(1000, 1000)
@@ -147,7 +147,7 @@ func (suite *KeeperTestSuite) TestAckknowledgementPacket() {
 func (suite *KeeperTestSuite) TestOnRecvPacket() {
 	pk := secp256k1.GenPrivKey()
 	secpAddr := sdk.AccAddress(pk.PubKey().Address())
-	secpAddrTorque := secpAddr.String()
+	secpAddrFortress := secpAddr.String()
 	secpAddrCosmos := sdk.MustBech32ifyAddressBytes(sdk.Bech32MainPrefix, secpAddr)
 	senderStr := "fortress1sv9m0g7ycejwr3s369km58h5qe7xj77hvcxrms"
 	receiverStr := "fortress1hf0468jjpe6m6vx38s97z2qqe8ldu0njdyf625"
@@ -269,7 +269,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 		{
 			"fail - sender and receiver address are the same (with claim record)",
 			func() {
-				transfer := transfertypes.NewFungibleTokenPacketData("afortress", "100", secpAddrCosmos, secpAddrTorque)
+				transfer := transfertypes.NewFungibleTokenPacketData("afortress", "100", secpAddrCosmos, secpAddrFortress)
 				bz := transfertypes.ModuleCdc.MustMarshalJSON(&transfer)
 				packet := channeltypes.NewPacket(bz, 1, transfertypes.PortID, "channel-0", transfertypes.PortID, "channel-0", timeoutHeight, 0)
 
@@ -282,7 +282,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 		{
 			"pass - sender and receiver address is the same (no claim record) - attempt recovery",
 			func() {
-				transfer := transfertypes.NewFungibleTokenPacketData("afortress", "100", secpAddrCosmos, secpAddrTorque)
+				transfer := transfertypes.NewFungibleTokenPacketData("afortress", "100", secpAddrCosmos, secpAddrFortress)
 				bz := transfertypes.ModuleCdc.MustMarshalJSON(&transfer)
 				packet := channeltypes.NewPacket(bz, 1, transfertypes.PortID, "channel-0", transfertypes.PortID, "channel-0", timeoutHeight, 0)
 
@@ -445,7 +445,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 				}
 				suite.app.ClaimsKeeper.SetParams(suite.ctx, params)
 
-				transfer := transfertypes.NewFungibleTokenPacketData("afortress", "100", secpAddrCosmos, secpAddrTorque)
+				transfer := transfertypes.NewFungibleTokenPacketData("afortress", "100", secpAddrCosmos, secpAddrFortress)
 				bz := transfertypes.ModuleCdc.MustMarshalJSON(&transfer)
 				packet := channeltypes.NewPacket(bz, 1, transfertypes.PortID, "channel-0", transfertypes.PortID, types.DefaultEVMChannels[0], timeoutHeight, 0)
 
@@ -475,7 +475,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 				}
 				suite.app.ClaimsKeeper.SetParams(suite.ctx, params)
 
-				transfer := transfertypes.NewFungibleTokenPacketData("afortress", "100", secpAddrCosmos, secpAddrTorque)
+				transfer := transfertypes.NewFungibleTokenPacketData("afortress", "100", secpAddrCosmos, secpAddrFortress)
 				bz := transfertypes.ModuleCdc.MustMarshalJSON(&transfer)
 				packet := channeltypes.NewPacket(bz, 1, transfertypes.PortID, "channel-0", transfertypes.PortID, types.DefaultEVMChannels[0], timeoutHeight, 0)
 
@@ -536,7 +536,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 		{
 			"case 4: no-op - same sender with EVM channel, no claims record",
 			func() {
-				transfer := transfertypes.NewFungibleTokenPacketData("afortress", "100", secpAddrCosmos, secpAddrTorque)
+				transfer := transfertypes.NewFungibleTokenPacketData("afortress", "100", secpAddrCosmos, secpAddrFortress)
 				bz := transfertypes.ModuleCdc.MustMarshalJSON(&transfer)
 				packet := channeltypes.NewPacket(bz, 1, transfertypes.PortID, "channel-0", transfertypes.PortID, types.DefaultEVMChannels[0], timeoutHeight, 0)
 

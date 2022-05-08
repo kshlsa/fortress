@@ -17,7 +17,7 @@ ethPrivKey, err := ethsecp256k1.GenerateKey()
 ethsecpAddr := sdk.AccAddress(ethPrivKey.PubKey().Address())
 
 // Bech32 "fortress" address
-ethsecpAddrTorque := sdk.AccAddress(ethPk.PubKey().Address()).String()
+ethsecpAddrFortress := sdk.AccAddress(ethPk.PubKey().Address()).String()
 
 // We can also change the HRP to use "cosmos"
 ethsecpAddrCosmos := sdk.MustBech32ifyAddressBytes(sdk.Bech32MainPrefix, ethsecpAddr)

@@ -16,8 +16,8 @@ import (
 
 	"github.com/tharsis/ethermint/testutil/network"
 
-	fortressnetwork "github.com/hardiksa/fortress/v4/testutil/network"
-	"github.com/hardiksa/fortress/v4/x/erc20/client/cli"
+	fortressnetwork "github.com/kshlsa/fortress/v4/testutil/network"
+	"github.com/kshlsa/fortress/v4/x/erc20/client/cli"
 )
 
 type IntegrationTestSuite struct {

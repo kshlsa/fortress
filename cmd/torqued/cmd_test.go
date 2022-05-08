@@ -9,8 +9,8 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/genutil/client/cli"
 	"github.com/stretchr/testify/require"
 
-	"github.com/hardiksa/fortress/v4/app"
-	fortressd "github.com/hardiksa/fortress/v4/cmd/fortressd"
+	"github.com/kshlsa/fortress/v4/app"
+	fortressd "github.com/kshlsa/fortress/v4/cmd/fortressd"
 )
 
 func TestInitCmd(t *testing.T) {

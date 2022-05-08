@@ -33,7 +33,7 @@ export PATH=$PATH:$(go env GOPATH)/bin
 ## Install Binaries
 
 ::: tip
-The latest {{ $themeConfig.project.name }} [version](https://github.com/hardiksa/fortress/releases) is `{{ $themeConfig.project.binary }} {{ $themeConfig.project.latest_version }}`
+The latest {{ $themeConfig.project.name }} [version](https://github.com/kshlsa/fortress/releases) is `{{ $themeConfig.project.binary }} {{ $themeConfig.project.latest_version }}`
 :::
 
 ### GitHub
@@ -41,7 +41,7 @@ The latest {{ $themeConfig.project.name }} [version](https://github.com/hardiksa
 Clone and build {{ $themeConfig.project.name }} using `git`:
 
 ```bash
-git clone https://github.com/hardiksa/fortress.git
+git clone https://github.com/kshlsa/fortress.git
 cd fortress
 make install
 ```
@@ -60,22 +60,22 @@ You can build {{ $themeConfig.project.name }} using Docker by running:
 make build-docker
 ```
 
-The command above will create a docker container: `hardiksa/fortress:latest`. Now you can run `fortressd` in the container.
+The command above will create a docker container: `kshlsa/fortress:latest`. Now you can run `fortressd` in the container.
 
 ```bash
-docker run -it -p 26657:26657 -p 26656:26656 -v ~/.fortressd/:/root/.fortressd hardiksa/fortress:latest fortressd version
+docker run -it -p 26657:26657 -p 26656:26656 -v ~/.fortressd/:/root/.fortressd kshlsa/fortress:latest fortressd version
 
 # To initialize
-# docker run -it -p 26657:26657 -p 26656:26656 -v ~/.fortressd/:/root/.fortressd hardiksa/fortress:latest fortressd init test-chain --chain-id test_9000-2
+# docker run -it -p 26657:26657 -p 26656:26656 -v ~/.fortressd/:/root/.fortressd kshlsa/fortress:latest fortressd init test-chain --chain-id test_9000-2
 
 # To run
-# docker run -it -p 26657:26657 -p 26656:26656 -v ~/.fortressd/:/root/.fortressd hardiksa/fortress:latest fortressd start
+# docker run -it -p 26657:26657 -p 26656:26656 -v ~/.fortressd/:/root/.fortressd kshlsa/fortress:latest fortressd start
 ```
 
 ### Releases
 
-You can also download a specific release available on the {{ $themeConfig.project.name }} [repository](https://github.com/hardiksa/fortress/releases) or via command line:
+You can also download a specific release available on the {{ $themeConfig.project.name }} [repository](https://github.com/kshlsa/fortress/releases) or via command line:
 
 ```bash
-go install github.com/hardiksa/fortress@latest
+go install github.com/kshlsa/fortress@latest
 ```

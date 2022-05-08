@@ -19,9 +19,9 @@ import (
 
 	evm "github.com/tharsis/ethermint/x/evm/types"
 
-	"github.com/hardiksa/fortress/v4/app"
-	epochstypes "github.com/hardiksa/fortress/v4/x/epochs/types"
-	"github.com/hardiksa/fortress/v4/x/inflation/types"
+	"github.com/kshlsa/fortress/v4/app"
+	epochstypes "github.com/kshlsa/fortress/v4/x/epochs/types"
+	"github.com/kshlsa/fortress/v4/x/inflation/types"
 )
 
 var denomMint = types.DefaultInflationDenom

@@ -15,7 +15,7 @@ This documentation page is currently under work in progress.
 :::
 
 - Documentation (this site): [https://fortress.dev/](https://fortress.dev/)
-- Open Source Codebase: [https://github.com/hardiksa/fortress](https://github.com/hardiksa/fortress)
+- Open Source Codebase: [https://github.com/kshlsa/fortress](https://github.com/kshlsa/fortress)
 - Website: [https://fortress.org/](https://fortress.org/)
 - Blog: [https://fortress.blog/](https://fortress.blog/)
 - Ethermint: [https://github.com/tharsis/ethermint](https://github.com/tharsis/ethermint)

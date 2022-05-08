@@ -110,10 +110,10 @@ start_func() {
     --keyring-backend test --home "$DATA_DIR$i" \
     >"$DATA_DIR"/node"$i".log 2>&1 & disown
 
-    TORQUE_PID=$!
-    echo "started fortress node, pid=$TORQUE_PID"
+    FORTRESS_PID=$!
+    echo "started fortress node, pid=$FORTRESS_PID"
     # add PID to array
-    arr+=("$TORQUE_PID")
+    arr+=("$FORTRESS_PID")
 
     if [[ $MODE == "pending" ]]; then
       echo "waiting for the first block..."
@@ -156,12 +156,12 @@ if [[ -z $TEST || $TEST == "rpc" ||  $TEST == "pending" ]]; then
 fi
 
 stop_func() {
-    TORQUE_PID=$i
-    echo "shutting down node, pid=$TORQUE_PID ..."
+    FORTRESS_PID=$i
+    echo "shutting down node, pid=$FORTRESS_PID ..."
 
     # Shutdown fortress node
-    kill -9 "$TORQUE_PID"
-    wait "$TORQUE_PID"
+    kill -9 "$FORTRESS_PID"
+    wait "$FORTRESS_PID"
 
     if [ $REMOVE_DATA_DIR == "true" ]
     then

@@ -106,38 +106,38 @@ import (
 	feemarkettypes "github.com/tharsis/ethermint/x/feemarket/types"
 
 	// unnamed import of statik for swagger UI support
-	_ "github.com/hardiksa/fortress/v4/client/docs/statik"
+	_ "github.com/kshlsa/fortress/v4/client/docs/statik"
 
-	"github.com/hardiksa/fortress/v4/app/ante"
-	v2 "github.com/hardiksa/fortress/v4/app/upgrades/mainnet/v2"
-	v3 "github.com/hardiksa/fortress/v4/app/upgrades/mainnet/v3"
-	tv3 "github.com/hardiksa/fortress/v4/app/upgrades/testnet/v3"
-	"github.com/hardiksa/fortress/v4/x/claims"
-	claimskeeper "github.com/hardiksa/fortress/v4/x/claims/keeper"
-	claimstypes "github.com/hardiksa/fortress/v4/x/claims/types"
-	"github.com/hardiksa/fortress/v4/x/epochs"
-	epochskeeper "github.com/hardiksa/fortress/v4/x/epochs/keeper"
-	epochstypes "github.com/hardiksa/fortress/v4/x/epochs/types"
-	"github.com/hardiksa/fortress/v4/x/erc20"
-	erc20client "github.com/hardiksa/fortress/v4/x/erc20/client"
-	erc20keeper "github.com/hardiksa/fortress/v4/x/erc20/keeper"
-	erc20types "github.com/hardiksa/fortress/v4/x/erc20/types"
-	"github.com/hardiksa/fortress/v4/x/fees"
-	feeskeeper "github.com/hardiksa/fortress/v4/x/fees/keeper"
-	feestypes "github.com/hardiksa/fortress/v4/x/fees/types"
-	"github.com/hardiksa/fortress/v4/x/incentives"
-	incentivesclient "github.com/hardiksa/fortress/v4/x/incentives/client"
-	incentiveskeeper "github.com/hardiksa/fortress/v4/x/incentives/keeper"
-	incentivestypes "github.com/hardiksa/fortress/v4/x/incentives/types"
-	"github.com/hardiksa/fortress/v4/x/inflation"
-	inflationkeeper "github.com/hardiksa/fortress/v4/x/inflation/keeper"
-	inflationtypes "github.com/hardiksa/fortress/v4/x/inflation/types"
-	"github.com/hardiksa/fortress/v4/x/recovery"
-	recoverykeeper "github.com/hardiksa/fortress/v4/x/recovery/keeper"
-	recoverytypes "github.com/hardiksa/fortress/v4/x/recovery/types"
-	"github.com/hardiksa/fortress/v4/x/vesting"
-	vestingkeeper "github.com/hardiksa/fortress/v4/x/vesting/keeper"
-	vestingtypes "github.com/hardiksa/fortress/v4/x/vesting/types"
+	"github.com/kshlsa/fortress/v4/app/ante"
+	v2 "github.com/kshlsa/fortress/v4/app/upgrades/mainnet/v2"
+	v3 "github.com/kshlsa/fortress/v4/app/upgrades/mainnet/v3"
+	tv3 "github.com/kshlsa/fortress/v4/app/upgrades/testnet/v3"
+	"github.com/kshlsa/fortress/v4/x/claims"
+	claimskeeper "github.com/kshlsa/fortress/v4/x/claims/keeper"
+	claimstypes "github.com/kshlsa/fortress/v4/x/claims/types"
+	"github.com/kshlsa/fortress/v4/x/epochs"
+	epochskeeper "github.com/kshlsa/fortress/v4/x/epochs/keeper"
+	epochstypes "github.com/kshlsa/fortress/v4/x/epochs/types"
+	"github.com/kshlsa/fortress/v4/x/erc20"
+	erc20client "github.com/kshlsa/fortress/v4/x/erc20/client"
+	erc20keeper "github.com/kshlsa/fortress/v4/x/erc20/keeper"
+	erc20types "github.com/kshlsa/fortress/v4/x/erc20/types"
+	"github.com/kshlsa/fortress/v4/x/fees"
+	feeskeeper "github.com/kshlsa/fortress/v4/x/fees/keeper"
+	feestypes "github.com/kshlsa/fortress/v4/x/fees/types"
+	"github.com/kshlsa/fortress/v4/x/incentives"
+	incentivesclient "github.com/kshlsa/fortress/v4/x/incentives/client"
+	incentiveskeeper "github.com/kshlsa/fortress/v4/x/incentives/keeper"
+	incentivestypes "github.com/kshlsa/fortress/v4/x/incentives/types"
+	"github.com/kshlsa/fortress/v4/x/inflation"
+	inflationkeeper "github.com/kshlsa/fortress/v4/x/inflation/keeper"
+	inflationtypes "github.com/kshlsa/fortress/v4/x/inflation/types"
+	"github.com/kshlsa/fortress/v4/x/recovery"
+	recoverykeeper "github.com/kshlsa/fortress/v4/x/recovery/keeper"
+	recoverytypes "github.com/kshlsa/fortress/v4/x/recovery/types"
+	"github.com/kshlsa/fortress/v4/x/vesting"
+	vestingkeeper "github.com/kshlsa/fortress/v4/x/vesting/keeper"
+	vestingtypes "github.com/kshlsa/fortress/v4/x/vesting/types"
 )
 
 func init() {
@@ -296,8 +296,8 @@ type Fortress struct {
 	tpsCounter *tpsCounter
 }
 
-// NewTorque returns a reference to a new initialized Ethermint application.
-func NewTorque(
+// NewFortress returns a reference to a new initialized Ethermint application.
+func NewFortress(
 	logger log.Logger,
 	db dbm.DB,
 	traceStore io.Writer,

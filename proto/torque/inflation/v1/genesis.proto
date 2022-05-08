@@ -5,7 +5,7 @@ import "gogoproto/gogo.proto";
 
 import "fortress/inflation/v1/inflation.proto";
 
-option go_package = "github.com/hardiksa/fortress/v4/x/inflation/types";
+option go_package = "github.com/kshlsa/fortress/v4/x/inflation/types";
 
 // GenesisState defines the inflation module's genesis state.
 message GenesisState {

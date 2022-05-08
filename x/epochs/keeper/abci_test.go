@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/hardiksa/fortress/v4/x/epochs"
-	"github.com/hardiksa/fortress/v4/x/epochs/types"
+	"github.com/kshlsa/fortress/v4/x/epochs"
+	"github.com/kshlsa/fortress/v4/x/epochs/types"
 )
 
 func (suite *KeeperTestSuite) TestEpochInfoChangesBeginBlockerAndInitGenesis() {

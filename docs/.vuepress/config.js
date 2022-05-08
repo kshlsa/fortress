@@ -44,8 +44,8 @@ module.exports = {
     // ['link', { rel: "apple-touch-icon-precomposed", href: "/apple-touch-icon-precomposed.png" }],
   ],
   themeConfig: {
-    repo: 'hardiksa/fortress',
-    docsRepo: 'hardiksa/fortress',
+    repo: 'kshlsa/fortress',
+    docsRepo: 'kshlsa/fortress',
     docsBranch: 'main',
     docsDir: 'docs',
     editLinks: true,
@@ -55,8 +55,8 @@ module.exports = {
       denom: 'Fortress',
       ticker: 'FORTRESS',
       binary: 'fortressd',
-      testnet_denom: 'tTorque',
-      testnet_ticker: 'tTORQUE',
+      testnet_denom: 'tFortress',
+      testnet_ticker: 'tFORTRESS',
       rpc_url: 'https://eth.bd.fortress.org:8545',
       rpc_url_testnet: 'https://eth.bd.fortress.dev:8545',
       rpc_url_local: 'http://localhost:8545/',
@@ -190,7 +190,7 @@ module.exports = {
             },
             {
               title: 'Fortress Go API',
-              path: 'https://pkg.go.dev/github.com/hardiksa/fortress'
+              path: 'https://pkg.go.dev/github.com/kshlsa/fortress'
             },
             {
               title: 'Ethermint Library Go API',
@@ -301,15 +301,15 @@ module.exports = {
       services: [
         {
           service: "github",
-          url: 'https://github.com/hardiksa/fortress'
+          url: 'https://github.com/kshlsa/fortress'
         },
         {
           service: "twitter",
-          url: "https://twitter.com/TorqueOrg",
+          url: "https://twitter.com/FortressOrg",
         },
         {
           service: "telegram",
-          url: "https://t.me/TorqueOrg",
+          url: "https://t.me/FortressOrg",
         },
         {
           service: "linkedin",

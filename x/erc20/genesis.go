@@ -4,8 +4,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	authkeeper "github.com/cosmos/cosmos-sdk/x/auth/keeper"
 
-	"github.com/hardiksa/fortress/v4/x/erc20/keeper"
-	"github.com/hardiksa/fortress/v4/x/erc20/types"
+	"github.com/kshlsa/fortress/v4/x/erc20/keeper"
+	"github.com/kshlsa/fortress/v4/x/erc20/types"
 )
 
 // InitGenesis import module genesis

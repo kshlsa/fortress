@@ -35,10 +35,10 @@ import (
 	ethermint "github.com/tharsis/ethermint/types"
 	evm "github.com/tharsis/ethermint/x/evm/types"
 
-	"github.com/hardiksa/fortress/v4/app"
-	"github.com/hardiksa/fortress/v4/contracts"
-	epochstypes "github.com/hardiksa/fortress/v4/x/epochs/types"
-	"github.com/hardiksa/fortress/v4/x/vesting/types"
+	"github.com/kshlsa/fortress/v4/app"
+	"github.com/kshlsa/fortress/v4/contracts"
+	epochstypes "github.com/kshlsa/fortress/v4/x/epochs/types"
+	"github.com/kshlsa/fortress/v4/x/vesting/types"
 )
 
 var (

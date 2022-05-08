@@ -9,14 +9,14 @@ TMVERSION := $(shell go list -m github.com/tendermint/tendermint | sed 's:.* ::'
 COMMIT := $(shell git log -1 --format='%H')
 LEDGER_ENABLED ?= true
 BINDIR ?= $(GOPATH)/bin
-TORQUE_BINARY = fortressd
-TORQUE_DIR = fortress
+FORTRESS_BINARY = fortressd
+FORTRESS_DIR = fortress
 BUILDDIR ?= $(CURDIR)/build
 SIMAPP = ./app
-HTTPS_GIT := https://github.com/hardiksa/fortress.git
+HTTPS_GIT := https://github.com/kshlsa/fortress.git
 DOCKER := $(shell which docker)
 DOCKER_BUF := $(DOCKER) run --rm -v $(CURDIR):/workspace --workdir /workspace bufbuild/buf
-NAMESPACE := hardiksa
+NAMESPACE := kshlsa
 PROJECT := fortress
 DOCKER_IMAGE := $(NAMESPACE)/$(PROJECT)
 COMMIT_HASH := $(shell git rev-parse --short=7 HEAD)
@@ -69,7 +69,7 @@ build_tags_comma_sep := $(subst $(whitespace),$(comma),$(build_tags))
 # process linker flags
 
 ldflags = -X github.com/cosmos/cosmos-sdk/version.Name=fortress \
-          -X github.com/cosmos/cosmos-sdk/version.AppName=$(TORQUE_BINARY) \
+          -X github.com/cosmos/cosmos-sdk/version.AppName=$(FORTRESS_BINARY) \
           -X github.com/cosmos/cosmos-sdk/version.Version=$(VERSION) \
           -X github.com/cosmos/cosmos-sdk/version.Commit=$(COMMIT) \
           -X "github.com/cosmos/cosmos-sdk/version.BuildTags=$(build_tags_comma_sep)" \
@@ -286,7 +286,7 @@ update-swagger-docs: statik
 .PHONY: update-swagger-docs
 
 godocs:
-	@echo "--> Wait a few seconds and visit http://localhost:6060/pkg/github.com/hardiksa/fortress/types"
+	@echo "--> Wait a few seconds and visit http://localhost:6060/pkg/github.com/kshlsa/fortress/types"
 	godoc -http=:6060
 
 # Start docs site at localhost:8080
@@ -367,8 +367,8 @@ test-sim-nondeterminism:
 
 test-sim-custom-genesis-fast:
 	@echo "Running custom genesis simulation..."
-	@echo "By default, ${HOME}/.$(TORQUE_DIR)/config/genesis.json will be used."
-	@go test -mod=readonly $(SIMAPP) -run TestFullAppSimulation -Genesis=${HOME}/.$(TORQUE_DIR)/config/genesis.json \
+	@echo "By default, ${HOME}/.$(FORTRESS_DIR)/config/genesis.json will be used."
+	@go test -mod=readonly $(SIMAPP) -run TestFullAppSimulation -Genesis=${HOME}/.$(FORTRESS_DIR)/config/genesis.json \
 		-Enabled=true -NumBlocks=100 -BlockSize=200 -Commit=true -Seed=99 -Period=5 -v -timeout 24h
 
 test-sim-import-export: runsim
@@ -381,8 +381,8 @@ test-sim-after-import: runsim
 
 test-sim-custom-genesis-multi-seed: runsim
 	@echo "Running multi-seed custom genesis simulation..."
-	@echo "By default, ${HOME}/.$(TORQUE_DIR)/config/genesis.json will be used."
-	@$(BINDIR)/runsim -Genesis=${HOME}/.$(TORQUE_DIR)/config/genesis.json -SimAppPkg=$(SIMAPP) -ExitOnFail 400 5 TestFullAppSimulation
+	@echo "By default, ${HOME}/.$(FORTRESS_DIR)/config/genesis.json will be used."
+	@$(BINDIR)/runsim -Genesis=${HOME}/.$(FORTRESS_DIR)/config/genesis.json -SimAppPkg=$(SIMAPP) -ExitOnFail 400 5 TestFullAppSimulation
 
 test-sim-multi-seed-long: runsim
 	@echo "Running long multi-seed application simulation. This may take awhile!"
@@ -437,7 +437,7 @@ lint-fix-contracts:
 format:
 	find . -name '*.go' -type f -not -path "./vendor*" -not -path "*.git*" -not -path "./client/docs/statik/statik.go" -not -name '*.pb.go' | xargs gofmt -w -s
 	find . -name '*.go' -type f -not -path "./vendor*" -not -path "*.git*" -not -path "./client/docs/statik/statik.go" -not -name '*.pb.go' | xargs misspell -w
-	find . -name '*.go' -type f -not -path "./vendor*" -not -path "*.git*" -not -path "./client/docs/statik/statik.go" -not -name '*.pb.go' | xargs goimports -w -local github.com/hardiksa/fortress
+	find . -name '*.go' -type f -not -path "./vendor*" -not -path "*.git*" -not -path "./client/docs/statik/statik.go" -not -name '*.pb.go' | xargs goimports -w -local github.com/kshlsa/fortress
 .PHONY: format
 
 ###############################################################################
@@ -525,13 +525,13 @@ ifeq ($(OS),Windows_NT)
 	mkdir localnet-setup &
 	@$(MAKE) localnet-build
 
-	IF not exist "build/node0/$(TORQUE_BINARY)/config/genesis.json" docker run --rm -v $(CURDIR)/build\fortress\Z fortressd/node "./fortressd testnet --v 4 -o /fortress --keyring-backend=test --ip-addresses fortressdnode0,fortressdnode1,fortressdnode2,fortressdnode3"
+	IF not exist "build/node0/$(FORTRESS_BINARY)/config/genesis.json" docker run --rm -v $(CURDIR)/build\fortress\Z fortressd/node "./fortressd testnet --v 4 -o /fortress --keyring-backend=test --ip-addresses fortressdnode0,fortressdnode1,fortressdnode2,fortressdnode3"
 	docker-compose up -d
 else
 	mkdir -p localnet-setup
 	@$(MAKE) localnet-build
 
-	if ! [ -f localnet-setup/node0/$(TORQUE_BINARY)/config/genesis.json ]; then docker run --rm -v $(CURDIR)/localnet-setup:/fortress:Z fortressd/node "./fortressd testnet --v 4 -o /fortress --keyring-backend=test --ip-addresses fortressdnode0,fortressdnode1,fortressdnode2,fortressdnode3"; fi
+	if ! [ -f localnet-setup/node0/$(FORTRESS_BINARY)/config/genesis.json ]; then docker run --rm -v $(CURDIR)/localnet-setup:/fortress:Z fortressd/node "./fortressd testnet --v 4 -o /fortress --keyring-backend=test --ip-addresses fortressdnode0,fortressdnode1,fortressdnode2,fortressdnode3"; fi
 	docker-compose up -d
 endif
 
@@ -569,7 +569,7 @@ localnet-show-logstream:
 ###                                Releasing                                ###
 ###############################################################################
 
-PACKAGE_NAME:=github.com/hardiksa/fortress
+PACKAGE_NAME:=github.com/kshlsa/fortress
 GOLANG_CROSS_VERSION  = v1.17.1
 GOPATH ?= '$(HOME)/go'
 release-dry-run:

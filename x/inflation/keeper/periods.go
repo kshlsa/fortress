@@ -2,7 +2,7 @@ package keeper
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/hardiksa/fortress/v4/x/inflation/types"
+	"github.com/kshlsa/fortress/v4/x/inflation/types"
 )
 
 // GetPeriod gets current period

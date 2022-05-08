@@ -13,7 +13,7 @@ import (
 
 	evmtypes "github.com/tharsis/ethermint/x/evm/types"
 
-	"github.com/hardiksa/fortress/v4/x/claims/types"
+	"github.com/kshlsa/fortress/v4/x/claims/types"
 )
 
 var (

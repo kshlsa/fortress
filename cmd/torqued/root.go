@@ -39,9 +39,9 @@ import (
 	servercfg "github.com/tharsis/ethermint/server/config"
 	srvflags "github.com/tharsis/ethermint/server/flags"
 
-	"github.com/hardiksa/fortress/v4/app"
-	cmdcfg "github.com/hardiksa/fortress/v4/cmd/config"
-	fortresskr "github.com/hardiksa/fortress/v4/crypto/keyring"
+	"github.com/kshlsa/fortress/v4/app"
+	cmdcfg "github.com/kshlsa/fortress/v4/cmd/config"
+	fortresskr "github.com/kshlsa/fortress/v4/crypto/keyring"
 )
 
 const (
@@ -244,7 +244,7 @@ func (a appCreator) newApp(logger log.Logger, db dbm.DB, traceStore io.Writer, a
 		panic(err)
 	}
 
-	fortressApp := app.NewTorque(
+	fortressApp := app.NewFortress(
 		logger, db, traceStore, true, skipUpgradeHeights,
 		cast.ToString(appOpts.Get(flags.FlagHome)),
 		cast.ToUint(appOpts.Get(sdkserver.FlagInvCheckPeriod)),
@@ -279,13 +279,13 @@ func (a appCreator) appExport(
 	}
 
 	if height != -1 {
-		fortressApp = app.NewTorque(logger, db, traceStore, false, map[int64]bool{}, "", uint(1), a.encCfg, appOpts)
+		fortressApp = app.NewFortress(logger, db, traceStore, false, map[int64]bool{}, "", uint(1), a.encCfg, appOpts)
 
 		if err := fortressApp.LoadHeight(height); err != nil {
 			return servertypes.ExportedApp{}, err
 		}
 	} else {
-		fortressApp = app.NewTorque(logger, db, traceStore, true, map[int64]bool{}, "", uint(1), a.encCfg, appOpts)
+		fortressApp = app.NewFortress(logger, db, traceStore, true, map[int64]bool{}, "", uint(1), a.encCfg, appOpts)
 	}
 
 	return fortressApp.ExportAppStateAndValidators(forZeroHeight, jailAllowedAddrs)

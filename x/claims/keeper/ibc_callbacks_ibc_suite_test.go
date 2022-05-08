@@ -13,10 +13,10 @@ import (
 	ibcgotesting "github.com/cosmos/ibc-go/v3/testing"
 
 	"github.com/tharsis/ethermint/tests"
-	"github.com/hardiksa/fortress/v4/app"
-	ibctesting "github.com/hardiksa/fortress/v4/ibc/testing"
-	"github.com/hardiksa/fortress/v4/testutil"
-	"github.com/hardiksa/fortress/v4/x/claims/types"
+	"github.com/kshlsa/fortress/v4/app"
+	ibctesting "github.com/kshlsa/fortress/v4/ibc/testing"
+	"github.com/kshlsa/fortress/v4/testutil"
+	"github.com/kshlsa/fortress/v4/x/claims/types"
 )
 
 type IBCTestingSuite struct {

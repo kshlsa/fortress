@@ -15,10 +15,10 @@ import (
 	"github.com/tharsis/ethermint/tests"
 	feemarkettypes "github.com/tharsis/ethermint/x/feemarket/types"
 
-	"github.com/hardiksa/fortress/v4/app"
-	"github.com/hardiksa/fortress/v4/testutil"
-	"github.com/hardiksa/fortress/v4/x/claims"
-	"github.com/hardiksa/fortress/v4/x/claims/types"
+	"github.com/kshlsa/fortress/v4/app"
+	"github.com/kshlsa/fortress/v4/testutil"
+	"github.com/kshlsa/fortress/v4/x/claims"
+	"github.com/kshlsa/fortress/v4/x/claims/types"
 )
 
 type GenesisTestSuite struct {

@@ -11,34 +11,34 @@ parent:
 <!-- ![banner](docs/ethermint.jpg) -->
 
 <div align="center">
-  <a href="https://github.com/hardiksa/fortress/releases/latest">
-    <img alt="Version" src="https://img.shields.io/github/tag/hardiksa/fortress.svg" />
+  <a href="https://github.com/kshlsa/fortress/releases/latest">
+    <img alt="Version" src="https://img.shields.io/github/tag/kshlsa/fortress.svg" />
   </a>
-  <a href="https://github.com/hardiksa/fortress/blob/main/LICENSE">
-    <img alt="License: Apache-2.0" src="https://img.shields.io/github/license/hardiksa/fortress.svg" />
+  <a href="https://github.com/kshlsa/fortress/blob/main/LICENSE">
+    <img alt="License: Apache-2.0" src="https://img.shields.io/github/license/kshlsa/fortress.svg" />
   </a>
-  <a href="https://pkg.go.dev/github.com/hardiksa/fortress">
-    <img alt="GoDoc" src="https://godoc.org/github.com/hardiksa/fortress?status.svg" />
+  <a href="https://pkg.go.dev/github.com/kshlsa/fortress">
+    <img alt="GoDoc" src="https://godoc.org/github.com/kshlsa/fortress?status.svg" />
   </a>
-  <a href="https://goreportcard.com/report/github.com/hardiksa/fortress">
-    <img alt="Go report card" src="https://goreportcard.com/badge/github.com/hardiksa/fortress"/>
+  <a href="https://goreportcard.com/report/github.com/kshlsa/fortress">
+    <img alt="Go report card" src="https://goreportcard.com/badge/github.com/kshlsa/fortress"/>
   </a>
   <a href="https://bestpractices.coreinfrastructure.org/projects/5018">
-    <img alt="Lines of code" src="https://img.shields.io/tokei/lines/github/hardiksa/fortress">
+    <img alt="Lines of code" src="https://img.shields.io/tokei/lines/github/kshlsa/fortress">
   </a>
 </div>
 <div align="center">
   <a href="https://discord.gg/fortress">
     <img alt="Discord" src="https://img.shields.io/discord/809048090249134080.svg" />
   </a>
-  <a href="https://github.com/hardiksa/fortress/actions?query=branch%3Amain+workflow%3ALint">
-    <img alt="Lint Status" src="https://github.com/hardiksa/fortress/actions/workflows/lint.yml/badge.svg?branch=main" />
+  <a href="https://github.com/kshlsa/fortress/actions?query=branch%3Amain+workflow%3ALint">
+    <img alt="Lint Status" src="https://github.com/kshlsa/fortress/actions/workflows/lint.yml/badge.svg?branch=main" />
   </a>
-  <a href="https://codecov.io/gh/hardiksa/fortress">
-    <img alt="Code Coverage" src="https://codecov.io/gh/hardiksa/fortress/branch/main/graph/badge.svg" />
+  <a href="https://codecov.io/gh/kshlsa/fortress">
+    <img alt="Code Coverage" src="https://codecov.io/gh/kshlsa/fortress/branch/main/graph/badge.svg" />
   </a>
-  <a href="https://twitter.com/TorqueOrg">
-    <img alt="Twitter Follow Fortress" src="https://img.shields.io/twitter/follow/TorqueOrg"/>
+  <a href="https://twitter.com/FortressOrg">
+    <img alt="Twitter Follow Fortress" src="https://img.shields.io/twitter/follow/FortressOrg"/>
   </a>
 </div>
 
@@ -55,7 +55,7 @@ For prerequisites and detailed build instructions please read the [Installation]
 make install
 ```
 
-Or check out the latest [release](https://github.com/hardiksa/fortress/releases).
+Or check out the latest [release](https://github.com/kshlsa/fortress/releases).
 
 ## Quick Start
 
@@ -65,14 +65,14 @@ To learn how the Fortress works from a high-level perspective, go to the [Introd
 
 The following chat channels and forums are a great spot to ask questions about Fortress:
 
-- [Fortress Twitter](https://twitter.com/TorqueOrg)
+- [Fortress Twitter](https://twitter.com/FortressOrg)
 - [Fortress Discord](https://discord.gg/fortress)
 - [Fortress Forum](https://commonwealth.im/fortress)
 - [Tharsis Twitter](https://twitter.com/fortress)
 
 ## Contributing
 
-Looking for a good place to start contributing? Check out some [`good first issues`](https://github.com/hardiksa/fortress/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22).
+Looking for a good place to start contributing? Check out some [`good first issues`](https://github.com/kshlsa/fortress/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22).
 
 For additional instructions, standards and style guides, please refer to the [Contributing](./CONTRIBUTING.md) document.
 

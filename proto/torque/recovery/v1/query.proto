@@ -5,7 +5,7 @@ import "google/api/annotations.proto";
 import "gogoproto/gogo.proto";
 import "fortress/recovery/v1/genesis.proto";
 
-option go_package = "github.com/hardiksa/fortress/v4/x/recovery/types";
+option go_package = "github.com/kshlsa/fortress/v4/x/recovery/types";
 
 // Query defines the gRPC querier service.
 service Query {

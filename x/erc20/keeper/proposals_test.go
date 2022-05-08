@@ -12,9 +12,9 @@ import (
 	"github.com/tharsis/ethermint/tests"
 	evmtypes "github.com/tharsis/ethermint/x/evm/types"
 
-	"github.com/hardiksa/fortress/v4/x/erc20/keeper"
-	"github.com/hardiksa/fortress/v4/x/erc20/types"
-	inflationtypes "github.com/hardiksa/fortress/v4/x/inflation/types"
+	"github.com/kshlsa/fortress/v4/x/erc20/keeper"
+	"github.com/kshlsa/fortress/v4/x/erc20/types"
+	inflationtypes "github.com/kshlsa/fortress/v4/x/inflation/types"
 )
 
 const (

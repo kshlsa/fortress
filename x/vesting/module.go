@@ -18,9 +18,9 @@ import (
 	bankkeeper "github.com/cosmos/cosmos-sdk/x/bank/keeper"
 	stakingkeeper "github.com/cosmos/cosmos-sdk/x/staking/keeper"
 
-	"github.com/hardiksa/fortress/v4/x/vesting/client/cli"
-	"github.com/hardiksa/fortress/v4/x/vesting/keeper"
-	"github.com/hardiksa/fortress/v4/x/vesting/types"
+	"github.com/kshlsa/fortress/v4/x/vesting/client/cli"
+	"github.com/kshlsa/fortress/v4/x/vesting/keeper"
+	"github.com/kshlsa/fortress/v4/x/vesting/types"
 )
 
 var (

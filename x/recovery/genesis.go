@@ -3,8 +3,8 @@ package recovery
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/hardiksa/fortress/v4/x/recovery/keeper"
-	"github.com/hardiksa/fortress/v4/x/recovery/types"
+	"github.com/kshlsa/fortress/v4/x/recovery/keeper"
+	"github.com/kshlsa/fortress/v4/x/recovery/types"
 )
 
 // InitGenesis import module genesis

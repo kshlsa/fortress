@@ -1,7 +1,7 @@
 package keeper_test
 
 import (
-	"github.com/hardiksa/fortress/v4/x/inflation/types"
+	"github.com/kshlsa/fortress/v4/x/inflation/types"
 )
 
 func (suite *KeeperTestSuite) TestParams() {

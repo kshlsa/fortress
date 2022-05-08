@@ -20,8 +20,8 @@ You need to set the **genesis file** and **seeds**. If you need more information
 
 | Chain ID       | Description   | Site                                                               | Version                                               | Status     |
 | -------------- | ------------- | ------------------------------------------------------------------ | ----------------------------------------------------- | ---------- |
-| `fortress_9001-2` | Fortress Mainnet 2 | [Fortress](https://github.com/tharsis/mainnet/tree/main/fortress_9001-2) | [`v3.0.x`](https://github.com/hardiksa/fortress/releases) | `Not Live` |
-| `fortress_9001-1` | Fortress Mainnet 1 | [Fortress](https://github.com/tharsis/mainnet/tree/main/fortress_9001-1) | [`v2.0.1`](https://github.com/hardiksa/fortress/releases/v2.0.1) | `Stale` |
+| `fortress_9001-2` | Fortress Mainnet 2 | [Fortress](https://github.com/tharsis/mainnet/tree/main/fortress_9001-2) | [`v3.0.x`](https://github.com/kshlsa/fortress/releases) | `Not Live` |
+| `fortress_9001-1` | Fortress Mainnet 1 | [Fortress](https://github.com/tharsis/mainnet/tree/main/fortress_9001-1) | [`v2.0.1`](https://github.com/kshlsa/fortress/releases/v2.0.1) | `Stale` |
 
 ## Install `fortressd`
 
@@ -131,7 +131,7 @@ For more details on how to run your validator, follow the validator [these](./se
 fortressd tx staking create-validator \
   --amount=1000000000000afortress \
   --pubkey=$(fortressd tendermint show-validator) \
-  --moniker="TorqueWhale" \
+  --moniker="FortressWhale" \
   --chain-id=<chain_id> \
   --commission-rate="0.05" \
   --commission-max-rate="0.20" \

@@ -21,7 +21,7 @@ import (
 	"github.com/cosmos/ibc-go/v3/testing/simapp"
 
 	ethermint "github.com/tharsis/ethermint/types"
-	fortressapp "github.com/hardiksa/fortress/v4/app"
+	fortressapp "github.com/kshlsa/fortress/v4/app"
 )
 
 var DefaultTestingAppInit func() (ibcgotesting.TestingApp, map[string]json.RawMessage) = fortressapp.SetupTestingApp

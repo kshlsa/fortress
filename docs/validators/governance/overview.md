@@ -30,7 +30,7 @@ Venues involve community members to different degrees and individuals often perf
 - **[Commonwealth](https://commonwealth.im/fortress)**
     - All-in-one platform to discuss, vote, and fund projects together
     - Fortress [proposals](https://commonwealth.im/fortress/proposals) list
-- **[Telegram (@TorqueOrg)](https://t.me/TorqueOrg)**
+- **[Telegram (@FortressOrg)](https://t.me/FortressOrg)**
     - General Fortress Telegram group
-- **[Twitter (@TorqueOrg)](https://twitter.com/TorqueOrg)**
+- **[Twitter (@FortressOrg)](https://twitter.com/FortressOrg)**
     - Official Fortress Twitter

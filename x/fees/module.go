@@ -18,9 +18,9 @@ import (
 	"github.com/spf13/cobra"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/hardiksa/fortress/v4/x/fees/client/cli"
-	"github.com/hardiksa/fortress/v4/x/fees/keeper"
-	"github.com/hardiksa/fortress/v4/x/fees/types"
+	"github.com/kshlsa/fortress/v4/x/fees/client/cli"
+	"github.com/kshlsa/fortress/v4/x/fees/keeper"
+	"github.com/kshlsa/fortress/v4/x/fees/types"
 )
 
 // type check to ensure the interface is properly implemented
