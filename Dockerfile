@@ -16,8 +16,8 @@ RUN apt install ca-certificates jq -y
 
 WORKDIR /root
 
-COPY --from=build-env /go/src/github.com/hardiksa/fortress/build/torqued /usr/bin/torqued
+COPY --from=build-env /go/src/github.com/hardiksa/fortress/build/fortressd /usr/bin/fortressd
 
 EXPOSE 26656 26657 1317 9090
 
-CMD ["torqued"]
+CMD ["fortressd"]

@@ -8,7 +8,7 @@ A user can query the `x/recovery` module using the CLI, gRPC or REST.
 
 ## CLI
 
-Find below a list of `torqued` commands added with the `x/recovery` module. You can obtain the full list by using the `torqued` -h command.
+Find below a list of `fortressd` commands added with the `x/recovery` module. You can obtain the full list by using the `fortressd` -h command.
 
 ### Queries
 
@@ -18,7 +18,7 @@ The query commands allow users to query Recovery state.
 Allows users to query the module parameters.
 
 ```bash
-torqued query recovery params [flags]
+fortressd query recovery params [flags]
 ```
 
 ## gRPC

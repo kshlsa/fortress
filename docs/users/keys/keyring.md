@@ -13,20 +13,20 @@ The keyring holds the private/public keypairs used to interact with the node. Fo
 You can use the following commands for help with the `keys` command and for more information about a particular subcommand, respectively:
 
 ```bash
-torqued keys
+fortressd keys
 ```
 
 ```bash
-torqued keys [command] --help
+fortressd keys [command] --help
 ```
 
 To create a new key in the keyring, run the `add` subcommand with a `<key_name>` argument. You will have to provide a password for the newly generated key. This key will be used in the next section.
 
 ```bash
-torqued keys add mykey
+fortressd keys add mykey
 
 # Put the generated address in a variable for later use.
-MY_VALIDATOR_ADDRESS=$(torqued keys show mykey -a)
+MY_VALIDATOR_ADDRESS=$(fortressd keys show mykey -a)
 ```
 
 This command generates a new 24-word mnemonic phrase, persists it to the relevant backend, and outputs information about the keypair. If this keypair will be used to hold value-bearing tokens, be sure to write down the mnemonic phrase somewhere safe!
@@ -76,10 +76,10 @@ for multiple prompts:
 
 ```bash
 # assuming that KEYPASSWD is set in the environment
-yes $KEYPASSWD | torqued keys add me
-yes $KEYPASSWD | torqued keys show me
-# start torqued with keyring-backend flag
-torqued --keyring-backend=file start
+yes $KEYPASSWD | fortressd keys add me
+yes $KEYPASSWD | fortressd keys show me
+# start fortressd with keyring-backend flag
+fortressd --keyring-backend=file start
 ```
 
 ::: tip

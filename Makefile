@@ -9,7 +9,7 @@ TMVERSION := $(shell go list -m github.com/tendermint/tendermint | sed 's:.* ::'
 COMMIT := $(shell git log -1 --format='%H')
 LEDGER_ENABLED ?= true
 BINDIR ?= $(GOPATH)/bin
-TORQUE_BINARY = torqued
+TORQUE_BINARY = fortressd
 TORQUE_DIR = fortress
 BUILDDIR ?= $(CURDIR)/build
 SIMAPP = ./app
@@ -129,7 +129,7 @@ build-reproducible: go.sum
 	$(DOCKER) rm latest-build || true
 	$(DOCKER) run --volume=$(CURDIR):/sources:ro \
         --env TARGET_PLATFORMS='linux/amd64' \
-        --env APP=torqued \
+        --env APP=fortressd \
         --env VERSION=$(VERSION) \
         --env COMMIT=$(COMMIT) \
         --env CGO_ENABLED=1 \
@@ -149,7 +149,7 @@ build-docker:
 	$(DOCKER) create --name fortress -t -i ${DOCKER_IMAGE}:latest fortress
 	# move the binaries to the ./build directory
 	mkdir -p ./build/
-	$(DOCKER) cp fortress:/usr/bin/torqued ./build/
+	$(DOCKER) cp fortress:/usr/bin/fortressd ./build/
 
 push-docker: build-docker
 	$(DOCKER) push ${DOCKER_IMAGE}:${DOCKER_TAG}
@@ -525,13 +525,13 @@ ifeq ($(OS),Windows_NT)
 	mkdir localnet-setup &
 	@$(MAKE) localnet-build
 
-	IF not exist "build/node0/$(TORQUE_BINARY)/config/genesis.json" docker run --rm -v $(CURDIR)/build\fortress\Z torqued/node "./torqued testnet --v 4 -o /fortress --keyring-backend=test --ip-addresses torquednode0,torquednode1,torquednode2,torquednode3"
+	IF not exist "build/node0/$(TORQUE_BINARY)/config/genesis.json" docker run --rm -v $(CURDIR)/build\fortress\Z fortressd/node "./fortressd testnet --v 4 -o /fortress --keyring-backend=test --ip-addresses torquednode0,torquednode1,torquednode2,torquednode3"
 	docker-compose up -d
 else
 	mkdir -p localnet-setup
 	@$(MAKE) localnet-build
 
-	if ! [ -f localnet-setup/node0/$(TORQUE_BINARY)/config/genesis.json ]; then docker run --rm -v $(CURDIR)/localnet-setup:/fortress:Z torqued/node "./torqued testnet --v 4 -o /fortress --keyring-backend=test --ip-addresses torquednode0,torquednode1,torquednode2,torquednode3"; fi
+	if ! [ -f localnet-setup/node0/$(TORQUE_BINARY)/config/genesis.json ]; then docker run --rm -v $(CURDIR)/localnet-setup:/fortress:Z fortressd/node "./fortressd testnet --v 4 -o /fortress --keyring-backend=test --ip-addresses torquednode0,torquednode1,torquednode2,torquednode3"; fi
 	docker-compose up -d
 endif
 
@@ -548,15 +548,15 @@ localnet-clean:
 localnet-unsafe-reset:
 	docker-compose down
 ifeq ($(OS),Windows_NT)
-	@docker run --rm -v $(CURDIR)\localnet-setup\node0\torqued:fortress\Z torqued/node "./torqued unsafe-reset-all --home=/fortress"
-	@docker run --rm -v $(CURDIR)\localnet-setup\node1\torqued:fortress\Z torqued/node "./torqued unsafe-reset-all --home=/fortress"
-	@docker run --rm -v $(CURDIR)\localnet-setup\node2\torqued:fortress\Z torqued/node "./torqued unsafe-reset-all --home=/fortress"
-	@docker run --rm -v $(CURDIR)\localnet-setup\node3\torqued:fortress\Z torqued/node "./torqued unsafe-reset-all --home=/fortress"
+	@docker run --rm -v $(CURDIR)\localnet-setup\node0\fortressd:fortress\Z fortressd/node "./fortressd unsafe-reset-all --home=/fortress"
+	@docker run --rm -v $(CURDIR)\localnet-setup\node1\fortressd:fortress\Z fortressd/node "./fortressd unsafe-reset-all --home=/fortress"
+	@docker run --rm -v $(CURDIR)\localnet-setup\node2\fortressd:fortress\Z fortressd/node "./fortressd unsafe-reset-all --home=/fortress"
+	@docker run --rm -v $(CURDIR)\localnet-setup\node3\fortressd:fortress\Z fortressd/node "./fortressd unsafe-reset-all --home=/fortress"
 else
-	@docker run --rm -v $(CURDIR)/localnet-setup/node0/torqued:/fortress:Z torqued/node "./torqued unsafe-reset-all --home=/fortress"
-	@docker run --rm -v $(CURDIR)/localnet-setup/node1/torqued:/fortress:Z torqued/node "./torqued unsafe-reset-all --home=/fortress"
-	@docker run --rm -v $(CURDIR)/localnet-setup/node2/torqued:/fortress:Z torqued/node "./torqued unsafe-reset-all --home=/fortress"
-	@docker run --rm -v $(CURDIR)/localnet-setup/node3/torqued:/fortress:Z torqued/node "./torqued unsafe-reset-all --home=/fortress"
+	@docker run --rm -v $(CURDIR)/localnet-setup/node0/fortressd:/fortress:Z fortressd/node "./fortressd unsafe-reset-all --home=/fortress"
+	@docker run --rm -v $(CURDIR)/localnet-setup/node1/fortressd:/fortress:Z fortressd/node "./fortressd unsafe-reset-all --home=/fortress"
+	@docker run --rm -v $(CURDIR)/localnet-setup/node2/fortressd:/fortress:Z fortressd/node "./fortressd unsafe-reset-all --home=/fortress"
+	@docker run --rm -v $(CURDIR)/localnet-setup/node3/fortressd:/fortress:Z fortressd/node "./fortressd unsafe-reset-all --home=/fortress"
 endif
 
 # Clean testnet

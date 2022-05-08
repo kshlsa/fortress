@@ -4,7 +4,7 @@ order: 3
 
 # Deterministic Builds
 
-Build the `torqued` binary deterministically using Docker. {synopsis}
+Build the `fortressd` binary deterministically using Docker. {synopsis}
 
 ## Pre-requisites
 
@@ -48,13 +48,13 @@ The `artifacts/build_report` file contains the list of the build artifacts and t
 build sanity. An example of its contents follows:
 
 ```
-App: torqued
+App: fortressd
 Version: 0.4.0
 Commit: b7e46982d1dc2d4c34fcd3b52f1edfd2e589d370
 Files:
- 7594279acff34ff18ea9d896d217a6db  torqued-0.4.0-linux-amd64
- c083e812acbfa7d6e02583386b371b93  torqued-0.4.0.tar.gz
+ 7594279acff34ff18ea9d896d217a6db  fortressd-0.4.0-linux-amd64
+ c083e812acbfa7d6e02583386b371b93  fortressd-0.4.0.tar.gz
 Checksums-Sha256:
- d087053050ce888c21d26e40869105163c5521cb5b291443710961ac0c892e81  torqued-0.4.0-linux-amd64
- 6ca3e5e40240f5e433088fd9b7370440f3f94116803934c21257e1c78fb9653d  torqued-0.4.0.tar.gz
+ d087053050ce888c21d26e40869105163c5521cb5b291443710961ac0c892e81  fortressd-0.4.0-linux-amd64
+ 6ca3e5e40240f5e433088fd9b7370440f3f94116803934c21257e1c78fb9653d  fortressd-0.4.0.tar.gz
 ```

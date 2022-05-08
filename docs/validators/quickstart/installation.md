@@ -22,7 +22,7 @@ go version
 ```
 
 :::tip
-If the `torqued: command not found` error message is returned, confirm that your [`GOPATH`](https://golang.org/doc/gopath_code#GOPATH) is correctly configured by running the following command:
+If the `fortressd: command not found` error message is returned, confirm that your [`GOPATH`](https://golang.org/doc/gopath_code#GOPATH) is correctly configured by running the following command:
 
 ```bash
 export PATH=$PATH:$(go env GOPATH)/bin
@@ -49,7 +49,7 @@ make install
 Check that the `{{ $themeConfig.project.binary }}` binaries have been successfully installed:
 
 ```bash
-torqued version
+fortressd version
 ```
 
 ### Docker
@@ -60,16 +60,16 @@ You can build {{ $themeConfig.project.name }} using Docker by running:
 make build-docker
 ```
 
-The command above will create a docker container: `hardiksa/fortress:latest`. Now you can run `torqued` in the container.
+The command above will create a docker container: `hardiksa/fortress:latest`. Now you can run `fortressd` in the container.
 
 ```bash
-docker run -it -p 26657:26657 -p 26656:26656 -v ~/.torqued/:/root/.torqued hardiksa/fortress:latest torqued version
+docker run -it -p 26657:26657 -p 26656:26656 -v ~/.fortressd/:/root/.fortressd hardiksa/fortress:latest fortressd version
 
 # To initialize
-# docker run -it -p 26657:26657 -p 26656:26656 -v ~/.torqued/:/root/.torqued hardiksa/fortress:latest torqued init test-chain --chain-id test_9000-2
+# docker run -it -p 26657:26657 -p 26656:26656 -v ~/.fortressd/:/root/.fortressd hardiksa/fortress:latest fortressd init test-chain --chain-id test_9000-2
 
 # To run
-# docker run -it -p 26657:26657 -p 26656:26656 -v ~/.torqued/:/root/.torqued hardiksa/fortress:latest torqued start
+# docker run -it -p 26657:26657 -p 26656:26656 -v ~/.fortressd/:/root/.fortressd hardiksa/fortress:latest fortressd start
 ```
 
 ### Releases

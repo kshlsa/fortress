@@ -6,10 +6,10 @@ order: 8
 
 ## CLI
 
-Find below a list of  `torqued` commands added with the  `x/fees` module. You can obtain the full list by using the `torqued -h` command. A CLI command can look like this:
+Find below a list of  `fortressd` commands added with the  `x/fees` module. You can obtain the full list by using the `fortressd -h` command. A CLI command can look like this:
 
 ```bash
-torqued query fees params
+fortressd query fees params
 ```
 
 ### Queries

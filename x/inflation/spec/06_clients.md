@@ -9,8 +9,8 @@ REST.
 
 ## CLI
 
-Find below a list of `torqued` commands added with the `x/inflation` module. You
-can obtain the full list by using the `torqued -h` command.
+Find below a list of `fortressd` commands added with the `x/inflation` module. You
+can obtain the full list by using the `fortressd -h` command.
 
 ### Queries
 
@@ -21,7 +21,7 @@ The `query` commands allow users to query `inflation` state.
 Allows users to query the current inflation period.
 
 ```go
-torqued query inflation period [flags]
+fortressd query inflation period [flags]
 ```
 
 **`epoch-mint-provision`**
@@ -29,7 +29,7 @@ torqued query inflation period [flags]
 Allows users to query the current inflation epoch provisions value.
 
 ```go
-torqued query inflation epoch-mint-provision [flags]
+fortressd query inflation epoch-mint-provision [flags]
 ```
 
 **`skipped-epochs`**
@@ -37,7 +37,7 @@ torqued query inflation epoch-mint-provision [flags]
 Allows users to query the current number of skipped epochs.
 
 ```go
-torqued query inflation skipped-epochs [flags]
+fortressd query inflation skipped-epochs [flags]
 ```
 
 **`total-supply`**
@@ -45,7 +45,7 @@ torqued query inflation skipped-epochs [flags]
 Allows users to query the total supply of tokens in circulation.
 
 ```go
-torqued query inflation total-supply [flags]
+fortressd query inflation total-supply [flags]
 ```
 
 **`inflation-rate`**
@@ -53,7 +53,7 @@ torqued query inflation total-supply [flags]
 Allows users to query the inflation rate of the current period.
 
 ```go
-torqued query inflation inflation-rate [flags]
+fortressd query inflation inflation-rate [flags]
 ```
 
 **`params`**
@@ -61,7 +61,7 @@ torqued query inflation inflation-rate [flags]
 Allows users to query the current inflation parameters.
 
 ```go
-torqued query inflation params [flags]
+fortressd query inflation params [flags]
 ```
 
 ### Proposals
@@ -74,7 +74,7 @@ using the governance module CLI:
 Allows users to submit a `ParameterChangeProposal`.
 
 ```bash
-torqued tx gov submit-proposal param-change [proposal-file] [flags]
+fortressd tx gov submit-proposal param-change [proposal-file] [flags]
 ```
 
 ## gRPC

@@ -53,13 +53,13 @@ Cosmos `sdk.AccAddress`.
 
 ### Address conversion
 
-The `torqued debug addr <address>` can be used to convert an address between hex and bech32 formats. For example:
+The `fortressd debug addr <address>` can be used to convert an address between hex and bech32 formats. For example:
 
 :::: tabs
 ::: tab Bech32
 
 ```bash
-torqued debug addr torque1z3t55m0l9h0eupuz3dp5t5cypyv674jj7mz2jw
+fortressd debug addr torque1z3t55m0l9h0eupuz3dp5t5cypyv674jj7mz2jw
   Address: [20 87 74 109 255 45 223 158 7 130 139 67 69 211 4 9 25 175 86 82]
   Address (hex): 14574A6DFF2DDF9E07828B4345D3040919AF5652
   Bech32 Acc: torque1z3t55m0l9h0eupuz3dp5t5cypyv674jj7mz2jw
@@ -70,7 +70,7 @@ torqued debug addr torque1z3t55m0l9h0eupuz3dp5t5cypyv674jj7mz2jw
 ::: tab Hex
 
 ```bash
-torqued debug addr 14574A6DFF2DDF9E07828B4345D3040919AF5652
+fortressd debug addr 14574A6DFF2DDF9E07828B4345D3040919AF5652
   Address: [20 87 74 109 255 45 223 158 7 130 139 67 69 211 4 9 25 175 86 82]
   Address (hex): 14574A6DFF2DDF9E07828B4345D3040919AF5652
   Bech32 Acc: torque1z3t55m0l9h0eupuz3dp5t5cypyv674jj7mz2jw
@@ -83,17 +83,17 @@ torqued debug addr 14574A6DFF2DDF9E07828B4345D3040919AF5652
 ### Key output
 
 ::: tip
-The Cosmos SDK Keyring output (i.e `torqued keys`) only supports addresses and public keys in Bech32 format.
+The Cosmos SDK Keyring output (i.e `fortressd keys`) only supports addresses and public keys in Bech32 format.
 :::
 
-We can use the `keys show` command of `torqued` with the flag `--bech <type> (acc|val|cons)` to
+We can use the `keys show` command of `fortressd` with the flag `--bech <type> (acc|val|cons)` to
 obtain the addresses and keys as mentioned above,
 
 :::: tabs
 ::: tab Account
 
 ```bash
-torqued keys show mykey --bech acc
+fortressd keys show mykey --bech acc
 - name: mykey
   type: local
   address: torque1z3t55m0l9h0eupuz3dp5t5cypyv674jj7mz2jw
@@ -105,7 +105,7 @@ torqued keys show mykey --bech acc
 ::: tab Validator
 
 ```bash
-torqued keys show mykey --bech val
+fortressd keys show mykey --bech val
 - name: mykey
   type: local
   address: torquevaloper1z3t55m0l9h0eupuz3dp5t5cypyv674jjn4d6nn
@@ -117,7 +117,7 @@ torqued keys show mykey --bech val
 ::: tab Consensus
 
 ```bash
-torqued keys show mykey --bech cons
+fortressd keys show mykey --bech cons
 - name: mykey
   type: local
   address: torquevalcons1rllqa5d97n6zyjhy6cnscc7zu30zjn3f7wyj2n
@@ -136,7 +136,7 @@ You can query an account address using the CLI, gRPC or
 
 ```bash
 # NOTE: the --output (-o) flag will define the output format in JSON or YAML (text)
-torqued q auth account $(torqued keys show mykey -a) -o text
+fortressd q auth account $(fortressd keys show mykey -a) -o text
 |
   '@type': /ethermint.types.v1.EthAccount
   base_account:

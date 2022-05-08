@@ -27,27 +27,27 @@ Set up the Cosmovisor environment variables. We recommend setting these in your 
 
 ```bash
 echo "# Setup Cosmovisor" >> ~/.profile
-echo "export DAEMON_NAME=torqued" >> ~/.profile
-echo "export DAEMON_HOME=$HOME/.torqued" >> ~/.profile
+echo "export DAEMON_NAME=fortressd" >> ~/.profile
+echo "export DAEMON_HOME=$HOME/.fortressd" >> ~/.profile
 source ~/.profile
 ```
 
-After this, you must make the necessary folders for `cosmosvisor` in your `DAEMON_HOME` directory (`~/.torqued`) and copy over the current binary.
+After this, you must make the necessary folders for `cosmosvisor` in your `DAEMON_HOME` directory (`~/.fortressd`) and copy over the current binary.
 
 ```bash
-mkdir -p ~/.torqued/cosmovisor
-mkdir -p ~/.torqued/cosmovisor/genesis
-mkdir -p ~/.torqued/cosmovisor/genesis/bin
-mkdir -p ~/.torqued/cosmovisor/upgrades
+mkdir -p ~/.fortressd/cosmovisor
+mkdir -p ~/.fortressd/cosmovisor/genesis
+mkdir -p ~/.fortressd/cosmovisor/genesis/bin
+mkdir -p ~/.fortressd/cosmovisor/upgrades
 
-cp $GOPATH/bin/torqued ~/.torqued/cosmovisor/genesis/bin
+cp $GOPATH/bin/fortressd ~/.fortressd/cosmovisor/genesis/bin
 ```
 
-To check that you did this correctly, ensure your versions of `cosmovisor` and `torqued` are the same:
+To check that you did this correctly, ensure your versions of `cosmovisor` and `fortressd` are the same:
 
 ```bash
 cosmovisor version
-torqued version
+fortressd version
 ```
 
 ### 2. Download the Fortress release
@@ -80,11 +80,11 @@ cosmovisor/
 ├── current/   # either genesis or upgrades/<name>
 ├── genesis
 │   └── bin
-│       └── torqued
+│       └── fortressd
 └── upgrades
     └── v3.0.0
         ├── bin
-        │   └── torqued
+        │   └── fortressd
         └── upgrade-info.json
 ```
 
@@ -113,7 +113,7 @@ cosmovisor start
 You will need some way to keep the process always running. If you're on linux, you can do this by creating a service.
 
 ```bash
-sudo tee /etc/systemd/system/torqued.service > /dev/null <<EOF
+sudo tee /etc/systemd/system/fortressd.service > /dev/null <<EOF
 [Unit]
 Description=Fortress Daemon
 After=network-online.target
@@ -125,8 +125,8 @@ Restart=always
 RestartSec=3
 LimitNOFILE=infinity
 
-Environment="DAEMON_HOME=$HOME/.torqued"
-Environment="DAEMON_NAME=torqued"
+Environment="DAEMON_HOME=$HOME/.fortressd"
+Environment="DAEMON_NAME=fortressd"
 Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
 Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
 
@@ -139,12 +139,12 @@ Then update and start the node
 
 ```bash
 sudo -S systemctl daemon-reload
-sudo -S systemctl enable torqued
-sudo -S systemctl start torqued
+sudo -S systemctl enable fortressd
+sudo -S systemctl start fortressd
 ```
 
 You can check the status with:
 
 ```bash
-systemctl status torqued
+systemctl status fortressd
 ```

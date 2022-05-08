@@ -10,11 +10,11 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"github.com/hardiksa/fortress/v4/app"
-	torqued "github.com/hardiksa/fortress/v4/cmd/torqued"
+	fortressd "github.com/hardiksa/fortress/v4/cmd/fortressd"
 )
 
 func TestInitCmd(t *testing.T) {
-	rootCmd, _ := torqued.NewRootCmd()
+	rootCmd, _ := fortressd.NewRootCmd()
 	rootCmd.SetArgs([]string{
 		"init",       // Test the init cmd
 		"fortress-test", // Moniker
@@ -27,7 +27,7 @@ func TestInitCmd(t *testing.T) {
 }
 
 func TestAddKeyLedgerCmd(t *testing.T) {
-	rootCmd, _ := torqued.NewRootCmd()
+	rootCmd, _ := fortressd.NewRootCmd()
 	rootCmd.SetArgs([]string{
 		"keys",
 		"add",

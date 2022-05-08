@@ -43,14 +43,14 @@ Once on-chain, most people will rely upon network explorers to interpret this in
 
 ## Sending the transaction that submits your governance proposal
 
-For information on how to use `torqued` binary to submit an on-chain proposal through the governance module, please refer to the [quickstart](../quickstart/binary.md) documentation.
+For information on how to use `fortressd` binary to submit an on-chain proposal through the governance module, please refer to the [quickstart](../quickstart/binary.md) documentation.
 
 ### CLI
 
-This is the command format for using `torqued` (the command-line interface) to submit your proposal on-chain:
+This is the command format for using `fortressd` (the command-line interface) to submit your proposal on-chain:
 
 ```bash
-torqued tx gov submit-proposal \
+fortressd tx gov submit-proposal \
   --title=<title> \
   --description=<description> \
   --type="Text" \
@@ -64,7 +64,7 @@ torqued tx gov submit-proposal \
 Use the `fortress tx gov --help` flag to get more info about the governance commands
 :::
 
-1. `torqued` is the command-line interface client that is used to send transactions and query Fortress
+1. `fortressd` is the command-line interface client that is used to send transactions and query Fortress
 2. `tx gov submit-proposal param-change` indicates that the transaction is submitting a parameter-change proposal
 3. `--from mykey` is the account key that pays the transaction fee and deposit amount
 4. `--gas 500000` is the maximum amount of gas permitted to be used to process the transaction
@@ -81,26 +81,26 @@ Use the `fortress tx gov --help` flag to get more info about the governance comm
 
 ### Verifying your transaction
 
-After posting your transaction, your command line interface (`torqued`) will provide you with the transaction's hash, which you can either query using torqued or by searching the transaction hash using [Mintscan](https://www.mintscan.io/fortress) or any block explorer.
+After posting your transaction, your command line interface (`fortressd`) will provide you with the transaction's hash, which you can either query using fortressd or by searching the transaction hash using [Mintscan](https://www.mintscan.io/fortress) or any block explorer.
 
 ### Depositing funds after a proposal has been submitted
 
 Sometimes a proposal is submitted without having the minimum token amount deposited yet. In these cases you would want to be able to deposit more tokens to get the proposal into the voting stage. In order to deposit tokens, you'll need to know what your proposal ID is after you've submitted your proposal. You can query all proposals by the following command:
 
 ```bash
-torqued q gov proposals
+fortressd q gov proposals
 ```
 
 If there are a lot of proposals on the chain already, you can also filter by your own address. For the proposal above, that would be:
 
 ```bash
-torqued q gov proposals --depositor torque1hxv7mpztvln45eghez6evw2ypcw4vjmsmr8cdx
+fortressd q gov proposals --depositor torque1hxv7mpztvln45eghez6evw2ypcw4vjmsmr8cdx
 ```
 
 Once you have the proposal ID, this is the command to deposit extra tokens:
 
 ```bash
-torqued tx gov deposit <proposal-id> <deposit> --from <name>
+fortressd tx gov deposit <proposal-id> <deposit> --from <name>
 ```
 
 In our case above, the `<proposal-id>` would be 59 as queried earlier.

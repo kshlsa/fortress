@@ -54,7 +54,7 @@ module.exports = {
       name: 'Fortress',
       denom: 'Fortress',
       ticker: 'FORTRESS',
-      binary: 'torqued',
+      binary: 'fortressd',
       testnet_denom: 'tTorque',
       testnet_ticker: 'tTORQUE',
       rpc_url: 'https://eth.bd.fortress.org:8545',

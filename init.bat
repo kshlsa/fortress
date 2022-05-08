@@ -17,26 +17,26 @@ set LOGLEVEL="info"
 # to trace evm
 #TRACE="--trace"
 set TRACE=""
-set HOME=%USERPROFILE%\.torqued
+set HOME=%USERPROFILE%\.fortressd
 echo %HOME%
 set ETHCONFIG=%HOME%\config\config.toml
 set GENESIS=%HOME%\config\genesis.json
 set TMPGENESIS=%HOME%\config\tmp_genesis.json
 
 @echo build binary
-go build .\cmd\torqued
+go build .\cmd\fortressd
 
 
 @echo clear home folder
 del /s /q %HOME%
 
-torqued config keyring-backend %KEYRING%
-torqued config chain-id %CHAINID%
+fortressd config keyring-backend %KEYRING%
+fortressd config chain-id %CHAINID%
 
-torqued keys add %KEY% --keyring-backend %KEYRING% --algo %KEYALGO%
+fortressd keys add %KEY% --keyring-backend %KEYRING% --algo %KEYALGO%
 
 rem Set moniker and chain-id for Fortress (Moniker can be anything, chain-id must be an integer)
-torqued init %MONIKER% --chain-id %CHAINID%
+fortressd init %MONIKER% --chain-id %CHAINID%
 
 rem Change parameter token denominations to atorque
 cat %GENESIS% | jq ".app_state[\"staking\"][\"params\"][\"bond_denom\"]=\"atorque\""   >   %TMPGENESIS% && move %TMPGENESIS% %GENESIS%
@@ -54,18 +54,18 @@ rem setup
 sed -i "s/create_empty_blocks = true/create_empty_blocks = false/g" %ETHCONFIG%
 
 rem Allocate genesis accounts (cosmos formatted addresses)
-torqued add-genesis-account %KEY% 100000000000000000000000000atorque --keyring-backend %KEYRING%
+fortressd add-genesis-account %KEY% 100000000000000000000000000atorque --keyring-backend %KEYRING%
 
 rem Sign genesis transaction
-torqued gentx %KEY% 1000000000000000000000atorque --keyring-backend %KEYRING% --chain-id %CHAINID%
+fortressd gentx %KEY% 1000000000000000000000atorque --keyring-backend %KEYRING% --chain-id %CHAINID%
 
 rem Collect genesis tx
-torqued collect-gentxs
+fortressd collect-gentxs
 
 rem Run this to ensure everything worked and that the genesis file is setup correctly
-torqued validate-genesis
+fortressd validate-genesis
 
 
 
 rem Start the node (remove the --pruning=nothing flag if historical queries are not needed)
-torqued start --pruning=nothing %TRACE% --log_level %LOGLEVEL% --minimum-gas-prices=0.0001atorque
+fortressd start --pruning=nothing %TRACE% --log_level %LOGLEVEL% --minimum-gas-prices=0.0001atorque

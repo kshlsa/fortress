@@ -6,10 +6,10 @@ order: 8
 
 ## CLI
 
-Find below a list of  `torqued` commands added with the  `x/erc20` module. You can obtain the full list by using the `torqued -h` command. A CLI command can look like this:
+Find below a list of  `fortressd` commands added with the  `x/erc20` module. You can obtain the full list by using the `fortressd -h` command. A CLI command can look like this:
 
 ```bash
-torqued query erc20 params
+fortressd query erc20 params
 ```
 
 ### Queries
@@ -36,7 +36,7 @@ The `tx gov submit-proposal` commands allow users to query create a proposal usi
 Allows users to submit a `RegisterCoinProposal`.
 
 ```bash
-torqued tx gov submit-proposal register-coin [metadata] [flags]
+fortressd tx gov submit-proposal register-coin [metadata] [flags]
 ```
 
 **`register-erc20`**
@@ -44,7 +44,7 @@ torqued tx gov submit-proposal register-coin [metadata] [flags]
 Allows users to submit a `RegisterERC20Proposal`.
 
 ```bash
-torqued tx gov submit-proposal register-erc20 [erc20-address] [flags]
+fortressd tx gov submit-proposal register-erc20 [erc20-address] [flags]
 ```
 
 **`toggle-token-conversion`**
@@ -52,7 +52,7 @@ torqued tx gov submit-proposal register-erc20 [erc20-address] [flags]
 Allows users to submit a `ToggleTokenConversionProposal`.
 
 ```bash
-torqued tx gov submit-proposal toggle-token-conversion [token] [flags]
+fortressd tx gov submit-proposal toggle-token-conversion [token] [flags]
 ```
 
 **`param-change`**
@@ -60,7 +60,7 @@ torqued tx gov submit-proposal toggle-token-conversion [token] [flags]
 Allows users to submit a `ParameterChangeProposal``.
 
 ```bash
-torqued tx gov submit-proposal param-change [proposal-file] [flags]
+fortressd tx gov submit-proposal param-change [proposal-file] [flags]
 ```
 
 ## gRPC

@@ -146,7 +146,7 @@ func init() {
 		panic(err)
 	}
 
-	DefaultNodeHome = filepath.Join(userHomeDir, ".torqued")
+	DefaultNodeHome = filepath.Join(userHomeDir, ".fortressd")
 
 	// manually update the power reduction by replacing micro (u) -> atto (a) fortress
 	sdk.DefaultPowerReduction = ethermint.PowerReduction
@@ -154,7 +154,7 @@ func init() {
 
 const (
 	// Name defines the application binary name
-	Name = "torqued"
+	Name = "fortressd"
 	// MainnetChainID defines the Fortress EIP155 chain ID for mainnet
 	MainnetChainID = "torque_9001"
 	// TestnetChainID defines the Fortress EIP155 chain ID for testnet

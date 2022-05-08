@@ -8,7 +8,7 @@ A user can query the `x/incentives` module using the CLI, JSON-RPC, gRPC or REST
 
 ## CLI
 
-Find below a list of `torqued` commands added with the `x/incentives` module. You can obtain the full list by using the `torqued -h` command.
+Find below a list of `fortressd` commands added with the `x/incentives` module. You can obtain the full list by using the `fortressd -h` command.
 
 ### Queries
 
@@ -19,7 +19,7 @@ The `query` commands allow users to query `incentives` state.
 Allows users to query all registered incentives.
 
 ```go
-torqued query incentives incentives [flags]
+fortressd query incentives incentives [flags]
 ```
 
 **`incentive`**
@@ -27,7 +27,7 @@ torqued query incentives incentives [flags]
 Allows users to query an incentive for a given contract.
 
 ```go
-torqued query incentives incentive [contract-address] [flags]
+fortressd query incentives incentive [contract-address] [flags]
 ```
 
 **`gas-meters`**
@@ -35,7 +35,7 @@ torqued query incentives incentive [contract-address] [flags]
 Allows users to query all gas meters for a given incentive.
 
 ```bash
-torqued query incentives gas-meters [contract-address] [flags]
+fortressd query incentives gas-meters [contract-address] [flags]
 ```
 
 **`gas-meter`**
@@ -43,7 +43,7 @@ torqued query incentives gas-meters [contract-address] [flags]
 Allows users to query a gas meter for a given incentive and user.
 
 ```go
-torqued query incentives gas-meter [contract-address] [participant-address] [flags]
+fortressd query incentives gas-meter [contract-address] [participant-address] [flags]
 ```
 
 **`params`**
@@ -51,7 +51,7 @@ torqued query incentives gas-meter [contract-address] [participant-address] [fla
 Allows users to query incentives params.
 
 ```bash
-torqued query incentives params [flags]
+fortressd query incentives params [flags]
 ```
 
 ### Proposals
@@ -63,7 +63,7 @@ The `tx gov submit-proposal` commands allow users to query create a proposal usi
 Allows users to submit a `RegisterIncentiveProposal`.
 
 ```bash
-torqued tx gov submit-proposal register-incentive [contract-address] [allocation] [epochs] [flags]
+fortressd tx gov submit-proposal register-incentive [contract-address] [allocation] [epochs] [flags]
 ```
 
 **`cancel-incentive`**
@@ -71,7 +71,7 @@ torqued tx gov submit-proposal register-incentive [contract-address] [allocation
 Allows users to submit a `CanelIncentiveProposal`.
 
 ```bash
-torqued tx gov submit-proposal cancel-incentive [contract-address] [flags]
+fortressd tx gov submit-proposal cancel-incentive [contract-address] [flags]
 ```
 
 **`param-change`**
@@ -79,7 +79,7 @@ torqued tx gov submit-proposal cancel-incentive [contract-address] [flags]
 Allows users to submit a `ParameterChangeProposal``.
 
 ```bash
-torqued tx gov submit-proposal param-change [proposal-file] [flags]
+fortressd tx gov submit-proposal param-change [proposal-file] [flags]
 ```
 
 ## gRPC

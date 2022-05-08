@@ -8,7 +8,7 @@ A user can query the `x/claims` module using the CLI, gRPC or REST.
 
 ## CLI
 
-Find below a list of `torqued` commands added with the `x/claims` module. You can obtain the full list by using the `torqued -h` command.
+Find below a list of `fortressd` commands added with the `x/claims` module. You can obtain the full list by using the `fortressd -h` command.
 
 ### Queries
 
@@ -19,7 +19,7 @@ The `query` commands allow users to query `claims` state.
 Allows users to query total amount of unclaimed tokens from the airdrop.
 
 ```bash
-torqued query claims total-unclaimed [flags]
+fortressd query claims total-unclaimed [flags]
 ```
 
 **`claims-records`**
@@ -27,7 +27,7 @@ torqued query claims total-unclaimed [flags]
 Allows users to query all the claims records available.
 
 ```bash
-torqued query claims claims-records [flags]
+fortressd query claims claims-records [flags]
 ```
 
 **`claims-record`**
@@ -35,7 +35,7 @@ torqued query claims claims-records [flags]
 Allows users to query a claims record for a given user.
 
 ```bash
-torqued query claims claims-record [address] [flags]
+fortressd query claims claims-record [address] [flags]
 ```
 
 **`params`**
@@ -43,7 +43,7 @@ torqued query claims claims-record [address] [flags]
 Allows users to query claims params.
 
 ```bash
-torqued query claims params [flags]
+fortressd query claims params [flags]
 ```
 
 ## gRPC

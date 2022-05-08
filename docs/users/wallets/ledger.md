@@ -160,13 +160,13 @@ This step should be done automatically by the same service that generated the me
 
 Cosmos `secp256k1` keys are not supported on Fortress with Ledger. Only Ethereum keys (`eth_secp256k1`) can be generated with Ledger.
 
-2. **I can’t generate keys using the CLI with `torqued` with the `--ledger` flag**
+2. **I can’t generate keys using the CLI with `fortressd` with the `--ledger` flag**
 
-CLI bindings with `torqued` binary are not currently supported. In the meantime, you can use the Ethereum Ledger App with EIP712 using [fortress.me](https://fortress.me). See the [`EIP712 Signing`](#eip712-signing) section for reference.
+CLI bindings with `fortressd` binary are not currently supported. In the meantime, you can use the Ethereum Ledger App with EIP712 using [fortress.me](https://fortress.me). See the [`EIP712 Signing`](#eip712-signing) section for reference.
 
-3. **I can’t generate a key for the Fortress native multisig using the `torqued` CLI and and Ledger**
+3. **I can’t generate a key for the Fortress native multisig using the `fortressd` CLI and and Ledger**
 
-You can generate a multisig wallet using the `torqued` CLI, although the `--ledger` option is not available at the moment.
+You can generate a multisig wallet using the `fortressd` CLI, although the `--ledger` option is not available at the moment.
 
 4. **I can’t use Metamask or Keplr with the Cosmos Ledger app**
 

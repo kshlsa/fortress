@@ -10,9 +10,9 @@ faucet:
   name: bob 
   coins: ["10atorque"]
 build:
-  binary: "torqued"
+  binary: "fortressd"
 init:
-  home: "$HOME/.torqued"
+  home: "$HOME/.fortressd"
   app:
     evm-rpc:
       address: "0.0.0.0:8545"     # change the JSON-RPC address and port
