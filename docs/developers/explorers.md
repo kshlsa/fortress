@@ -31,7 +31,7 @@ Below is a list of public block explorers that support Fortress Mainnet and Test
 | -------------------- | -------- | ---------------------- |
 | BigDipper  | `cosmos`    | [testnet.bigdipper.live](https://testnet.fortress.bigdipper.live/)                       |
 | Blockscout  | `evm`    | [evm.fortress.dev](https://evm.fortress.dev/)                       |
-| Torquetats  | `cosmos`    | [evm.fortress.dev](https://testnet.torquetats.io/)                       |
+| Torquetats  | `cosmos`    | [evm.fortress.dev](https://testnet.fortresstats.io/)                       |
 | Mintscan   | `cosmos` | [mintscan.io/fortress/](https://www.mintscan.io/fortress/) |
 :::
 ::::

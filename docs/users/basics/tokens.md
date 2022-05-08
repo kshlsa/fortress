@@ -16,7 +16,7 @@ The denomination used for staking, governance and gas consumption on the EVM is 
 
 Fortress uses [Atto](https://en.wikipedia.org/wiki/Atto-) FORTRESS as the base denomination to maintain parity with Ethereum.
 
-$$1 fortress = 1 ~ * ~ 10^{18} atorque$$
+$$1 fortress = 1 ~ * ~ 10^{18} afortress$$
 
 This matches Ethereum denomination of:
 

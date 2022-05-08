@@ -28,15 +28,15 @@ To build start a 4 node testnet run:
 make localnet-start
 ```
 
-This command creates a 4-node network using the `torquednode` Docker image.
+This command creates a 4-node network using the `fortressdnode` Docker image.
 The ports for each node are found in this table:
 
 | Node ID          | P2P Port | Tendermint RPC Port | REST/ Ethereum JSON-RPC Port | WebSocket Port |
 |------------------|----------|---------------------|------------------------------|----------------|
-| `torquenode0` | `26656`  | `26657`             | `8545`                       | `8546`         |
-| `torquenode1` | `26659`  | `26660`             | `8547`                       | `8548`         |
-| `torquenode2` | `26661`  | `26662`             | `8549`                       | `8550`         |
-| `torquenode3` | `26663`  | `26664`             | `8551`                       | `8552`         |
+| `fortressnode0` | `26656`  | `26657`             | `8545`                       | `8546`         |
+| `fortressnode1` | `26659`  | `26660`             | `8547`                       | `8548`         |
+| `fortressnode2` | `26661`  | `26662`             | `8549`                       | `8550`         |
+| `fortressnode3` | `26663`  | `26664`             | `8551`                       | `8552`         |
 
 To update the binary, just rebuild it and restart the nodes
 
@@ -48,11 +48,11 @@ The command above  command will run containers in the background using Docker co
 
 ```bash
 ...
-Creating network "torque_localnet" with driver "bridge"
-Creating torquednode0 ... done
-Creating torquednode2 ... done
-Creating torquednode1 ... done
-Creating torquednode3 ... done
+Creating network "fortress_localnet" with driver "bridge"
+Creating fortressdnode0 ... done
+Creating fortressdnode2 ... done
+Creating fortressdnode1 ... done
+Creating fortressdnode3 ... done
 ```
 
 ### Stop Localnet
@@ -122,10 +122,10 @@ In order to see the logs of a particular node you can use the following command:
 
 ```bash
 # node 0: daemon logs
-docker exec torquednode0 tail fortressd.log
+docker exec fortressdnode0 tail fortressd.log
 
 # node 0: REST & RPC logs
-docker exec torquednode0 tail fortressd.log
+docker exec fortressdnode0 tail fortressd.log
 ```
 
 The logs for the daemon will look like:
@@ -163,7 +163,7 @@ You can also watch logs as they are produced via Docker with the `--follow` (`-f
 example:
 
 ```bash
-docker logs -f torquednode0
+docker logs -f fortressdnode0
 ```
 
 ### Interact with the Localnet

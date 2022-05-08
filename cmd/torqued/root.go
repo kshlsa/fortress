@@ -41,7 +41,7 @@ import (
 
 	"github.com/hardiksa/fortress/v4/app"
 	cmdcfg "github.com/hardiksa/fortress/v4/cmd/config"
-	torquekr "github.com/hardiksa/fortress/v4/crypto/keyring"
+	fortresskr "github.com/hardiksa/fortress/v4/crypto/keyring"
 )
 
 const (
@@ -61,7 +61,7 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 		WithAccountRetriever(types.AccountRetriever{}).
 		WithBroadcastMode(flags.BroadcastBlock).
 		WithHomeDir(app.DefaultNodeHome).
-		WithKeyringOptions(torquekr.Option()).
+		WithKeyringOptions(fortresskr.Option()).
 		WithViper(EnvPrefix)
 
 	rootCmd := &cobra.Command{
@@ -202,8 +202,8 @@ func initAppConfig(chainID string) (string, interface{}) {
 	}
 
 	// define a non-zero default minimum gas price on Fortress Mainnet
-	if strings.HasPrefix(chainID, "torque_9001-") && (srvCfg.MinGasPrices == "" || srvCfg.MinGasPrices == "0atorque") {
-		srvCfg.MinGasPrices = "0.0025atorque"
+	if strings.HasPrefix(chainID, "fortress_9001-") && (srvCfg.MinGasPrices == "" || srvCfg.MinGasPrices == "0afortress") {
+		srvCfg.MinGasPrices = "0.0025afortress"
 	}
 
 	srvCfg.StateSync.SnapshotInterval = 1500
@@ -244,7 +244,7 @@ func (a appCreator) newApp(logger log.Logger, db dbm.DB, traceStore io.Writer, a
 		panic(err)
 	}
 
-	torqueApp := app.NewTorque(
+	fortressApp := app.NewTorque(
 		logger, db, traceStore, true, skipUpgradeHeights,
 		cast.ToString(appOpts.Get(flags.FlagHome)),
 		cast.ToUint(appOpts.Get(sdkserver.FlagInvCheckPeriod)),
@@ -263,7 +263,7 @@ func (a appCreator) newApp(logger log.Logger, db dbm.DB, traceStore io.Writer, a
 		baseapp.SetSnapshotKeepRecent(cast.ToUint32(appOpts.Get(sdkserver.FlagStateSyncSnapshotKeepRecent))),
 	)
 
-	return torqueApp
+	return fortressApp
 }
 
 // appExport creates a new simapp (optionally at a given height)
@@ -272,21 +272,21 @@ func (a appCreator) appExport(
 	logger log.Logger, db dbm.DB, traceStore io.Writer, height int64, forZeroHeight bool, jailAllowedAddrs []string,
 	appOpts servertypes.AppOptions,
 ) (servertypes.ExportedApp, error) {
-	var torqueApp *app.Fortress
+	var fortressApp *app.Fortress
 	homePath, ok := appOpts.Get(flags.FlagHome).(string)
 	if !ok || homePath == "" {
 		return servertypes.ExportedApp{}, errors.New("application home not set")
 	}
 
 	if height != -1 {
-		torqueApp = app.NewTorque(logger, db, traceStore, false, map[int64]bool{}, "", uint(1), a.encCfg, appOpts)
+		fortressApp = app.NewTorque(logger, db, traceStore, false, map[int64]bool{}, "", uint(1), a.encCfg, appOpts)
 
-		if err := torqueApp.LoadHeight(height); err != nil {
+		if err := fortressApp.LoadHeight(height); err != nil {
 			return servertypes.ExportedApp{}, err
 		}
 	} else {
-		torqueApp = app.NewTorque(logger, db, traceStore, true, map[int64]bool{}, "", uint(1), a.encCfg, appOpts)
+		fortressApp = app.NewTorque(logger, db, traceStore, true, map[int64]bool{}, "", uint(1), a.encCfg, appOpts)
 	}
 
-	return torqueApp.ExportAppStateAndValidators(forZeroHeight, jailAllowedAddrs)
+	return fortressApp.ExportAppStateAndValidators(forZeroHeight, jailAllowedAddrs)
 }

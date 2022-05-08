@@ -54,7 +54,7 @@ fortressd tx gov submit-proposal \
   --title=<title> \
   --description=<description> \
   --type="Text" \
-  --deposit="1000000atorque" \
+  --deposit="1000000afortress" \
   --from=<mykey> \
   --chain-id=<chain_id>
   --node <address>
@@ -74,9 +74,9 @@ Use the `fortress tx gov --help` flag to get more info about the governance comm
 5. `--fees` is a flat-rate incentive for a validator to process your transaction
    - the network still accepts zero fees, but many nodes will not transmit your transaction to the network without a minimum fee
    - many nodes (including the Figment node) use a minimum fee to desincentivize transaction spamming
-   - 7500atorque is equal to 0.0075 FORTRESS
-6. `--chain-id torque_90001-2` is Fortress Mainnet. For current and past chain-id's, please look at the [tharsis/mainnet resource](https://github.com/tharsis/mainnet)
-   - the testnet chain ID is [torque_9000-4](https://testnet.mintscan.io/fortress). For current and past testnet information, please look at the [testnet repository](https://github.com/tharsis/testnets)
+   - 7500afortress is equal to 0.0075 FORTRESS
+6. `--chain-id fortress_90001-2` is Fortress Mainnet. For current and past chain-id's, please look at the [tharsis/mainnet resource](https://github.com/tharsis/mainnet)
+   - the testnet chain ID is [fortress_9000-4](https://testnet.mintscan.io/fortress). For current and past testnet information, please look at the [testnet repository](https://github.com/tharsis/testnets)
 7. `--node` is using a full node to send the transaction to the Fortress Mainnet
 
 ### Verifying your transaction
@@ -94,7 +94,7 @@ fortressd q gov proposals
 If there are a lot of proposals on the chain already, you can also filter by your own address. For the proposal above, that would be:
 
 ```bash
-fortressd q gov proposals --depositor torque1hxv7mpztvln45eghez6evw2ypcw4vjmsmr8cdx
+fortressd q gov proposals --depositor fortress1hxv7mpztvln45eghez6evw2ypcw4vjmsmr8cdx
 ```
 
 Once you have the proposal ID, this is the command to deposit extra tokens:
@@ -104,7 +104,7 @@ fortressd tx gov deposit <proposal-id> <deposit> --from <name>
 ```
 
 In our case above, the `<proposal-id>` would be 59 as queried earlier.
-The `<deposit>` is written as `500000atorque`, just like the example above.
+The `<deposit>` is written as `500000afortress`, just like the example above.
 
 ### Submit your proposal to the testnet
 
@@ -119,4 +119,4 @@ Submitting your proposal to the testnet increases the likelihood that you will d
 
 - you'll need testnet tokens for your proposal (ask around for a faucet)
 - the parameters for testnet proposals are different (eg. voting period timing, deposit amount, deposit denomination)
-- the deposit denomination is in 'attorque' instead of 'atorque'
+- the deposit denomination is in 'atfortress' instead of 'afortress'

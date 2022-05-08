@@ -16,7 +16,7 @@ import (
 
 	"github.com/tharsis/ethermint/testutil/network"
 
-	torquenetwork "github.com/hardiksa/fortress/v4/testutil/network"
+	fortressnetwork "github.com/hardiksa/fortress/v4/testutil/network"
 	"github.com/hardiksa/fortress/v4/x/erc20/client/cli"
 )
 
@@ -39,7 +39,7 @@ func (s *IntegrationTestSuite) SetupSuite() {
 	s.T().Log("setting up integration test suite")
 
 	var err error
-	s.cfg = torquenetwork.DefaultConfig()
+	s.cfg = fortressnetwork.DefaultConfig()
 	s.cfg.NumValidators = 1
 
 	s.network, err = network.New(s.T(), s.T().TempDir(), s.cfg)

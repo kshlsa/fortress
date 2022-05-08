@@ -17,17 +17,17 @@ Learn about the Fortress chain-id format {synopsis}
 
 | Name                                            | Chain ID                                      | Identifier | EIP155 Number                         | Version Number                              |
 | ----------------------------------------------- | --------------------------------------------- | ---------- | ------------------------------------- | ------------------------------------------- |
-| Fortress {{ $themeConfig.project.version_number }} | `torque_{{ $themeConfig.project.chain_id }}-2` | `fortress`    | `{{ $themeConfig.project.chain_id }}` | `{{ $themeConfig.project.version_number }}` |
-| Fortress 1                                         | `torque_{{ $themeConfig.project.chain_id }}-1` | `fortress`    | `{{ $themeConfig.project.chain_id }}` | `1`                                         |
+| Fortress {{ $themeConfig.project.version_number }} | `fortress_{{ $themeConfig.project.chain_id }}-2` | `fortress`    | `{{ $themeConfig.project.chain_id }}` | `{{ $themeConfig.project.version_number }}` |
+| Fortress 1                                         | `fortress_{{ $themeConfig.project.chain_id }}-1` | `fortress`    | `{{ $themeConfig.project.chain_id }}` | `1`                                         |
 :::
 ::: tab Testnets
 
 | Name                              | Chain ID                                              | Identifier | EIP155 Number                                 | Version Number                                      |
 | --------------------------------- | ----------------------------------------------------- | ---------- | --------------------------------------------- | --------------------------------------------------- |
-| Fortress Public Testnet              | `torque_{{ $themeConfig.project.testnet_chain_id }}-4` | `fortress`    | `{{ $themeConfig.project.testnet_chain_id }}` | `{{ $themeConfig.project.testnet_version_number }}` |
-| Fortress Public Testnet              | `torque_{{ $themeConfig.project.testnet_chain_id }}-3` | `fortress`    | `{{ $themeConfig.project.testnet_chain_id }}` | `3`                                                 |
-| Olympus Mons Incentivized Testnet | `torque_{{ $themeConfig.project.testnet_chain_id }}-2` | `fortress`    | `{{ $themeConfig.project.testnet_chain_id }}` | `2`                                                 |
-| Arsia Mons Testnet                | `torque_{{ $themeConfig.project.testnet_chain_id }}-1` | `fortress`    | `{{ $themeConfig.project.testnet_chain_id }}` | `1`                                                 |
+| Fortress Public Testnet              | `fortress_{{ $themeConfig.project.testnet_chain_id }}-4` | `fortress`    | `{{ $themeConfig.project.testnet_chain_id }}` | `{{ $themeConfig.project.testnet_version_number }}` |
+| Fortress Public Testnet              | `fortress_{{ $themeConfig.project.testnet_chain_id }}-3` | `fortress`    | `{{ $themeConfig.project.testnet_chain_id }}` | `3`                                                 |
+| Olympus Mons Incentivized Testnet | `fortress_{{ $themeConfig.project.testnet_chain_id }}-2` | `fortress`    | `{{ $themeConfig.project.testnet_chain_id }}` | `2`                                                 |
+| Arsia Mons Testnet                | `fortress_{{ $themeConfig.project.testnet_chain_id }}-1` | `fortress`    | `{{ $themeConfig.project.testnet_chain_id }}` | `1`                                                 |
 
 :::
 ::::
@@ -64,7 +64,7 @@ The following table provides an example where the second row corresponds to an u
 
 | ChainID        | Identifier | EIP155 Number | Version Number |
 | -------------- | ---------- | ------------- | -------------- |
-| `torque_9000-1` | fortress      | 9000          | 1              |
-| `torque_9000-2` | fortress      | 9000          | 2              |
+| `fortress_9000-1` | fortress      | 9000          | 1              |
+| `fortress_9000-2` | fortress      | 9000          | 2              |
 | `...`          | ...        | ...           | ...            |
-| `torque_9000-N` | fortress      | 9000          | N              |
+| `fortress_9000-N` | fortress      | 9000          | N              |

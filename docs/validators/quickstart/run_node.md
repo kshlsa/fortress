@@ -147,7 +147,7 @@ prometheus --config.file=prom_config.yaml
 and then visit the Prometheus dashboard at http://localhost:9090/ then navigate to the expression area and enter the following expression
 
 ```shell
-rate(torqued_transactions_processed[1m])
+rate(fortressd_transactions_processed[1m])
 ```
 
 which will show the rate of transactions processed.

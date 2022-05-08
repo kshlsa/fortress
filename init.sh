@@ -1,5 +1,5 @@
 KEY="mykey"
-CHAINID="torque_9000-1"
+CHAINID="fortress_9000-1"
 MONIKER="localtestnet"
 KEYRING="test"
 KEYALGO="eth_secp256k1"
@@ -25,12 +25,12 @@ fortressd keys add $KEY --keyring-backend $KEYRING --algo $KEYALGO
 # Set moniker and chain-id for Fortress (Moniker can be anything, chain-id must be an integer)
 fortressd init $MONIKER --chain-id $CHAINID
 
-# Change parameter token denominations to atorque
-cat $HOME/.fortressd/config/genesis.json | jq '.app_state["staking"]["params"]["bond_denom"]="atorque"' > $HOME/.fortressd/config/tmp_genesis.json && mv $HOME/.fortressd/config/tmp_genesis.json $HOME/.fortressd/config/genesis.json
-cat $HOME/.fortressd/config/genesis.json | jq '.app_state["crisis"]["constant_fee"]["denom"]="atorque"' > $HOME/.fortressd/config/tmp_genesis.json && mv $HOME/.fortressd/config/tmp_genesis.json $HOME/.fortressd/config/genesis.json
-cat $HOME/.fortressd/config/genesis.json | jq '.app_state["gov"]["deposit_params"]["min_deposit"][0]["denom"]="atorque"' > $HOME/.fortressd/config/tmp_genesis.json && mv $HOME/.fortressd/config/tmp_genesis.json $HOME/.fortressd/config/genesis.json
-cat $HOME/.fortressd/config/genesis.json | jq '.app_state["evm"]["params"]["evm_denom"]="atorque"' > $HOME/.fortressd/config/tmp_genesis.json && mv $HOME/.fortressd/config/tmp_genesis.json $HOME/.fortressd/config/genesis.json
-cat $HOME/.fortressd/config/genesis.json | jq '.app_state["inflation"]["params"]["mint_denom"]="atorque"' > $HOME/.fortressd/config/tmp_genesis.json && mv $HOME/.fortressd/config/tmp_genesis.json $HOME/.fortressd/config/genesis.json
+# Change parameter token denominations to afortress
+cat $HOME/.fortressd/config/genesis.json | jq '.app_state["staking"]["params"]["bond_denom"]="afortress"' > $HOME/.fortressd/config/tmp_genesis.json && mv $HOME/.fortressd/config/tmp_genesis.json $HOME/.fortressd/config/genesis.json
+cat $HOME/.fortressd/config/genesis.json | jq '.app_state["crisis"]["constant_fee"]["denom"]="afortress"' > $HOME/.fortressd/config/tmp_genesis.json && mv $HOME/.fortressd/config/tmp_genesis.json $HOME/.fortressd/config/genesis.json
+cat $HOME/.fortressd/config/genesis.json | jq '.app_state["gov"]["deposit_params"]["min_deposit"][0]["denom"]="afortress"' > $HOME/.fortressd/config/tmp_genesis.json && mv $HOME/.fortressd/config/tmp_genesis.json $HOME/.fortressd/config/genesis.json
+cat $HOME/.fortressd/config/genesis.json | jq '.app_state["evm"]["params"]["evm_denom"]="afortress"' > $HOME/.fortressd/config/tmp_genesis.json && mv $HOME/.fortressd/config/tmp_genesis.json $HOME/.fortressd/config/genesis.json
+cat $HOME/.fortressd/config/genesis.json | jq '.app_state["inflation"]["params"]["mint_denom"]="afortress"' > $HOME/.fortressd/config/tmp_genesis.json && mv $HOME/.fortressd/config/tmp_genesis.json $HOME/.fortressd/config/genesis.json
 
 # Set gas limit in genesis
 cat $HOME/.fortressd/config/genesis.json | jq '.consensus_params["block"]["max_gas"]="10000000"' > $HOME/.fortressd/config/tmp_genesis.json && mv $HOME/.fortressd/config/tmp_genesis.json $HOME/.fortressd/config/genesis.json
@@ -42,15 +42,15 @@ cat $HOME/.fortressd/config/genesis.json | jq -r --arg current_date "$current_da
 
 # Set claims records for validator account
 amount_to_claim=10000
-cat $HOME/.fortressd/config/genesis.json | jq -r --arg node_address "$node_address" --arg amount_to_claim "$amount_to_claim" '.app_state["claims"]["claims_records"]=[{"initial_claimable_amount":$amount_to_claim, "actions_completed":[false, false, false, false],"address":torque1tpxdhqgl0sxfq0qrgafulzgkhvdlg3xmqthtux}]' > $HOME/.fortressd/config/tmp_genesis.json && mv $HOME/.fortressd/config/tmp_genesis.json $HOME/.fortressd/config/genesis.json
+cat $HOME/.fortressd/config/genesis.json | jq -r --arg node_address "$node_address" --arg amount_to_claim "$amount_to_claim" '.app_state["claims"]["claims_records"]=[{"initial_claimable_amount":$amount_to_claim, "actions_completed":[false, false, false, false],"address":fortress1tpxdhqgl0sxfq0qrgafulzgkhvdlg3xmqthtux}]' > $HOME/.fortressd/config/tmp_genesis.json && mv $HOME/.fortressd/config/tmp_genesis.json $HOME/.fortressd/config/genesis.json
 
 # Set claims decay
 cat $HOME/.fortressd/config/genesis.json | jq -r --arg current_date "$current_date" '.app_state["claims"]["params"]["duration_of_decay"]="1000000s"' > $HOME/.fortressd/config/tmp_genesis.json && mv $HOME/.fortressd/config/tmp_genesis.json $HOME/.fortressd/config/genesis.json
 cat $HOME/.fortressd/config/genesis.json | jq -r --arg current_date "$current_date" '.app_state["claims"]["params"]["duration_until_decay"]="100000s"' > $HOME/.fortressd/config/tmp_genesis.json && mv $HOME/.fortressd/config/tmp_genesis.json $HOME/.fortressd/config/genesis.json
 
 # Claim module account:
-# 0xA61808Fe40fEb8B3433778BBC2ecECCAA47c8c47 || torque1tpxdhqgl0sxfq0qrgafulzgkhvdlg3xmqthtux
-cat $HOME/.fortressd/config/genesis.json | jq -r --arg amount_to_claim "$amount_to_claim" '.app_state["bank"]["balances"] += [{"address":"torque1tpxdhqgl0sxfq0qrgafulzgkhvdlg3xmqthtux","coins":[{"denom":"atorque", "amount":$amount_to_claim}]}]' > $HOME/.fortressd/config/tmp_genesis.json && mv $HOME/.fortressd/config/tmp_genesis.json $HOME/.fortressd/config/genesis.json
+# 0xA61808Fe40fEb8B3433778BBC2ecECCAA47c8c47 || fortress1tpxdhqgl0sxfq0qrgafulzgkhvdlg3xmqthtux
+cat $HOME/.fortressd/config/genesis.json | jq -r --arg amount_to_claim "$amount_to_claim" '.app_state["bank"]["balances"] += [{"address":"fortress1tpxdhqgl0sxfq0qrgafulzgkhvdlg3xmqthtux","coins":[{"denom":"afortress", "amount":$amount_to_claim}]}]' > $HOME/.fortressd/config/tmp_genesis.json && mv $HOME/.fortressd/config/tmp_genesis.json $HOME/.fortressd/config/genesis.json
 
 # disable produce empty block
 if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -84,7 +84,7 @@ if [[ $1 == "pending" ]]; then
 fi
 
 # Allocate genesis accounts (cosmos formatted addresses)
-fortressd add-genesis-account $KEY 100000000000000000000000000atorque --keyring-backend $KEYRING
+fortressd add-genesis-account $KEY 100000000000000000000000000afortress --keyring-backend $KEYRING
 
 # Update total supply with claim values
 validators_supply=$(cat $HOME/.fortressd/config/genesis.json | jq -r '.app_state["bank"]["supply"][0]["amount"]')
@@ -94,7 +94,7 @@ total_supply=100000000000000000000010000
 cat $HOME/.fortressd/config/genesis.json | jq -r --arg total_supply "$total_supply" '.app_state["bank"]["supply"][0]["amount"]=$total_supply' > $HOME/.fortressd/config/tmp_genesis.json && mv $HOME/.fortressd/config/tmp_genesis.json $HOME/.fortressd/config/genesis.json
 
 # Sign genesis transaction
-fortressd gentx $KEY 1000000000000000000000atorque --keyring-backend $KEYRING --chain-id $CHAINID
+fortressd gentx $KEY 1000000000000000000000afortress --keyring-backend $KEYRING --chain-id $CHAINID
 
 # Collect genesis tx
 fortressd collect-gentxs
@@ -107,4 +107,4 @@ if [[ $1 == "pending" ]]; then
 fi
 
 # Start the node (remove the --pruning=nothing flag if historical queries are not needed)
-fortressd start --pruning=nothing $TRACE --log_level $LOGLEVEL --minimum-gas-prices=0.0001atorque --json-rpc.api eth,txpool,personal,net,debug,web3
+fortressd start --pruning=nothing $TRACE --log_level $LOGLEVEL --minimum-gas-prices=0.0001afortress --json-rpc.api eth,txpool,personal,net,debug,web3

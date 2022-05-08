@@ -41,8 +41,8 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 	// Setup Cosmos <=> Fortress IBC relayer
 	denom := "uatom"
 	sourceChannel := "channel-292"
-	torqueChannel := claimstypes.DefaultAuthorizedChannels[1]
-	path := fmt.Sprintf("%s/%s", transfertypes.PortID, torqueChannel)
+	fortressChannel := claimstypes.DefaultAuthorizedChannels[1]
+	path := fmt.Sprintf("%s/%s", transfertypes.PortID, fortressChannel)
 
 	timeoutHeight := clienttypes.NewHeight(0, 100)
 	disabledTimeoutTimestamp := uint64(0)
@@ -51,7 +51,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 	expAck := ibcmock.MockAcknowledgement
 
 	coins := sdk.NewCoins(
-		sdk.NewCoin("atorque", sdk.NewInt(1000)),
+		sdk.NewCoin("afortress", sdk.NewInt(1000)),
 		sdk.NewCoin(ibcAtomDenom, sdk.NewInt(1000)),
 		sdk.NewCoin(ibcOsmoDenom, sdk.NewInt(1000)),
 		sdk.NewCoin(erc20Denom, sdk.NewInt(1000)),
@@ -112,7 +112,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 			func() {
 				transfer := transfertypes.NewFungibleTokenPacketData(denom, "100", "fortress", ethsecpAddrCosmos)
 				bz := transfertypes.ModuleCdc.MustMarshalJSON(&transfer)
-				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, torqueChannel, timeoutHeight, 0)
+				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, fortressChannel, timeoutHeight, 0)
 			},
 			false,
 			false,
@@ -123,7 +123,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 			func() {
 				transfer := transfertypes.NewFungibleTokenPacketData(denom, "100", "badba1sv9m0g7ycejwr3s369km58h5qe7xj77hvcxrms", ethsecpAddrCosmos)
 				bz := transfertypes.ModuleCdc.MustMarshalJSON(&transfer)
-				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, torqueChannel, timeoutHeight, 0)
+				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, fortressChannel, timeoutHeight, 0)
 			},
 			false,
 			false,
@@ -134,7 +134,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 			func() {
 				transfer := transfertypes.NewFungibleTokenPacketData(denom, "100", ethsecpAddrTorque, "badbadhf0468jjpe6m6vx38s97z2qqe8ldu0njdyf625")
 				bz := transfertypes.ModuleCdc.MustMarshalJSON(&transfer)
-				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, torqueChannel, timeoutHeight, 0)
+				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, fortressChannel, timeoutHeight, 0)
 			},
 			false,
 			false,
@@ -147,7 +147,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 
 				transfer := transfertypes.NewFungibleTokenPacketData(denom, "100", secpAddrCosmos, blockedAddr.String())
 				bz := transfertypes.ModuleCdc.MustMarshalJSON(&transfer)
-				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, torqueChannel, timeoutHeight, 0)
+				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, fortressChannel, timeoutHeight, 0)
 			},
 			false,
 			false,
@@ -161,7 +161,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 
 				transfer := transfertypes.NewFungibleTokenPacketData(denom, "100", secpAddrCosmos, otherSecpAddrTorque)
 				bz := transfertypes.ModuleCdc.MustMarshalJSON(&transfer)
-				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, torqueChannel, timeoutHeight, 0)
+				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, fortressChannel, timeoutHeight, 0)
 			},
 			true,
 			false,
@@ -178,7 +178,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 
 				transfer := transfertypes.NewFungibleTokenPacketData(denom, "100", ethsecpAddrCosmos, ethsecpAddrTorque)
 				bz := transfertypes.ModuleCdc.MustMarshalJSON(&transfer)
-				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, torqueChannel, timeoutHeight, 0)
+				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, fortressChannel, timeoutHeight, 0)
 			},
 			true,
 			false,
@@ -192,7 +192,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 				addr := incentivesAcc.GetAddress().String()
 				transfer := transfertypes.NewFungibleTokenPacketData(denom, "100", addr, addr)
 				bz := transfertypes.ModuleCdc.MustMarshalJSON(&transfer)
-				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, torqueChannel, timeoutHeight, 0)
+				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, fortressChannel, timeoutHeight, 0)
 			},
 			true,
 			false,
@@ -206,7 +206,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 
 				transfer := transfertypes.NewFungibleTokenPacketData(denom, "100", ethsecpAddrCosmos, ethsecpAddrTorque)
 				bz := transfertypes.ModuleCdc.MustMarshalJSON(&transfer)
-				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, torqueChannel, timeoutHeight, 0)
+				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, fortressChannel, timeoutHeight, 0)
 			},
 			true,
 			false,
@@ -217,7 +217,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 			func() {
 				transfer := transfertypes.NewFungibleTokenPacketData(denom, "100", secpAddrCosmos, secpAddrTorque)
 				bz := transfertypes.ModuleCdc.MustMarshalJSON(&transfer)
-				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, torqueChannel, timeoutHeight, 0)
+				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, fortressChannel, timeoutHeight, 0)
 
 				invalidDenom := "ibc/1"
 				coins := sdk.NewCoins(sdk.NewCoin(invalidDenom, sdk.NewInt(1000)))
@@ -236,7 +236,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 			func() {
 				transfer := transfertypes.NewFungibleTokenPacketData(denom, "100", secpAddrCosmos, secpAddrTorque)
 				bz := transfertypes.ModuleCdc.MustMarshalJSON(&transfer)
-				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, torqueChannel, timeoutHeight, 0)
+				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, fortressChannel, timeoutHeight, 0)
 			},
 			true,
 			true,
@@ -249,7 +249,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 
 				transfer := transfertypes.NewFungibleTokenPacketData(denom, "100", secpAddrCosmos, secpAddrTorque)
 				bz := transfertypes.ModuleCdc.MustMarshalJSON(&transfer)
-				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, torqueChannel, timeoutHeight, 0)
+				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, fortressChannel, timeoutHeight, 0)
 			},
 			true,
 			true,
@@ -261,12 +261,12 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 				// Setup Osmosis <=> Fortress IBC relayer
 				denom = "uosmo"
 				sourceChannel = "channel-204"
-				torqueChannel = claimstypes.DefaultAuthorizedChannels[0]
-				path = fmt.Sprintf("%s/%s", transfertypes.PortID, torqueChannel)
+				fortressChannel = claimstypes.DefaultAuthorizedChannels[0]
+				path = fmt.Sprintf("%s/%s", transfertypes.PortID, fortressChannel)
 
 				transfer := transfertypes.NewFungibleTokenPacketData(denom, "100", secpAddrCosmos, secpAddrTorque)
 				bz := transfertypes.ModuleCdc.MustMarshalJSON(&transfer)
-				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, torqueChannel, timeoutHeight, 0)
+				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, fortressChannel, timeoutHeight, 0)
 				// TODO TEST
 			},
 			true,
@@ -299,10 +299,10 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 				Counterparty:   channeltypes.NewCounterparty(transfertypes.PortID, sourceChannel),
 				ConnectionHops: []string{sourceChannel},
 			}
-			suite.app.IBCKeeper.ChannelKeeper.SetChannel(suite.ctx, transfertypes.PortID, torqueChannel, channel)
+			suite.app.IBCKeeper.ChannelKeeper.SetChannel(suite.ctx, transfertypes.PortID, fortressChannel, channel)
 
 			// Set Next Sequence Send
-			suite.app.IBCKeeper.ChannelKeeper.SetNextSequenceSend(suite.ctx, transfertypes.PortID, torqueChannel, 1)
+			suite.app.IBCKeeper.ChannelKeeper.SetNextSequenceSend(suite.ctx, transfertypes.PortID, fortressChannel, 1)
 
 			// Mock the Transferkeeper to always return nil on SendTransfer(), as this
 			// method requires a successfull handshake with the counterparty chain.
@@ -355,14 +355,14 @@ func (suite *KeeperTestSuite) TestGetIBCDenomDestinationIdentifiers() {
 	}{
 		{
 			"invalid native denom",
-			"atorque",
+			"afortress",
 			func() {},
 			true,
 			"", "",
 		},
 		{
 			"invalid IBC denom hash",
-			"ibc/atorque",
+			"ibc/afortress",
 			func() {},
 			true,
 			"", "",
@@ -507,8 +507,8 @@ func (suite *KeeperTestSuite) TestOnRecvPacketFailTransfer() {
 	// Setup Cosmos <=> Fortress IBC relayer
 	denom := "uatom"
 	sourceChannel := "channel-292"
-	torqueChannel := claimstypes.DefaultAuthorizedChannels[1]
-	path := fmt.Sprintf("%s/%s", transfertypes.PortID, torqueChannel)
+	fortressChannel := claimstypes.DefaultAuthorizedChannels[1]
+	path := fmt.Sprintf("%s/%s", transfertypes.PortID, fortressChannel)
 
 	var mockTransferKeeper *MockTransferKeeper
 	expAck := ibcmock.MockAcknowledgement
@@ -561,7 +561,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacketFailTransfer() {
 			suite.app.RecoveryKeeper.SetParams(suite.ctx, params)
 
 			transfer := transfertypes.NewFungibleTokenPacketData(denom, "100", secpAddrCosmos, secpAddrTorque)
-			packet := channeltypes.NewPacket(transfer.GetBytes(), 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, torqueChannel, timeoutHeight, 0)
+			packet := channeltypes.NewPacket(transfer.GetBytes(), 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, fortressChannel, timeoutHeight, 0)
 
 			mockTransferKeeper = &MockTransferKeeper{
 				Keeper: suite.app.BankKeeper,
@@ -575,7 +575,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacketFailTransfer() {
 
 			// Fund receiver account with FORTRESS
 			coins := sdk.NewCoins(
-				sdk.NewCoin("atorque", sdk.NewInt(1000)),
+				sdk.NewCoin("afortress", sdk.NewInt(1000)),
 				sdk.NewCoin(ibcAtomDenom, sdk.NewInt(1000)),
 			)
 			testutil.FundAccount(suite.app.BankKeeper, suite.ctx, secpAddr, coins)

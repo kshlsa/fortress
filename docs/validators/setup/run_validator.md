@@ -17,7 +17,7 @@ If you plan to use a Key Management System (KMS), you should go through these st
 
 ## Create Your Validator
 
-Your node consensus public key (`torquevalconspub...`) can be used to create a new validator by staking FORTRESS tokens. You can find your validator pubkey by running:
+Your node consensus public key (`fortressvalconspub...`) can be used to create a new validator by staking FORTRESS tokens. You can find your validator pubkey by running:
 
 ```bash
 fortressd tendermint show-validator
@@ -33,7 +33,7 @@ To create your validator on testnet, just use the following command:
 
 ```bash
 fortressd tx staking create-validator \
-  --amount=1000000attorque \
+  --amount=1000000atfortress \
   --pubkey=$(fortressd tendermint show-validator) \
   --moniker="choose a moniker" \
   --chain-id=<chain_id> \
@@ -42,7 +42,7 @@ fortressd tx staking create-validator \
   --commission-max-change-rate="0.01" \
   --min-self-delegation="1000000" \
   --gas="auto" \
-  --gas-prices="0.025attorque" \
+  --gas-prices="0.025atfortress" \
   --from=<key_name>
 ```
 
@@ -51,7 +51,7 @@ When specifying commission parameters, the `commission-max-change-rate` is used 
 :::
 
 ::: tip
-`Min-self-delegation` is a strictly positive integer that represents the minimum amount of self-delegated voting power your validator must always have. A `min-self-delegation` of `1000000` means your validator will never have a self-delegation lower than `1 attorque`
+`Min-self-delegation` is a strictly positive integer that represents the minimum amount of self-delegated voting power your validator must always have. A `min-self-delegation` of `1000000` means your validator will never have a self-delegation lower than `1 atfortress`
 :::
 
 You can confirm that you are in the validator set by using a third party explorer.
@@ -72,7 +72,7 @@ fortressd tx staking edit-validator
   --details="To infinity and beyond!" \
   --chain-id=<chain_id> \
   --gas="auto" \
-  --gas-prices="0.025attorque" \
+  --gas-prices="0.025atfortress" \
   --from=<key_name> \
   --commission-rate="0.10"
 ```

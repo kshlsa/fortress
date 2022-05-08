@@ -44,7 +44,7 @@ import (
 	evmtypes "github.com/tharsis/ethermint/x/evm/types"
 
 	cmdcfg "github.com/hardiksa/fortress/v4/cmd/config"
-	torquekr "github.com/hardiksa/fortress/v4/crypto/keyring"
+	fortresskr "github.com/hardiksa/fortress/v4/crypto/keyring"
 	"github.com/hardiksa/fortress/v4/testutil/network"
 )
 
@@ -211,7 +211,7 @@ func initTestnetFiles(
 	args initArgs,
 ) error {
 	if args.chainID == "" {
-		args.chainID = fmt.Sprintf("torque_%d-1", tmrand.Int63n(9999999999999)+1)
+		args.chainID = fmt.Sprintf("fortress_%d-1", tmrand.Int63n(9999999999999)+1)
 	}
 
 	nodeIDs := make([]string, args.numValidators)
@@ -263,7 +263,7 @@ func initTestnetFiles(
 		memo := fmt.Sprintf("%s@%s:26656", nodeIDs[i], ip)
 		genFiles = append(genFiles, nodeConfig.GenesisFile())
 
-		kb, err := keyring.New(sdk.KeyringServiceName(), args.keyringBackend, nodeDir, inBuf, torquekr.Option())
+		kb, err := keyring.New(sdk.KeyringServiceName(), args.keyringBackend, nodeDir, inBuf, fortresskr.Option())
 		if err != nil {
 			return err
 		}

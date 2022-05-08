@@ -35,19 +35,19 @@ There are 3 main types of HRP for the `Addresses`/`PubKeys` available by default
 
 |                    | Address bech32 Prefix | Pubkey bech32 Prefix | Curve           | Address byte length | Pubkey byte length |
 |--------------------|-----------------------|----------------------|-----------------|---------------------|--------------------|
-| Accounts           | `fortress`               | `torquepub`           | `eth_secp256k1` | `20`                | `33` (compressed)  |
-| Validator Operator | `torquevaloper`        | `torquevaloperpub`    | `eth_secp256k1` | `20`                | `33` (compressed)  |
-| Consensus Nodes    | `torquevalcons`        | `torquevalconspub`    | `ed25519`       | `20`                | `32`               |
+| Accounts           | `fortress`               | `fortresspub`           | `eth_secp256k1` | `20`                | `33` (compressed)  |
+| Validator Operator | `fortressvaloper`        | `fortressvaloperpub`    | `eth_secp256k1` | `20`                | `33` (compressed)  |
+| Consensus Nodes    | `fortressvalcons`        | `fortressvalconspub`    | `ed25519`       | `20`                | `32`               |
 
 ## Address formats for clients
 
-`EthAccount` can be represented in both [Bech32](https://en.bitcoin.it/wiki/Bech32) (`torque1...`) and hex (`0x...`) formats for Ethereum's Web3 tooling compatibility.
+`EthAccount` can be represented in both [Bech32](https://en.bitcoin.it/wiki/Bech32) (`fortress1...`) and hex (`0x...`) formats for Ethereum's Web3 tooling compatibility.
 
 The Bech32 format is the default format for Cosmos-SDK queries and transactions through CLI and REST
 clients. The hex format on the other hand, is the Ethereum `common.Address` representation of a
 Cosmos `sdk.AccAddress`.
 
-- **Address (Bech32)**: `torque1z3t55m0l9h0eupuz3dp5t5cypyv674jj7mz2jw`
+- **Address (Bech32)**: `fortress1z3t55m0l9h0eupuz3dp5t5cypyv674jj7mz2jw`
 - **Address ([EIP55](https://eips.ethereum.org/EIPS/eip-55) Hex)**: `0x91defC7fE5603DFA8CC9B655cF5772459BF10c6f`
 - **Compressed Public Key**: `{"@type":"/ethermint.crypto.v1.ethsecp256k1.PubKey","key":"AsV5oddeB+hkByIJo/4lZiVUgXTzNfBPKC73cZ4K1YD2"}`
 
@@ -59,11 +59,11 @@ The `fortressd debug addr <address>` can be used to convert an address between h
 ::: tab Bech32
 
 ```bash
-fortressd debug addr torque1z3t55m0l9h0eupuz3dp5t5cypyv674jj7mz2jw
+fortressd debug addr fortress1z3t55m0l9h0eupuz3dp5t5cypyv674jj7mz2jw
   Address: [20 87 74 109 255 45 223 158 7 130 139 67 69 211 4 9 25 175 86 82]
   Address (hex): 14574A6DFF2DDF9E07828B4345D3040919AF5652
-  Bech32 Acc: torque1z3t55m0l9h0eupuz3dp5t5cypyv674jj7mz2jw
-  Bech32 Val: torquevaloper1z3t55m0l9h0eupuz3dp5t5cypyv674jjn4d6nn
+  Bech32 Acc: fortress1z3t55m0l9h0eupuz3dp5t5cypyv674jj7mz2jw
+  Bech32 Val: fortressvaloper1z3t55m0l9h0eupuz3dp5t5cypyv674jjn4d6nn
 ```
 
 :::
@@ -73,8 +73,8 @@ fortressd debug addr torque1z3t55m0l9h0eupuz3dp5t5cypyv674jj7mz2jw
 fortressd debug addr 14574A6DFF2DDF9E07828B4345D3040919AF5652
   Address: [20 87 74 109 255 45 223 158 7 130 139 67 69 211 4 9 25 175 86 82]
   Address (hex): 14574A6DFF2DDF9E07828B4345D3040919AF5652
-  Bech32 Acc: torque1z3t55m0l9h0eupuz3dp5t5cypyv674jj7mz2jw
-  Bech32 Val: torquevaloper1z3t55m0l9h0eupuz3dp5t5cypyv674jjn4d6nn
+  Bech32 Acc: fortress1z3t55m0l9h0eupuz3dp5t5cypyv674jj7mz2jw
+  Bech32 Val: fortressvaloper1z3t55m0l9h0eupuz3dp5t5cypyv674jjn4d6nn
 ```
 
 :::
@@ -96,7 +96,7 @@ obtain the addresses and keys as mentioned above,
 fortressd keys show mykey --bech acc
 - name: mykey
   type: local
-  address: torque1z3t55m0l9h0eupuz3dp5t5cypyv674jj7mz2jw
+  address: fortress1z3t55m0l9h0eupuz3dp5t5cypyv674jj7mz2jw
   pubkey: '{"@type":"/ethermint.crypto.v1.ethsecp256k1.PubKey","key":"AsV5oddeB+hkByIJo/4lZiVUgXTzNfBPKC73cZ4K1YD2"}'
   mnemonic: ""
 ```
@@ -108,7 +108,7 @@ fortressd keys show mykey --bech acc
 fortressd keys show mykey --bech val
 - name: mykey
   type: local
-  address: torquevaloper1z3t55m0l9h0eupuz3dp5t5cypyv674jjn4d6nn
+  address: fortressvaloper1z3t55m0l9h0eupuz3dp5t5cypyv674jjn4d6nn
   pubkey: '{"@type":"/ethermint.crypto.v1.ethsecp256k1.PubKey","key":"AsV5oddeB+hkByIJo/4lZiVUgXTzNfBPKC73cZ4K1YD2"}'
   mnemonic: ""
 ```
@@ -120,7 +120,7 @@ fortressd keys show mykey --bech val
 fortressd keys show mykey --bech cons
 - name: mykey
   type: local
-  address: torquevalcons1rllqa5d97n6zyjhy6cnscc7zu30zjn3f7wyj2n
+  address: fortressvalcons1rllqa5d97n6zyjhy6cnscc7zu30zjn3f7wyj2n
   pubkey: '{"@type":"/ethermint.crypto.v1.ethsecp256k1.PubKey","key":"A/fVLgIqiLykFQxum96JkSOoTemrXD0tFaFQ1B0cpB2c"}'
   mnemonic: ""
 ```
@@ -141,7 +141,7 @@ fortressd q auth account $(fortressd keys show mykey -a) -o text
   '@type': /ethermint.types.v1.EthAccount
   base_account:
     account_number: "0"
-    address: torque1z3t55m0l9h0eupuz3dp5t5cypyv674jj7mz2jw
+    address: fortress1z3t55m0l9h0eupuz3dp5t5cypyv674jj7mz2jw
     pub_key:
       '@type': /ethermint.crypto.v1.ethsecp256k1.PubKey
       key: AsV5oddeB+hkByIJo/4lZiVUgXTzNfBPKC73cZ4K1YD2
@@ -153,7 +153,7 @@ fortressd q auth account $(fortressd keys show mykey -a) -o text
 
 ``` bash
 # GET /cosmos/auth/v1beta1/accounts/{address}
-curl -X GET "http://localhost:10337/cosmos/auth/v1beta1/accounts/torque14au322k9munkmx5wrchz9q30juf5wjgz2cfqku" -H "accept: application/json"
+curl -X GET "http://localhost:10337/cosmos/auth/v1beta1/accounts/fortress14au322k9munkmx5wrchz9q30juf5wjgz2cfqku" -H "accept: application/json"
 ```
 
 ### JSON-RPC

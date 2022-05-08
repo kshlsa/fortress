@@ -525,13 +525,13 @@ ifeq ($(OS),Windows_NT)
 	mkdir localnet-setup &
 	@$(MAKE) localnet-build
 
-	IF not exist "build/node0/$(TORQUE_BINARY)/config/genesis.json" docker run --rm -v $(CURDIR)/build\fortress\Z fortressd/node "./fortressd testnet --v 4 -o /fortress --keyring-backend=test --ip-addresses torquednode0,torquednode1,torquednode2,torquednode3"
+	IF not exist "build/node0/$(TORQUE_BINARY)/config/genesis.json" docker run --rm -v $(CURDIR)/build\fortress\Z fortressd/node "./fortressd testnet --v 4 -o /fortress --keyring-backend=test --ip-addresses fortressdnode0,fortressdnode1,fortressdnode2,fortressdnode3"
 	docker-compose up -d
 else
 	mkdir -p localnet-setup
 	@$(MAKE) localnet-build
 
-	if ! [ -f localnet-setup/node0/$(TORQUE_BINARY)/config/genesis.json ]; then docker run --rm -v $(CURDIR)/localnet-setup:/fortress:Z fortressd/node "./fortressd testnet --v 4 -o /fortress --keyring-backend=test --ip-addresses torquednode0,torquednode1,torquednode2,torquednode3"; fi
+	if ! [ -f localnet-setup/node0/$(TORQUE_BINARY)/config/genesis.json ]; then docker run --rm -v $(CURDIR)/localnet-setup:/fortress:Z fortressd/node "./fortressd testnet --v 4 -o /fortress --keyring-backend=test --ip-addresses fortressdnode0,fortressdnode1,fortressdnode2,fortressdnode3"; fi
 	docker-compose up -d
 endif
 

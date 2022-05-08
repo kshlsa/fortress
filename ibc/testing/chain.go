@@ -24,7 +24,7 @@ import (
 )
 
 // ChainIDPrefix defines the default chain ID prefix for Fortress test chains
-var ChainIDPrefix = "torque_9000-"
+var ChainIDPrefix = "fortress_9000-"
 
 func init() {
 	ibcgotesting.ChainIDPrefix = ChainIDPrefix

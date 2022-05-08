@@ -60,14 +60,14 @@ func (suite *IBCTestingSuite) SetupTest() {
 	suite.coordinator.CommitNBlocks(suite.IBCCosmosChain, 2)
 
 	// Mint coins locked on the fortress account generated with secp.
-	coinTorque := sdk.NewCoin("atorque", sdk.NewInt(10000))
+	coinTorque := sdk.NewCoin("afortress", sdk.NewInt(10000))
 	coins := sdk.NewCoins(coinTorque)
 	err := suite.TorqueChain.App.(*app.Fortress).BankKeeper.MintCoins(suite.TorqueChain.GetContext(), inflationtypes.ModuleName, coins)
 	suite.Require().NoError(err)
 	err = suite.TorqueChain.App.(*app.Fortress).BankKeeper.SendCoinsFromModuleToAccount(suite.TorqueChain.GetContext(), inflationtypes.ModuleName, suite.IBCOsmosisChain.SenderAccount.GetAddress(), coins)
 	suite.Require().NoError(err)
 
-	// Mint coins on the osmosis side which we'll use to unlock our atorque
+	// Mint coins on the osmosis side which we'll use to unlock our afortress
 	coinOsmo := sdk.NewCoin("uosmo", sdk.NewInt(10))
 	coins = sdk.NewCoins(coinOsmo)
 	err = suite.IBCOsmosisChain.GetSimApp().BankKeeper.MintCoins(suite.IBCOsmosisChain.GetContext(), minttypes.ModuleName, coins)
@@ -75,7 +75,7 @@ func (suite *IBCTestingSuite) SetupTest() {
 	err = suite.IBCOsmosisChain.GetSimApp().BankKeeper.SendCoinsFromModuleToAccount(suite.IBCOsmosisChain.GetContext(), minttypes.ModuleName, suite.IBCOsmosisChain.SenderAccount.GetAddress(), coins)
 	suite.Require().NoError(err)
 
-	// Mint coins on the cosmos side which we'll use to unlock our atorque
+	// Mint coins on the cosmos side which we'll use to unlock our afortress
 	coinAtom := sdk.NewCoin("uatom", sdk.NewInt(10))
 	coins = sdk.NewCoins(coinAtom)
 	err = suite.IBCCosmosChain.GetSimApp().BankKeeper.MintCoins(suite.IBCCosmosChain.GetContext(), minttypes.ModuleName, coins)
@@ -119,11 +119,11 @@ var (
 	}
 	uatomIbcdenom = uatomDenomtrace.IBCDenom()
 
-	atorqueDenomtrace = transfertypes.DenomTrace{
+	afortressDenomtrace = transfertypes.DenomTrace{
 		Path:      "transfer/channel-0",
-		BaseDenom: "atorque",
+		BaseDenom: "afortress",
 	}
-	atorqueIbcdenom = atorqueDenomtrace.IBCDenom()
+	afortressIbcdenom = afortressDenomtrace.IBCDenom()
 
 	uatomOsmoDenomtrace = transfertypes.DenomTrace{
 		Path:      "transfer/channel-0/transfer/channel-1",

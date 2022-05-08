@@ -20,8 +20,8 @@ You need to set the **genesis file** and **seeds**. If you need more information
 
 | Chain ID       | Description   | Site                                                               | Version                                               | Status     |
 | -------------- | ------------- | ------------------------------------------------------------------ | ----------------------------------------------------- | ---------- |
-| `torque_9001-2` | Fortress Mainnet 2 | [Fortress](https://github.com/tharsis/mainnet/tree/main/torque_9001-2) | [`v3.0.x`](https://github.com/hardiksa/fortress/releases) | `Not Live` |
-| `torque_9001-1` | Fortress Mainnet 1 | [Fortress](https://github.com/tharsis/mainnet/tree/main/torque_9001-1) | [`v2.0.1`](https://github.com/hardiksa/fortress/releases/v2.0.1) | `Stale` |
+| `fortress_9001-2` | Fortress Mainnet 2 | [Fortress](https://github.com/tharsis/mainnet/tree/main/fortress_9001-2) | [`v3.0.x`](https://github.com/hardiksa/fortress/releases) | `Not Live` |
+| `fortress_9001-1` | Fortress Mainnet 1 | [Fortress](https://github.com/tharsis/mainnet/tree/main/fortress_9001-1) | [`v2.0.1`](https://github.com/hardiksa/fortress/releases/v2.0.1) | `Stale` |
 
 ## Install `fortressd`
 
@@ -40,7 +40,7 @@ See the Official [Chain IDs](./../technical_concepts/chain_id#official-chain-ids
 :::
 
 ```bash
-fortressd config chain-id torque_9001-2
+fortressd config chain-id fortress_9001-2
 ```
 
 ## Initialize Node
@@ -48,7 +48,7 @@ fortressd config chain-id torque_9001-2
 We need to initialize the node to create all the necessary validator and node configuration files:
 
 ```bash
-fortressd init <your_custom_moniker> --chain-id torque_9001-2
+fortressd init <your_custom_moniker> --chain-id fortress_9001-2
 ```
 
 ::: danger
@@ -96,7 +96,7 @@ seeds = "<node-id>@<ip>:<p2p port>"
 You can use the following code to get seeds from the repo and add it to your config:
 
 ```bash
-SEEDS=`curl -sL https://raw.githubusercontent.com/tharsis/mainnet/main/torque_9001-2/seeds.txt | awk '{print $1}' | paste -s -d, -`
+SEEDS=`curl -sL https://raw.githubusercontent.com/tharsis/mainnet/main/fortress_9001-2/seeds.txt | awk '{print $1}' | paste -s -d, -`
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" ~/.fortressd/config/config.toml
 ```
 
@@ -112,7 +112,7 @@ available peers on the [`mainnet`](https://github.com/tharsis/mainnet) repo.
 A list of available persistent peers is also available in the `#find-peers` channel in the [Fortress Discord](https://discord.gg/fortress). You can get a random 10 entries from the `peers.txt` file in the `PEERS` variable by running the following command:
 
 ```bash
-PEERS=`curl -sL https://raw.githubusercontent.com/tharsis/mainnet/main/torque_9001-2/peers.txt | sort -R | head -n 10 | awk '{print $1}' | paste -s -d, -`
+PEERS=`curl -sL https://raw.githubusercontent.com/tharsis/mainnet/main/fortress_9001-2/peers.txt | sort -R | head -n 10 | awk '{print $1}' | paste -s -d, -`
 ```
 
 Use `sed` to include them into the configuration. You can also add them manually:
@@ -129,7 +129,7 @@ For more details on how to run your validator, follow the validator [these](./se
 
 ```bash
 fortressd tx staking create-validator \
-  --amount=1000000000000atorque \
+  --amount=1000000000000afortress \
   --pubkey=$(fortressd tendermint show-validator) \
   --moniker="TorqueWhale" \
   --chain-id=<chain_id> \
@@ -138,7 +138,7 @@ fortressd tx staking create-validator \
   --commission-max-change-rate="0.01" \
   --min-self-delegation="1000000" \
   --gas="auto" \
-  --gas-prices="0.025atorque" \
+  --gas-prices="0.025afortress" \
   --from=<key_name>
 ```
 

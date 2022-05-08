@@ -6,7 +6,7 @@ order: 1
 
 Use the TorqueJS library for connecting clients to Fortress {synopsis}
 
-[`torquejs`](https://github.com/hardiksa/torquejs) is a JavaScript and TypeScript client library for [Fortress](https://github.com/hardiksa/fortress) and [Ethermint](https://github.com/tharsis/ethermint) nodes.
+[`fortressjs`](https://github.com/hardiksa/fortressjs) is a JavaScript and TypeScript client library for [Fortress](https://github.com/hardiksa/fortress) and [Ethermint](https://github.com/tharsis/ethermint) nodes.
 
 ## Functionalities
 

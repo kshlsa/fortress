@@ -47,7 +47,7 @@ First import the public keys of `test3` into your keyring.
 ```sh
 fortressd keys add \
     test3 \
-    --pubkey=torquepub1addwnpepqgcxazmq6wgt2j4rdfumsfwla0zfk8e5sws3p3zg5dkm9007hmfysxas0u2
+    --pubkey=fortresspub1addwnpepqgcxazmq6wgt2j4rdfumsfwla0zfk8e5sws3p3zg5dkm9007hmfysxas0u2
 ```
 
 Generate the multisig key with 2/3 threshold.
@@ -66,8 +66,8 @@ fortressd keys show multi
 
 - name: multi
   type: multi
-  address: torque1e0fx0q9meawrcq7fmma9x60gk35lpr4xk3884m
-  pubkey: torquepub1ytql0csgqgfzd666axrjzq3mxw59ys6yqcd3ydjvhgs0uzs6kdk5fp4t73gmkl8t6y02yfq7tvfzd666axrjzq3sd69kp5usk492x6nehqjal67ynv0nfqapzrzy3gmdk27la0kjfqfzd666axrjzq6utqt639ka2j3xkncgk65dup06t297ccljmxhvhu3rmk92u3afjuyz9dg9
+  address: fortress1e0fx0q9meawrcq7fmma9x60gk35lpr4xk3884m
+  pubkey: fortresspub1ytql0csgqgfzd666axrjzq3mxw59ys6yqcd3ydjvhgs0uzs6kdk5fp4t73gmkl8t6y02yfq7tvfzd666axrjzq3sd69kp5usk492x6nehqjal67ynv0nfqapzrzy3gmdk27la0kjfqfzd666axrjzq6utqt639ka2j3xkncgk65dup06t297ccljmxhvhu3rmk92u3afjuyz9dg9
   mnemonic: ""
   threshold: 0
   pubkeys: []
@@ -78,26 +78,26 @@ Let's add 10 FORTRESS to the multisig wallet:
 ```bash
 fortressd tx bank send \
     test1 \
-    torque1e0fx0q9meawrcq7fmma9x60gk35lpr4xk3884m \
-    10000000000000000000atorque \
-    --chain-id=torque_9000-4 \
+    fortress1e0fx0q9meawrcq7fmma9x60gk35lpr4xk3884m \
+    10000000000000000000afortress \
+    --chain-id=fortress_9000-4 \
     --gas=auto \
-    --fees=1000000atorque \
+    --fees=1000000afortress \
     --broadcast-mode=block
 ```
 
 ### Step 2: Create the multisig transaction
 
-We want to send 5 FORTRESS from our multisig account to `torque1rgjxswhuxhcrhmyxlval0qa70vxwvqn2e0srft`.
+We want to send 5 FORTRESS from our multisig account to `fortress1rgjxswhuxhcrhmyxlval0qa70vxwvqn2e0srft`.
 
 ```bash
 fortressd tx bank send \
-    torque1rgjxswhuxhcrhmyxlval0qa70vxwvqn2e0srft \
-    torque157g6rn6t6k5rl0dl57zha2wx72t633axqyvvwq \
-    5000000000000000000atorque \
+    fortress1rgjxswhuxhcrhmyxlval0qa70vxwvqn2e0srft \
+    fortress157g6rn6t6k5rl0dl57zha2wx72t633axqyvvwq \
+    5000000000000000000afortress \
     --gas=200000 \
-    --fees=1000000atorque \
-    --chain-id=torque_9000-4 \
+    --fees=1000000afortress \
+    --chain-id=fortress_9000-4 \
     --generate-only > unsignedTx.json
 ```
 
@@ -109,11 +109,11 @@ The file `unsignedTx.json` contains the unsigned transaction encoded in JSON.
     "messages": [
       {
         "@type": "/cosmos.bank.v1beta1.MsgSend",
-        "from_address": "torque1rgjxswhuxhcrhmyxlval0qa70vxwvqn2e0srft",
-        "to_address": "torque157g6rn6t6k5rl0dl57zha2wx72t633axqyvvwq",
+        "from_address": "fortress1rgjxswhuxhcrhmyxlval0qa70vxwvqn2e0srft",
+        "to_address": "fortress157g6rn6t6k5rl0dl57zha2wx72t633axqyvvwq",
         "amount": [
           {
-            "denom": "atorque",
+            "denom": "afortress",
             "amount": "5000000000000000000"
           }
         ]
@@ -129,7 +129,7 @@ The file `unsignedTx.json` contains the unsigned transaction encoded in JSON.
     "fee": {
       "amount": [
         {
-          "denom": "atorque",
+          "denom": "afortress",
           "amount": "1000000"
         }
       ],
@@ -149,19 +149,19 @@ Sign with `test1` and `test2` and create individual signatures.
 ```sh
 fortressd tx sign \
     unsignedTx.json \
-    --multisig=torque1e0fx0q9meawrcq7fmma9x60gk35lpr4xk3884m \
+    --multisig=fortress1e0fx0q9meawrcq7fmma9x60gk35lpr4xk3884m \
     --from=test1 \
     --output-document=test1sig.json \
-    --chain-id=torque_9000-4
+    --chain-id=fortress_9000-4
 ```
 
 ```sh
 fortressd tx sign \
     unsignedTx.json \
-    --multisig=torque1e0fx0q9meawrcq7fmma9x60gk35lpr4xk3884m \
+    --multisig=fortress1e0fx0q9meawrcq7fmma9x60gk35lpr4xk3884m \
     --from=test2 \
     --output-document=test2sig.json \
-    --chain-id=torque_9000-4
+    --chain-id=fortress_9000-4
 ```
 
 ### Step 4: Create multisignature
@@ -174,7 +174,7 @@ fortressd tx multisign \
     multi \
     test1sig.json test2sig.json \
     --output-document=signedTx.json \
-    --chain-id=torque_9000-4
+    --chain-id=fortress_9000-4
 ```
 
 The TX is now signed:
@@ -185,11 +185,11 @@ The TX is now signed:
     "messages": [
       {
         "@type": "/cosmos.bank.v1beta1.MsgSend",
-        "from_address": "torque1rgjxswhuxhcrhmyxlval0qa70vxwvqn2e0srft",
-        "to_address": "torque157g6rn6t6k5rl0dl57zha2wx72t633axqyvvwq",
+        "from_address": "fortress1rgjxswhuxhcrhmyxlval0qa70vxwvqn2e0srft",
+        "to_address": "fortress157g6rn6t6k5rl0dl57zha2wx72t633axqyvvwq",
         "amount": [
           {
-            "denom": "atorque",
+            "denom": "afortress",
             "amount": "5000000000000000000"
           }
         ]
@@ -247,7 +247,7 @@ The TX is now signed:
     "fee": {
       "amount": [
         {
-          "denom": "atorque",
+          "denom": "afortress",
           "amount": "1000000"
         }
       ],
@@ -266,6 +266,6 @@ The TX is now signed:
 
 ```sh
 fortressd tx broadcast signedTx.json \
-    --chain-id=torque_9000-4 \
+    --chain-id=fortress_9000-4 \
     --broadcast-mode=block
 ```

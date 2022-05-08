@@ -15,7 +15,7 @@ import (
 
 func init() {
 	cfg := sdk.GetConfig()
-	cfg.SetBech32PrefixForAccount("fortress", "torquepub")
+	cfg.SetBech32PrefixForAccount("fortress", "fortresspub")
 }
 
 func TestGetTransferSenderRecipient(t *testing.T) {
@@ -56,7 +56,7 @@ func TestGetTransferSenderRecipient(t *testing.T) {
 				Data: transfertypes.ModuleCdc.MustMarshalJSON(
 					&transfertypes.FungibleTokenPacketData{
 						Sender:   "cosmos1",
-						Receiver: "torque1x2w87cvt5mqjncav4lxy8yfreynn273xaldzm6",
+						Receiver: "fortress1x2w87cvt5mqjncav4lxy8yfreynn273xaldzm6",
 						Amount:   "123456",
 					},
 				),
@@ -70,7 +70,7 @@ func TestGetTransferSenderRecipient(t *testing.T) {
 				Data: transfertypes.ModuleCdc.MustMarshalJSON(
 					&transfertypes.FungibleTokenPacketData{
 						Sender:   "cosmos1qql8ag4cluz6r4dz28p3w00dnc9w8ueulg2gmc",
-						Receiver: "torque1",
+						Receiver: "fortress1",
 						Amount:   "123456",
 					},
 				),
@@ -84,13 +84,13 @@ func TestGetTransferSenderRecipient(t *testing.T) {
 				Data: transfertypes.ModuleCdc.MustMarshalJSON(
 					&transfertypes.FungibleTokenPacketData{
 						Sender:   "cosmos1qql8ag4cluz6r4dz28p3w00dnc9w8ueulg2gmc",
-						Receiver: "torque1x2w87cvt5mqjncav4lxy8yfreynn273xaldzm6",
+						Receiver: "fortress1x2w87cvt5mqjncav4lxy8yfreynn273xaldzm6",
 						Amount:   "123456",
 					},
 				),
 			},
-			"torque1qql8ag4cluz6r4dz28p3w00dnc9w8ueunz84wx",
-			"torque1x2w87cvt5mqjncav4lxy8yfreynn273xaldzm6",
+			"fortress1qql8ag4cluz6r4dz28p3w00dnc9w8ueunz84wx",
+			"fortress1x2w87cvt5mqjncav4lxy8yfreynn273xaldzm6",
 			false,
 		},
 		{
@@ -98,14 +98,14 @@ func TestGetTransferSenderRecipient(t *testing.T) {
 			channeltypes.Packet{
 				Data: transfertypes.ModuleCdc.MustMarshalJSON(
 					&transfertypes.FungibleTokenPacketData{
-						Sender:   "torque1x2w87cvt5mqjncav4lxy8yfreynn273xaldzm6",
+						Sender:   "fortress1x2w87cvt5mqjncav4lxy8yfreynn273xaldzm6",
 						Receiver: "cosmos1qql8ag4cluz6r4dz28p3w00dnc9w8ueulg2gmc",
 						Amount:   "123456",
 					},
 				),
 			},
-			"torque1x2w87cvt5mqjncav4lxy8yfreynn273xaldzm6",
-			"torque1qql8ag4cluz6r4dz28p3w00dnc9w8ueunz84wx",
+			"fortress1x2w87cvt5mqjncav4lxy8yfreynn273xaldzm6",
+			"fortress1qql8ag4cluz6r4dz28p3w00dnc9w8ueunz84wx",
 			false,
 		},
 		{
@@ -114,13 +114,13 @@ func TestGetTransferSenderRecipient(t *testing.T) {
 				Data: transfertypes.ModuleCdc.MustMarshalJSON(
 					&transfertypes.FungibleTokenPacketData{
 						Sender:   "osmo1qql8ag4cluz6r4dz28p3w00dnc9w8ueuhnecd2",
-						Receiver: "torque1x2w87cvt5mqjncav4lxy8yfreynn273xaldzm6",
+						Receiver: "fortress1x2w87cvt5mqjncav4lxy8yfreynn273xaldzm6",
 						Amount:   "123456",
 					},
 				),
 			},
-			"torque1qql8ag4cluz6r4dz28p3w00dnc9w8ueunz84wx",
-			"torque1x2w87cvt5mqjncav4lxy8yfreynn273xaldzm6",
+			"fortress1qql8ag4cluz6r4dz28p3w00dnc9w8ueunz84wx",
+			"fortress1x2w87cvt5mqjncav4lxy8yfreynn273xaldzm6",
 			false,
 		},
 	}
@@ -164,7 +164,7 @@ func TestGetTransferAmount(t *testing.T) {
 				Data: transfertypes.ModuleCdc.MustMarshalJSON(
 					&transfertypes.FungibleTokenPacketData{
 						Sender:   "cosmos1qql8ag4cluz6r4dz28p3w00dnc9w8ueulg2gmc",
-						Receiver: "torque1x2w87cvt5mqjncav4lxy8yfreynn273xaldzm6",
+						Receiver: "fortress1x2w87cvt5mqjncav4lxy8yfreynn273xaldzm6",
 						Amount:   "",
 					},
 				),
@@ -178,7 +178,7 @@ func TestGetTransferAmount(t *testing.T) {
 				Data: transfertypes.ModuleCdc.MustMarshalJSON(
 					&transfertypes.FungibleTokenPacketData{
 						Sender:   "cosmos1qql8ag4cluz6r4dz28p3w00dnc9w8ueulg2gmc",
-						Receiver: "torque1x2w87cvt5mqjncav4lxy8yfreynn273xaldzm6",
+						Receiver: "fortress1x2w87cvt5mqjncav4lxy8yfreynn273xaldzm6",
 						Amount:   "test",
 					},
 				),
@@ -192,7 +192,7 @@ func TestGetTransferAmount(t *testing.T) {
 				Data: transfertypes.ModuleCdc.MustMarshalJSON(
 					&transfertypes.FungibleTokenPacketData{
 						Sender:   "cosmos1qql8ag4cluz6r4dz28p3w00dnc9w8ueulg2gmc",
-						Receiver: "torque1x2w87cvt5mqjncav4lxy8yfreynn273xaldzm6",
+						Receiver: "fortress1x2w87cvt5mqjncav4lxy8yfreynn273xaldzm6",
 						Amount:   "10000",
 					},
 				),
@@ -206,7 +206,7 @@ func TestGetTransferAmount(t *testing.T) {
 				Data: transfertypes.ModuleCdc.MustMarshalJSON(
 					&transfertypes.FungibleTokenPacketData{
 						Sender:   "cosmos1qql8ag4cluz6r4dz28p3w00dnc9w8ueulg2gmc",
-						Receiver: "torque1x2w87cvt5mqjncav4lxy8yfreynn273xaldzm6",
+						Receiver: "fortress1x2w87cvt5mqjncav4lxy8yfreynn273xaldzm6",
 						Amount:   types.IBCTriggerAmt,
 					},
 				),

@@ -156,9 +156,9 @@ const (
 	// Name defines the application binary name
 	Name = "fortressd"
 	// MainnetChainID defines the Fortress EIP155 chain ID for mainnet
-	MainnetChainID = "torque_9001"
+	MainnetChainID = "fortress_9001"
 	// TestnetChainID defines the Fortress EIP155 chain ID for testnet
-	TestnetChainID = "torque_9000"
+	TestnetChainID = "fortress_9000"
 )
 
 var (

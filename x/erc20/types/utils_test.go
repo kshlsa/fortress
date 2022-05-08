@@ -37,14 +37,14 @@ func TestEqualMetadata(t *testing.T) {
 		{
 			"equal metadata",
 			banktypes.Metadata{
-				Base:        "atorque",
+				Base:        "afortress",
 				Display:     "fortress",
 				Name:        "Fortress",
 				Symbol:      "FORTRESS",
 				Description: "EVM, staking and governance denom of Fortress",
 				DenomUnits: []*banktypes.DenomUnit{
 					{
-						Denom:    "atorque",
+						Denom:    "afortress",
 						Exponent: 0,
 						Aliases:  []string{"atto fortress"},
 					},
@@ -55,14 +55,14 @@ func TestEqualMetadata(t *testing.T) {
 				},
 			},
 			banktypes.Metadata{
-				Base:        "atorque",
+				Base:        "afortress",
 				Display:     "fortress",
 				Name:        "Fortress",
 				Symbol:      "FORTRESS",
 				Description: "EVM, staking and governance denom of Fortress",
 				DenomUnits: []*banktypes.DenomUnit{
 					{
-						Denom:    "atorque",
+						Denom:    "afortress",
 						Exponent: 0,
 						Aliases:  []string{"atto fortress"},
 					},
@@ -77,24 +77,24 @@ func TestEqualMetadata(t *testing.T) {
 		{
 			"different base field",
 			banktypes.Metadata{
-				Base: "atorque",
+				Base: "afortress",
 			},
 			banktypes.Metadata{
-				Base: "tatorque",
+				Base: "tafortress",
 			},
 			true,
 		},
 		{
 			"different denom units length",
 			banktypes.Metadata{
-				Base:        "atorque",
+				Base:        "afortress",
 				Display:     "fortress",
 				Name:        "Fortress",
 				Symbol:      "FORTRESS",
 				Description: "EVM, staking and governance denom of Fortress",
 				DenomUnits: []*banktypes.DenomUnit{
 					{
-						Denom:    "atorque",
+						Denom:    "afortress",
 						Exponent: 0,
 						Aliases:  []string{"atto fortress"},
 					},
@@ -105,14 +105,14 @@ func TestEqualMetadata(t *testing.T) {
 				},
 			},
 			banktypes.Metadata{
-				Base:        "atorque",
+				Base:        "afortress",
 				Display:     "fortress",
 				Name:        "Fortress",
 				Symbol:      "FORTRESS",
 				Description: "EVM, staking and governance denom of Fortress",
 				DenomUnits: []*banktypes.DenomUnit{
 					{
-						Denom:    "atorque",
+						Denom:    "afortress",
 						Exponent: 0,
 						Aliases:  []string{"atto fortress"},
 					},
@@ -123,19 +123,19 @@ func TestEqualMetadata(t *testing.T) {
 		{
 			"different denom units",
 			banktypes.Metadata{
-				Base:        "atorque",
+				Base:        "afortress",
 				Display:     "fortress",
 				Name:        "Fortress",
 				Symbol:      "FORTRESS",
 				Description: "EVM, staking and governance denom of Fortress",
 				DenomUnits: []*banktypes.DenomUnit{
 					{
-						Denom:    "atorque",
+						Denom:    "afortress",
 						Exponent: 0,
 						Aliases:  []string{"atto fortress"},
 					},
 					{
-						Denom:    "utorque",
+						Denom:    "ufortress",
 						Exponent: 12,
 						Aliases:  []string{"micro fortress"},
 					},
@@ -146,19 +146,19 @@ func TestEqualMetadata(t *testing.T) {
 				},
 			},
 			banktypes.Metadata{
-				Base:        "atorque",
+				Base:        "afortress",
 				Display:     "fortress",
 				Name:        "Fortress",
 				Symbol:      "FORTRESS",
 				Description: "EVM, staking and governance denom of Fortress",
 				DenomUnits: []*banktypes.DenomUnit{
 					{
-						Denom:    "atorque",
+						Denom:    "afortress",
 						Exponent: 0,
 						Aliases:  []string{"atto fortress"},
 					},
 					{
-						Denom:    "Utorque",
+						Denom:    "Ufortress",
 						Exponent: 12,
 						Aliases:  []string{"micro fortress"},
 					},
@@ -203,20 +203,20 @@ func TestEqualAliases(t *testing.T) {
 		},
 		{
 			"different values",
-			[]string{"attotorque"},
+			[]string{"attofortress"},
 			[]string{"atto fortress"},
 			false,
 		},
 		{
 			"same values, unsorted",
-			[]string{"atto fortress", "atorque"},
-			[]string{"atorque", "atto fortress"},
+			[]string{"atto fortress", "afortress"},
+			[]string{"afortress", "atto fortress"},
 			false,
 		},
 		{
 			"same values, sorted",
-			[]string{"atorque", "atto fortress"},
-			[]string{"atorque", "atto fortress"},
+			[]string{"afortress", "atto fortress"},
+			[]string{"afortress", "atto fortress"},
 			true,
 		},
 	}

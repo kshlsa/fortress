@@ -19,7 +19,7 @@ func TestInitCmd(t *testing.T) {
 		"init",       // Test the init cmd
 		"fortress-test", // Moniker
 		fmt.Sprintf("--%s=%s", cli.FlagOverwrite, "true"), // Overwrite genesis.json, in case it already exists
-		fmt.Sprintf("--%s=%s", flags.FlagChainID, "torque_9000-1"),
+		fmt.Sprintf("--%s=%s", flags.FlagChainID, "fortress_9000-1"),
 	})
 
 	err := svrcmd.Execute(rootCmd, app.DefaultNodeHome)

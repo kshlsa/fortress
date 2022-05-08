@@ -1,7 +1,7 @@
 #!/bin/bash
 
 KEY="mykey"
-CHAINID="torque_9000-1"
+CHAINID="fortress_9000-1"
 MONIKER="mymoniker"
 DATA_DIR=$(mktemp -d -t fortress-datadir.XXXXX)
 
@@ -11,7 +11,7 @@ echo "init Fortress with moniker=$MONIKER and chain-id=$CHAINID"
 ./fortressd init $MONIKER --chain-id $CHAINID --home $DATA_DIR
 echo "prepare genesis: Allocate genesis accounts"
 ./fortressd add-genesis-account \
-"$(./fortressd keys show $KEY -a --home $DATA_DIR --keyring-backend test)" 1000000000000000000atorque,1000000000000000000stake \
+"$(./fortressd keys show $KEY -a --home $DATA_DIR --keyring-backend test)" 1000000000000000000afortress,1000000000000000000stake \
 --home $DATA_DIR --keyring-backend test
 echo "prepare genesis: Sign genesis transaction"
 ./fortressd gentx $KEY 1000000000000000000stake --keyring-backend test --home $DATA_DIR --keyring-backend test --chain-id $CHAINID

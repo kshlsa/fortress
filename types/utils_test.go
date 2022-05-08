@@ -16,7 +16,7 @@ import (
 
 func init() {
 	cfg := sdk.GetConfig()
-	cfg.SetBech32PrefixForAccount("fortress", "torquepub")
+	cfg.SetBech32PrefixForAccount("fortress", "fortresspub")
 }
 
 func TestIsSupportedKeys(t *testing.T) {
@@ -93,26 +93,26 @@ func TestGetTorqueAddressFromBech32(t *testing.T) {
 		},
 		{
 			"invalid address bytes",
-			"torque1123",
+			"fortress1123",
 			"",
 			true,
 		},
 		{
 			"fortress address",
-			"torque1qql8ag4cluz6r4dz28p3w00dnc9w8ueunz84wx",
-			"torque1qql8ag4cluz6r4dz28p3w00dnc9w8ueunz84wx",
+			"fortress1qql8ag4cluz6r4dz28p3w00dnc9w8ueunz84wx",
+			"fortress1qql8ag4cluz6r4dz28p3w00dnc9w8ueunz84wx",
 			false,
 		},
 		{
 			"cosmos address",
 			"cosmos1qql8ag4cluz6r4dz28p3w00dnc9w8ueulg2gmc",
-			"torque1qql8ag4cluz6r4dz28p3w00dnc9w8ueunz84wx",
+			"fortress1qql8ag4cluz6r4dz28p3w00dnc9w8ueunz84wx",
 			false,
 		},
 		{
 			"osmosis address",
 			"osmo1qql8ag4cluz6r4dz28p3w00dnc9w8ueuhnecd2",
-			"torque1qql8ag4cluz6r4dz28p3w00dnc9w8ueunz84wx",
+			"fortress1qql8ag4cluz6r4dz28p3w00dnc9w8ueunz84wx",
 			false,
 		},
 	}

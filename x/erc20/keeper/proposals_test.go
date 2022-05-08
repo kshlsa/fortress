@@ -211,18 +211,18 @@ func (suite KeeperTestSuite) TestRegisterCoin() {
 			false,
 		},
 		{
-			"evm denom registration - atorque",
+			"evm denom registration - afortress",
 			func() {
-				metadata.Base = "atorque"
+				metadata.Base = "afortress"
 				err := suite.app.BankKeeper.MintCoins(suite.ctx, inflationtypes.ModuleName, sdk.Coins{sdk.NewInt64Coin(metadata.Base, 1)})
 				suite.Require().NoError(err)
 			},
 			false,
 		},
 		{
-			"evm denom registration - wtorque",
+			"evm denom registration - wfortress",
 			func() {
-				metadata.Base = "wtorque"
+				metadata.Base = "wfortress"
 				err := suite.app.BankKeeper.MintCoins(suite.ctx, inflationtypes.ModuleName, sdk.Coins{sdk.NewInt64Coin(metadata.Base, 1)})
 				suite.Require().NoError(err)
 			},

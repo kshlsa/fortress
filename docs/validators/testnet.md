@@ -12,10 +12,10 @@ You specify the network you want to join by setting the **genesis file** and **s
 
 | Testnet Chain ID | Description                       | Site                                                                       | Version                                                                      | Status  |
 | ---------------- | --------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ------- |
-| `torque_9000-4`   | Torque_9000-4 Testnet              | [Fortress 9000-4](https://github.com/tharsis/testnets/tree/main/torque_9000-4) | [`v3.0.0`](https://github.com/hardiksa/fortress/releases/tag/v3.0.0)             | `Live`  |
-| `torque_9000-3`   | Torque_9000-3 Testnet              | [Fortress 9000-3](https://github.com/tharsis/testnets/tree/main/torque_9000-3) | [`v1.0.0-beta1`](https://github.com/hardiksa/fortress/releases/tag/v1.0.0-beta1) | `Stale` |
-| `torque_9000-2`   | Olympus Mons Incentivized Testnet | [Olympus Mons](https://github.com/tharsis/testnets/tree/main/olympus_mons) | [`v0.3.x`](https://github.com/hardiksa/fortress/releases)                        | `Stale` |
-| `torque_9000-1`   | Arsia Mons Testnet                | [Arsia Mons](https://github.com/tharsis/testnets/tree/main/arsia_mons)     | [`v0.1.x`](https://github.com/hardiksa/fortress/releases)                        | `Stale` |
+| `fortress_9000-4`   | Torque_9000-4 Testnet              | [Fortress 9000-4](https://github.com/tharsis/testnets/tree/main/fortress_9000-4) | [`v3.0.0`](https://github.com/hardiksa/fortress/releases/tag/v3.0.0)             | `Live`  |
+| `fortress_9000-3`   | Torque_9000-3 Testnet              | [Fortress 9000-3](https://github.com/tharsis/testnets/tree/main/fortress_9000-3) | [`v1.0.0-beta1`](https://github.com/hardiksa/fortress/releases/tag/v1.0.0-beta1) | `Stale` |
+| `fortress_9000-2`   | Olympus Mons Incentivized Testnet | [Olympus Mons](https://github.com/tharsis/testnets/tree/main/olympus_mons) | [`v0.3.x`](https://github.com/hardiksa/fortress/releases)                        | `Stale` |
+| `fortress_9000-1`   | Arsia Mons Testnet                | [Arsia Mons](https://github.com/tharsis/testnets/tree/main/arsia_mons)     | [`v0.1.x`](https://github.com/hardiksa/fortress/releases)                        | `Stale` |
 
 ## Install `fortressd`
 
@@ -34,7 +34,7 @@ See the Official [Chain IDs](./../users/technical_concepts/chain_id#official-cha
 :::
 
 ```bash
-fortressd config chain-id torque_9000-4
+fortressd config chain-id fortress_9000-4
 ```
 
 ## Initialize Node
@@ -42,7 +42,7 @@ fortressd config chain-id torque_9000-4
 We need to initialize the node to create all the necessary validator and node configuration files:
 
 ```bash
-fortressd init <your_custom_moniker> --chain-id torque_9000-4
+fortressd init <your_custom_moniker> --chain-id fortress_9000-4
 ```
 
 ::: danger
@@ -60,7 +60,7 @@ Check the `genesis.json` file from the [`testnets`](https://github.com/tharsis/t
 
 ```bash
 sudo apt install -y unzip wget
-wget -P ~/.fortressd/config https://github.com/tharsis/testnets/raw/main/torque_9000-4/genesis.zip
+wget -P ~/.fortressd/config https://github.com/tharsis/testnets/raw/main/fortress_9000-4/genesis.zip
 cd ~/.fortressd/config
 unzip genesis.zip
 rm genesis.zip
@@ -93,7 +93,7 @@ seeds = "<node-id>@<ip>:<p2p port>"
 You can use the following code to get seeds from the repo and add it to your config:
 
 ```bash
-SEEDS=`curl -sL https://raw.githubusercontent.com/tharsis/testnets/main/torque_9000-4/seeds.txt | awk '{print $1}' | paste -s -d, -`
+SEEDS=`curl -sL https://raw.githubusercontent.com/tharsis/testnets/main/fortress_9000-4/seeds.txt | awk '{print $1}' | paste -s -d, -`
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" ~/.fortressd/config/config.toml
 ```
 
@@ -109,7 +109,7 @@ available peers on the [`testnets`](https://github.com/tharsis/testnets) repo.
 A list of available persistent peers is also available in the `#find-peers` channel in the [Fortress Discord](https://discord.gg/fortress). You can get a random 10 entries from the `peers.txt` file in the `PEERS` variable by running the following command:
 
 ```bash
-PEERS=`curl -sL https://raw.githubusercontent.com/tharsis/testnets/main/torque_9000-4/peers.txt | sort -R | head -n 10 | awk '{print $1}' | paste -s -d, -`
+PEERS=`curl -sL https://raw.githubusercontent.com/tharsis/testnets/main/fortress_9000-4/peers.txt | sort -R | head -n 10 | awk '{print $1}' | paste -s -d, -`
 ```
 
 Use `sed` to include them into the configuration. You can also add them manually:
@@ -128,7 +128,7 @@ For more details on how to run your validator, follow [these](./setup/run_valida
 
 ```bash
 fortressd tx staking create-validator \
-  --amount=1000000000000attorque \
+  --amount=1000000000000atfortress \
   --pubkey=$(fortressd tendermint show-validator) \
   --moniker="TorqueWhale" \
   --chain-id=<chain_id> \
@@ -137,7 +137,7 @@ fortressd tx staking create-validator \
   --commission-max-change-rate="0.01" \
   --min-self-delegation="1000000" \
   --gas="auto" \
-  --gas-prices="0.025attorque" \
+  --gas-prices="0.025atfortress" \
   --from=<key_name>
 ```
 

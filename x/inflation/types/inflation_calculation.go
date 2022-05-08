@@ -41,7 +41,7 @@ func CalculateEpochMintProvision(
 
 	// Multiply epochMintProvision with power reduction (10^18 for fortress) as the
 	// calculation is based on `fortress` and the issued tokens need to be given in
-	// `atorque`
+	// `afortress`
 	epochProvision = epochProvision.Mul(ethermint.PowerReduction.ToDec())
 	return epochProvision
 }

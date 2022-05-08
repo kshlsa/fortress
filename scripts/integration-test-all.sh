@@ -17,7 +17,7 @@ RPC_PORT="854"
 IP_ADDR="0.0.0.0"
 
 KEY="mykey"
-CHAINID="torque_9000-1"
+CHAINID="fortress_9000-1"
 MONIKER="mymoniker"
 
 ## default port prefixes for fortressd
@@ -70,7 +70,7 @@ init_func() {
     "$PWD"/build/fortressd keys add $KEY"$i" --keyring-backend test --home "$DATA_DIR$i" --no-backup --algo "eth_secp256k1"
     "$PWD"/build/fortressd init $MONIKER --chain-id $CHAINID --home "$DATA_DIR$i"
     "$PWD"/build/fortressd add-genesis-account \
-    "$("$PWD"/build/fortressd keys show "$KEY$i" --keyring-backend test -a --home "$DATA_DIR$i")" 1000000000000000000atorque,1000000000000000000stake \
+    "$("$PWD"/build/fortressd keys show "$KEY$i" --keyring-backend test -a --home "$DATA_DIR$i")" 1000000000000000000afortress,1000000000000000000stake \
     --keyring-backend test --home "$DATA_DIR$i"
     "$PWD"/build/fortressd gentx "$KEY$i" 1000000000000000000stake --chain-id $CHAINID --keyring-backend test --home "$DATA_DIR$i"
     "$PWD"/build/fortressd collect-gentxs --home "$DATA_DIR$i"

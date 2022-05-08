@@ -19,7 +19,7 @@ Please find the following resources for in-depth information:
     - **[Multi Node](./localnet/multi_node.md)**: Run a local testnet with multiple nodes.
     - **[Testnet](./localnet/testnet_cmd.md)**: Use the testnet command of the Fortress daemon.
 - **Libraries**:
-    - **[TorqueJS](./libraries/torquejs.md)**: Javascript library for Fortress.
+    - **[TorqueJS](./libraries/fortressjs.md)**: Javascript library for Fortress.
 
 ### Remote Procedure Calls (RPCs)
 
