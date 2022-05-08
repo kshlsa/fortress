@@ -5,7 +5,7 @@ func EnableObservability() error {
 	// if true {
 	// Temporarily disabling this until we can configure out port reuse
 	// fast enough or enabling observability through the config.
-	// Please see https://github.com/hardiksa/torque/v4/issues/84
+	// Please see https://github.com/hardiksa/fortress/v4/issues/84
 	// return nil
 	// }
 
@@ -25,7 +25,7 @@ func EnableObservability() error {
 	// mux := http.NewServeMux()
 	// mux.Handle("/metrics", pe)
 
-	// // TODO: Derive the Prometheus observability exporter from the Torque config.
+	// // TODO: Derive the Prometheus observability exporter from the Fortress config.
 	// addr := ":8877"
 	// go func() {
 	// 	println("Serving the Prometheus observability exporter at", addr)

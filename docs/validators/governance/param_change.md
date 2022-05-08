@@ -22,9 +22,9 @@ For a comprehensive list of available module parameters see the table below:
 | `slashing`     | `cosmos-sdk` | [reference](https://docs.cosmos.network/main/modules/slashing/08_params.html)                 |
 | `staking`      | `cosmos-sdk` | [reference](https://docs.cosmos.network/main/modules/staking/08_params.html)                  |
 | `transfer`     | `ibc-go`     | [reference](https://github.com/cosmos/ibc-go/blob/main/modules/apps/transfer/spec/07_params.md) |
-| `evm`          | `ethermint`  | [reference](https://torque.dev/modules/evm/08_params.html)                                       |
-| `feemarket`    | `ethermint`  | [reference](https://torque.dev/modules/feemarket/07_params.html)                                 |
-| `claims`       | `torque`      | [reference](https://torque.dev/modules/claims/06_parameters.html)                                |
-| `erc20`        | `torque`      | [reference](https://torque.dev/modules/erc20/07_parameters.html)                                 |
-| `incentives`   | `torque`      | [reference](https://torque.dev/modules/incentives/07_parameters.html)                            |
-| `inflation`    | `torque`      | [reference](https://torque.dev/modules/inflation/05_parameters.html)                             |
+| `evm`          | `ethermint`  | [reference](https://fortress.dev/modules/evm/08_params.html)                                       |
+| `feemarket`    | `ethermint`  | [reference](https://fortress.dev/modules/feemarket/07_params.html)                                 |
+| `claims`       | `fortress`      | [reference](https://fortress.dev/modules/claims/06_parameters.html)                                |
+| `erc20`        | `fortress`      | [reference](https://fortress.dev/modules/erc20/07_parameters.html)                                 |
+| `incentives`   | `fortress`      | [reference](https://fortress.dev/modules/incentives/07_parameters.html)                            |
+| `inflation`    | `fortress`      | [reference](https://fortress.dev/modules/inflation/05_parameters.html)                             |

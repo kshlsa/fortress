@@ -3,7 +3,7 @@ package keeper
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/hardiksa/torque/v4/x/incentives/types"
+	"github.com/hardiksa/fortress/v4/x/incentives/types"
 )
 
 // GetParams returns the total set of incentives parameters.

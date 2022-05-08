@@ -14,7 +14,7 @@ import (
 	ibcgotesting "github.com/cosmos/ibc-go/v3/testing"
 	ibcmock "github.com/cosmos/ibc-go/v3/testing/mock"
 
-	"github.com/hardiksa/torque/v4/x/claims/types"
+	"github.com/hardiksa/fortress/v4/x/claims/types"
 )
 
 var timeoutHeight = clienttypes.NewHeight(1000, 1000)
@@ -224,7 +224,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 		{
 			"fail - invalid sender",
 			func() {
-				transfer := transfertypes.NewFungibleTokenPacketData("atorque", "100", "torque", receiverStr)
+				transfer := transfertypes.NewFungibleTokenPacketData("atorque", "100", "fortress", receiverStr)
 				bz := transfertypes.ModuleCdc.MustMarshalJSON(&transfer)
 				packet := channeltypes.NewPacket(bz, 1, transfertypes.PortID, "channel-0", transfertypes.PortID, "channel-0", timeoutHeight, 0)
 

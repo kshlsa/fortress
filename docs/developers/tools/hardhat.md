@@ -4,7 +4,7 @@ order: 2
 
 # Hardhat: Deploying a Smart Contract
 
-Learn how to deploy a simple Solidity-based smart contract to Torque using the Hardhat environment {synopsis}
+Learn how to deploy a simple Solidity-based smart contract to Fortress using the Hardhat environment {synopsis}
 
 [Hardhat](https://hardhat.org/) is a flexible development environment for building Ethereum-based smart contracts. It is designed with integrations and extensibility in mind
 
@@ -98,7 +98,7 @@ module.exports = {
     hardhat: {
     },
     testnet: {
-      url: "https://torque-archive-testnet.api.bdnodes.net:8545/",
+      url: "https://fortress-archive-testnet.api.bdnodes.net:8545/",
       accounts: [privateKey1, privateKey2, ...]
     }
   },

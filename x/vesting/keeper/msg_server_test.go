@@ -10,8 +10,8 @@ import (
 	sdkvesting "github.com/cosmos/cosmos-sdk/x/auth/vesting/types"
 
 	"github.com/tharsis/ethermint/tests"
-	"github.com/hardiksa/torque/v4/testutil"
-	"github.com/hardiksa/torque/v4/x/vesting/types"
+	"github.com/hardiksa/fortress/v4/testutil"
+	"github.com/hardiksa/fortress/v4/x/vesting/types"
 )
 
 var (

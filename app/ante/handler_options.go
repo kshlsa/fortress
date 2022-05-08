@@ -14,10 +14,10 @@ import (
 	ethante "github.com/tharsis/ethermint/app/ante"
 	evmtypes "github.com/tharsis/ethermint/x/evm/types"
 
-	vestingtypes "github.com/hardiksa/torque/v4/x/vesting/types"
+	vestingtypes "github.com/hardiksa/fortress/v4/x/vesting/types"
 )
 
-// HandlerOptions defines the list of module keepers required to run the Torque
+// HandlerOptions defines the list of module keepers required to run the Fortress
 // AnteHandler decorators.
 type HandlerOptions struct {
 	AccountKeeper   evmtypes.AccountKeeper

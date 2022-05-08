@@ -9,7 +9,7 @@ import (
 	"github.com/stretchr/testify/mock"
 	"github.com/tharsis/ethermint/crypto/ethsecp256k1"
 	"github.com/tharsis/ethermint/tests"
-	"github.com/hardiksa/torque/v4/testutil"
+	"github.com/hardiksa/fortress/v4/testutil"
 
 	transfertypes "github.com/cosmos/ibc-go/v3/modules/apps/transfer/types"
 	clienttypes "github.com/cosmos/ibc-go/v3/modules/core/02-client/types"
@@ -17,11 +17,11 @@ import (
 	ibcgotesting "github.com/cosmos/ibc-go/v3/testing"
 	ibcmock "github.com/cosmos/ibc-go/v3/testing/mock"
 
-	claimstypes "github.com/hardiksa/torque/v4/x/claims/types"
-	incentivestypes "github.com/hardiksa/torque/v4/x/incentives/types"
-	"github.com/hardiksa/torque/v4/x/recovery/keeper"
-	"github.com/hardiksa/torque/v4/x/recovery/types"
-	vestingtypes "github.com/hardiksa/torque/v4/x/vesting/types"
+	claimstypes "github.com/hardiksa/fortress/v4/x/claims/types"
+	incentivestypes "github.com/hardiksa/fortress/v4/x/incentives/types"
+	"github.com/hardiksa/fortress/v4/x/recovery/keeper"
+	"github.com/hardiksa/fortress/v4/x/recovery/types"
+	vestingtypes "github.com/hardiksa/fortress/v4/x/vesting/types"
 )
 
 func (suite *KeeperTestSuite) TestOnRecvPacket() {
@@ -38,7 +38,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 	ethsecpAddrTorque := sdk.AccAddress(ethPk.PubKey().Address()).String()
 	ethsecpAddrCosmos := sdk.MustBech32ifyAddressBytes(sdk.Bech32MainPrefix, ethsecpAddr)
 
-	// Setup Cosmos <=> Torque IBC relayer
+	// Setup Cosmos <=> Fortress IBC relayer
 	denom := "uatom"
 	sourceChannel := "channel-292"
 	torqueChannel := claimstypes.DefaultAuthorizedChannels[1]
@@ -110,7 +110,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 		{
 			"fail - invalid sender - missing '1' ",
 			func() {
-				transfer := transfertypes.NewFungibleTokenPacketData(denom, "100", "torque", ethsecpAddrCosmos)
+				transfer := transfertypes.NewFungibleTokenPacketData(denom, "100", "fortress", ethsecpAddrCosmos)
 				bz := transfertypes.ModuleCdc.MustMarshalJSON(&transfer)
 				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, torqueChannel, timeoutHeight, 0)
 			},
@@ -232,7 +232,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 			),
 		},
 		{
-			"recovery - send uatom from cosmos to torque",
+			"recovery - send uatom from cosmos to fortress",
 			func() {
 				transfer := transfertypes.NewFungibleTokenPacketData(denom, "100", secpAddrCosmos, secpAddrTorque)
 				bz := transfertypes.ModuleCdc.MustMarshalJSON(&transfer)
@@ -243,7 +243,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 			nil,
 		},
 		{
-			"recovery - send ibc/uosmo from cosmos to torque",
+			"recovery - send ibc/uosmo from cosmos to fortress",
 			func() {
 				denom = ibcOsmoDenom
 
@@ -256,9 +256,9 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 			nil,
 		},
 		{
-			"recovery - send uosmo from osmosis to torque",
+			"recovery - send uosmo from osmosis to fortress",
 			func() {
-				// Setup Osmosis <=> Torque IBC relayer
+				// Setup Osmosis <=> Fortress IBC relayer
 				denom = "uosmo"
 				sourceChannel = "channel-204"
 				torqueChannel = claimstypes.DefaultAuthorizedChannels[0]
@@ -318,7 +318,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 			suite.Require().True(found)
 			suite.app.RecoveryKeeper = keeper.NewKeeper(sp, suite.app.AccountKeeper, suite.app.BankKeeper, suite.app.IBCKeeper.ChannelKeeper, mockTransferKeeper, suite.app.ClaimsKeeper)
 
-			// Fund receiver account with TORQUE, ERC20 coins and IBC vouchers
+			// Fund receiver account with FORTRESS, ERC20 coins and IBC vouchers
 			testutil.FundAccount(suite.app.BankKeeper, suite.ctx, secpAddr, coins)
 
 			// Perform IBC callback
@@ -504,7 +504,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacketFailTransfer() {
 	secpAddrTorque := secpAddr.String()
 	secpAddrCosmos := sdk.MustBech32ifyAddressBytes(sdk.Bech32MainPrefix, secpAddr)
 
-	// Setup Cosmos <=> Torque IBC relayer
+	// Setup Cosmos <=> Fortress IBC relayer
 	denom := "uatom"
 	sourceChannel := "channel-292"
 	torqueChannel := claimstypes.DefaultAuthorizedChannels[1]
@@ -573,7 +573,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacketFailTransfer() {
 			suite.Require().True(found)
 			suite.app.RecoveryKeeper = keeper.NewKeeper(sp, suite.app.AccountKeeper, suite.app.BankKeeper, suite.app.IBCKeeper.ChannelKeeper, mockTransferKeeper, suite.app.ClaimsKeeper)
 
-			// Fund receiver account with TORQUE
+			// Fund receiver account with FORTRESS
 			coins := sdk.NewCoins(
 				sdk.NewCoin("atorque", sdk.NewInt(1000)),
 				sdk.NewCoin(ibcAtomDenom, sdk.NewInt(1000)),

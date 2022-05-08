@@ -3,7 +3,7 @@ package keeper
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/hardiksa/torque/v4/x/inflation/types"
+	"github.com/hardiksa/fortress/v4/x/inflation/types"
 )
 
 // GetParams returns the total set of inflation parameters.

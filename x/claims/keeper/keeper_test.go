@@ -26,9 +26,9 @@ import (
 	tmversion "github.com/tendermint/tendermint/proto/tendermint/version"
 	"github.com/tendermint/tendermint/version"
 	evm "github.com/tharsis/ethermint/x/evm/types"
-	"github.com/hardiksa/torque/v4/app"
-	"github.com/hardiksa/torque/v4/testutil"
-	"github.com/hardiksa/torque/v4/x/claims/types"
+	"github.com/hardiksa/fortress/v4/app"
+	"github.com/hardiksa/fortress/v4/testutil"
+	"github.com/hardiksa/fortress/v4/x/claims/types"
 )
 
 type KeeperTestSuite struct {
@@ -36,7 +36,7 @@ type KeeperTestSuite struct {
 
 	ctx sdk.Context
 
-	app            *app.Torque
+	app            *app.Fortress
 	queryClient    types.QueryClient
 	queryClientEvm evm.QueryClient
 	address        common.Address

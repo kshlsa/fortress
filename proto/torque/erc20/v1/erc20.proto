@@ -1,9 +1,9 @@
 syntax = "proto3";
-package torque.erc20.v1;
+package fortress.erc20.v1;
 
 import "gogoproto/gogo.proto";
 import "cosmos/bank/v1beta1/bank.proto";
-option go_package = "github.com/hardiksa/torque/v4/x/erc20/types";
+option go_package = "github.com/hardiksa/fortress/v4/x/erc20/types";
 
 // Owner enumerates the ownership of a ERC20 contract.
 enum Owner {

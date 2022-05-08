@@ -13,7 +13,7 @@ import (
 
 	evmtypes "github.com/tharsis/ethermint/x/evm/types"
 
-	"github.com/hardiksa/torque/v4/x/claims/types"
+	"github.com/hardiksa/fortress/v4/x/claims/types"
 )
 
 var (
@@ -55,7 +55,7 @@ func (k Keeper) AfterProposalVote(ctx sdk.Context, proposalID uint64, voterAddr 
 }
 
 // AfterDelegationModified is called after a delegation is modified. Once a user
-// delegates their TORQUE tokens to a validator, the claimable amount for the
+// delegates their FORTRESS tokens to a validator, the claimable amount for the
 // user's claims record delegation action is claimed and transferred to the user
 // address.
 func (k Keeper) AfterDelegationModified(ctx sdk.Context, delAddr sdk.AccAddress, valAddr sdk.ValAddress) {

@@ -4,21 +4,21 @@ order: 6
 
 # Validator FAQ
 
-Check the FAQ for running a validator on Torque {synopsis}
+Check the FAQ for running a validator on Fortress {synopsis}
 
 ## General Concepts
 
 ### What is a validator?
 
-Torque is powered by [Tendermint](https://tendermint.com/docs/introduction/what-is-tendermint.html) Core, which relies on a set of validators to secure the network. Validators run a full node and participate in consensus by broadcasting votes which contain cryptographic signatures signed by their private key. Validators commit new blocks in the blockchain and receive revenue in exchange for their work. They also participate in on-procotol treasury governance by voting on governance proposals. A validator's voting influence is weighted according to their total stake.
+Fortress is powered by [Tendermint](https://tendermint.com/docs/introduction/what-is-tendermint.html) Core, which relies on a set of validators to secure the network. Validators run a full node and participate in consensus by broadcasting votes which contain cryptographic signatures signed by their private key. Validators commit new blocks in the blockchain and receive revenue in exchange for their work. They also participate in on-procotol treasury governance by voting on governance proposals. A validator's voting influence is weighted according to their total stake.
 
 ### What is "staking"?
 
-Torque is a public Proof-of-Stake (PoS) blockchain, meaning that validator's weight is determined by the amount of staking tokens (TORQUE) bonded as collateral. These staking tokens can be staked directly by the validator or delegated to them by TORQUE holders.
+Fortress is a public Proof-of-Stake (PoS) blockchain, meaning that validator's weight is determined by the amount of staking tokens (FORTRESS) bonded as collateral. These staking tokens can be staked directly by the validator or delegated to them by FORTRESS holders.
 
 Any user in the system can declare its intention to become a validator by sending a [`create-validator`](#how-to-become-a-validator) transaction. From there, they become validators.
 
-The weight (i.e. total stake or voting power) of a validator determines wether or not it is an active validator, and also how frequently this node will have to propose a block and how much revenue it will obtain. Initially, only the top 150 validators with the most weight will be active validators. If validators double-sign, or are frequently offline, they risk their staked tokens (including TORQUE delegated by users) being "slashed" by the protocol to penalize negligence and misbehavior.
+The weight (i.e. total stake or voting power) of a validator determines wether or not it is an active validator, and also how frequently this node will have to propose a block and how much revenue it will obtain. Initially, only the top 150 validators with the most weight will be active validators. If validators double-sign, or are frequently offline, they risk their staked tokens (including FORTRESS delegated by users) being "slashed" by the protocol to penalize negligence and misbehavior.
 
 ### What is a full node?
 
@@ -28,7 +28,7 @@ Of course, it is possible and encouraged for any user to run full nodes even if 
 
 ### What is a delegator?
 
-Delegators are TORQUE holders who cannot, or do not want to run validator operations themselves. Users can delegate TORQUE to a validator and obtain a part of its revenue in exchange (for more detail on how revenue is distributed, see [What is the incentive to stake?](#what-is-the-incentive-to-stake) and [What is a validator's commission?](#what-is-a-validators-commission) sections below).
+Delegators are FORTRESS holders who cannot, or do not want to run validator operations themselves. Users can delegate FORTRESS to a validator and obtain a part of its revenue in exchange (for more detail on how revenue is distributed, see [What is the incentive to stake?](#what-is-the-incentive-to-stake) and [What is a validator's commission?](#what-is-a-validators-commission) sections below).
 
 Because they share revenue with their validators, delegators also share responsibility. Should a validator misbehave, each of its delegators will be partially slashed in proportion to their stake. This is why delegators should perform due-diligence on validators before delegating, as well as diversifying by spreading their stake over multiple validators.
 
@@ -48,8 +48,8 @@ Any participant in the network can signal their intent to become a validator by 
 - **Initial commission rate**: The commission rate on block provisions, block rewards and fees charged to delegators.
 - **Maximum commission**: The maximum commission rate which this validator will be allowed to charge.
 - **Commission change rate**: The maximum daily increase of the validator commission.
-- **Minimum self-bond amount**: Minimum amount of TORQUE the validator needs to have bonded at all times. If the validator's self-bonded stake falls below this limit, its entire staking pool will be unbonded.
-- **Initial self-bond amount**: Initial amount of TORQUE the validator wants to self-bond.
+- **Minimum self-bond amount**: Minimum amount of FORTRESS the validator needs to have bonded at all times. If the validator's self-bonded stake falls below this limit, its entire staking pool will be unbonded.
+- **Initial self-bond amount**: Initial amount of FORTRESS the validator wants to self-bond.
 
 ```bash
 torqued tx staking create-validator
@@ -72,7 +72,7 @@ torqued tx staking create-validator
 Ref: [Security Advisory: Insecurely configured geth can make funds remotely accessible](https://blog.ethereum.org/2015/08/29/security-alert-insecurely-configured-geth-can-make-funds-remotely-accessible/)
 :::
 
-Once a validator is created and registered, TORQUE holders can delegate TORQUE to it, effectively adding stake to its pool. The total stake of a validator is the sum of the TORQUE self-bonded by the validator's operator and the TORQUE bonded by external delegators.
+Once a validator is created and registered, FORTRESS holders can delegate FORTRESS to it, effectively adding stake to its pool. The total stake of a validator is the sum of the FORTRESS self-bonded by the validator's operator and the FORTRESS bonded by external delegators.
 
 **Only the top 150 validators with the most stake are considered the active validators**, becoming **bonded validators**. If ever a validator's total stake dips below the top 150, the validator loses its validator privileges (meaning that it won't generate rewards) and no longer serves as part of the active set (i.e doesn't participate in consensus), entering **unbonding mode** and eventually becomes **unbonded**.
 
@@ -87,7 +87,7 @@ In short, there are two types of keys:
     - Get this value with `torqued tendermint show-validator`
     e.g. `torquevalconspub1zcjduc3qcyj09qc03elte23zwshdx92jm6ce88fgc90rtqhjx8v0608qh5ssp0w94c`
 
-- **Application keys**: These keys are created from the application and used to sign transactions. As a validator, you will probably use one key to sign staking-related transactions, and another key to sign oracle-related transactions. Application keys are associated with a public key `torquepub-` and an address `torque-`. Both are derived from account keys generated by `torqued keys add`.
+- **Application keys**: These keys are created from the application and used to sign transactions. As a validator, you will probably use one key to sign staking-related transactions, and another key to sign oracle-related transactions. Application keys are associated with a public key `torquepub-` and an address `fortress-`. Both are derived from account keys generated by `torqued keys add`.
 
 ::: warning
 A validator's operator key is directly tied to an application key, but uses reserved prefixes solely for this purpose: `torquevaloper` and `torquevaloperpub`
@@ -99,23 +99,23 @@ After a validator is created with a `create-validator` transaction, it can be in
 
 - `bonded`: Validator is in the active set and participates in consensus. Validator is earning rewards and can be slashed for misbehaviour.
 - `unbonding`: Validator is not in the active set and does not participate in consensus. Validator is not earning rewards, but can still be slashed for misbehaviour. This is a transition state from `bonded` to `unbonded`. If validator does not send a `rebond` transaction while in `unbonding` mode, it will take three weeks for the state transition to complete.
-- `unbonded`: Validator is not in the active set, and therefore not signing blocks. Unbonded validators cannot be slashed, but do not earn any rewards from their operation. It is still possible to delegate TORQUE to this validator. Un-delegating from an `unbonded` validator is immediate.
+- `unbonded`: Validator is not in the active set, and therefore not signing blocks. Unbonded validators cannot be slashed, but do not earn any rewards from their operation. It is still possible to delegate FORTRESS to this validator. Un-delegating from an `unbonded` validator is immediate.
 
 Delegators have the same state as their validator.
 
 ::: warning
-Delegations are not necessarily bonded. TORQUE can be delegated and bonded, delegated and unbonding, delegated and unbonded, or liquid.
+Delegations are not necessarily bonded. FORTRESS can be delegated and bonded, delegated and unbonding, delegated and unbonded, or liquid.
 :::
 
 ### What is "self-bond"? How can I increase my "self-bond"?
 
-The validator operator's "self-bond" refers to the amount of TORQUE stake delegated to itself. You can increase your self-bond by delegating more TORQUE to your validator account.
+The validator operator's "self-bond" refers to the amount of FORTRESS stake delegated to itself. You can increase your self-bond by delegating more FORTRESS to your validator account.
 
 ### Is there a testnet faucet?
 
-If you want to obtain coins for the testnet, you can do so by using the [faucet](https://faucet.torque.org/).
+If you want to obtain coins for the testnet, you can do so by using the [faucet](https://faucet.fortress.org/).
 
-### Is there a minimum amount of TORQUE that must be staked to be an active (bonded) validator?
+### Is there a minimum amount of FORTRESS that must be staked to be an active (bonded) validator?
 
 There is no minimum. The top 150 validators with the highest total stake (where `total stake = self-bonded stake + delegators stake`) are the active validators.
 
@@ -123,15 +123,15 @@ There is no minimum. The top 150 validators with the highest total stake (where 
 
 Delegators are free to choose validators according to their own subjective criteria. That said, criteria anticipated to be important include:
 
-- **Amount of self-bonded TORQUE:** Number of TORQUE a validator self-bonded to its staking pool. A validator with higher amount of self-bonded TORQUE has more skin in the game, making it more liable for its actions.
+- **Amount of self-bonded FORTRESS:** Number of FORTRESS a validator self-bonded to its staking pool. A validator with higher amount of self-bonded FORTRESS has more skin in the game, making it more liable for its actions.
 
-- **Amount of delegated TORQUE:** Total number of TORQUE delegated to a validator. A high stake shows that the community trusts this validator, but it also means that this validator is a bigger target for hackers. Validators are expected to become less and less attractive as their amount of delegated TORQUE grows. Bigger validators also increase the centralization of the network.
+- **Amount of delegated FORTRESS:** Total number of FORTRESS delegated to a validator. A high stake shows that the community trusts this validator, but it also means that this validator is a bigger target for hackers. Validators are expected to become less and less attractive as their amount of delegated FORTRESS grows. Bigger validators also increase the centralization of the network.
 
 - **Commission rate:** Commission applied on revenue by validators before it is distributed to their delegators
 
 - **Track record:** Delegators will likely look at the track record of the validators they plan to delegate to. This includes seniority, past votes on proposals, historical average uptime and how often the node was compromised.
 
-Apart from these criteria, there will be a possibility for validators to signal a website address to complete their resume. Validators will need to build reputation one way or another to attract delegators. For example, it would be a good practice for validators to have their setup audited by third parties. Note though, that the Torque team will not approve or conduct any audit itself.
+Apart from these criteria, there will be a possibility for validators to signal a website address to complete their resume. Validators will need to build reputation one way or another to attract delegators. For example, it would be a good practice for validators to have their setup audited by third parties. Note though, that the Fortress team will not approve or conduct any audit itself.
 
 ## Responsibilites
 
@@ -145,25 +145,25 @@ Validators have three main responsibilities:
 
 - **Be able to constantly run a correct version of the software:** validators need to make sure that their servers are always online and their private keys are not compromised.
 
-- **Provide oversight and feedback on correct deployment of community pool funds:** the Torque protocol includes the a governance system for proposals to the facilitate adoption of its currencies. Validators are expected to hold budget executors to account to provide transparency and efficient use of funds.
+- **Provide oversight and feedback on correct deployment of community pool funds:** the Fortress protocol includes the a governance system for proposals to the facilitate adoption of its currencies. Validators are expected to hold budget executors to account to provide transparency and efficient use of funds.
 
 Additionally, validators are expected to be active members of the community. They should always be up-to-date with the current state of the ecosystem so that they can easily adapt to any change.
 
 ### What does staking imply?
 
-Staking TORQUE can be thought of as a safety deposit on validation activities. When a validator or a delegator wants to retrieve part or all of their deposit, they send an unbonding transaction. Then, TORQUE undergo a *three weeks unbonding period* during which they are liable to being slashed for potential misbehaviors committed by the validator before the unbonding process started.
+Staking FORTRESS can be thought of as a safety deposit on validation activities. When a validator or a delegator wants to retrieve part or all of their deposit, they send an unbonding transaction. Then, FORTRESS undergo a *three weeks unbonding period* during which they are liable to being slashed for potential misbehaviors committed by the validator before the unbonding process started.
 
-Validators, and by association delegators, receive block provisions, block rewards, and fee rewards. If a validator misbehaves, a certain portion of its total stake is slashed (the severity of the penalty depends on the type of misbehavior). This means that every user that bonded TORQUE to this validator gets penalized in proportion to its stake. Delegators are therefore incentivized to delegate to validators that they anticipate will function safely.
+Validators, and by association delegators, receive block provisions, block rewards, and fee rewards. If a validator misbehaves, a certain portion of its total stake is slashed (the severity of the penalty depends on the type of misbehavior). This means that every user that bonded FORTRESS to this validator gets penalized in proportion to its stake. Delegators are therefore incentivized to delegate to validators that they anticipate will function safely.
 
-### Can a validator run away with its delegators' TORQUE?
+### Can a validator run away with its delegators' FORTRESS?
 
-By delegating to a validator, a user delegates staking power. The more staking power a validator has, the more weight it has in the consensus and processes. This does not mean that the validator has custody of its delegators' TORQUE. *By no means can a validator run away with its delegator's funds*.
+By delegating to a validator, a user delegates staking power. The more staking power a validator has, the more weight it has in the consensus and processes. This does not mean that the validator has custody of its delegators' FORTRESS. *By no means can a validator run away with its delegator's funds*.
 
 Even though delegated funds cannot be stolen by their validators, delegators are still liable if their validators misbehave. In such case, each delegators' stake will be partially slashed in proportion to their relative stake.
 
-### How often will a validator be chosen to propose the next block? Does it go up with the quantity of TORQUE staked?
+### How often will a validator be chosen to propose the next block? Does it go up with the quantity of FORTRESS staked?
 
-The validator that is selected to mine the next block is called the **proposer**, the "leader" in the consensus for the round. Each proposer is selected deterministically, and the frequency of being chosen is equal to the relative total stake (where total stake = self-bonded stake + delegators stake) of the validator. For example, if the total bonded stake across all validators is 100 TORQUE, and a validator's total stake is 10 TORQUE, then this validator will be chosen 10% of the time as the proposer.
+The validator that is selected to mine the next block is called the **proposer**, the "leader" in the consensus for the round. Each proposer is selected deterministically, and the frequency of being chosen is equal to the relative total stake (where total stake = self-bonded stake + delegators stake) of the validator. For example, if the total bonded stake across all validators is 100 FORTRESS, and a validator's total stake is 10 FORTRESS, then this validator will be chosen 10% of the time as the proposer.
 
 To understand more about the proposer selection process in Tendermint BFT consensus, read more [in their official docs](https://docs.tendermint.com/master/spec/reactors/consensus/proposer-selection.html).
 
@@ -173,8 +173,8 @@ To understand more about the proposer selection process in Tendermint BFT consen
 
 Each member of a validator's staking pool earns different types of revenue:
 
-- **Block rewards:** Native tokens of applications run by validators (e.g. TORQUE on Torque) are inflated to produce block provisions. These provisions exist to incentivize TORQUE holders to bond their stake, as non-bonded TORQUE will be diluted over time.
-- **Transaction fees:** Torque maintains a whitelist of token that are accepted as fee payment. The initial fee token is the `torque`.
+- **Block rewards:** Native tokens of applications run by validators (e.g. FORTRESS on Fortress) are inflated to produce block provisions. These provisions exist to incentivize FORTRESS holders to bond their stake, as non-bonded FORTRESS will be diluted over time.
+- **Transaction fees:** Fortress maintains a whitelist of token that are accepted as fee payment. The initial fee token is the `fortress`.
 
 This total revenue is divided among validators' staking pools according to each validator's weight. Then, within each validator's staking pool the revenue is divided among delegators in proportion to each delegator's stake. A commission on delegators' revenue is applied by the validator before it is distributed.
 
@@ -186,19 +186,19 @@ Validators also play a major role in governance. If a delegator does not vote, t
 
 ### What is a validator's commission?
 
-Revenue received by a validator's pool is split between the validator and its delegators. The validator can apply a commission on the part of the revenue that goes to its delegators. This commission is set as a percentage. Each validator is free to set its initial commission, maximum daily commission change rate and maximum commission. Torque enforces the parameter that each validator sets. These parameters can only be defined when initially declaring candidacy, and may only be constrained further after being declared.
+Revenue received by a validator's pool is split between the validator and its delegators. The validator can apply a commission on the part of the revenue that goes to its delegators. This commission is set as a percentage. Each validator is free to set its initial commission, maximum daily commission change rate and maximum commission. Fortress enforces the parameter that each validator sets. These parameters can only be defined when initially declaring candidacy, and may only be constrained further after being declared.
 
 ### How are block provisions distributed?
 
-Block provisions (rewards) are distributed proportionally to all validators relative to their total stake (voting power). This means that even though each validator gains TORQUE with each provision, all validators will still maintain equal weight.
+Block provisions (rewards) are distributed proportionally to all validators relative to their total stake (voting power). This means that even though each validator gains FORTRESS with each provision, all validators will still maintain equal weight.
 
-Let us take an example where we have 10 validators with equal staking power and a commission rate of 1%. Let us also assume that the provision for a block is 1000 TORQUE and that each validator has 20% of self-bonded TORQUE. These tokens do not go directly to the proposer. Instead, they are evenly spread among validators. So now each validator's pool has 100 TORQUE. These 100 TORQUE will be distributed according to each participant's stake:
+Let us take an example where we have 10 validators with equal staking power and a commission rate of 1%. Let us also assume that the provision for a block is 1000 FORTRESS and that each validator has 20% of self-bonded FORTRESS. These tokens do not go directly to the proposer. Instead, they are evenly spread among validators. So now each validator's pool has 100 FORTRESS. These 100 FORTRESS will be distributed according to each participant's stake:
 
-- Commission: `100*80%*1% = 0.8 TORQUE`
-- Validator gets: `100\*20% + Commission = 20.8 TORQUE`
-- All delegators get: `100\*80% - Commission = 79.2 TORQUE`
+- Commission: `100*80%*1% = 0.8 FORTRESS`
+- Validator gets: `100\*20% + Commission = 20.8 FORTRESS`
+- All delegators get: `100\*80% - Commission = 79.2 FORTRESS`
 
-Then, each delegator can claim its part of the 79.2 TORQUE in proportion to their stake in the validator's staking pool. Note that the validator's commission is not applied on block provisions. Note that block rewards (paid in TORQUE) are distributed according to the same mechanism.
+Then, each delegator can claim its part of the 79.2 FORTRESS in proportion to their stake in the validator's staking pool. Note that the validator's commission is not applied on block provisions. Note that block rewards (paid in FORTRESS) are distributed according to the same mechanism.
 
 ### How are fees distributed?
 
@@ -206,7 +206,7 @@ Fees are similarly distributed with the exception that the block proposer can ge
 
 When a validator is selected to propose the next block, it must include at least ⅔ precommits for the previous block in the form of validator signatures. However, there is an incentive to include more than ⅔ precommits in the form of a bonus. The bonus is linear: it ranges from 1% if the proposer includes ⅔rd precommits (minimum for the block to be valid) to 5% if the proposer includes 100% precommits. Of course the proposer should not wait too long or other validators may timeout and move on to the next proposer. As such, validators have to find a balance between wait-time to get the most signatures and risk of losing out on proposing the next block. This mechanism aims to incentivize non-empty block proposals, better networking between validators as well as to mitigate censorship.
 
-Let's take a concrete example to illustrate the aforementioned concept. In this example, there are 10 validators with equal stake. Each of them applies a 1% commission and has 20% of self-bonded TORQUE. Now comes a successful block that collects a total of 1005 TORQUE in fees. Let's assume that the proposer included 100% of the signatures in its block. It thus obtains the full bonus of 5%.
+Let's take a concrete example to illustrate the aforementioned concept. In this example, there are 10 validators with equal stake. Each of them applies a 1% commission and has 20% of self-bonded FORTRESS. Now comes a successful block that collects a total of 1005 FORTRESS in fees. Let's assume that the proposer included 100% of the signatures in its block. It thus obtains the full bonus of 5%.
 
 We have to solve this simple equation to find the reward $R$ for each validator:
 
@@ -214,15 +214,15 @@ $$9R ~ + ~ R ~ + ~ 5\%(R) ~ = ~ 1005 ~ \Leftrightarrow ~ R ~ = ~ 1005 ~/ ~10.05 
 
 - For the proposer validator:
 
-    - The pool obtains $R ~ + ~ 5\%(R)$: 105 TORQUE
-    - Commission: $105 ~ *~ 80\% ~* ~ 1\%$ = 0.84 TORQUE
-    - Validator's reward: $105 ~ * ~ 20\% ~ + ~ Commission$ = 21.84 TORQUE
-    - Delegators' rewards: $105 ~ * ~ 80\% ~ - ~ Commission$ = 83.16 TORQUE \(each delegator will be able to claim its portion of these rewards in proportion to their stake\)
+    - The pool obtains $R ~ + ~ 5\%(R)$: 105 FORTRESS
+    - Commission: $105 ~ *~ 80\% ~* ~ 1\%$ = 0.84 FORTRESS
+    - Validator's reward: $105 ~ * ~ 20\% ~ + ~ Commission$ = 21.84 FORTRESS
+    - Delegators' rewards: $105 ~ * ~ 80\% ~ - ~ Commission$ = 83.16 FORTRESS \(each delegator will be able to claim its portion of these rewards in proportion to their stake\)
 
-    - The pool obtains $R$: 100 TORQUE
-    - Commission: $100 ~ *~ 80\% ~* ~ 1\%$ = 0.8 TORQUE
-    - Validator's reward: $100 ~ * ~ 20\% ~ + ~ Commission$ = 20.8 TORQUE
-    - Delegators' rewards: $100 ~ * ~ 80\% ~ - ~ Commission$ = 79.2 TORQUE \(each delegator will be able to claim its portion of these rewards in proportion to their stake\)
+    - The pool obtains $R$: 100 FORTRESS
+    - Commission: $100 ~ *~ 80\% ~* ~ 1\%$ = 0.8 FORTRESS
+    - Validator's reward: $100 ~ * ~ 20\% ~ + ~ Commission$ = 20.8 FORTRESS
+    - Delegators' rewards: $100 ~ * ~ 80\% ~ - ~ Commission$ = 79.2 FORTRESS \(each delegator will be able to claim its portion of these rewards in proportion to their stake\)
 
 ### What are the slashing conditions?
 
@@ -236,17 +236,17 @@ If a validator misbehaves, its bonded stake along with its delegators' stake and
 
 Note that even if a validator does not intentionally misbehave, it can still be slashed if its node crashes, looses connectivity, gets DDoSed, or if its private key is compromised.
 
-### Do validators need to self-bond TORQUE
+### Do validators need to self-bond FORTRESS
 
 No, they do not. A validators total stake is equal to the sum of its own self-bonded stake and of its delegated stake. This means that a validator can compensate its low amount of self-bonded stake by attracting more delegators. This is why reputation is very important for validators.
 
-Even though there is no obligation for validators to self-bond TORQUE, delegators should want their validator to have self-bonded TORQUE in their staking pool. In other words, validators should have skin-in-the-game.
+Even though there is no obligation for validators to self-bond FORTRESS, delegators should want their validator to have self-bonded FORTRESS in their staking pool. In other words, validators should have skin-in-the-game.
 
-In order for delegators to have some guarantee about how much skin-in-the-game their validator has, the latter can signal a minimum amount of self-bonded TORQUE. If a validator's self-bond goes below the limit that it predefined, this validator and all of its delegators will unbond.
+In order for delegators to have some guarantee about how much skin-in-the-game their validator has, the latter can signal a minimum amount of self-bonded FORTRESS. If a validator's self-bond goes below the limit that it predefined, this validator and all of its delegators will unbond.
 
 ### How to prevent concentration of stake in the hands of a few top validators?
 
-For now the community is expected to behave in a smart and self-preserving way. When a mining pool in Bitcoin gets too much mining power the community usually stops contributing to that pool. Torque will rely on the same effect initially. In the future, other mechanisms will be deployed to smoothen this process as much as possible:
+For now the community is expected to behave in a smart and self-preserving way. When a mining pool in Bitcoin gets too much mining power the community usually stops contributing to that pool. Fortress will rely on the same effect initially. In the future, other mechanisms will be deployed to smoothen this process as much as possible:
 
 - **Penalty-free re-delegation:** This is to allow delegators to easily switch from one validator to another, in order to reduce validator stickiness.
 - **UI warning:** Wallets can implement warnings that will be displayed to users if they want to delegate to a validator that already has a significant amount of staking power.
@@ -261,11 +261,11 @@ We expect that a modest level of hardware specifications will be needed initiall
 
 ### What are software requirements?
 
-In addition to running an Torque node, validators should develop monitoring, alerting and management solutions.
+In addition to running an Fortress node, validators should develop monitoring, alerting and management solutions.
 
 ### What are bandwidth requirements?
 
-Torque has the capacity for very high throughput compared to chains like Ethereum or Bitcoin.
+Fortress has the capacity for very high throughput compared to chains like Ethereum or Bitcoin.
 
 As such, we recommend that the data center nodes only connect to trusted full nodes in the cloud or other validators that know each other socially. This relieves the data center node from the burden of mitigating denial-of-service attacks.
 
@@ -285,7 +285,7 @@ Validators should expect to run an HSM that supports ed25519 keys. Here are pote
 - Thales nShield support
 - [Strangelove Horocrux](https://github.com/strangelove-ventures/horcrux)
 
-The Torque team does not recommend one solution above the other. The community is encouraged to bolster the effort to improve HSMs and the security of key management.
+The Fortress team does not recommend one solution above the other. The community is encouraged to bolster the effort to improve HSMs and the security of key management.
 
 ### What can validators expect in terms of operations?
 

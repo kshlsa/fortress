@@ -19,9 +19,9 @@ import (
 	"github.com/spf13/cobra"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/hardiksa/torque/v4/x/inflation/client/cli"
-	"github.com/hardiksa/torque/v4/x/inflation/keeper"
-	"github.com/hardiksa/torque/v4/x/inflation/types"
+	"github.com/hardiksa/fortress/v4/x/inflation/client/cli"
+	"github.com/hardiksa/fortress/v4/x/inflation/keeper"
+	"github.com/hardiksa/fortress/v4/x/inflation/types"
 )
 
 // type check to ensure the interface is properly implemented

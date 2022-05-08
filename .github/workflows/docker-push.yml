@@ -40,4 +40,4 @@ jobs:
           context: .
           push: true
           platforms: linux/amd64, linux/386, linux/arm64
-          tags: hardiksa/torque:latest, hardiksa/torque:${{ steps.meta.outputs.tag }}
+          tags: hardiksa/fortress:latest, hardiksa/fortress:${{ steps.meta.outputs.tag }}

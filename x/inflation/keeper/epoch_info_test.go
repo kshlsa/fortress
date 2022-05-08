@@ -3,8 +3,8 @@ package keeper_test
 import (
 	"fmt"
 
-	epochstypes "github.com/hardiksa/torque/v4/x/epochs/types"
-	"github.com/hardiksa/torque/v4/x/inflation/types"
+	epochstypes "github.com/hardiksa/fortress/v4/x/epochs/types"
+	"github.com/hardiksa/fortress/v4/x/inflation/types"
 )
 
 func (suite *KeeperTestSuite) TestSetGetEpochIdentifier() {

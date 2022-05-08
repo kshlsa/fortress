@@ -2,7 +2,7 @@ package keeper
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/hardiksa/torque/v4/x/epochs/types"
+	"github.com/hardiksa/fortress/v4/x/epochs/types"
 )
 
 var _ types.EpochHooks = MultiEpochHooks{}

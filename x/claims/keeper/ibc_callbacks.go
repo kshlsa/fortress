@@ -7,9 +7,9 @@ import (
 	channeltypes "github.com/cosmos/ibc-go/v3/modules/core/04-channel/types"
 	"github.com/cosmos/ibc-go/v3/modules/core/exported"
 
-	"github.com/hardiksa/torque/v4/ibc"
-	torque "github.com/hardiksa/torque/v4/types"
-	"github.com/hardiksa/torque/v4/x/claims/types"
+	"github.com/hardiksa/fortress/v4/ibc"
+	fortress "github.com/hardiksa/fortress/v4/types"
+	"github.com/hardiksa/fortress/v4/x/claims/types"
 )
 
 // OnAcknowledgementPacket performs an IBC send callback. Once a user submits an
@@ -114,7 +114,7 @@ func (k Keeper) OnRecvPacket(
 	// If the packet is sent from a non-EVM chain, the sender addresss is not an
 	// ethereum key (i.e. `ethsecp256k1`). Thus, if `sameAddress` is true, the
 	// recipient address must be a non-ethereum key as well, which is not
-	// supported on Torque. To prevent funds getting stuck, return an error, unless
+	// supported on Fortress. To prevent funds getting stuck, return an error, unless
 	// the destination channel from a connection to a chain is EVM-compatible or
 	// supports ethereum keys (eg: Cronos, Injective).
 	if sameAddress && !fromEVMChain {
@@ -124,7 +124,7 @@ func (k Keeper) OnRecvPacket(
 			// -> return error acknowledgement to prevent funds from getting stuck
 			return channeltypes.NewErrorAcknowledgement(
 				sdkerrors.Wrapf(
-					torque.ErrKeyTypeNotSupported, "receiver address %s is not a valid ethereum address", recipientBech32,
+					fortress.ErrKeyTypeNotSupported, "receiver address %s is not a valid ethereum address", recipientBech32,
 				).Error(),
 			)
 		default:

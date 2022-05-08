@@ -19,8 +19,8 @@ import (
 
 	evm "github.com/tharsis/ethermint/x/evm/types"
 
-	"github.com/hardiksa/torque/v4/app"
-	"github.com/hardiksa/torque/v4/x/epochs/types"
+	"github.com/hardiksa/fortress/v4/app"
+	"github.com/hardiksa/fortress/v4/x/epochs/types"
 )
 
 var denomMint = evm.DefaultEVMDenom
@@ -29,7 +29,7 @@ type KeeperTestSuite struct {
 	suite.Suite
 
 	ctx            sdk.Context
-	app            *app.Torque
+	app            *app.Fortress
 	queryClientEvm evm.QueryClient
 	queryClient    types.QueryClient
 	consAddress    sdk.ConsAddress

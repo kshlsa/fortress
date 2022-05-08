@@ -17,7 +17,7 @@ builds:
     flags:
         - -tags=cgo
     ldflags:
-      - -s -w -X github.com/cosmos/cosmos-sdk/version.Name=torque -X github.com/cosmos/cosmos-sdk/version.AppName=torqued -X github.com/cosmos/cosmos-sdk/version.Version={{.Version}} -X github.com/cosmos/cosmos-sdk/version.Commit={{.Commit}}
+      - -s -w -X github.com/cosmos/cosmos-sdk/version.Name=fortress -X github.com/cosmos/cosmos-sdk/version.AppName=torqued -X github.com/cosmos/cosmos-sdk/version.Version={{.Version}} -X github.com/cosmos/cosmos-sdk/version.Commit={{.Commit}}
   - id: "torqued-darwin-arm64"
     main: ./cmd/torqued
     binary: bin/torqued
@@ -32,7 +32,7 @@ builds:
     flags:
       - -tags=cgo
     ldflags:
-      - -s -w -X github.com/cosmos/cosmos-sdk/version.Name=torque -X github.com/cosmos/cosmos-sdk/version.AppName=torqued -X github.com/cosmos/cosmos-sdk/version.Version={{.Version}} -X github.com/cosmos/cosmos-sdk/version.Commit={{.Commit}}
+      - -s -w -X github.com/cosmos/cosmos-sdk/version.Name=fortress -X github.com/cosmos/cosmos-sdk/version.AppName=torqued -X github.com/cosmos/cosmos-sdk/version.Version={{.Version}} -X github.com/cosmos/cosmos-sdk/version.Commit={{.Commit}}
   - id: "torqued-linux"
     main: ./cmd/torqued
     binary: bin/torqued
@@ -47,7 +47,7 @@ builds:
     flags:
       - -tags=cgo
     ldflags:
-      - -s -w -X github.com/cosmos/cosmos-sdk/version.Name=torque -X github.com/cosmos/cosmos-sdk/version.AppName=torqued -X github.com/cosmos/cosmos-sdk/version.Version={{.Version}} -X github.com/cosmos/cosmos-sdk/version.Commit={{.Commit}}
+      - -s -w -X github.com/cosmos/cosmos-sdk/version.Name=fortress -X github.com/cosmos/cosmos-sdk/version.AppName=torqued -X github.com/cosmos/cosmos-sdk/version.Version={{.Version}} -X github.com/cosmos/cosmos-sdk/version.Commit={{.Commit}}
   - id: "torqued-linux-arm64"
     main: ./cmd/torqued
     binary: bin/torqued
@@ -62,7 +62,7 @@ builds:
     flags:
       - -tags=cgo
     ldflags:
-      - -s -w -X github.com/cosmos/cosmos-sdk/version.Name=torque -X github.com/cosmos/cosmos-sdk/version.AppName=torqued -X github.com/cosmos/cosmos-sdk/version.Version={{.Version}} -X github.com/cosmos/cosmos-sdk/version.Commit={{.Commit}}
+      - -s -w -X github.com/cosmos/cosmos-sdk/version.Name=fortress -X github.com/cosmos/cosmos-sdk/version.AppName=torqued -X github.com/cosmos/cosmos-sdk/version.Version={{.Version}} -X github.com/cosmos/cosmos-sdk/version.Commit={{.Commit}}
   - id: "torqued-windows"
     main: ./cmd/torqued
     binary: bin/torqued
@@ -78,7 +78,7 @@ builds:
       - -tags=cgo
       - -buildmode=exe
     ldflags:
-      - -s -w -X github.com/cosmos/cosmos-sdk/version.Name=torque -X github.com/cosmos/cosmos-sdk/version.AppName=torqued -X github.com/cosmos/cosmos-sdk/version.Version={{.Version}} -X github.com/cosmos/cosmos-sdk/version.Commit={{.Commit}}
+      - -s -w -X github.com/cosmos/cosmos-sdk/version.Name=fortress -X github.com/cosmos/cosmos-sdk/version.AppName=torqued -X github.com/cosmos/cosmos-sdk/version.Version={{.Version}} -X github.com/cosmos/cosmos-sdk/version.Commit={{.Commit}}
 
 archives:
 - name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}'

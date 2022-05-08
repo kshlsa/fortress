@@ -48,7 +48,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/genutil"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 	"github.com/tharsis/ethermint/crypto/hd"
-	"github.com/hardiksa/torque/v4/app"
+	"github.com/hardiksa/fortress/v4/app"
 
 	"github.com/tharsis/ethermint/encoding"
 	"github.com/tharsis/ethermint/server/config"
@@ -122,7 +122,7 @@ func DefaultConfig() Config {
 	}
 }
 
-// NewAppConstructor returns a new Torque AppConstructor
+// NewAppConstructor returns a new Fortress AppConstructor
 func NewAppConstructor(encodingCfg params.EncodingConfig) AppConstructor {
 	return func(val Validator) servertypes.Application {
 		return app.NewTorque(

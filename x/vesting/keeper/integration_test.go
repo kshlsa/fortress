@@ -9,9 +9,9 @@ import (
 
 	"github.com/tharsis/ethermint/encoding"
 	"github.com/tharsis/ethermint/tests"
-	"github.com/hardiksa/torque/v4/app"
-	"github.com/hardiksa/torque/v4/app/ante"
-	"github.com/hardiksa/torque/v4/testutil"
+	"github.com/hardiksa/fortress/v4/app"
+	"github.com/hardiksa/fortress/v4/app/ante"
+	"github.com/hardiksa/fortress/v4/testutil"
 
 	"github.com/ethereum/go-ethereum/common"
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
@@ -22,7 +22,7 @@ import (
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 	evmtypes "github.com/tharsis/ethermint/x/evm/types"
 
-	"github.com/hardiksa/torque/v4/x/vesting/types"
+	"github.com/hardiksa/fortress/v4/x/vesting/types"
 )
 
 // Clawback vesting with Cliff and Lock. In this case the cliff is reached
@@ -30,7 +30,7 @@ import (
 // employee starts before mainnet launch (periodsCliff < lockupPeriod)
 
 // Example:
-// 21/10 Employee joins Torque and vesting starts
+// 21/10 Employee joins Fortress and vesting starts
 // 22/03 Mainnet launch
 // 22/09 Cliff ends
 // 23/02 Lock ends
@@ -205,7 +205,7 @@ var _ = Describe("Clawback Vesting Accounts", Ordered, func() {
 })
 
 // Example:
-// 21/10 Employee joins Torque and vesting starts
+// 21/10 Employee joins Fortress and vesting starts
 // 22/03 Mainnet launch
 // 22/09 Cliff ends
 // 23/02 Lock ends

@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/require"
-	"github.com/hardiksa/torque/v4/x/claims/types"
+	"github.com/hardiksa/fortress/v4/x/claims/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
@@ -15,7 +15,7 @@ import (
 
 func init() {
 	cfg := sdk.GetConfig()
-	cfg.SetBech32PrefixForAccount("torque", "torquepub")
+	cfg.SetBech32PrefixForAccount("fortress", "torquepub")
 }
 
 func TestGetTransferSenderRecipient(t *testing.T) {
@@ -79,7 +79,7 @@ func TestGetTransferSenderRecipient(t *testing.T) {
 			true,
 		},
 		{
-			"valid - cosmos sender, torque recipient",
+			"valid - cosmos sender, fortress recipient",
 			channeltypes.Packet{
 				Data: transfertypes.ModuleCdc.MustMarshalJSON(
 					&transfertypes.FungibleTokenPacketData{
@@ -94,7 +94,7 @@ func TestGetTransferSenderRecipient(t *testing.T) {
 			false,
 		},
 		{
-			"valid - torque sender, cosmos recipient",
+			"valid - fortress sender, cosmos recipient",
 			channeltypes.Packet{
 				Data: transfertypes.ModuleCdc.MustMarshalJSON(
 					&transfertypes.FungibleTokenPacketData{
@@ -109,7 +109,7 @@ func TestGetTransferSenderRecipient(t *testing.T) {
 			false,
 		},
 		{
-			"valid - osmosis sender, torque recipient",
+			"valid - osmosis sender, fortress recipient",
 			channeltypes.Packet{
 				Data: transfertypes.ModuleCdc.MustMarshalJSON(
 					&transfertypes.FungibleTokenPacketData{

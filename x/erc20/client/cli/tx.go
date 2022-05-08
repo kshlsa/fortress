@@ -17,7 +17,7 @@ import (
 
 	ethermint "github.com/tharsis/ethermint/types"
 
-	"github.com/hardiksa/torque/v4/x/erc20/types"
+	"github.com/hardiksa/fortress/v4/x/erc20/types"
 )
 
 // NewTxCmd returns a root CLI command handler for certain modules/erc20 transaction commands.
@@ -149,22 +149,22 @@ The proposal details must be supplied via a JSON file.`,
 Where metadata.json contains (example):
 
 {
-  "description": "staking, gas and governance token of the Torque testnets"
+  "description": "staking, gas and governance token of the Fortress testnets"
   "denom_units": [
 		{
 			"denom": "atorque",
 			"exponent": 0,
-			"aliases": ["atto torque"]
+			"aliases": ["atto fortress"]
 		},
 		{
-			"denom": "torque",
+			"denom": "fortress",
 			"exponent": 18
 		}
 	],
 	"base": "atorque",
-	"display: "torque",
-	"name": "Torque",
-	"symbol": "TORQUE"
+	"display: "fortress",
+	"name": "Fortress",
+	"symbol": "FORTRESS"
 }`, version.AppName,
 		),
 		RunE: func(cmd *cobra.Command, args []string) error {

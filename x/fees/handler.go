@@ -4,7 +4,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 
-	"github.com/hardiksa/torque/v4/x/fees/types"
+	"github.com/hardiksa/fortress/v4/x/fees/types"
 )
 
 // NewHandler defines the fees module handler instance

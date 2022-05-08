@@ -9,20 +9,20 @@ Learn how to manually upgrade your node. {synopsis}
 
 ## Pre-requisites
 
-- [Install Torque](./../quickstart/installation) {prereq}
+- [Install Fortress](./../quickstart/installation) {prereq}
 
-## 1. Upgrade the Torque version
+## 1. Upgrade the Fortress version
 
-Before upgrading the Torque version. Stop your instance of `torqued` using `Ctrl/Cmd+C`.
+Before upgrading the Fortress version. Stop your instance of `torqued` using `Ctrl/Cmd+C`.
 
-Next, upgrade the software to the desired release version. Check the Torque [releases page](https://github.com/hardiksa/torque/releases) for details on each release.
+Next, upgrade the software to the desired release version. Check the Fortress [releases page](https://github.com/hardiksa/fortress/releases) for details on each release.
 
 ::: warning
 Ensure that the version installed matches the one needed for the network you are running (mainnet or testnet).
 :::
 
 ```bash
-cd torque
+cd fortress
 git fetch --all && git checkout <new_version>
 make install
 ```
@@ -31,12 +31,12 @@ make install
 If you have issues at this step, please check that you have the latest stable version of [Golang](https://golang.org/dl/) installed.
 :::
 
-Verify that you've successfully installed Torque on your system by using the `version` command:
+Verify that you've successfully installed Fortress on your system by using the `version` command:
 
 ```bash
 $ torqued version --long
 
-name: torque
+name: fortress
 server_name: torqued
 version: 3.0.0
 commit: fe9df43332800a74a163c014c69e62765d8206e3

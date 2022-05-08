@@ -16,15 +16,15 @@ import (
 	"github.com/tharsis/ethermint/tests"
 	feemarkettypes "github.com/tharsis/ethermint/x/feemarket/types"
 
-	"github.com/hardiksa/torque/v4/app"
-	"github.com/hardiksa/torque/v4/x/erc20"
-	"github.com/hardiksa/torque/v4/x/erc20/types"
+	"github.com/hardiksa/fortress/v4/app"
+	"github.com/hardiksa/fortress/v4/x/erc20"
+	"github.com/hardiksa/fortress/v4/x/erc20/types"
 )
 
 type GenesisTestSuite struct {
 	suite.Suite
 	ctx     sdk.Context
-	app     *app.Torque
+	app     *app.Fortress
 	genesis types.GenesisState
 }
 

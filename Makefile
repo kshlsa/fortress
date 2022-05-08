@@ -10,14 +10,14 @@ COMMIT := $(shell git log -1 --format='%H')
 LEDGER_ENABLED ?= true
 BINDIR ?= $(GOPATH)/bin
 TORQUE_BINARY = torqued
-TORQUE_DIR = torque
+TORQUE_DIR = fortress
 BUILDDIR ?= $(CURDIR)/build
 SIMAPP = ./app
-HTTPS_GIT := https://github.com/hardiksa/torque.git
+HTTPS_GIT := https://github.com/hardiksa/fortress.git
 DOCKER := $(shell which docker)
 DOCKER_BUF := $(DOCKER) run --rm -v $(CURDIR):/workspace --workdir /workspace bufbuild/buf
 NAMESPACE := hardiksa
-PROJECT := torque
+PROJECT := fortress
 DOCKER_IMAGE := $(NAMESPACE)/$(PROJECT)
 COMMIT_HASH := $(shell git rev-parse --short=7 HEAD)
 DOCKER_TAG := $(COMMIT_HASH)
@@ -68,7 +68,7 @@ build_tags_comma_sep := $(subst $(whitespace),$(comma),$(build_tags))
 
 # process linker flags
 
-ldflags = -X github.com/cosmos/cosmos-sdk/version.Name=torque \
+ldflags = -X github.com/cosmos/cosmos-sdk/version.Name=fortress \
           -X github.com/cosmos/cosmos-sdk/version.AppName=$(TORQUE_BINARY) \
           -X github.com/cosmos/cosmos-sdk/version.Version=$(VERSION) \
           -X github.com/cosmos/cosmos-sdk/version.Commit=$(COMMIT) \
@@ -144,12 +144,12 @@ build-docker:
 	$(DOCKER) tag ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_IMAGE}:latest
 	# docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_IMAGE}:${COMMIT_HASH}
 	# update old container
-	$(DOCKER) rm torque || true
+	$(DOCKER) rm fortress || true
 	# create a new container from the latest image
-	$(DOCKER) create --name torque -t -i ${DOCKER_IMAGE}:latest torque
+	$(DOCKER) create --name fortress -t -i ${DOCKER_IMAGE}:latest fortress
 	# move the binaries to the ./build directory
 	mkdir -p ./build/
-	$(DOCKER) cp torque:/usr/bin/torqued ./build/
+	$(DOCKER) cp fortress:/usr/bin/torqued ./build/
 
 push-docker: build-docker
 	$(DOCKER) push ${DOCKER_IMAGE}:${DOCKER_TAG}
@@ -286,7 +286,7 @@ update-swagger-docs: statik
 .PHONY: update-swagger-docs
 
 godocs:
-	@echo "--> Wait a few seconds and visit http://localhost:6060/pkg/github.com/hardiksa/torque/types"
+	@echo "--> Wait a few seconds and visit http://localhost:6060/pkg/github.com/hardiksa/fortress/types"
 	godoc -http=:6060
 
 # Start docs site at localhost:8080
@@ -437,7 +437,7 @@ lint-fix-contracts:
 format:
 	find . -name '*.go' -type f -not -path "./vendor*" -not -path "*.git*" -not -path "./client/docs/statik/statik.go" -not -name '*.pb.go' | xargs gofmt -w -s
 	find . -name '*.go' -type f -not -path "./vendor*" -not -path "*.git*" -not -path "./client/docs/statik/statik.go" -not -name '*.pb.go' | xargs misspell -w
-	find . -name '*.go' -type f -not -path "./vendor*" -not -path "*.git*" -not -path "./client/docs/statik/statik.go" -not -name '*.pb.go' | xargs goimports -w -local github.com/hardiksa/torque
+	find . -name '*.go' -type f -not -path "./vendor*" -not -path "*.git*" -not -path "./client/docs/statik/statik.go" -not -name '*.pb.go' | xargs goimports -w -local github.com/hardiksa/fortress
 .PHONY: format
 
 ###############################################################################
@@ -525,13 +525,13 @@ ifeq ($(OS),Windows_NT)
 	mkdir localnet-setup &
 	@$(MAKE) localnet-build
 
-	IF not exist "build/node0/$(TORQUE_BINARY)/config/genesis.json" docker run --rm -v $(CURDIR)/build\torque\Z torqued/node "./torqued testnet --v 4 -o /torque --keyring-backend=test --ip-addresses torquednode0,torquednode1,torquednode2,torquednode3"
+	IF not exist "build/node0/$(TORQUE_BINARY)/config/genesis.json" docker run --rm -v $(CURDIR)/build\fortress\Z torqued/node "./torqued testnet --v 4 -o /fortress --keyring-backend=test --ip-addresses torquednode0,torquednode1,torquednode2,torquednode3"
 	docker-compose up -d
 else
 	mkdir -p localnet-setup
 	@$(MAKE) localnet-build
 
-	if ! [ -f localnet-setup/node0/$(TORQUE_BINARY)/config/genesis.json ]; then docker run --rm -v $(CURDIR)/localnet-setup:/torque:Z torqued/node "./torqued testnet --v 4 -o /torque --keyring-backend=test --ip-addresses torquednode0,torquednode1,torquednode2,torquednode3"; fi
+	if ! [ -f localnet-setup/node0/$(TORQUE_BINARY)/config/genesis.json ]; then docker run --rm -v $(CURDIR)/localnet-setup:/fortress:Z torqued/node "./torqued testnet --v 4 -o /fortress --keyring-backend=test --ip-addresses torquednode0,torquednode1,torquednode2,torquednode3"; fi
 	docker-compose up -d
 endif
 
@@ -548,28 +548,28 @@ localnet-clean:
 localnet-unsafe-reset:
 	docker-compose down
 ifeq ($(OS),Windows_NT)
-	@docker run --rm -v $(CURDIR)\localnet-setup\node0\torqued:torque\Z torqued/node "./torqued unsafe-reset-all --home=/torque"
-	@docker run --rm -v $(CURDIR)\localnet-setup\node1\torqued:torque\Z torqued/node "./torqued unsafe-reset-all --home=/torque"
-	@docker run --rm -v $(CURDIR)\localnet-setup\node2\torqued:torque\Z torqued/node "./torqued unsafe-reset-all --home=/torque"
-	@docker run --rm -v $(CURDIR)\localnet-setup\node3\torqued:torque\Z torqued/node "./torqued unsafe-reset-all --home=/torque"
+	@docker run --rm -v $(CURDIR)\localnet-setup\node0\torqued:fortress\Z torqued/node "./torqued unsafe-reset-all --home=/fortress"
+	@docker run --rm -v $(CURDIR)\localnet-setup\node1\torqued:fortress\Z torqued/node "./torqued unsafe-reset-all --home=/fortress"
+	@docker run --rm -v $(CURDIR)\localnet-setup\node2\torqued:fortress\Z torqued/node "./torqued unsafe-reset-all --home=/fortress"
+	@docker run --rm -v $(CURDIR)\localnet-setup\node3\torqued:fortress\Z torqued/node "./torqued unsafe-reset-all --home=/fortress"
 else
-	@docker run --rm -v $(CURDIR)/localnet-setup/node0/torqued:/torque:Z torqued/node "./torqued unsafe-reset-all --home=/torque"
-	@docker run --rm -v $(CURDIR)/localnet-setup/node1/torqued:/torque:Z torqued/node "./torqued unsafe-reset-all --home=/torque"
-	@docker run --rm -v $(CURDIR)/localnet-setup/node2/torqued:/torque:Z torqued/node "./torqued unsafe-reset-all --home=/torque"
-	@docker run --rm -v $(CURDIR)/localnet-setup/node3/torqued:/torque:Z torqued/node "./torqued unsafe-reset-all --home=/torque"
+	@docker run --rm -v $(CURDIR)/localnet-setup/node0/torqued:/fortress:Z torqued/node "./torqued unsafe-reset-all --home=/fortress"
+	@docker run --rm -v $(CURDIR)/localnet-setup/node1/torqued:/fortress:Z torqued/node "./torqued unsafe-reset-all --home=/fortress"
+	@docker run --rm -v $(CURDIR)/localnet-setup/node2/torqued:/fortress:Z torqued/node "./torqued unsafe-reset-all --home=/fortress"
+	@docker run --rm -v $(CURDIR)/localnet-setup/node3/torqued:/fortress:Z torqued/node "./torqued unsafe-reset-all --home=/fortress"
 endif
 
 # Clean testnet
 localnet-show-logstream:
 	docker-compose logs --tail=1000 -f
 
-.PHONY: build-docker-local-torque localnet-start localnet-stop
+.PHONY: build-docker-local-fortress localnet-start localnet-stop
 
 ###############################################################################
 ###                                Releasing                                ###
 ###############################################################################
 
-PACKAGE_NAME:=github.com/hardiksa/torque
+PACKAGE_NAME:=github.com/hardiksa/fortress
 GOLANG_CROSS_VERSION  = v1.17.1
 GOPATH ?= '$(HOME)/go'
 release-dry-run:

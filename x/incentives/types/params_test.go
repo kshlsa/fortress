@@ -9,7 +9,7 @@ import (
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 	paramtypes "github.com/cosmos/cosmos-sdk/x/params/types"
 
-	epochstypes "github.com/hardiksa/torque/v4/x/epochs/types"
+	epochstypes "github.com/hardiksa/fortress/v4/x/epochs/types"
 )
 
 type ParamsTestSuite struct {

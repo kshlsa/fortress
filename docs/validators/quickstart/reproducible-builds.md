@@ -20,16 +20,16 @@ All the following instructions have been tested on *Ubuntu 18.04.2 LTS* with *Do
 
 ## Build with Docker
 
-Clone `torque`:
+Clone `fortress`:
 
 ``` bash
-git clone git@github.com:hardiksa/torque.git
+git clone git@github.com:hardiksa/fortress.git
 ```
 
 Checkout the commit, branch, or release tag you want to build (eg `v0.4.0`):
 
 ```bash
-cd torque/
+cd fortress/
 git checkout v0.4.0
 ```
 

@@ -6,8 +6,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
 	"github.com/tharsis/ethermint/tests"
-	"github.com/hardiksa/torque/v4/testutil"
-	"github.com/hardiksa/torque/v4/x/claims/types"
+	"github.com/hardiksa/fortress/v4/testutil"
+	"github.com/hardiksa/fortress/v4/x/claims/types"
 )
 
 func (suite *KeeperTestSuite) TestTotalUnclaimed() {

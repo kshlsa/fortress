@@ -52,15 +52,15 @@ done
 
 set -euxo pipefail
 
-DATA_DIR=$(mktemp -d -t torque-datadir.XXXXX)
+DATA_DIR=$(mktemp -d -t fortress-datadir.XXXXX)
 
 if [[ ! "$DATA_DIR" ]]; then
     echo "Could not create $DATA_DIR"
     exit 1
 fi
 
-# Compile torque
-echo "compiling torque"
+# Compile fortress
+echo "compiling fortress"
 make build
 
 # PID array declaration
@@ -103,7 +103,7 @@ init_func() {
 }
 
 start_func() {
-    echo "starting torque node $i in background ..."
+    echo "starting fortress node $i in background ..."
     "$PWD"/build/torqued start --pruning=nothing --rpc.unsafe \
     --p2p.laddr tcp://$IP_ADDR:$NODE_P2P_PORT"$i" --address tcp://$IP_ADDR:$NODE_PORT"$i" --rpc.laddr tcp://$IP_ADDR:$NODE_RPC_PORT"$i" \
     --json-rpc.address=$IP_ADDR:$RPC_PORT"$i" \
@@ -111,7 +111,7 @@ start_func() {
     >"$DATA_DIR"/node"$i".log 2>&1 & disown
 
     TORQUE_PID=$!
-    echo "started torque node, pid=$TORQUE_PID"
+    echo "started fortress node, pid=$TORQUE_PID"
     # add PID to array
     arr+=("$TORQUE_PID")
 
@@ -147,7 +147,7 @@ if [[ -z $TEST || $TEST == "rpc" ||  $TEST == "pending" ]]; then
 
     for i in $(seq 1 "$TEST_QTD"); do
         HOST_RPC=http://$IP_ADDR:$RPC_PORT"$i"
-        echo "going to test torque node $HOST_RPC ..."
+        echo "going to test fortress node $HOST_RPC ..."
         MODE=$MODE HOST=$HOST_RPC go test ./tests/... -timeout=$time_out -v -short
 
         RPC_FAIL=$?
@@ -159,7 +159,7 @@ stop_func() {
     TORQUE_PID=$i
     echo "shutting down node, pid=$TORQUE_PID ..."
 
-    # Shutdown torque node
+    # Shutdown fortress node
     kill -9 "$TORQUE_PID"
     wait "$TORQUE_PID"
 

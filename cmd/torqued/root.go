@@ -39,13 +39,13 @@ import (
 	servercfg "github.com/tharsis/ethermint/server/config"
 	srvflags "github.com/tharsis/ethermint/server/flags"
 
-	"github.com/hardiksa/torque/v4/app"
-	cmdcfg "github.com/hardiksa/torque/v4/cmd/config"
-	torquekr "github.com/hardiksa/torque/v4/crypto/keyring"
+	"github.com/hardiksa/fortress/v4/app"
+	cmdcfg "github.com/hardiksa/fortress/v4/cmd/config"
+	torquekr "github.com/hardiksa/fortress/v4/crypto/keyring"
 )
 
 const (
-	EnvPrefix = "TORQUE"
+	EnvPrefix = "FORTRESS"
 )
 
 // NewRootCmd creates a new root command for torqued. It is called once in the
@@ -66,7 +66,7 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 
 	rootCmd := &cobra.Command{
 		Use:   app.Name,
-		Short: "Torque Daemon",
+		Short: "Fortress Daemon",
 		PersistentPreRunE: func(cmd *cobra.Command, _ []string) error {
 			// set the default command outputs
 			cmd.SetOut(cmd.OutOrStdout())
@@ -201,7 +201,7 @@ func initAppConfig(chainID string) (string, interface{}) {
 		panic(fmt.Errorf("unknown app config type %T", customAppConfig))
 	}
 
-	// define a non-zero default minimum gas price on Torque Mainnet
+	// define a non-zero default minimum gas price on Fortress Mainnet
 	if strings.HasPrefix(chainID, "torque_9001-") && (srvCfg.MinGasPrices == "" || srvCfg.MinGasPrices == "0atorque") {
 		srvCfg.MinGasPrices = "0.0025atorque"
 	}
@@ -272,7 +272,7 @@ func (a appCreator) appExport(
 	logger log.Logger, db dbm.DB, traceStore io.Writer, height int64, forZeroHeight bool, jailAllowedAddrs []string,
 	appOpts servertypes.AppOptions,
 ) (servertypes.ExportedApp, error) {
-	var torqueApp *app.Torque
+	var torqueApp *app.Fortress
 	homePath, ok := appOpts.Get(flags.FlagHome).(string)
 	if !ok || homePath == "" {
 		return servertypes.ExportedApp{}, errors.New("application home not set")

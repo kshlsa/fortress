@@ -20,8 +20,8 @@ You need to set the **genesis file** and **seeds**. If you need more information
 
 | Chain ID       | Description   | Site                                                               | Version                                               | Status     |
 | -------------- | ------------- | ------------------------------------------------------------------ | ----------------------------------------------------- | ---------- |
-| `torque_9001-2` | Torque Mainnet 2 | [Torque](https://github.com/tharsis/mainnet/tree/main/torque_9001-2) | [`v3.0.x`](https://github.com/hardiksa/torque/releases) | `Not Live` |
-| `torque_9001-1` | Torque Mainnet 1 | [Torque](https://github.com/tharsis/mainnet/tree/main/torque_9001-1) | [`v2.0.1`](https://github.com/hardiksa/torque/releases/v2.0.1) | `Stale` |
+| `torque_9001-2` | Fortress Mainnet 2 | [Fortress](https://github.com/tharsis/mainnet/tree/main/torque_9001-2) | [`v3.0.x`](https://github.com/hardiksa/fortress/releases) | `Not Live` |
+| `torque_9001-1` | Fortress Mainnet 1 | [Fortress](https://github.com/tharsis/mainnet/tree/main/torque_9001-1) | [`v2.0.1`](https://github.com/hardiksa/fortress/releases/v2.0.1) | `Stale` |
 
 ## Install `torqued`
 
@@ -62,10 +62,10 @@ In the `config` directory, the most important files for configuration are `app.t
 
 ### Copy the Genesis File
 
-Download the `genesis.json` file from the [`archive`](https://archive.torque.dev/genesis/genesis.json) and copy it over to the `config` directory: `~/.torqued/config/genesis.json`. This is a genesis file with the chain-id and genesis accounts balances.
+Download the `genesis.json` file from the [`archive`](https://archive.fortress.dev/genesis/genesis.json) and copy it over to the `config` directory: `~/.torqued/config/genesis.json`. This is a genesis file with the chain-id and genesis accounts balances.
 
 ```bash
-wget https://archive.torque.dev/genesis/genesis.json
+wget https://archive.fortress.dev/genesis/genesis.json
 mv genesis.json ~/.torqued/config/
 ```
 
@@ -109,7 +109,7 @@ For more information on seeds and peers, you can the Tendermint [P2P documentati
 We can set the [`persistent_peers`](https://docs.tendermint.com/master/tendermint-core/using-tendermint.html#persistent-peer) field in `~/.torqued/config/config.toml` to specify peers that your node will maintain persistent connections with. You can retrieve them from the list of
 available peers on the [`mainnet`](https://github.com/tharsis/mainnet) repo.
 
-A list of available persistent peers is also available in the `#find-peers` channel in the [Torque Discord](https://discord.gg/torque). You can get a random 10 entries from the `peers.txt` file in the `PEERS` variable by running the following command:
+A list of available persistent peers is also available in the `#find-peers` channel in the [Fortress Discord](https://discord.gg/fortress). You can get a random 10 entries from the `peers.txt` file in the `PEERS` variable by running the following command:
 
 ```bash
 PEERS=`curl -sL https://raw.githubusercontent.com/tharsis/mainnet/main/torque_9001-2/peers.txt | sort -R | head -n 10 | awk '{print $1}' | paste -s -d, -`
@@ -158,7 +158,7 @@ torqued start
 
 ## Share your Peer
 
-You can share your peer to posting it in the `#find-peers` channel in the [Torque Discord](https://discord.gg/torque).
+You can share your peer to posting it in the `#find-peers` channel in the [Fortress Discord](https://discord.gg/fortress).
 
 ::: tip
 To get your Node ID use

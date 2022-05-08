@@ -50,11 +50,11 @@ cosmovisor version
 torqued version
 ```
 
-### 2. Download the Torque release
+### 2. Download the Fortress release
 
 #### 2.a) Manual Download
 
-Cosmovisor will continually poll the `$DAEMON_HOME/data/upgrade-info.json` for new upgrade instructions. When an upgrade is [released](https://github.com/hardiksa/torque/releases), node operators need to:
+Cosmovisor will continually poll the `$DAEMON_HOME/data/upgrade-info.json` for new upgrade instructions. When an upgrade is [released](https://github.com/hardiksa/fortress/releases), node operators need to:
 
 1. Download (**NOT INSTALL**) the binary for the new release
 2. Place it under `$DAEMON_HOME/cosmovisor/upgrades/<name>/bin`, where `<name>` is the URI-encoded name of the upgrade as specified in the Software Upgrade Plan.
@@ -64,11 +64,11 @@ Cosmovisor will continually poll the `$DAEMON_HOME/data/upgrade-info.json` for n
 ```json
 {
     "binaries": {
-        "darwin/arm64": "https://github.com/hardiksa/torque/releases/download/v3.0.0/torque_3.0.0_Darwin_arm64.tar.gz",
-        "darwin/x86_64": "https://github.com/hardiksa/torque/releases/download/v3.0.0/torque_3.0.0_Darwin_x86_64.tar.gz",
-        "linux/arm64": "https://github.com/hardiksa/torque/releases/download/v3.0.0/torque_3.0.0_Linux_arm64.tar.gz",
-        "linux/x86_64": "https://github.com/hardiksa/torque/releases/download/v3.0.0/torque_3.0.0_Linux_x86_64.tar.gz",
-        "windows/x86_64": "https://github.com/hardiksa/torque/releases/download/v3.0.0/torque_3.0.0_Windows_x86_64.zip"
+        "darwin/arm64": "https://github.com/hardiksa/fortress/releases/download/v3.0.0/torque_3.0.0_Darwin_arm64.tar.gz",
+        "darwin/x86_64": "https://github.com/hardiksa/fortress/releases/download/v3.0.0/torque_3.0.0_Darwin_x86_64.tar.gz",
+        "linux/arm64": "https://github.com/hardiksa/fortress/releases/download/v3.0.0/torque_3.0.0_Linux_arm64.tar.gz",
+        "linux/x86_64": "https://github.com/hardiksa/fortress/releases/download/v3.0.0/torque_3.0.0_Linux_x86_64.tar.gz",
+        "windows/x86_64": "https://github.com/hardiksa/fortress/releases/download/v3.0.0/torque_3.0.0_Windows_x86_64.zip"
     }
 }
 ```
@@ -115,7 +115,7 @@ You will need some way to keep the process always running. If you're on linux, y
 ```bash
 sudo tee /etc/systemd/system/torqued.service > /dev/null <<EOF
 [Unit]
-Description=Torque Daemon
+Description=Fortress Daemon
 After=network-online.target
 
 [Service]

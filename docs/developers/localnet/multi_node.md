@@ -210,5 +210,5 @@ If you have multiple binaries with different names, you can specify which one to
 
 ```bash
 # Run with custom binary
-BINARY=torque make localnet-start
+BINARY=fortress make localnet-start
 ```

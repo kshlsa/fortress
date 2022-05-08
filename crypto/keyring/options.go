@@ -7,10 +7,10 @@ import (
 )
 
 var (
-	// SupportedAlgorithms defines the list of signing algorithms used on Torque:
+	// SupportedAlgorithms defines the list of signing algorithms used on Fortress:
 	//  - eth_secp256k1 (Ethereum)
 	SupportedAlgorithms = keyring.SigningAlgoList{hd.EthSecp256k1}
-	// SupportedAlgorithmsLedger defines the list of signing algorithms used on Torque for the Ledger device:
+	// SupportedAlgorithmsLedger defines the list of signing algorithms used on Fortress for the Ledger device:
 	//  - eth_secp256k1 (Ethereum)
 	SupportedAlgorithmsLedger = keyring.SigningAlgoList{hd.EthSecp256k1}
 )

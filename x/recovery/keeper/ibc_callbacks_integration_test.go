@@ -8,10 +8,10 @@ import (
 	channeltypes "github.com/cosmos/ibc-go/v3/modules/core/04-channel/types"
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
-	"github.com/hardiksa/torque/v4/app"
-	"github.com/hardiksa/torque/v4/testutil"
-	claimtypes "github.com/hardiksa/torque/v4/x/claims/types"
-	"github.com/hardiksa/torque/v4/x/recovery/types"
+	"github.com/hardiksa/fortress/v4/app"
+	"github.com/hardiksa/fortress/v4/testutil"
+	claimtypes "github.com/hardiksa/fortress/v4/x/claims/types"
+	"github.com/hardiksa/fortress/v4/x/recovery/types"
 )
 
 var _ = Describe("Recovery: Performing an IBC Transfer", Ordered, func() {
@@ -34,7 +34,7 @@ var _ = Describe("Recovery: Performing an IBC Transfer", Ordered, func() {
 		BeforeEach(func() {
 			params := claimtypes.DefaultParams()
 			params.AuthorizedChannels = []string{}
-			s.TorqueChain.App.(*app.Torque).ClaimsKeeper.SetParams(s.TorqueChain.GetContext(), params)
+			s.TorqueChain.App.(*app.Fortress).ClaimsKeeper.SetParams(s.TorqueChain.GetContext(), params)
 
 			sender = s.IBCOsmosisChain.SenderAccount.GetAddress().String()
 			receiver = s.TorqueChain.SenderAccount.GetAddress().String()
@@ -44,15 +44,15 @@ var _ = Describe("Recovery: Performing an IBC Transfer", Ordered, func() {
 		It("should transfer and not recover tokens", func() {
 			s.SendAndReceiveMessage(s.pathOsmosisTorque, s.IBCOsmosisChain, "uosmo", 10, sender, receiver, 1)
 
-			nativeTorque := s.TorqueChain.App.(*app.Torque).BankKeeper.GetBalance(s.TorqueChain.GetContext(), senderAcc, "atorque")
+			nativeTorque := s.TorqueChain.App.(*app.Fortress).BankKeeper.GetBalance(s.TorqueChain.GetContext(), senderAcc, "atorque")
 			Expect(nativeTorque).To(Equal(coinTorque))
-			ibcOsmo := s.TorqueChain.App.(*app.Torque).BankKeeper.GetBalance(s.TorqueChain.GetContext(), receiverAcc, uosmoIbcdenom)
+			ibcOsmo := s.TorqueChain.App.(*app.Fortress).BankKeeper.GetBalance(s.TorqueChain.GetContext(), receiverAcc, uosmoIbcdenom)
 			Expect(ibcOsmo).To(Equal(sdk.NewCoin(uosmoIbcdenom, coinOsmo.Amount)))
 		})
 	})
 
 	Describe("from an authorized, non-EVM chain (e.g. Osmosis)", func() {
-		Describe("to a different account on Torque (sender != recipient)", func() {
+		Describe("to a different account on Fortress (sender != recipient)", func() {
 			BeforeEach(func() {
 				sender = s.IBCOsmosisChain.SenderAccount.GetAddress().String()
 				receiver = s.TorqueChain.SenderAccount.GetAddress().String()
@@ -63,14 +63,14 @@ var _ = Describe("Recovery: Performing an IBC Transfer", Ordered, func() {
 			It("should transfer and not recover tokens", func() {
 				s.SendAndReceiveMessage(s.pathOsmosisTorque, s.IBCOsmosisChain, "uosmo", 10, sender, receiver, 1)
 
-				nativeTorque := s.TorqueChain.App.(*app.Torque).BankKeeper.GetBalance(s.TorqueChain.GetContext(), senderAcc, "atorque")
+				nativeTorque := s.TorqueChain.App.(*app.Fortress).BankKeeper.GetBalance(s.TorqueChain.GetContext(), senderAcc, "atorque")
 				Expect(nativeTorque).To(Equal(coinTorque))
-				ibcOsmo := s.TorqueChain.App.(*app.Torque).BankKeeper.GetBalance(s.TorqueChain.GetContext(), receiverAcc, uosmoIbcdenom)
+				ibcOsmo := s.TorqueChain.App.(*app.Fortress).BankKeeper.GetBalance(s.TorqueChain.GetContext(), receiverAcc, uosmoIbcdenom)
 				Expect(ibcOsmo).To(Equal(sdk.NewCoin(uosmoIbcdenom, coinOsmo.Amount)))
 			})
 		})
 
-		Describe("to the sender's own eth_secp256k1 account on Torque (sender == recipient)", func() {
+		Describe("to the sender's own eth_secp256k1 account on Fortress (sender == recipient)", func() {
 			BeforeEach(func() {
 				sender = s.IBCOsmosisChain.SenderAccount.GetAddress().String()
 				receiver = s.IBCOsmosisChain.SenderAccount.GetAddress().String()
@@ -82,15 +82,15 @@ var _ = Describe("Recovery: Performing an IBC Transfer", Ordered, func() {
 				BeforeEach(func() {
 					params := types.DefaultParams()
 					params.EnableRecovery = false
-					s.TorqueChain.App.(*app.Torque).RecoveryKeeper.SetParams(s.TorqueChain.GetContext(), params)
+					s.TorqueChain.App.(*app.Fortress).RecoveryKeeper.SetParams(s.TorqueChain.GetContext(), params)
 				})
 
 				It("should not transfer or recover tokens", func() {
 					s.SendAndReceiveMessage(s.pathOsmosisTorque, s.IBCOsmosisChain, coinOsmo.Denom, coinOsmo.Amount.Int64(), sender, receiver, 1)
 
-					nativeTorque := s.TorqueChain.App.(*app.Torque).BankKeeper.GetBalance(s.TorqueChain.GetContext(), senderAcc, "atorque")
+					nativeTorque := s.TorqueChain.App.(*app.Fortress).BankKeeper.GetBalance(s.TorqueChain.GetContext(), senderAcc, "atorque")
 					Expect(nativeTorque).To(Equal(coinTorque))
-					ibcOsmo := s.TorqueChain.App.(*app.Torque).BankKeeper.GetBalance(s.TorqueChain.GetContext(), receiverAcc, uosmoIbcdenom)
+					ibcOsmo := s.TorqueChain.App.(*app.Fortress).BankKeeper.GetBalance(s.TorqueChain.GetContext(), receiverAcc, uosmoIbcdenom)
 					Expect(ibcOsmo).To(Equal(sdk.NewCoin(uosmoIbcdenom, coinOsmo.Amount)))
 				})
 			})
@@ -100,16 +100,16 @@ var _ = Describe("Recovery: Performing an IBC Transfer", Ordered, func() {
 					BeforeEach(func() {
 						amt := sdk.NewInt(int64(100))
 						claim = claimtypes.NewClaimsRecord(amt)
-						s.TorqueChain.App.(*app.Torque).ClaimsKeeper.SetClaimsRecord(s.TorqueChain.GetContext(), senderAcc, claim)
+						s.TorqueChain.App.(*app.Fortress).ClaimsKeeper.SetClaimsRecord(s.TorqueChain.GetContext(), senderAcc, claim)
 					})
 
 					It("should not transfer or recover tokens", func() {
 						// Prevent further funds from getting stuck
 						s.SendAndReceiveMessage(s.pathOsmosisTorque, s.IBCOsmosisChain, coinOsmo.Denom, coinOsmo.Amount.Int64(), sender, receiver, 1)
 
-						nativeTorque := s.TorqueChain.App.(*app.Torque).BankKeeper.GetBalance(s.TorqueChain.GetContext(), senderAcc, "atorque")
+						nativeTorque := s.TorqueChain.App.(*app.Fortress).BankKeeper.GetBalance(s.TorqueChain.GetContext(), senderAcc, "atorque")
 						Expect(nativeTorque).To(Equal(coinTorque))
-						ibcOsmo := s.TorqueChain.App.(*app.Torque).BankKeeper.GetBalance(s.TorqueChain.GetContext(), receiverAcc, uosmoIbcdenom)
+						ibcOsmo := s.TorqueChain.App.(*app.Fortress).BankKeeper.GetBalance(s.TorqueChain.GetContext(), receiverAcc, uosmoIbcdenom)
 						Expect(ibcOsmo.IsZero()).To(BeTrue())
 					})
 				})
@@ -121,10 +121,10 @@ var _ = Describe("Recovery: Performing an IBC Transfer", Ordered, func() {
 						coins := sdk.NewCoins(sdk.NewCoin("atorque", sdk.NewInt(int64(75))))
 						claim = claimtypes.NewClaimsRecord(amt)
 						claim.MarkClaimed(claimtypes.ActionIBCTransfer)
-						s.TorqueChain.App.(*app.Torque).ClaimsKeeper.SetClaimsRecord(s.TorqueChain.GetContext(), senderAcc, claim)
+						s.TorqueChain.App.(*app.Fortress).ClaimsKeeper.SetClaimsRecord(s.TorqueChain.GetContext(), senderAcc, claim)
 
 						// update the escrowed account balance to maintain the invariant
-						err := testutil.FundModuleAccount(s.TorqueChain.App.(*app.Torque).BankKeeper, s.TorqueChain.GetContext(), claimtypes.ModuleName, coins)
+						err := testutil.FundModuleAccount(s.TorqueChain.App.(*app.Fortress).BankKeeper, s.TorqueChain.GetContext(), claimtypes.ModuleName, coins)
 						s.Require().NoError(err)
 
 						// atorque & ibc tokens that originated from the sender's chain
@@ -134,9 +134,9 @@ var _ = Describe("Recovery: Performing an IBC Transfer", Ordered, func() {
 
 					It("should transfer tokens to the recipient and perform recovery", func() {
 						// Escrow before relaying packets
-						balanceEscrow := s.TorqueChain.App.(*app.Torque).BankKeeper.GetBalance(s.TorqueChain.GetContext(), transfertypes.GetEscrowAddress("transfer", "channel-0"), "atorque")
+						balanceEscrow := s.TorqueChain.App.(*app.Fortress).BankKeeper.GetBalance(s.TorqueChain.GetContext(), transfertypes.GetEscrowAddress("transfer", "channel-0"), "atorque")
 						Expect(balanceEscrow).To(Equal(coinTorque))
-						ibcOsmo := s.TorqueChain.App.(*app.Torque).BankKeeper.GetBalance(s.TorqueChain.GetContext(), receiverAcc, uosmoIbcdenom)
+						ibcOsmo := s.TorqueChain.App.(*app.Fortress).BankKeeper.GetBalance(s.TorqueChain.GetContext(), receiverAcc, uosmoIbcdenom)
 						Expect(ibcOsmo.IsZero()).To(BeTrue())
 
 						// Relay both packets that were sent in the ibc_callback
@@ -146,13 +146,13 @@ var _ = Describe("Recovery: Performing an IBC Transfer", Ordered, func() {
 						s.Require().NoError(err)
 
 						// Check that the atorque were recovered
-						nativeTorque := s.TorqueChain.App.(*app.Torque).BankKeeper.GetBalance(s.TorqueChain.GetContext(), senderAcc, "atorque")
+						nativeTorque := s.TorqueChain.App.(*app.Fortress).BankKeeper.GetBalance(s.TorqueChain.GetContext(), senderAcc, "atorque")
 						Expect(nativeTorque.IsZero()).To(BeTrue())
 						ibcTorque := s.IBCOsmosisChain.GetSimApp().BankKeeper.GetBalance(s.IBCOsmosisChain.GetContext(), receiverAcc, atorqueIbcdenom)
 						Expect(ibcTorque).To(Equal(sdk.NewCoin(atorqueIbcdenom, coinTorque.Amount)))
 
 						// Check that the uosmo were recovered
-						ibcOsmo = s.TorqueChain.App.(*app.Torque).BankKeeper.GetBalance(s.TorqueChain.GetContext(), receiverAcc, uosmoIbcdenom)
+						ibcOsmo = s.TorqueChain.App.(*app.Fortress).BankKeeper.GetBalance(s.TorqueChain.GetContext(), receiverAcc, uosmoIbcdenom)
 						Expect(ibcOsmo.IsZero()).To(BeTrue())
 						nativeOsmo := s.IBCOsmosisChain.GetSimApp().BankKeeper.GetBalance(s.IBCOsmosisChain.GetContext(), receiverAcc, "uosmo")
 						Expect(nativeOsmo).To(Equal(coinOsmo))
@@ -165,7 +165,7 @@ var _ = Describe("Recovery: Performing an IBC Transfer", Ordered, func() {
 						err = s.pathOsmosisTorque.RelayPacket(CreatePacket("10", "transfer/channel-0/uosmo", sender, receiver, "transfer", "channel-0", "transfer", "channel-0", 2, timeout))
 						s.Require().NoError(err)
 
-						claimAfter, _ := s.TorqueChain.App.(*app.Torque).ClaimsKeeper.GetClaimsRecord(s.TorqueChain.GetContext(), senderAcc)
+						claimAfter, _ := s.TorqueChain.App.(*app.Fortress).ClaimsKeeper.GetClaimsRecord(s.TorqueChain.GetContext(), senderAcc)
 						Expect(claim).To(Equal(claimAfter))
 					})
 				})
@@ -179,9 +179,9 @@ var _ = Describe("Recovery: Performing an IBC Transfer", Ordered, func() {
 						timeout = uint64(s.TorqueChain.GetContext().BlockTime().Add(time.Hour * 4).Add(time.Second * -20).UnixNano())
 
 						// Escrow before relaying packets
-						balanceEscrow := s.TorqueChain.App.(*app.Torque).BankKeeper.GetBalance(s.TorqueChain.GetContext(), transfertypes.GetEscrowAddress("transfer", "channel-0"), "atorque")
+						balanceEscrow := s.TorqueChain.App.(*app.Fortress).BankKeeper.GetBalance(s.TorqueChain.GetContext(), transfertypes.GetEscrowAddress("transfer", "channel-0"), "atorque")
 						Expect(balanceEscrow).To(Equal(coinTorque))
-						ibcOsmo := s.TorqueChain.App.(*app.Torque).BankKeeper.GetBalance(s.TorqueChain.GetContext(), receiverAcc, uosmoIbcdenom)
+						ibcOsmo := s.TorqueChain.App.(*app.Fortress).BankKeeper.GetBalance(s.TorqueChain.GetContext(), receiverAcc, uosmoIbcdenom)
 						Expect(ibcOsmo.IsZero()).To(BeTrue())
 
 						// Relay both packets that were sent in the ibc_callback
@@ -191,13 +191,13 @@ var _ = Describe("Recovery: Performing an IBC Transfer", Ordered, func() {
 						s.Require().NoError(err)
 
 						// Check that the atorque were recovered
-						nativeTorque := s.TorqueChain.App.(*app.Torque).BankKeeper.GetBalance(s.TorqueChain.GetContext(), senderAcc, "atorque")
+						nativeTorque := s.TorqueChain.App.(*app.Fortress).BankKeeper.GetBalance(s.TorqueChain.GetContext(), senderAcc, "atorque")
 						Expect(nativeTorque.IsZero()).To(BeTrue())
 						ibcTorque := s.IBCOsmosisChain.GetSimApp().BankKeeper.GetBalance(s.IBCOsmosisChain.GetContext(), receiverAcc, atorqueIbcdenom)
 						Expect(ibcTorque).To(Equal(sdk.NewCoin(atorqueIbcdenom, coinTorque.Amount)))
 
 						// Check that the uosmo were recovered
-						ibcOsmo = s.TorqueChain.App.(*app.Torque).BankKeeper.GetBalance(s.TorqueChain.GetContext(), receiverAcc, uosmoIbcdenom)
+						ibcOsmo = s.TorqueChain.App.(*app.Fortress).BankKeeper.GetBalance(s.TorqueChain.GetContext(), receiverAcc, uosmoIbcdenom)
 						Expect(ibcOsmo.IsZero()).To(BeTrue())
 						nativeOsmo := s.IBCOsmosisChain.GetSimApp().BankKeeper.GetBalance(s.IBCOsmosisChain.GetContext(), receiverAcc, "uosmo")
 						Expect(nativeOsmo).To(Equal(coinOsmo))
@@ -209,16 +209,16 @@ var _ = Describe("Recovery: Performing an IBC Transfer", Ordered, func() {
 					BeforeEach(func() {
 						params := types.DefaultParams()
 						params.EnableRecovery = false
-						s.TorqueChain.App.(*app.Torque).RecoveryKeeper.SetParams(s.TorqueChain.GetContext(), params)
+						s.TorqueChain.App.(*app.Fortress).RecoveryKeeper.SetParams(s.TorqueChain.GetContext(), params)
 
-						// Send uatom from Cosmos to Torque
+						// Send uatom from Cosmos to Fortress
 						s.SendAndReceiveMessage(s.pathCosmosTorque, s.IBCCosmosChain, coinAtom.Denom, coinAtom.Amount.Int64(), s.IBCCosmosChain.SenderAccount.GetAddress().String(), receiver, 1)
 
 						params.EnableRecovery = true
-						s.TorqueChain.App.(*app.Torque).RecoveryKeeper.SetParams(s.TorqueChain.GetContext(), params)
+						s.TorqueChain.App.(*app.Fortress).RecoveryKeeper.SetParams(s.TorqueChain.GetContext(), params)
 					})
 					It("should not recover tokens that originated from other chains", func() {
-						// Send uosmo from Osmosis to Torque
+						// Send uosmo from Osmosis to Fortress
 						s.SendAndReceiveMessage(s.pathOsmosisTorque, s.IBCOsmosisChain, "uosmo", 10, sender, receiver, 1)
 
 						// Relay both packets that were sent in the ibc_callback
@@ -229,22 +229,22 @@ var _ = Describe("Recovery: Performing an IBC Transfer", Ordered, func() {
 						s.Require().NoError(err)
 
 						// Atorque was recovered from user address
-						nativeTorque := s.TorqueChain.App.(*app.Torque).BankKeeper.GetBalance(s.TorqueChain.GetContext(), senderAcc, "atorque")
+						nativeTorque := s.TorqueChain.App.(*app.Fortress).BankKeeper.GetBalance(s.TorqueChain.GetContext(), senderAcc, "atorque")
 						Expect(nativeTorque.IsZero()).To(BeTrue())
 						ibcTorque := s.IBCOsmosisChain.GetSimApp().BankKeeper.GetBalance(s.IBCOsmosisChain.GetContext(), receiverAcc, atorqueIbcdenom)
 						Expect(ibcTorque).To(Equal(sdk.NewCoin(atorqueIbcdenom, coinTorque.Amount)))
 
 						// Check that the uosmo were retrieved
-						ibcOsmo := s.TorqueChain.App.(*app.Torque).BankKeeper.GetBalance(s.TorqueChain.GetContext(), receiverAcc, uosmoIbcdenom)
+						ibcOsmo := s.TorqueChain.App.(*app.Fortress).BankKeeper.GetBalance(s.TorqueChain.GetContext(), receiverAcc, uosmoIbcdenom)
 						Expect(ibcOsmo.IsZero()).To(BeTrue())
 						nativeOsmo := s.IBCOsmosisChain.GetSimApp().BankKeeper.GetBalance(s.IBCOsmosisChain.GetContext(), receiverAcc, "uosmo")
 						Expect(nativeOsmo).To(Equal(coinOsmo))
 
 						// Check that the atoms were not retrieved
-						ibcAtom := s.TorqueChain.App.(*app.Torque).BankKeeper.GetBalance(s.TorqueChain.GetContext(), senderAcc, uatomIbcdenom)
+						ibcAtom := s.TorqueChain.App.(*app.Fortress).BankKeeper.GetBalance(s.TorqueChain.GetContext(), senderAcc, uatomIbcdenom)
 						Expect(ibcAtom).To(Equal(sdk.NewCoin(uatomIbcdenom, coinAtom.Amount)))
 
-						// Repeat transaction from Osmosis to Torque
+						// Repeat transaction from Osmosis to Fortress
 						s.SendAndReceiveMessage(s.pathOsmosisTorque, s.IBCOsmosisChain, "uosmo", 10, sender, receiver, 2)
 
 						timeout = uint64(s.TorqueChain.GetContext().BlockTime().Add(time.Hour * 4).Add(time.Second * -20).UnixNano())
@@ -252,17 +252,17 @@ var _ = Describe("Recovery: Performing an IBC Transfer", Ordered, func() {
 						s.Require().NoError(err)
 
 						// No further tokens recovered
-						nativeTorque = s.TorqueChain.App.(*app.Torque).BankKeeper.GetBalance(s.TorqueChain.GetContext(), senderAcc, "atorque")
+						nativeTorque = s.TorqueChain.App.(*app.Fortress).BankKeeper.GetBalance(s.TorqueChain.GetContext(), senderAcc, "atorque")
 						Expect(nativeTorque.IsZero()).To(BeTrue())
 						ibcTorque = s.IBCOsmosisChain.GetSimApp().BankKeeper.GetBalance(s.IBCOsmosisChain.GetContext(), receiverAcc, atorqueIbcdenom)
 						Expect(ibcTorque).To(Equal(sdk.NewCoin(atorqueIbcdenom, coinTorque.Amount)))
 
-						ibcOsmo = s.TorqueChain.App.(*app.Torque).BankKeeper.GetBalance(s.TorqueChain.GetContext(), receiverAcc, uosmoIbcdenom)
+						ibcOsmo = s.TorqueChain.App.(*app.Fortress).BankKeeper.GetBalance(s.TorqueChain.GetContext(), receiverAcc, uosmoIbcdenom)
 						Expect(ibcOsmo.IsZero()).To(BeTrue())
 						nativeOsmo = s.IBCOsmosisChain.GetSimApp().BankKeeper.GetBalance(s.IBCOsmosisChain.GetContext(), receiverAcc, "uosmo")
 						Expect(nativeOsmo).To(Equal(coinOsmo))
 
-						ibcAtom = s.TorqueChain.App.(*app.Torque).BankKeeper.GetBalance(s.TorqueChain.GetContext(), senderAcc, uatomIbcdenom)
+						ibcAtom = s.TorqueChain.App.(*app.Fortress).BankKeeper.GetBalance(s.TorqueChain.GetContext(), senderAcc, uatomIbcdenom)
 						Expect(ibcAtom).To(Equal(sdk.NewCoin(uatomIbcdenom, coinAtom.Amount)))
 					})
 				})
@@ -272,7 +272,7 @@ var _ = Describe("Recovery: Performing an IBC Transfer", Ordered, func() {
 					BeforeEach(func() {
 						params := types.DefaultParams()
 						params.EnableRecovery = false
-						s.TorqueChain.App.(*app.Torque).RecoveryKeeper.SetParams(s.TorqueChain.GetContext(), params)
+						s.TorqueChain.App.(*app.Fortress).RecoveryKeeper.SetParams(s.TorqueChain.GetContext(), params)
 
 						s.SendAndReceiveMessage(s.pathOsmosisCosmos, s.IBCCosmosChain, coinAtom.Denom, coinAtom.Amount.Int64(), s.IBCCosmosChain.SenderAccount.GetAddress().String(), receiver, 1)
 
@@ -282,16 +282,16 @@ var _ = Describe("Recovery: Performing an IBC Transfer", Ordered, func() {
 						s.Require().NoError(err) // message committed
 						transfer := transfertypes.NewFungibleTokenPacketData("transfer/channel-1/uatom", "10", sender, receiver)
 						packet := channeltypes.NewPacket(transfer.GetBytes(), 1, s.pathOsmosisTorque.EndpointA.ChannelConfig.PortID, s.pathOsmosisTorque.EndpointA.ChannelID, s.pathOsmosisTorque.EndpointB.ChannelConfig.PortID, s.pathOsmosisTorque.EndpointB.ChannelID, timeoutHeight, 0)
-						// Receive message on the torque side, and send ack
+						// Receive message on the fortress side, and send ack
 						err = s.pathOsmosisTorque.RelayPacket(packet)
 						s.Require().NoError(err)
 
 						// Check that the ibc/uatom are available
-						osmoIBCAtom := s.TorqueChain.App.(*app.Torque).BankKeeper.GetBalance(s.TorqueChain.GetContext(), receiverAcc, uatomOsmoIbcdenom)
+						osmoIBCAtom := s.TorqueChain.App.(*app.Fortress).BankKeeper.GetBalance(s.TorqueChain.GetContext(), receiverAcc, uatomOsmoIbcdenom)
 						s.Require().Equal(osmoIBCAtom.Amount, coinAtom.Amount)
 
 						params.EnableRecovery = true
-						s.TorqueChain.App.(*app.Torque).RecoveryKeeper.SetParams(s.TorqueChain.GetContext(), params)
+						s.TorqueChain.App.(*app.Fortress).RecoveryKeeper.SetParams(s.TorqueChain.GetContext(), params)
 					})
 					It("should not recover tokens that originated from other chains", func() {
 						s.SendAndReceiveMessage(s.pathOsmosisTorque, s.IBCOsmosisChain, "uosmo", 10, sender, receiver, 2)
@@ -306,19 +306,19 @@ var _ = Describe("Recovery: Performing an IBC Transfer", Ordered, func() {
 						s.Require().NoError(err)
 
 						// Atorque was recovered from user address
-						nativeTorque := s.TorqueChain.App.(*app.Torque).BankKeeper.GetBalance(s.TorqueChain.GetContext(), senderAcc, "atorque")
+						nativeTorque := s.TorqueChain.App.(*app.Fortress).BankKeeper.GetBalance(s.TorqueChain.GetContext(), senderAcc, "atorque")
 						Expect(nativeTorque.IsZero()).To(BeTrue())
 						ibcTorque := s.IBCOsmosisChain.GetSimApp().BankKeeper.GetBalance(s.IBCOsmosisChain.GetContext(), receiverAcc, atorqueIbcdenom)
 						Expect(ibcTorque).To(Equal(sdk.NewCoin(atorqueIbcdenom, coinTorque.Amount)))
 
 						// Check that the uosmo were recovered
-						ibcOsmo := s.TorqueChain.App.(*app.Torque).BankKeeper.GetBalance(s.TorqueChain.GetContext(), receiverAcc, uosmoIbcdenom)
+						ibcOsmo := s.TorqueChain.App.(*app.Fortress).BankKeeper.GetBalance(s.TorqueChain.GetContext(), receiverAcc, uosmoIbcdenom)
 						Expect(ibcOsmo.IsZero()).To(BeTrue())
 						nativeOsmo := s.IBCOsmosisChain.GetSimApp().BankKeeper.GetBalance(s.IBCOsmosisChain.GetContext(), receiverAcc, "uosmo")
 						Expect(nativeOsmo).To(Equal(coinOsmo))
 
 						// Check that the ibc/uatom were retrieved
-						osmoIBCAtom := s.TorqueChain.App.(*app.Torque).BankKeeper.GetBalance(s.TorqueChain.GetContext(), receiverAcc, uatomOsmoIbcdenom)
+						osmoIBCAtom := s.TorqueChain.App.(*app.Fortress).BankKeeper.GetBalance(s.TorqueChain.GetContext(), receiverAcc, uatomOsmoIbcdenom)
 						Expect(osmoIBCAtom.IsZero()).To(BeTrue())
 						ibcAtom := s.IBCOsmosisChain.GetSimApp().BankKeeper.GetBalance(s.IBCOsmosisChain.GetContext(), senderAcc, uatomIbcdenom)
 						Expect(ibcAtom).To(Equal(sdk.NewCoin(uatomIbcdenom, sdk.NewInt(10))))

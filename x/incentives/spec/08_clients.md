@@ -88,17 +88,17 @@ torqued tx gov submit-proposal param-change [proposal-file] [flags]
 
 | Verb   | Method                                                     | Description                                   |
 | ------ | ---------------------------------------------------------- | --------------------------------------------- |
-| `gRPC` | `torque.incentives.v1.Query/Incentives`                     | Gets all registered incentives                |
-| `gRPC` | `torque.incentives.v1.Query/Incentive`                      | Gets incentive for a given contract           |
-| `gRPC` | `torque.incentives.v1.Query/GasMeters`                      | Gets gas meters for a given incentive         |
-| `gRPC` | `torque.incentives.v1.Query/GasMeter`                       | Gets gas meter for a given incentive and user |
-| `gRPC` | `torque.incentives.v1.Query/AllocationMeters`               | Gets all allocation meters                    |
-| `gRPC` | `torque.incentives.v1.Query/AllocationMeter`                | Gets allocation meter for a denom             |
-| `gRPC` | `torque.incentives.v1.Query/Params`                         | Gets incentives params                        |
-| `GET`  | `/torque/incentives/v1/incentives`                          | Gets all registered incentives                |
-| `GET`  | `/torque/incentives/v1/incentives/{contract}`               | Gets incentive for a given contract           |
-| `GET`  | `/torque/incentives/v1/gas_meters`                          | Gets gas meters for a given incentive         |
-| `GET`  | `/torque/incentives/v1/gas_meters/{contract}/{participant}` | Gets gas meter for a given incentive and user |
-| `GET`  | `/torque/incentives/v1/allocation_meters`                   | Gets all allocation meters                    |
-| `GET`  | `/torque/incentives/v1/allocation_meters/{denom}`           | Gets allocation meter for a denom             |
-| `GET`  | `/torque/incentives/v1/params`                              | Gets incentives params                        |
+| `gRPC` | `fortress.incentives.v1.Query/Incentives`                     | Gets all registered incentives                |
+| `gRPC` | `fortress.incentives.v1.Query/Incentive`                      | Gets incentive for a given contract           |
+| `gRPC` | `fortress.incentives.v1.Query/GasMeters`                      | Gets gas meters for a given incentive         |
+| `gRPC` | `fortress.incentives.v1.Query/GasMeter`                       | Gets gas meter for a given incentive and user |
+| `gRPC` | `fortress.incentives.v1.Query/AllocationMeters`               | Gets all allocation meters                    |
+| `gRPC` | `fortress.incentives.v1.Query/AllocationMeter`                | Gets allocation meter for a denom             |
+| `gRPC` | `fortress.incentives.v1.Query/Params`                         | Gets incentives params                        |
+| `GET`  | `/fortress/incentives/v1/incentives`                          | Gets all registered incentives                |
+| `GET`  | `/fortress/incentives/v1/incentives/{contract}`               | Gets incentive for a given contract           |
+| `GET`  | `/fortress/incentives/v1/gas_meters`                          | Gets gas meters for a given incentive         |
+| `GET`  | `/fortress/incentives/v1/gas_meters/{contract}/{participant}` | Gets gas meter for a given incentive and user |
+| `GET`  | `/fortress/incentives/v1/allocation_meters`                   | Gets all allocation meters                    |
+| `GET`  | `/fortress/incentives/v1/allocation_meters/{denom}`           | Gets allocation meter for a denom             |
+| `GET`  | `/fortress/incentives/v1/params`                              | Gets incentives params                        |

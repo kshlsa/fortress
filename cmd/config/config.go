@@ -8,7 +8,7 @@ import (
 
 const (
 	// Bech32Prefix defines the Bech32 prefix used for EthAccounts
-	Bech32Prefix = "torque"
+	Bech32Prefix = "fortress"
 
 	// Bech32PrefixAccAddr defines the Bech32 prefix of an account's address
 	Bech32PrefixAccAddr = Bech32Prefix
@@ -26,8 +26,8 @@ const (
 
 const (
 	// DisplayDenom defines the denomination displayed to users in client applications.
-	DisplayDenom = "torque"
-	// BaseDenom defines to the default denomination used in Torque (staking, EVM, governance, etc.)
+	DisplayDenom = "fortress"
+	// BaseDenom defines to the default denomination used in Fortress (staking, EVM, governance, etc.)
 	BaseDenom = "atorque"
 )
 

@@ -14,7 +14,7 @@ import (
 	"github.com/tharsis/ethermint/server/config"
 	"github.com/tharsis/ethermint/testutil/network"
 
-	torquenetwork "github.com/hardiksa/torque/v4/testutil/network"
+	torquenetwork "github.com/hardiksa/fortress/v4/testutil/network"
 )
 
 type IntegrationTestSuite struct {

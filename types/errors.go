@@ -5,9 +5,9 @@ import (
 )
 
 // RootCodespace is the codespace for all errors defined in this package
-const RootCodespace = "torque"
+const RootCodespace = "fortress"
 
-// root error codes for Torque
+// root error codes for Fortress
 const (
 	codeKeyTypeNotSupported = iota + 2
 )

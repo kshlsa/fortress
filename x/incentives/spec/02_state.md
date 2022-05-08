@@ -54,7 +54,7 @@ type GasMeter struct {
 
 An allocation meter stores the sum of all registered incentives’ allocations for a given denomination and is used to limit the amount of registered incentives.
 
-Say, there are several incentives that have registered an allocation for the $TORQUE coin and the allocation meter for $TORQUE is at 97%. Then a new incentve proposal can only include an $TORQUE allocation at up to 3%, claiming the last remaining allocation capcaity from the $TORQUE rewards in the inflation pool.
+Say, there are several incentives that have registered an allocation for the $FORTRESS coin and the allocation meter for $FORTRESS is at 97%. Then a new incentve proposal can only include an $FORTRESS allocation at up to 3%, claiming the last remaining allocation capcaity from the $FORTRESS rewards in the inflation pool.
 
 ## Genesis State
 

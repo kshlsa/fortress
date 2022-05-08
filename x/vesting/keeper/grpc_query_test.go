@@ -7,8 +7,8 @@ import (
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 
 	"github.com/tharsis/ethermint/tests"
-	"github.com/hardiksa/torque/v4/testutil"
-	"github.com/hardiksa/torque/v4/x/vesting/types"
+	"github.com/hardiksa/fortress/v4/testutil"
+	"github.com/hardiksa/fortress/v4/x/vesting/types"
 )
 
 func (suite *KeeperTestSuite) TestBalances() {

@@ -4,18 +4,18 @@ order: 1
 
 # TorqueJS
 
-Use the TorqueJS library for connecting clients to Torque {synopsis}
+Use the TorqueJS library for connecting clients to Fortress {synopsis}
 
-[`torquejs`](https://github.com/hardiksa/torquejs) is a JavaScript and TypeScript client library for [Torque](https://github.com/hardiksa/torque) and [Ethermint](https://github.com/tharsis/ethermint) nodes.
+[`torquejs`](https://github.com/hardiksa/torquejs) is a JavaScript and TypeScript client library for [Fortress](https://github.com/hardiksa/fortress) and [Ethermint](https://github.com/tharsis/ethermint) nodes.
 
 ## Functionalities
 
 - Address format converter (Bech32 <--> Hex)
-- Protobuf files used to generate Cosmos/Torque transactions
-- Query REST provider for interacting with Torque nodes
-- Torque transaction generator
-- Send Torque's Cosmos transactions using EIP712 transactions generator
-- Sign Torque transactions using Keplr
+- Protobuf files used to generate Cosmos/Fortress transactions
+- Query REST provider for interacting with Fortress nodes
+- Fortress transaction generator
+- Send Fortress's Cosmos transactions using EIP712 transactions generator
+- Sign Fortress transactions using Keplr
 
 ## List of packages
 

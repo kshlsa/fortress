@@ -12,9 +12,9 @@ import (
 	"github.com/tharsis/ethermint/tests"
 	evmtypes "github.com/tharsis/ethermint/x/evm/types"
 
-	"github.com/hardiksa/torque/v4/x/erc20/keeper"
-	"github.com/hardiksa/torque/v4/x/erc20/types"
-	inflationtypes "github.com/hardiksa/torque/v4/x/inflation/types"
+	"github.com/hardiksa/fortress/v4/x/erc20/keeper"
+	"github.com/hardiksa/fortress/v4/x/erc20/types"
+	inflationtypes "github.com/hardiksa/fortress/v4/x/inflation/types"
 )
 
 const (
@@ -202,9 +202,9 @@ func (suite KeeperTestSuite) TestRegisterCoin() {
 			false,
 		},
 		{
-			"evm denom registration - torque",
+			"evm denom registration - fortress",
 			func() {
-				metadata.Base = "torque"
+				metadata.Base = "fortress"
 				err := suite.app.BankKeeper.MintCoins(suite.ctx, inflationtypes.ModuleName, sdk.Coins{sdk.NewInt64Coin(metadata.Base, 1)})
 				suite.Require().NoError(err)
 			},

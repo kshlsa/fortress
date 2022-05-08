@@ -9,15 +9,15 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/genutil/client/cli"
 	"github.com/stretchr/testify/require"
 
-	"github.com/hardiksa/torque/v4/app"
-	torqued "github.com/hardiksa/torque/v4/cmd/torqued"
+	"github.com/hardiksa/fortress/v4/app"
+	torqued "github.com/hardiksa/fortress/v4/cmd/torqued"
 )
 
 func TestInitCmd(t *testing.T) {
 	rootCmd, _ := torqued.NewRootCmd()
 	rootCmd.SetArgs([]string{
 		"init",       // Test the init cmd
-		"torque-test", // Moniker
+		"fortress-test", // Moniker
 		fmt.Sprintf("--%s=%s", cli.FlagOverwrite, "true"), // Overwrite genesis.json, in case it already exists
 		fmt.Sprintf("--%s=%s", flags.FlagChainID, "torque_9000-1"),
 	})

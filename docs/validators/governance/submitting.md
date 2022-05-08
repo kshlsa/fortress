@@ -61,10 +61,10 @@ torqued tx gov submit-proposal \
 ```
 
 ::: tip
-Use the `torque tx gov --help` flag to get more info about the governance commands
+Use the `fortress tx gov --help` flag to get more info about the governance commands
 :::
 
-1. `torqued` is the command-line interface client that is used to send transactions and query Torque
+1. `torqued` is the command-line interface client that is used to send transactions and query Fortress
 2. `tx gov submit-proposal param-change` indicates that the transaction is submitting a parameter-change proposal
 3. `--from mykey` is the account key that pays the transaction fee and deposit amount
 4. `--gas 500000` is the maximum amount of gas permitted to be used to process the transaction
@@ -74,14 +74,14 @@ Use the `torque tx gov --help` flag to get more info about the governance comman
 5. `--fees` is a flat-rate incentive for a validator to process your transaction
    - the network still accepts zero fees, but many nodes will not transmit your transaction to the network without a minimum fee
    - many nodes (including the Figment node) use a minimum fee to desincentivize transaction spamming
-   - 7500atorque is equal to 0.0075 TORQUE
-6. `--chain-id torque_90001-2` is Torque Mainnet. For current and past chain-id's, please look at the [tharsis/mainnet resource](https://github.com/tharsis/mainnet)
-   - the testnet chain ID is [torque_9000-4](https://testnet.mintscan.io/torque). For current and past testnet information, please look at the [testnet repository](https://github.com/tharsis/testnets)
-7. `--node` is using a full node to send the transaction to the Torque Mainnet
+   - 7500atorque is equal to 0.0075 FORTRESS
+6. `--chain-id torque_90001-2` is Fortress Mainnet. For current and past chain-id's, please look at the [tharsis/mainnet resource](https://github.com/tharsis/mainnet)
+   - the testnet chain ID is [torque_9000-4](https://testnet.mintscan.io/fortress). For current and past testnet information, please look at the [testnet repository](https://github.com/tharsis/testnets)
+7. `--node` is using a full node to send the transaction to the Fortress Mainnet
 
 ### Verifying your transaction
 
-After posting your transaction, your command line interface (`torqued`) will provide you with the transaction's hash, which you can either query using torqued or by searching the transaction hash using [Mintscan](https://www.mintscan.io/torque) or any block explorer.
+After posting your transaction, your command line interface (`torqued`) will provide you with the transaction's hash, which you can either query using torqued or by searching the transaction hash using [Mintscan](https://www.mintscan.io/fortress) or any block explorer.
 
 ### Depositing funds after a proposal has been submitted
 

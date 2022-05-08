@@ -1,6 +1,6 @@
 module.exports = {
   theme: 'cosmos',
-  title: 'Torque Documentation',
+  title: 'Fortress Documentation',
   locales: {
     '/': {
       lang: 'en-US'
@@ -44,39 +44,39 @@ module.exports = {
     // ['link', { rel: "apple-touch-icon-precomposed", href: "/apple-touch-icon-precomposed.png" }],
   ],
   themeConfig: {
-    repo: 'hardiksa/torque',
-    docsRepo: 'hardiksa/torque',
+    repo: 'hardiksa/fortress',
+    docsRepo: 'hardiksa/fortress',
     docsBranch: 'main',
     docsDir: 'docs',
     editLinks: true,
     custom: true,
     project: {
-      name: 'Torque',
-      denom: 'Torque',
-      ticker: 'TORQUE',
+      name: 'Fortress',
+      denom: 'Fortress',
+      ticker: 'FORTRESS',
       binary: 'torqued',
       testnet_denom: 'tTorque',
       testnet_ticker: 'tTORQUE',
-      rpc_url: 'https://eth.bd.torque.org:8545',
-      rpc_url_testnet: 'https://eth.bd.torque.dev:8545',
+      rpc_url: 'https://eth.bd.fortress.org:8545',
+      rpc_url_testnet: 'https://eth.bd.fortress.dev:8545',
       rpc_url_local: 'http://localhost:8545/',
       chain_id: '9001',
       testnet_chain_id: '9000',
       latest_version: 'v3.0.0-beta1',
       version_number: '2',
       testnet_version_number: '4',
-      testnet_evm_explorer_url: 'https://evm.torque.dev',
-      evm_explorer_url: 'https://evm.torque.org',
-      testnet_cosmos_explorer_url: 'https://explorer.torque.dev/',
-      cosmos_explorer_url: 'https://www.mintscan.io/torque',
+      testnet_evm_explorer_url: 'https://evm.fortress.dev',
+      evm_explorer_url: 'https://evm.fortress.org',
+      testnet_cosmos_explorer_url: 'https://explorer.fortress.dev/',
+      cosmos_explorer_url: 'https://www.mintscan.io/fortress',
     },
     logo: {
-      src: '/torque-black.svg',
+      src: '/fortress-black.svg',
     },
     algolia: {
       id: 'BH4D9OD16A',
       key: 'a5d55fe5f540cc3bd28fa2c72f2b5bd8',
-      index: 'torque'
+      index: 'fortress'
     },
     topbar: {
       banner: false
@@ -85,7 +85,7 @@ module.exports = {
       auto: false,
       nav: [
         {
-          title: 'About Torque',
+          title: 'About Fortress',
           children: [
             {
               title: 'Introduction',
@@ -93,11 +93,11 @@ module.exports = {
               path: '/about/intro'
             },
             {
-              title: 'Torque Ecosystem',
-              path: 'https://torque.space/'
+              title: 'Fortress Ecosystem',
+              path: 'https://fortress.space/'
             },
             {
-              title: 'Awesome Torque',
+              title: 'Awesome Fortress',
               path: 'https://github.com/tharsis/awesome'
             },
           ]
@@ -141,7 +141,7 @@ module.exports = {
               path: '/developers/connect'
             },
             {
-              title: 'Torque Clients',
+              title: 'Fortress Clients',
               directory: false,
               path: '/developers/clients'
             },
@@ -172,7 +172,7 @@ module.exports = {
             },
             {
               title: 'Cosmos gRPC & REST',
-              path: 'https://api.torque.dev/'
+              path: 'https://api.fortress.dev/'
             },
             {
               title: 'Tendermint RPC',
@@ -189,15 +189,15 @@ module.exports = {
               path: '/modules'
             },
             {
-              title: 'Torque Go API',
-              path: 'https://pkg.go.dev/github.com/hardiksa/torque'
+              title: 'Fortress Go API',
+              path: 'https://pkg.go.dev/github.com/hardiksa/fortress'
             },
             {
               title: 'Ethermint Library Go API',
               path: 'https://pkg.go.dev/github.com/tharsis/ethermint'
             },
             {
-              title: 'Torque Protobuf',
+              title: 'Fortress Protobuf',
               directory: false,
               path: '/protocol/proto-docs'
             }
@@ -242,7 +242,7 @@ module.exports = {
               path: '/validators/upgrades'
             },
             {
-              title: 'Torque Governance',
+              title: 'Fortress Governance',
               directory: true,
               path: '/validators/governance'
             },
@@ -262,11 +262,11 @@ module.exports = {
             },
             {
               title: 'Blockscout (EVM)',
-              path: 'https://evm.torque.org'
+              path: 'https://evm.fortress.org'
             },
             {
               title: 'Mintscan (Cosmos)',
-              path: 'https://www.mintscan.io/torque/'
+              path: 'https://www.mintscan.io/fortress/'
             },
           ]
         },
@@ -276,14 +276,14 @@ module.exports = {
       title: 'Help & Support',
       chat: {
         title: 'Discord Channel',
-        text: 'Chat with Torque users and team on Discord.',
-        url: 'https://discord.gg/torque',
+        text: 'Chat with Fortress users and team on Discord.',
+        url: 'https://discord.gg/fortress',
         bg: 'linear-gradient(103.75deg, #1B1E36 0%, #22253F 100%)'
       },
       forum: {
         title: 'Commonwealth Forum',
-        text: 'Join the Torque Commonwealth forum',
-        url: 'https://commonwealth.im/torque', 
+        text: 'Join the Fortress Commonwealth forum',
+        url: 'https://commonwealth.im/fortress', 
         bg: 'linear-gradient(221.79deg, #3D6B99 -1.08%, #336699 95.88%)',
       },
       github: {
@@ -293,15 +293,15 @@ module.exports = {
       }
     },
     footer: {
-      logo: '/torque-black.svg',
+      logo: '/fortress-black.svg',
       textLink: {
-        text: "torque.org",
-        url: 'https://torque.org'
+        text: "fortress.org",
+        url: 'https://fortress.org'
       },
       services: [
         {
           service: "github",
-          url: 'https://github.com/hardiksa/torque'
+          url: 'https://github.com/hardiksa/fortress'
         },
         {
           service: "twitter",
@@ -317,7 +317,7 @@ module.exports = {
         },
         {
           service: "medium",
-          url: "https://torque.blog/",
+          url: "https://fortress.blog/",
         },
       ],
       smallprint: 'This website is maintained by Tharsis Labs Ltd.',
@@ -342,20 +342,20 @@ module.exports = {
         title: 'Community',
         children: [
           {
-            title: 'Torque Discord Community',
-            url: 'https://discord.gg/torque'
+            title: 'Fortress Discord Community',
+            url: 'https://discord.gg/fortress'
           },
           {
-            title: 'Torque Commonwealth Forum',
-            url: 'https://commonwealth.im/torque'
+            title: 'Fortress Commonwealth Forum',
+            url: 'https://commonwealth.im/fortress'
           },
         ]
       },
       {
-        title: 'Torque',
+        title: 'Fortress',
         children: [
           {
-            title: 'Jobs at Torque',
+            title: 'Jobs at Fortress',
             url: 'https://tharsis.notion.site/'
           }
         ]

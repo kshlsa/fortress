@@ -27,5 +27,5 @@ torqued query recovery params [flags]
 
 | Verb   |              Method              |           Description |
 | :----- | :------------------------------- | :-------------------- |
-| `gRPC` | `torque.recovery.v1.Query/Params` | `Get Recovery params` |
-| `GET`  |   `/torque/recovery/v1/params`    | `Get Recovery params` |
+| `gRPC` | `fortress.recovery.v1.Query/Params` | `Get Recovery params` |
+| `GET`  |   `/fortress/recovery/v1/params`    | `Get Recovery params` |

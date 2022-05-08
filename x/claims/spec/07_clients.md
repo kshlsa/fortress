@@ -52,11 +52,11 @@ torqued query claims params [flags]
 
 | Verb   | Method                                     | Description                                      |
 |--------|--------------------------------------------|--------------------------------------------------|
-| `gRPC` | `torque.claims.v1.Query/TotalUnclaimed`     | Gets the total unclaimed tokens from the airdrop |
-| `gRPC` | `torque.claims.v1.Query/ClaimsRecords`      | Gets all registered claims records               |
-| `gRPC` | `torque.claims.v1.Query/ClaimsRecord`       | Get the claims record for a given user            |
-| `gRPC` | `torque.claims.v1.Query/Params`             | Gets claims params                               |
-| `GET`  | `/torque/claims/v1/total_unclaimed`         | Gets the total unclaimed tokens from the airdrop |
-| `GET`  | `/torque/claims/v1/claims_records`          | Gets all registered claims records               |
-| `GET`  | `/torque/claims/v1/claims_record/{address}` | Gets a claims record for a given user            |
-| `GET`  | `/torque/claims/v1/params`                  | Gets claims params                               |
+| `gRPC` | `fortress.claims.v1.Query/TotalUnclaimed`     | Gets the total unclaimed tokens from the airdrop |
+| `gRPC` | `fortress.claims.v1.Query/ClaimsRecords`      | Gets all registered claims records               |
+| `gRPC` | `fortress.claims.v1.Query/ClaimsRecord`       | Get the claims record for a given user            |
+| `gRPC` | `fortress.claims.v1.Query/Params`             | Gets claims params                               |
+| `GET`  | `/fortress/claims/v1/total_unclaimed`         | Gets the total unclaimed tokens from the airdrop |
+| `GET`  | `/fortress/claims/v1/claims_records`          | Gets all registered claims records               |
+| `GET`  | `/fortress/claims/v1/claims_record/{address}` | Gets a claims record for a given user            |
+| `GET`  | `/fortress/claims/v1/params`                  | Gets claims params                               |

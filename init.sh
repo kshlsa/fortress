@@ -22,7 +22,7 @@ torqued config chain-id $CHAINID
 # if $KEY exists it should be deleted
 torqued keys add $KEY --keyring-backend $KEYRING --algo $KEYALGO
 
-# Set moniker and chain-id for Torque (Moniker can be anything, chain-id must be an integer)
+# Set moniker and chain-id for Fortress (Moniker can be anything, chain-id must be an integer)
 torqued init $MONIKER --chain-id $CHAINID
 
 # Change parameter token denominations to atorque

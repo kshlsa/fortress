@@ -14,10 +14,10 @@ import (
 	"github.com/tharsis/ethermint/crypto/ethsecp256k1"
 	"github.com/tharsis/ethermint/tests"
 	ethermint "github.com/tharsis/ethermint/types"
-	"github.com/hardiksa/torque/v4/testutil"
-	inflationtypes "github.com/hardiksa/torque/v4/x/inflation/types"
+	"github.com/hardiksa/fortress/v4/testutil"
+	inflationtypes "github.com/hardiksa/fortress/v4/x/inflation/types"
 
-	"github.com/hardiksa/torque/v4/x/claims/types"
+	"github.com/hardiksa/fortress/v4/x/claims/types"
 )
 
 func (suite *KeeperTestSuite) TestGetClaimableAmountForAction() {

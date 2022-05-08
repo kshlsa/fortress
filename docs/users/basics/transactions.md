@@ -4,7 +4,7 @@ order: 1
 
 # Transactions
 
-Learn more about transactions on Torque {synopsis}
+Learn more about transactions on Fortress {synopsis}
 
 ::: tip
 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧
@@ -15,7 +15,7 @@ This documentation page is currently under work in progress.
 :::
 
 <!-- 
-TODO: explain what transactions are on Torque and blockchains. 
+TODO: explain what transactions are on Fortress and blockchains. 
 Explain that transactions can be identified by hashes and that they can 
 contain multiple messages. Why can transactions fail? 
 
@@ -28,7 +28,7 @@ Explain that transactions can interoperate with other blockchains.
 
 ## Transaction Types
 
-<!-- TODO: explain which transactions types does Torque support (i.e modules and changes) and provide a few examples. -->
+<!-- TODO: explain which transactions types does Fortress support (i.e modules and changes) and provide a few examples. -->
 
 <!-- TODO: why are Ethereum transactions different than Cosmos -->
 

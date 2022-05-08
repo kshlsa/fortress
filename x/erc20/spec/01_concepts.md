@@ -16,7 +16,7 @@ When the proposal passes, the erc20 module registers the Cosmos Coin and ERC20 T
 
 ### Registration of a Cosmos Coin
 
-A native Cosmos Coin corresponds to an `sdk.Coin` that is native to the bank module. It can be either the native staking/gas denomination (eg: TORQUE, ATOM, etc) or an IBC fungible token voucher (i.e with denom format of `ibc/{hash}`).
+A native Cosmos Coin corresponds to an `sdk.Coin` that is native to the bank module. It can be either the native staking/gas denomination (eg: FORTRESS, ATOM, etc) or an IBC fungible token voucher (i.e with denom format of `ibc/{hash}`).
 
 When a proposal is initiated for an existing native Cosmos Coin, the erc20 module will deploy a factory ERC20 contract, representing the ERC20 token for the token pair, giving the module ownership of that contract.
 
@@ -65,6 +65,6 @@ A valid token pair can be modified through several governance proposals. The int
 
 ## Token Conversion
 
-Once a token pair proposal passes, the module allows for the conversion of that token pair. Holders of native Cosmos coins and IBC vouchers on the Torque chain can convert their Coin into ERC20 Tokens, which can then be used in Torque EVM, by creating a `ConvertCoin` Tx. Vice versa, the `ConvertERC20` Tx allows holders of ERC20 tokens on the Torque chain to convert ERC-20 tokens back to their native Cosmos Coin representation.
+Once a token pair proposal passes, the module allows for the conversion of that token pair. Holders of native Cosmos coins and IBC vouchers on the Fortress chain can convert their Coin into ERC20 Tokens, which can then be used in Fortress EVM, by creating a `ConvertCoin` Tx. Vice versa, the `ConvertERC20` Tx allows holders of ERC20 tokens on the Fortress chain to convert ERC-20 tokens back to their native Cosmos Coin representation.
 
 Depending on the ownership of the ERC20 contract, the ERC20 tokens either follow a burn/mint or a transfer/escrow mechanism during conversion.

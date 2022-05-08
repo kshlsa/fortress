@@ -1,4 +1,4 @@
-module github.com/hardiksa/torque/v4
+module github.com/hardiksa/fortress/v4
 
 go 1.17
 

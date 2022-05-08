@@ -16,7 +16,7 @@ import (
 
 func init() {
 	cfg := sdk.GetConfig()
-	cfg.SetBech32PrefixForAccount("torque", "torquepub")
+	cfg.SetBech32PrefixForAccount("fortress", "torquepub")
 }
 
 func TestIsSupportedKeys(t *testing.T) {
@@ -87,7 +87,7 @@ func TestGetTorqueAddressFromBech32(t *testing.T) {
 		},
 		{
 			"invalid bech32 address",
-			"torque",
+			"fortress",
 			"",
 			true,
 		},
@@ -98,7 +98,7 @@ func TestGetTorqueAddressFromBech32(t *testing.T) {
 			true,
 		},
 		{
-			"torque address",
+			"fortress address",
 			"torque1qql8ag4cluz6r4dz28p3w00dnc9w8ueunz84wx",
 			"torque1qql8ag4cluz6r4dz28p3w00dnc9w8ueunz84wx",
 			false,

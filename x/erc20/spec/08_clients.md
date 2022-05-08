@@ -69,18 +69,18 @@ torqued tx gov submit-proposal param-change [proposal-file] [flags]
 
 | Verb   | Method                            | Description                    |
 | ------ | --------------------------------- | ------------------------------ |
-| `gRPC` | `torque.erc20.v1.Query/Params`     | Get erc20 params               |
-| `gRPC` | `torque.erc20.v1.Query/TokenPair`  | Get registered token pair      |
-| `gRPC` | `torque.erc20.v1.Query/TokenPairs` | Get all registered token pairs |
-| `GET`  | `/torque/erc20/v1/params`          | Get erc20 params               |
-| `GET`  | `/torque/erc20/v1/token_pair`      | Get registered token pair      |
-| `GET`  | `/torque/erc20/v1/token_pairs`     | Get all registered token pairs |
+| `gRPC` | `fortress.erc20.v1.Query/Params`     | Get erc20 params               |
+| `gRPC` | `fortress.erc20.v1.Query/TokenPair`  | Get registered token pair      |
+| `gRPC` | `fortress.erc20.v1.Query/TokenPairs` | Get all registered token pairs |
+| `GET`  | `/fortress/erc20/v1/params`          | Get erc20 params               |
+| `GET`  | `/fortress/erc20/v1/token_pair`      | Get registered token pair      |
+| `GET`  | `/fortress/erc20/v1/token_pairs`     | Get all registered token pairs |
 
 ### Transactions
 
 | Verb   | Method                             | Description                    |
 | ------ | ---------------------------------- | ------------------------------ |
-| `gRPC` | `torque.erc20.v1.Msg/ConvertCoin`   | Convert a Cosmos Coin to ERC20 |
-| `gRPC` | `torque.erc20.v1.Msg/ConvertERC20`  | Convert a ERC20 to Cosmos Coin |
-| `GET`  | `/torque/erc20/v1/tx/convert_coin`  | Convert a Cosmos Coin to ERC20 |
-| `GET`  | `/torque/erc20/v1/tx/convert_erc20` | Convert a ERC20 to Cosmos Coin |
+| `gRPC` | `fortress.erc20.v1.Msg/ConvertCoin`   | Convert a Cosmos Coin to ERC20 |
+| `gRPC` | `fortress.erc20.v1.Msg/ConvertERC20`  | Convert a ERC20 to Cosmos Coin |
+| `GET`  | `/fortress/erc20/v1/tx/convert_coin`  | Convert a Cosmos Coin to ERC20 |
+| `GET`  | `/fortress/erc20/v1/tx/convert_erc20` | Convert a ERC20 to Cosmos Coin |

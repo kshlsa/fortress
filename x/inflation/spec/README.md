@@ -9,9 +9,9 @@ parent:
 
 ## Abstract
 
-The `x/inflation` module mints new Torque tokens and allocates them in daily
-epochs according to the [Torque Token
-Model](https://torque.blog/the-torque-token-model-edc07014978b) distribution to
+The `x/inflation` module mints new Fortress tokens and allocates them in daily
+epochs according to the [Fortress Token
+Model](https://fortress.blog/the-fortress-token-model-edc07014978b) distribution to
 
 * Staking Rewards `40%`,
 * Team Vesting `25%`,
@@ -20,7 +20,7 @@ Model](https://torque.blog/the-torque-token-model-edc07014978b) distribution to
 
 It replaces the currently used Cosmos SDK `x/mint` module.
 
-The allocation of new coins incentivizes specific behaviour in the Torque
+The allocation of new coins incentivizes specific behaviour in the Fortress
 network. Inflation allocates funds to 1) the `Fee Collector account` (in the sdk
 `x/auth` module) to increase staking rewards, 2) the  `x/incentives` module
 account  to provide supply for usage incentives and 3) the community pool

@@ -3,11 +3,11 @@
 KEY="mykey"
 CHAINID="torque_9000-1"
 MONIKER="mymoniker"
-DATA_DIR=$(mktemp -d -t torque-datadir.XXXXX)
+DATA_DIR=$(mktemp -d -t fortress-datadir.XXXXX)
 
 echo "create and add new keys"
 ./torqued keys add $KEY --home $DATA_DIR --no-backup --chain-id $CHAINID --algo "eth_secp256k1" --keyring-backend test
-echo "init Torque with moniker=$MONIKER and chain-id=$CHAINID"
+echo "init Fortress with moniker=$MONIKER and chain-id=$CHAINID"
 ./torqued init $MONIKER --chain-id $CHAINID --home $DATA_DIR
 echo "prepare genesis: Allocate genesis accounts"
 ./torqued add-genesis-account \
@@ -20,10 +20,10 @@ echo "prepare genesis: Collect genesis tx"
 echo "prepare genesis: Run validate-genesis to ensure everything worked and that the genesis file is setup correctly"
 ./torqued validate-genesis --home $DATA_DIR
 
-echo "starting torque node $i in background ..."
+echo "starting fortress node $i in background ..."
 ./torqued start --pruning=nothing --rpc.unsafe \
 --keyring-backend test --home $DATA_DIR \
 >$DATA_DIR/node.log 2>&1 & disown
 
-echo "started torque node"
+echo "started fortress node"
 tail -f /dev/null

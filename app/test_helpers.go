@@ -16,7 +16,7 @@ import (
 	"github.com/tharsis/ethermint/encoding"
 	feemarkettypes "github.com/tharsis/ethermint/x/feemarket/types"
 
-	"github.com/hardiksa/torque/v4/cmd/config"
+	"github.com/hardiksa/fortress/v4/cmd/config"
 )
 
 func init() {
@@ -29,7 +29,7 @@ func init() {
 var DefaultTestingAppInit func() (ibctesting.TestingApp, map[string]json.RawMessage) = SetupTestingApp
 
 // DefaultConsensusParams defines the default Tendermint consensus params used in
-// Torque testing.
+// Fortress testing.
 var DefaultConsensusParams = &abci.ConsensusParams{
 	Block: &abci.BlockParams{
 		MaxBytes: 200000,
@@ -53,11 +53,11 @@ func init() {
 	config.SetBip44CoinType(cfg)
 }
 
-// Setup initializes a new Torque. A Nop logger is set in Torque.
+// Setup initializes a new Fortress. A Nop logger is set in Fortress.
 func Setup(
 	isCheckTx bool,
 	feemarketGenesis *feemarkettypes.GenesisState,
-) *Torque {
+) *Fortress {
 	db := dbm.NewMemDB()
 	app := NewTorque(log.NewNopLogger(), db, nil, true, map[int64]bool{}, DefaultNodeHome, 5, encoding.MakeConfig(ModuleBasics), simapp.EmptyAppOptions{})
 	if !isCheckTx {

@@ -1,10 +1,10 @@
 syntax = "proto3";
-package torque.erc20.v1;
+package fortress.erc20.v1;
 
-import "torque/erc20/v1/erc20.proto";
+import "fortress/erc20/v1/erc20.proto";
 import "gogoproto/gogo.proto";
 
-option go_package = "github.com/hardiksa/torque/v4/x/erc20/types";
+option go_package = "github.com/hardiksa/fortress/v4/x/erc20/types";
 
 // GenesisState defines the module's genesis state.
 message GenesisState {

@@ -42,4 +42,4 @@ The `AuthorizedChannels` parameter describes the set of channels that users can 
 
 ## EVM Channels
 
-The `EVMChannels` parameter describes the list of Torque channels that connected to EVM compatible chains and can be used during the ibc callback action.
+The `EVMChannels` parameter describes the list of Fortress channels that connected to EVM compatible chains and can be used during the ibc callback action.

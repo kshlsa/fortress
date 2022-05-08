@@ -1,7 +1,7 @@
 package keeper_test
 
 import (
-	"github.com/hardiksa/torque/v4/x/claims/types"
+	"github.com/hardiksa/fortress/v4/x/claims/types"
 )
 
 func (suite *KeeperTestSuite) TestParams() {

@@ -4,7 +4,7 @@ order: 5
 
 # Ledger
 
-Get started with your Ledger hardware wallet on Torque {synopsis}
+Get started with your Ledger hardware wallet on Fortress {synopsis}
 
 ## Pre-requisites
 
@@ -31,7 +31,7 @@ Get started with your Ledger hardware wallet on Torque {synopsis}
 
 ## Ethereum Ledger App
 
-If you want to connect to Torque mainnet and Torque testnet, you can use the Ethereum Ledger app on Ledger Live by setting the chain ID.
+If you want to connect to Fortress mainnet and Fortress testnet, you can use the Ethereum Ledger app on Ledger Live by setting the chain ID.
 
 First, you will need to install the Ethereum Ledger app by following the instructions below:
 
@@ -48,8 +48,8 @@ In the table below you can find a list of Chain IDs to use with the Ethereum Led
 
 |               | EIP155 chain ID |
 | ------------- | --------------- |
-| Torque mainnet | `9001`          |
-| Torque testnet | `9000`          |
+| Fortress mainnet | `9001`          |
+| Fortress testnet | `9000`          |
 
 ## Import your Ledger Account
 
@@ -58,7 +58,7 @@ In the table below you can find a list of Chain IDs to use with the Ethereum Led
 Now that you've installed the app on Ledger Live, you can connect your Ledger to your computer and unlock it with your PIN-code and open the Ethereum app.
 
 ::: tip
-Follow our [Metamask Guide](./metamask.md) to add the Torque Mainnet and Testnet to your Settings
+Follow our [Metamask Guide](./metamask.md) to add the Fortress Mainnet and Testnet to your Settings
 :::
 
 Now you can import your Ledger account to MetaMask by using the following steps:
@@ -85,11 +85,11 @@ In order to sign Cosmos transactions (staking, voting on proposals, IBC transfer
 
 EIP712 means that the signer will generate a signature for something like a JSON representation of the Cosmos transaction and that signature will be included in the Cosmos transaction itself.
 
-### Step-by Cosmos transaction using Torque.me
+### Step-by Cosmos transaction using Fortress.me
 
 1. **Get your address in both encodings**
 
-After connecting the Ledger wallet to Metamask and connecting to the [https://torque.me](https://torque.me) webpage, it will display our wallet formatted on `bech32` and `hex` representation, we need these values to make sure that the message that we are going to sign is the correct one.
+After connecting the Ledger wallet to Metamask and connecting to the [https://fortress.me](https://fortress.me) webpage, it will display our wallet formatted on `bech32` and `hex` representation, we need these values to make sure that the message that we are going to sign is the correct one.
 
 ![addresses.png](./../../img/addresses.png)
 
@@ -135,20 +135,20 @@ The Ledger device will display the domain hash and message hash before asking yo
 
 After signing the message, that signature needs to be added to the cosmos transaction and broadcasted to the network.
 
-This step should be done automatically by the same service that generated the message, in this case, [torque.me](http://torque.me) will broadcast the transaction for you.
+This step should be done automatically by the same service that generated the message, in this case, [fortress.me](http://fortress.me) will broadcast the transaction for you.
 
 ![txsent.png](./../../img/txsent.png)
 
 ### Common errors
 
-- Make sure that the Ethereum Ledger app is installed. The Cosmos Ledger app is not supported on the Torque chain at the moment (see [FAQ](#faq)).
+- Make sure that the Ethereum Ledger app is installed. The Cosmos Ledger app is not supported on the Fortress chain at the moment (see [FAQ](#faq)).
 - Make sure you have created at least one Ethereum address on the Ledger Ethereum app.
 - Make sure the Ledger device is unlocked and with the Ledger Ethereum app opened before starting the importing process.
 
 ### Known issues
 
 - The denomination displayed as `ETH` when importing the wallet because we are using the Ethereum app.
-- If you have Metamask correctly configured, the balance on the extension will be displayed as `TORQUE`, but on the Ledger device it will be displayed as `ETH`.
+- If you have Metamask correctly configured, the balance on the extension will be displayed as `FORTRESS`, but on the Ledger device it will be displayed as `ETH`.
 
 ::: warning
 **IMPORTANT:** Make sure you are on the correct network before signing any transaction!
@@ -158,19 +158,19 @@ This step should be done automatically by the same service that generated the me
 
 1. **How can I generate Cosmos `secp256k1` keys with Ledger?**
 
-Cosmos `secp256k1` keys are not supported on Torque with Ledger. Only Ethereum keys (`eth_secp256k1`) can be generated with Ledger.
+Cosmos `secp256k1` keys are not supported on Fortress with Ledger. Only Ethereum keys (`eth_secp256k1`) can be generated with Ledger.
 
 2. **I can’t generate keys using the CLI with `torqued` with the `--ledger` flag**
 
-CLI bindings with `torqued` binary are not currently supported. In the meantime, you can use the Ethereum Ledger App with EIP712 using [torque.me](https://torque.me). See the [`EIP712 Signing`](#eip712-signing) section for reference.
+CLI bindings with `torqued` binary are not currently supported. In the meantime, you can use the Ethereum Ledger App with EIP712 using [fortress.me](https://fortress.me). See the [`EIP712 Signing`](#eip712-signing) section for reference.
 
-3. **I can’t generate a key for the Torque native multisig using the `torqued` CLI and and Ledger**
+3. **I can’t generate a key for the Fortress native multisig using the `torqued` CLI and and Ledger**
 
 You can generate a multisig wallet using the `torqued` CLI, although the `--ledger` option is not available at the moment.
 
 4. **I can’t use Metamask or Keplr with the Cosmos Ledger app**
 
-Since Torque only support Ethereum keys and uses the same HD path as Ethereum, the Cosmos Ledger app doesn’t work to sign cosmos transactions.
+Since Fortress only support Ethereum keys and uses the same HD path as Ethereum, the Cosmos Ledger app doesn’t work to sign cosmos transactions.
 
 <!-- 4. **I can’t use Ledger for my validator**
 

@@ -13,10 +13,10 @@ import (
 	ibcgotesting "github.com/cosmos/ibc-go/v3/testing"
 
 	"github.com/tharsis/ethermint/tests"
-	"github.com/hardiksa/torque/v4/app"
-	ibctesting "github.com/hardiksa/torque/v4/ibc/testing"
-	"github.com/hardiksa/torque/v4/testutil"
-	"github.com/hardiksa/torque/v4/x/claims/types"
+	"github.com/hardiksa/fortress/v4/app"
+	ibctesting "github.com/hardiksa/fortress/v4/ibc/testing"
+	"github.com/hardiksa/fortress/v4/testutil"
+	"github.com/hardiksa/fortress/v4/x/claims/types"
 )
 
 type IBCTestingSuite struct {
@@ -24,16 +24,16 @@ type IBCTestingSuite struct {
 	coordinator *ibcgotesting.Coordinator
 
 	// testing chains used for convenience and readability
-	chainA      *ibcgotesting.TestChain // Torque chain A
-	chainB      *ibcgotesting.TestChain // Torque chain B
+	chainA      *ibcgotesting.TestChain // Fortress chain A
+	chainB      *ibcgotesting.TestChain // Fortress chain B
 	chainCosmos *ibcgotesting.TestChain // Cosmos chain
 
-	pathEVM    *ibcgotesting.Path // chainA (Torque) <-->  chainB (Torque)
-	pathCosmos *ibcgotesting.Path // chainA (Torque) <--> chainCosmos
+	pathEVM    *ibcgotesting.Path // chainA (Fortress) <-->  chainB (Fortress)
+	pathCosmos *ibcgotesting.Path // chainA (Fortress) <--> chainCosmos
 }
 
 func (suite *IBCTestingSuite) SetupTest() {
-	suite.coordinator = ibctesting.NewCoordinator(suite.T(), 2, 1) // initializes 2 Torque test chains and 1 Cosmos Chain
+	suite.coordinator = ibctesting.NewCoordinator(suite.T(), 2, 1) // initializes 2 Fortress test chains and 1 Cosmos Chain
 	suite.chainA = suite.coordinator.GetChain(ibcgotesting.GetChainID(1))
 	suite.chainB = suite.coordinator.GetChain(ibcgotesting.GetChainID(2))
 	suite.chainCosmos = suite.coordinator.GetChain(ibcgotesting.GetChainID(3))
@@ -46,21 +46,21 @@ func (suite *IBCTestingSuite) SetupTest() {
 	addr := sdk.AccAddress(tests.GenerateAddress().Bytes())
 	coins := sdk.NewCoins(sdk.NewCoin("atorque", sdk.NewInt(10000)))
 
-	err := testutil.FundModuleAccount(suite.chainB.App.(*app.Torque).BankKeeper, suite.chainB.GetContext(), types.ModuleName, coins)
+	err := testutil.FundModuleAccount(suite.chainB.App.(*app.Fortress).BankKeeper, suite.chainB.GetContext(), types.ModuleName, coins)
 	suite.Require().NoError(err)
 
-	suite.chainB.App.(*app.Torque).ClaimsKeeper.SetClaimsRecord(suite.chainB.GetContext(), addr, claimsRecord)
+	suite.chainB.App.(*app.Fortress).ClaimsKeeper.SetClaimsRecord(suite.chainB.GetContext(), addr, claimsRecord)
 
-	err = testutil.FundModuleAccount(suite.chainA.App.(*app.Torque).BankKeeper, suite.chainA.GetContext(), types.ModuleName, coins)
+	err = testutil.FundModuleAccount(suite.chainA.App.(*app.Fortress).BankKeeper, suite.chainA.GetContext(), types.ModuleName, coins)
 	suite.Require().NoError(err)
 
-	suite.chainA.App.(*app.Torque).ClaimsKeeper.SetClaimsRecord(suite.chainA.GetContext(), addr, claimsRecord)
+	suite.chainA.App.(*app.Fortress).ClaimsKeeper.SetClaimsRecord(suite.chainA.GetContext(), addr, claimsRecord)
 
 	params := types.DefaultParams()
 	params.AirdropStartTime = suite.chainA.GetContext().BlockTime()
 	params.EnableClaims = true
-	suite.chainA.App.(*app.Torque).ClaimsKeeper.SetParams(suite.chainA.GetContext(), params)
-	suite.chainB.App.(*app.Torque).ClaimsKeeper.SetParams(suite.chainB.GetContext(), params)
+	suite.chainA.App.(*app.Fortress).ClaimsKeeper.SetParams(suite.chainA.GetContext(), params)
+	suite.chainB.App.(*app.Fortress).ClaimsKeeper.SetParams(suite.chainB.GetContext(), params)
 
 	suite.pathEVM = ibctesting.NewTransferPath(suite.chainA, suite.chainB) // clientID, connectionID, channelID empty
 	suite.coordinator.Setup(suite.pathEVM)                                 // clientID, connectionID, channelID filled
@@ -98,8 +98,8 @@ func (suite *IBCTestingSuite) TestOnAcknowledgementPacketIBC() {
 			func(_ int64) {
 				params := types.DefaultParams()
 				params.EnableClaims = false
-				suite.chainA.App.(*app.Torque).ClaimsKeeper.SetParams(suite.chainA.GetContext(), params)
-				suite.chainB.App.(*app.Torque).ClaimsKeeper.SetParams(suite.chainB.GetContext(), params)
+				suite.chainA.App.(*app.Fortress).ClaimsKeeper.SetParams(suite.chainA.GetContext(), params)
+				suite.chainB.App.(*app.Fortress).ClaimsKeeper.SetParams(suite.chainB.GetContext(), params)
 			},
 			4,
 			0,
@@ -119,9 +119,9 @@ func (suite *IBCTestingSuite) TestOnAcknowledgementPacketIBC() {
 				amt := sdk.NewInt(claimableAmount)
 				coins := sdk.NewCoins(sdk.NewCoin("atorque", amt))
 
-				suite.chainA.App.(*app.Torque).ClaimsKeeper.SetClaimsRecord(suite.chainA.GetContext(), senderAddr, types.NewClaimsRecord(amt))
+				suite.chainA.App.(*app.Fortress).ClaimsKeeper.SetClaimsRecord(suite.chainA.GetContext(), senderAddr, types.NewClaimsRecord(amt))
 				// update the escrowed account balance to maintain the invariant
-				err := testutil.FundModuleAccount(suite.chainA.App.(*app.Torque).BankKeeper, suite.chainA.GetContext(), types.ModuleName, coins)
+				err := testutil.FundModuleAccount(suite.chainA.App.(*app.Fortress).BankKeeper, suite.chainA.GetContext(), types.ModuleName, coins)
 				suite.Require().NoError(err)
 			},
 			4,
@@ -134,10 +134,10 @@ func (suite *IBCTestingSuite) TestOnAcknowledgementPacketIBC() {
 				amt := sdk.NewInt(claimableAmount)
 				coins := sdk.NewCoins(sdk.NewCoin("atorque", amt))
 
-				suite.chainA.App.(*app.Torque).ClaimsKeeper.SetClaimsRecord(suite.chainA.GetContext(), senderAddr, types.ClaimsRecord{InitialClaimableAmount: amt, ActionsCompleted: []bool{true, true, true, true}})
+				suite.chainA.App.(*app.Fortress).ClaimsKeeper.SetClaimsRecord(suite.chainA.GetContext(), senderAddr, types.ClaimsRecord{InitialClaimableAmount: amt, ActionsCompleted: []bool{true, true, true, true}})
 
 				// update the escrowed account balance to maintain the invariant
-				err := testutil.FundModuleAccount(suite.chainA.App.(*app.Torque).BankKeeper, suite.chainA.GetContext(), types.ModuleName, coins)
+				err := testutil.FundModuleAccount(suite.chainA.App.(*app.Fortress).BankKeeper, suite.chainA.GetContext(), types.ModuleName, coins)
 				suite.Require().NoError(err)
 			},
 			4,
@@ -164,9 +164,9 @@ func (suite *IBCTestingSuite) TestOnAcknowledgementPacketIBC() {
 			err = path.RelayPacket(packet)
 			suite.Require().NoError(err)
 
-			coin := suite.chainA.App.(*app.Torque).BankKeeper.GetBalance(suite.chainA.GetContext(), senderAddr, "atorque")
+			coin := suite.chainA.App.(*app.Fortress).BankKeeper.GetBalance(suite.chainA.GetContext(), senderAddr, "atorque")
 			suite.Require().Equal(sdk.NewCoin("atorque", sdk.NewInt(tc.expectedBalance)).String(), coin.String())
-			_, found := suite.chainA.App.(*app.Torque).ClaimsKeeper.GetClaimsRecord(suite.chainA.GetContext(), senderAddr)
+			_, found := suite.chainA.App.(*app.Fortress).ClaimsKeeper.GetClaimsRecord(suite.chainA.GetContext(), senderAddr)
 			if tc.expPass {
 				suite.Require().True(found)
 			} else {
@@ -199,8 +199,8 @@ func (suite *IBCTestingSuite) TestOnRecvPacketIBC() {
 			func(_ int64) {
 				params := types.DefaultParams()
 				params.EnableClaims = false
-				suite.chainA.App.(*app.Torque).ClaimsKeeper.SetParams(suite.chainA.GetContext(), params)
-				suite.chainB.App.(*app.Torque).ClaimsKeeper.SetParams(suite.chainB.GetContext(), params)
+				suite.chainA.App.(*app.Fortress).ClaimsKeeper.SetParams(suite.chainA.GetContext(), params)
+				suite.chainB.App.(*app.Fortress).ClaimsKeeper.SetParams(suite.chainB.GetContext(), params)
 			},
 			func() {},
 			4,
@@ -213,14 +213,14 @@ func (suite *IBCTestingSuite) TestOnRecvPacketIBC() {
 				amt := sdk.NewInt(claimableAmount)
 				coins := sdk.NewCoins(sdk.NewCoin("atorque", sdk.NewInt(claimableAmount/4)))
 
-				suite.chainB.App.(*app.Torque).ClaimsKeeper.SetClaimsRecord(suite.chainB.GetContext(), senderAddr, types.ClaimsRecord{InitialClaimableAmount: amt, ActionsCompleted: []bool{false, true, true, true}})
+				suite.chainB.App.(*app.Fortress).ClaimsKeeper.SetClaimsRecord(suite.chainB.GetContext(), senderAddr, types.ClaimsRecord{InitialClaimableAmount: amt, ActionsCompleted: []bool{false, true, true, true}})
 				// update the escrowed account balance to maintain the invariant
-				err := testutil.FundModuleAccount(suite.chainB.App.(*app.Torque).BankKeeper, suite.chainB.GetContext(), types.ModuleName, coins)
+				err := testutil.FundModuleAccount(suite.chainB.App.(*app.Fortress).BankKeeper, suite.chainB.GetContext(), types.ModuleName, coins)
 				suite.Require().NoError(err)
 			},
 			func() {
 				// Check sender claim was not deleted
-				_, found := suite.chainB.App.(*app.Torque).ClaimsKeeper.GetClaimsRecord(suite.chainB.GetContext(), senderAddr)
+				_, found := suite.chainB.App.(*app.Fortress).ClaimsKeeper.GetClaimsRecord(suite.chainB.GetContext(), senderAddr)
 				suite.Require().True(found)
 			},
 			4,
@@ -233,16 +233,16 @@ func (suite *IBCTestingSuite) TestOnRecvPacketIBC() {
 				amt := sdk.NewInt(claimableAmount)
 				coins := sdk.NewCoins(sdk.NewCoin("atorque", amt))
 
-				suite.chainB.App.(*app.Torque).ClaimsKeeper.SetClaimsRecord(suite.chainB.GetContext(), senderAddr, types.ClaimsRecord{InitialClaimableAmount: amt, ActionsCompleted: []bool{false, false, false, true}})
-				suite.chainB.App.(*app.Torque).ClaimsKeeper.SetClaimsRecord(suite.chainB.GetContext(), receiverAddr, types.ClaimsRecord{InitialClaimableAmount: amt, ActionsCompleted: []bool{true, true, true, false}})
+				suite.chainB.App.(*app.Fortress).ClaimsKeeper.SetClaimsRecord(suite.chainB.GetContext(), senderAddr, types.ClaimsRecord{InitialClaimableAmount: amt, ActionsCompleted: []bool{false, false, false, true}})
+				suite.chainB.App.(*app.Fortress).ClaimsKeeper.SetClaimsRecord(suite.chainB.GetContext(), receiverAddr, types.ClaimsRecord{InitialClaimableAmount: amt, ActionsCompleted: []bool{true, true, true, false}})
 
 				// update the escrowed account balance to maintain the invariant
-				err := testutil.FundModuleAccount(suite.chainB.App.(*app.Torque).BankKeeper, suite.chainB.GetContext(), types.ModuleName, coins)
+				err := testutil.FundModuleAccount(suite.chainB.App.(*app.Fortress).BankKeeper, suite.chainB.GetContext(), types.ModuleName, coins)
 				suite.Require().NoError(err)
 			},
 			func() {
 				// Check sender claim was not deleted
-				_, found := suite.chainB.App.(*app.Torque).ClaimsKeeper.GetClaimsRecord(suite.chainB.GetContext(), senderAddr)
+				_, found := suite.chainB.App.(*app.Fortress).ClaimsKeeper.GetClaimsRecord(suite.chainB.GetContext(), senderAddr)
 				suite.Require().True(found)
 			},
 			4,
@@ -255,16 +255,16 @@ func (suite *IBCTestingSuite) TestOnRecvPacketIBC() {
 				amt := sdk.NewInt(claimableAmount)
 				coins := sdk.NewCoins(sdk.NewCoin("atorque", amt.Add(amt.QuoRaw(2))))
 
-				suite.chainB.App.(*app.Torque).ClaimsKeeper.SetClaimsRecord(suite.chainB.GetContext(), senderAddr, types.ClaimsRecord{InitialClaimableAmount: amt, ActionsCompleted: []bool{false, false, false, false}})
-				suite.chainB.App.(*app.Torque).ClaimsKeeper.SetClaimsRecord(suite.chainB.GetContext(), receiverAddr, types.ClaimsRecord{InitialClaimableAmount: amt, ActionsCompleted: []bool{false, true, true, false}})
+				suite.chainB.App.(*app.Fortress).ClaimsKeeper.SetClaimsRecord(suite.chainB.GetContext(), senderAddr, types.ClaimsRecord{InitialClaimableAmount: amt, ActionsCompleted: []bool{false, false, false, false}})
+				suite.chainB.App.(*app.Fortress).ClaimsKeeper.SetClaimsRecord(suite.chainB.GetContext(), receiverAddr, types.ClaimsRecord{InitialClaimableAmount: amt, ActionsCompleted: []bool{false, true, true, false}})
 
 				// update the escrowed account balance to maintain the invariant
-				err := testutil.FundModuleAccount(suite.chainB.App.(*app.Torque).BankKeeper, suite.chainB.GetContext(), types.ModuleName, coins)
+				err := testutil.FundModuleAccount(suite.chainB.App.(*app.Fortress).BankKeeper, suite.chainB.GetContext(), types.ModuleName, coins)
 				suite.Require().NoError(err)
 			},
 			func() {
 				// Check sender claim was deleted after merge
-				_, found := suite.chainB.App.(*app.Torque).ClaimsKeeper.GetClaimsRecord(suite.chainB.GetContext(), senderAddr)
+				_, found := suite.chainB.App.(*app.Fortress).ClaimsKeeper.GetClaimsRecord(suite.chainB.GetContext(), senderAddr)
 				suite.Require().False(found)
 			},
 			4,
@@ -278,16 +278,16 @@ func (suite *IBCTestingSuite) TestOnRecvPacketIBC() {
 				amt := sdk.NewInt(claimableAmount)
 				coins := sdk.NewCoins(sdk.NewCoin("atorque", amt.QuoRaw(2)))
 
-				suite.chainB.App.(*app.Torque).ClaimsKeeper.SetClaimsRecord(suite.chainB.GetContext(), senderAddr, types.ClaimsRecord{InitialClaimableAmount: sdk.ZeroInt(), ActionsCompleted: []bool{false, false, false, false}})
-				suite.chainB.App.(*app.Torque).ClaimsKeeper.SetClaimsRecord(suite.chainB.GetContext(), receiverAddr, types.ClaimsRecord{InitialClaimableAmount: amt, ActionsCompleted: []bool{false, true, true, false}})
+				suite.chainB.App.(*app.Fortress).ClaimsKeeper.SetClaimsRecord(suite.chainB.GetContext(), senderAddr, types.ClaimsRecord{InitialClaimableAmount: sdk.ZeroInt(), ActionsCompleted: []bool{false, false, false, false}})
+				suite.chainB.App.(*app.Fortress).ClaimsKeeper.SetClaimsRecord(suite.chainB.GetContext(), receiverAddr, types.ClaimsRecord{InitialClaimableAmount: amt, ActionsCompleted: []bool{false, true, true, false}})
 
 				// update the escrowed account balance to maintain the invariant
-				err := testutil.FundModuleAccount(suite.chainB.App.(*app.Torque).BankKeeper, suite.chainB.GetContext(), types.ModuleName, coins)
+				err := testutil.FundModuleAccount(suite.chainB.App.(*app.Fortress).BankKeeper, suite.chainB.GetContext(), types.ModuleName, coins)
 				suite.Require().NoError(err)
 			},
 			func() {
 				// Check sender claim was deleted after merge
-				_, found := suite.chainB.App.(*app.Torque).ClaimsKeeper.GetClaimsRecord(suite.chainB.GetContext(), senderAddr)
+				_, found := suite.chainB.App.(*app.Fortress).ClaimsKeeper.GetClaimsRecord(suite.chainB.GetContext(), senderAddr)
 				suite.Require().False(found)
 			},
 			4,
@@ -297,11 +297,11 @@ func (suite *IBCTestingSuite) TestOnRecvPacketIBC() {
 		{
 			"case 2: no-op - only sender claims record found with no claimable amount",
 			func(_ int64) {
-				suite.chainB.App.(*app.Torque).ClaimsKeeper.SetClaimsRecord(suite.chainB.GetContext(), senderAddr, types.ClaimsRecord{InitialClaimableAmount: sdk.ZeroInt(), ActionsCompleted: []bool{false, false, false, false}})
+				suite.chainB.App.(*app.Fortress).ClaimsKeeper.SetClaimsRecord(suite.chainB.GetContext(), senderAddr, types.ClaimsRecord{InitialClaimableAmount: sdk.ZeroInt(), ActionsCompleted: []bool{false, false, false, false}})
 			},
 			func() {
 				// Check sender claim was not deleted
-				_, found := suite.chainB.App.(*app.Torque).ClaimsKeeper.GetClaimsRecord(suite.chainB.GetContext(), senderAddr)
+				_, found := suite.chainB.App.(*app.Fortress).ClaimsKeeper.GetClaimsRecord(suite.chainB.GetContext(), senderAddr)
 				suite.Require().True(found)
 			},
 			0,
@@ -313,15 +313,15 @@ func (suite *IBCTestingSuite) TestOnRecvPacketIBC() {
 			func(claimableAmount int64) {
 				amt := sdk.NewInt(claimableAmount)
 				coins := sdk.NewCoins(sdk.NewCoin("atorque", amt))
-				suite.chainB.App.(*app.Torque).ClaimsKeeper.SetClaimsRecord(suite.chainB.GetContext(), senderAddr, types.NewClaimsRecord(amt))
+				suite.chainB.App.(*app.Fortress).ClaimsKeeper.SetClaimsRecord(suite.chainB.GetContext(), senderAddr, types.NewClaimsRecord(amt))
 
 				// update the escrowed account balance to maintain the invariant
-				err := testutil.FundModuleAccount(suite.chainB.App.(*app.Torque).BankKeeper, suite.chainB.GetContext(), types.ModuleName, coins)
+				err := testutil.FundModuleAccount(suite.chainB.App.(*app.Fortress).BankKeeper, suite.chainB.GetContext(), types.ModuleName, coins)
 				suite.Require().NoError(err)
 			},
 			func() {
 				// Check sender claim was deleted
-				_, found := suite.chainB.App.(*app.Torque).ClaimsKeeper.GetClaimsRecord(suite.chainB.GetContext(), senderAddr)
+				_, found := suite.chainB.App.(*app.Fortress).ClaimsKeeper.GetClaimsRecord(suite.chainB.GetContext(), senderAddr)
 				suite.Require().False(found)
 			},
 			4,
@@ -332,11 +332,11 @@ func (suite *IBCTestingSuite) TestOnRecvPacketIBC() {
 			"case 3: pass/claim - only recipient claims record found",
 			func(claimableAmount int64) {
 				amt := sdk.NewInt(claimableAmount)
-				suite.chainB.App.(*app.Torque).ClaimsKeeper.SetClaimsRecord(suite.chainB.GetContext(), receiverAddr, types.ClaimsRecord{InitialClaimableAmount: amt, ActionsCompleted: []bool{false, false, false, false}})
+				suite.chainB.App.(*app.Fortress).ClaimsKeeper.SetClaimsRecord(suite.chainB.GetContext(), receiverAddr, types.ClaimsRecord{InitialClaimableAmount: amt, ActionsCompleted: []bool{false, false, false, false}})
 
 				coins := sdk.NewCoins(sdk.NewCoin("atorque", amt))
 				// update the escrowed account balance to maintain the invariant
-				err := testutil.FundModuleAccount(suite.chainB.App.(*app.Torque).BankKeeper, suite.chainB.GetContext(), types.ModuleName, coins)
+				err := testutil.FundModuleAccount(suite.chainB.App.(*app.Fortress).BankKeeper, suite.chainB.GetContext(), types.ModuleName, coins)
 				suite.Require().NoError(err)
 			},
 			func() {},
@@ -348,7 +348,7 @@ func (suite *IBCTestingSuite) TestOnRecvPacketIBC() {
 			"case 3: no-op - only recipient claims record found, but recipient already claimed ibc transfer",
 			func(claimableAmount int64) {
 				amt := sdk.NewInt(claimableAmount)
-				suite.chainB.App.(*app.Torque).ClaimsKeeper.SetClaimsRecord(suite.chainB.GetContext(), receiverAddr, types.ClaimsRecord{InitialClaimableAmount: amt, ActionsCompleted: []bool{true, true, true, true}})
+				suite.chainB.App.(*app.Fortress).ClaimsKeeper.SetClaimsRecord(suite.chainB.GetContext(), receiverAddr, types.ClaimsRecord{InitialClaimableAmount: amt, ActionsCompleted: []bool{true, true, true, true}})
 			},
 			func() {},
 			4,
@@ -359,11 +359,11 @@ func (suite *IBCTestingSuite) TestOnRecvPacketIBC() {
 			"case 3: no-op - only sender claims record found with no claimable amount",
 			func(claimableAmount int64) {
 				amt := sdk.NewInt(claimableAmount)
-				suite.chainB.App.(*app.Torque).ClaimsKeeper.SetClaimsRecord(suite.chainB.GetContext(), receiverAddr, types.ClaimsRecord{InitialClaimableAmount: amt, ActionsCompleted: []bool{false, false, false, false}})
+				suite.chainB.App.(*app.Fortress).ClaimsKeeper.SetClaimsRecord(suite.chainB.GetContext(), receiverAddr, types.ClaimsRecord{InitialClaimableAmount: amt, ActionsCompleted: []bool{false, false, false, false}})
 
 				coins := sdk.NewCoins(sdk.NewCoin("atorque", amt))
 				// update the escrowed account balance to maintain the invariant
-				err := testutil.FundModuleAccount(suite.chainB.App.(*app.Torque).BankKeeper, suite.chainB.GetContext(), types.ModuleName, coins)
+				err := testutil.FundModuleAccount(suite.chainB.App.(*app.Fortress).BankKeeper, suite.chainB.GetContext(), types.ModuleName, coins)
 				suite.Require().NoError(err)
 			},
 			func() {},
@@ -398,9 +398,9 @@ func (suite *IBCTestingSuite) TestOnRecvPacketIBC() {
 			err := path.EndpointB.RecvPacket(packet)
 			suite.Require().NoError(err)
 
-			coin := suite.chainB.App.(*app.Torque).BankKeeper.GetBalance(suite.chainB.GetContext(), receiverAddr, "atorque")
+			coin := suite.chainB.App.(*app.Fortress).BankKeeper.GetBalance(suite.chainB.GetContext(), receiverAddr, "atorque")
 			suite.Require().Equal(coin.String(), sdk.NewCoin("atorque", sdk.NewInt(tc.expectedBalance)).String())
-			_, found := suite.chainB.App.(*app.Torque).ClaimsKeeper.GetClaimsRecord(suite.chainB.GetContext(), receiverAddr)
+			_, found := suite.chainB.App.(*app.Fortress).ClaimsKeeper.GetClaimsRecord(suite.chainB.GetContext(), receiverAddr)
 			if tc.expectedRecipientFound {
 				suite.Require().True(found)
 			} else {

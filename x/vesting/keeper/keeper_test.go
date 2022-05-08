@@ -35,10 +35,10 @@ import (
 	ethermint "github.com/tharsis/ethermint/types"
 	evm "github.com/tharsis/ethermint/x/evm/types"
 
-	"github.com/hardiksa/torque/v4/app"
-	"github.com/hardiksa/torque/v4/contracts"
-	epochstypes "github.com/hardiksa/torque/v4/x/epochs/types"
-	"github.com/hardiksa/torque/v4/x/vesting/types"
+	"github.com/hardiksa/fortress/v4/app"
+	"github.com/hardiksa/fortress/v4/contracts"
+	epochstypes "github.com/hardiksa/fortress/v4/x/epochs/types"
+	"github.com/hardiksa/fortress/v4/x/vesting/types"
 )
 
 var (
@@ -71,7 +71,7 @@ type KeeperTestSuite struct {
 	suite.Suite
 
 	ctx              sdk.Context
-	app              *app.Torque
+	app              *app.Fortress
 	queryClientEvm   evm.QueryClient
 	queryClient      types.QueryClient
 	address          common.Address

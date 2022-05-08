@@ -15,8 +15,8 @@ import (
 
 	"github.com/tharsis/ethermint/server/config"
 
-	"github.com/hardiksa/torque/v4/testutil/network"
-	"github.com/hardiksa/torque/v4/x/erc20/types"
+	"github.com/hardiksa/fortress/v4/testutil/network"
+	"github.com/hardiksa/fortress/v4/x/erc20/types"
 )
 
 // var _ = Describe("E2e", func() {
@@ -70,7 +70,7 @@ func (s *IntegrationTestSuite) SetupSuite() {
 
 	s.grpcQueryClient = types.NewQueryClient(grpcConn)
 
-	// FIXME: "unknown service torque.erc20.v1.Msg"
+	// FIXME: "unknown service fortress.erc20.v1.Msg"
 	s.grpcTxClient = types.NewMsgClient(grpcConn)
 }
 

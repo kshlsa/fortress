@@ -7,7 +7,7 @@ import (
 
 	"github.com/tendermint/tendermint/libs/log"
 
-	"github.com/hardiksa/torque/v4/x/inflation/types"
+	"github.com/hardiksa/fortress/v4/x/inflation/types"
 )
 
 // Keeper of the inflation store

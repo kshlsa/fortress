@@ -4,7 +4,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 
-	"github.com/hardiksa/torque/v4/x/claims/types"
+	"github.com/hardiksa/fortress/v4/x/claims/types"
 )
 
 // ClaimCoinsForAction removes the claimable amount entry from a claims record
@@ -101,10 +101,10 @@ func (k Keeper) MergeClaimsRecords(
 	for _, action := range actions {
 
 		// Safety check: the sender record cannot have any claimed actions, as
-		//  - the sender is not an torque address and can't claim vote, delegation or evm actions
+		//  - the sender is not an fortress address and can't claim vote, delegation or evm actions
 		//  - the first attempt to perform an ibc callback from the senders account will merge/migrate the entire claims record
 		if senderClaimsRecord.HasClaimedAction(action) {
-			return types.ClaimsRecord{}, sdkerrors.Wrapf(sdkerrors.ErrNotSupported, "non-torque sender must not have claimed action: %v", action)
+			return types.ClaimsRecord{}, sdkerrors.Wrapf(sdkerrors.ErrNotSupported, "non-fortress sender must not have claimed action: %v", action)
 		}
 
 		recipientCompleted := recipientClaimsRecord.HasClaimedAction(action)

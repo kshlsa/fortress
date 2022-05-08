@@ -6,7 +6,7 @@
 # Documentation
 docs/ @danburck
 
-# Torque Modules
+# Fortress Modules
 x/epochs/ @ramacarlucho
 x/erc20/ @danburck @hanchon
 x/incentives/ @danburck

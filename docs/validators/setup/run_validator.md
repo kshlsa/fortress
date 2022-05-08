@@ -17,7 +17,7 @@ If you plan to use a Key Management System (KMS), you should go through these st
 
 ## Create Your Validator
 
-Your node consensus public key (`torquevalconspub...`) can be used to create a new validator by staking TORQUE tokens. You can find your validator pubkey by running:
+Your node consensus public key (`torquevalconspub...`) can be used to create a new validator by staking FORTRESS tokens. You can find your validator pubkey by running:
 
 ```bash
 torqued tendermint show-validator
@@ -67,7 +67,7 @@ The `--identity` can be used as to verify identity with systems like Keybase or 
 ```bash
 torqued tx staking edit-validator
   --moniker="choose a moniker" \
-  --website="https://torque.org" \
+  --website="https://fortress.org" \
   --identity=6A0D65E29A4CBC8E \
   --details="To infinity and beyond!" \
   --chain-id=<chain_id> \
@@ -119,7 +119,7 @@ Your validator is active if the following command returns anything:
 torqued query tendermint-validator-set | grep "$(torqued tendermint show-address)"
 ```
 
-You should now see your validator in one of Torque explorers. You are looking for the `bech32` encoded `address` in the `~/.torqued/config/priv_validator.json` file.
+You should now see your validator in one of Fortress explorers. You are looking for the `bech32` encoded `address` in the `~/.torqued/config/priv_validator.json` file.
 
 ::: warning Note
 To be in the validator set, you need to have more total voting power than the 100th validator.
@@ -163,7 +163,7 @@ The default number of files Linux can open (per-process) is `1024`. `torqued` is
 ```toml
 # /etc/systemd/system/torqued.service
 [Unit]
-Description=Torque Node
+Description=Fortress Node
 After=network.target
 
 [Service]

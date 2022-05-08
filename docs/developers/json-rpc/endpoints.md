@@ -4,7 +4,7 @@ order: 4
 
 # JSON-RPC Methods
 
-Check the JSON-RPC methods supported on Torque. {synopsis}
+Check the JSON-RPC methods supported on Fortress. {synopsis}
 
 ## Pre-requisite Readings
 
@@ -175,7 +175,7 @@ Get the web3 client version.
 #### Result
 
 ```json
- {"jsonrpc":"2.0","id":1,"result":"Torque/0.1.3+/linux/go1.17"}
+ {"jsonrpc":"2.0","id":1,"result":"Fortress/0.1.3+/linux/go1.17"}
 ```
 
 #### Client Examples

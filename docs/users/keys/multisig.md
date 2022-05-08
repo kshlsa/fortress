@@ -6,7 +6,7 @@ order: 3
 
 Learn how to generate, sign and broadcast a transaction using the keyring multisig {synopsis}
 
-A **multisig account** is an Torque account with a special key that can require more than one signature to sign transactions. This can be useful for increasing the security of the account or for requiring the consent of multiple parties to make transactions. Multisig accounts can be created by specifying:
+A **multisig account** is an Fortress account with a special key that can require more than one signature to sign transactions. This can be useful for increasing the security of the account or for requiring the consent of multiple parties to make transactions. Multisig accounts can be created by specifying:
 
 - threshold number of signatures required
 - the public keys involved in signing
@@ -73,7 +73,7 @@ torqued keys show multi
   pubkeys: []
 ```
 
-Let's add 10 TORQUE to the multisig wallet:
+Let's add 10 FORTRESS to the multisig wallet:
 
 ```bash
 torqued tx bank send \
@@ -88,7 +88,7 @@ torqued tx bank send \
 
 ### Step 2: Create the multisig transaction
 
-We want to send 5 TORQUE from our multisig account to `torque1rgjxswhuxhcrhmyxlval0qa70vxwvqn2e0srft`.
+We want to send 5 FORTRESS from our multisig account to `torque1rgjxswhuxhcrhmyxlval0qa70vxwvqn2e0srft`.
 
 ```bash
 torqued tx bank send \

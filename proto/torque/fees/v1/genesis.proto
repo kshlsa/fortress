@@ -1,10 +1,10 @@
 syntax = "proto3";
-package torque.fees.v1;
-import "torque/fees/v1/fees.proto";
+package fortress.fees.v1;
+import "fortress/fees/v1/fees.proto";
 
 import "gogoproto/gogo.proto";
 
-option go_package = "github.com/hardiksa/torque/v4/x/fees/types";
+option go_package = "github.com/hardiksa/fortress/v4/x/fees/types";
 
 // GenesisState defines the module's genesis state.
 message GenesisState {

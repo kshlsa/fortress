@@ -15,13 +15,13 @@ import (
 	channeltypes "github.com/cosmos/ibc-go/v3/modules/core/04-channel/types"
 	ibcgotesting "github.com/cosmos/ibc-go/v3/testing"
 
-	ibctesting "github.com/hardiksa/torque/v4/ibc/testing"
+	ibctesting "github.com/hardiksa/fortress/v4/ibc/testing"
 
 	minttypes "github.com/cosmos/cosmos-sdk/x/mint/types"
-	"github.com/hardiksa/torque/v4/app"
-	claimtypes "github.com/hardiksa/torque/v4/x/claims/types"
-	inflationtypes "github.com/hardiksa/torque/v4/x/inflation/types"
-	"github.com/hardiksa/torque/v4/x/recovery/types"
+	"github.com/hardiksa/fortress/v4/app"
+	claimtypes "github.com/hardiksa/fortress/v4/x/claims/types"
+	inflationtypes "github.com/hardiksa/fortress/v4/x/inflation/types"
+	"github.com/hardiksa/fortress/v4/x/recovery/types"
 )
 
 type IBCTestingSuite struct {
@@ -59,12 +59,12 @@ func (suite *IBCTestingSuite) SetupTest() {
 	suite.coordinator.CommitNBlocks(suite.IBCOsmosisChain, 2)
 	suite.coordinator.CommitNBlocks(suite.IBCCosmosChain, 2)
 
-	// Mint coins locked on the torque account generated with secp.
+	// Mint coins locked on the fortress account generated with secp.
 	coinTorque := sdk.NewCoin("atorque", sdk.NewInt(10000))
 	coins := sdk.NewCoins(coinTorque)
-	err := suite.TorqueChain.App.(*app.Torque).BankKeeper.MintCoins(suite.TorqueChain.GetContext(), inflationtypes.ModuleName, coins)
+	err := suite.TorqueChain.App.(*app.Fortress).BankKeeper.MintCoins(suite.TorqueChain.GetContext(), inflationtypes.ModuleName, coins)
 	suite.Require().NoError(err)
-	err = suite.TorqueChain.App.(*app.Torque).BankKeeper.SendCoinsFromModuleToAccount(suite.TorqueChain.GetContext(), inflationtypes.ModuleName, suite.IBCOsmosisChain.SenderAccount.GetAddress(), coins)
+	err = suite.TorqueChain.App.(*app.Fortress).BankKeeper.SendCoinsFromModuleToAccount(suite.TorqueChain.GetContext(), inflationtypes.ModuleName, suite.IBCOsmosisChain.SenderAccount.GetAddress(), coins)
 	suite.Require().NoError(err)
 
 	// Mint coins on the osmosis side which we'll use to unlock our atorque
@@ -86,11 +86,11 @@ func (suite *IBCTestingSuite) SetupTest() {
 	claimparams := claimtypes.DefaultParams()
 	claimparams.AirdropStartTime = suite.TorqueChain.GetContext().BlockTime()
 	claimparams.EnableClaims = true
-	suite.TorqueChain.App.(*app.Torque).ClaimsKeeper.SetParams(suite.TorqueChain.GetContext(), claimparams)
+	suite.TorqueChain.App.(*app.Fortress).ClaimsKeeper.SetParams(suite.TorqueChain.GetContext(), claimparams)
 
 	params := types.DefaultParams()
 	params.EnableRecovery = true
-	suite.TorqueChain.App.(*app.Torque).RecoveryKeeper.SetParams(suite.TorqueChain.GetContext(), params)
+	suite.TorqueChain.App.(*app.Fortress).RecoveryKeeper.SetParams(suite.TorqueChain.GetContext(), params)
 
 	suite.pathOsmosisTorque = ibctesting.NewTransferPath(suite.IBCOsmosisChain, suite.TorqueChain) // clientID, connectionID, channelID empty
 	suite.pathCosmosTorque = ibctesting.NewTransferPath(suite.IBCCosmosChain, suite.TorqueChain)

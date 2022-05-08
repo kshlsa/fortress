@@ -6,9 +6,9 @@ order: 1
 
 ## Rektdrop
 
-The Torque [Rektdrop](https://torque.blog/the-torque-rektdrop-abbe931ba823) is the genesis airdrop for the TORQUE token to Cosmos Hub, Osmosis and Ethereum users.
+The Fortress [Rektdrop](https://fortress.blog/the-fortress-rektdrop-abbe931ba823) is the genesis airdrop for the FORTRESS token to Cosmos Hub, Osmosis and Ethereum users.
 
-> The end goal of Torque is to bring together the Cosmos and Ethereum community and thus the Rektdrop has been designed to reward past participation in both networks under this theme of “getting rekt”.
+> The end goal of Fortress is to bring together the Cosmos and Ethereum community and thus the Rektdrop has been designed to reward past participation in both networks under this theme of “getting rekt”.
 
 The Rektdrop is the first airdrop that:
 
@@ -48,7 +48,7 @@ After voting on a proposal, the corresponding proportion will be airdropped to t
 
 ### Staking (i.e Delegate) Action
 
-After staking Torque tokens (i.e delegating), the corresponding proportion will be airdropped to the user's balance by performing a transfer from the claim escrow account (`ModuleAccount`) to the user.
+After staking Fortress tokens (i.e delegating), the corresponding proportion will be airdropped to the user's balance by performing a transfer from the claim escrow account (`ModuleAccount`) to the user.
 
 ### EVM Action
 
@@ -64,24 +64,24 @@ A Claims Records is the metadata of claim data per address. It keeps track of al
 
 ## Claiming Process
 
-As described in the [Action](#action) section, a user must submit transactions to receive the allocated tokens from the airdrop. However, since Torque only supports Ethereum keys and not de default Tendermint keys, this process differs for Ethereum and Cosmos eligible users.
+As described in the [Action](#action) section, a user must submit transactions to receive the allocated tokens from the airdrop. However, since Fortress only supports Ethereum keys and not de default Tendermint keys, this process differs for Ethereum and Cosmos eligible users.
 
 ### Ethereum Users
 
-Torque shares the coin type (`60`) and key derivation (Ethereum `secp256k1`) with Ethereum. This allows users (EOA accounts) that have been allocated TORQUE tokens to directly claim their tokens using their preferred web3 wallet.
+Fortress shares the coin type (`60`) and key derivation (Ethereum `secp256k1`) with Ethereum. This allows users (EOA accounts) that have been allocated FORTRESS tokens to directly claim their tokens using their preferred web3 wallet.
 
 ### Cosmos Hub and Osmosis Users
 
-Cosmos Hub and Osmosis users who use the default Tendermint `secp256k1` keys, need to perform a "cross-chain attestation" of their Torque address.
+Cosmos Hub and Osmosis users who use the default Tendermint `secp256k1` keys, need to perform a "cross-chain attestation" of their Fortress address.
 
 This can be done by submitting an IBC transfer from Cosmos Hub and Osmosis, which is signed by the addresses, that have been allocated the tokens.
 
-The recipient Torque address of this IBC transfer is the address, that the tokens will be airdropped to.
+The recipient Fortress address of this IBC transfer is the address, that the tokens will be airdropped to.
 
 ::: warning
 **IMPORTANT**
 
-Only submit an IBC transfer to an Torque address that you own. Otherwise, you will lose your airdrop allocation.
+Only submit an IBC transfer to an Fortress address that you own. Otherwise, you will lose your airdrop allocation.
 :::
 
 ## Decay Period

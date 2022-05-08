@@ -83,15 +83,15 @@ torqued tx gov submit-proposal param-change [proposal-file] [flags]
 
 | Verb   | Method                                        | Description                                   |
 | ------ | --------------------------------------------- | --------------------------------------------- |
-| `gRPC` | `torque.inflation.v1.Query/Period`             | Gets current inflation period                 |
-| `gRPC` | `torque.inflation.v1.Query/EpochMintProvision` | Gets current inflation epoch provisions value |
-| `gRPC` | `torque.inflation.v1.Query/Params`             | Gets current inflation parameters             |
-| `gRPC` | `torque.inflation.v1.Query/SkippedEpochs`      | Gets current number of skipped epochs         |
-| `gRPC` | `torque.inflation.v1.Query/TotalSupply`        | Gets current total supply                     |
-| `gRPC` | `torque.inflation.v1.Query/InflationRate`      | Gets current inflation rate                   |
-| `GET`  | `/torque/inflation/v1/period`                  | Gets current inflation period                 |
-| `GET`  | `/torque/inflation/v1/epoch_mint_provision`    | Gets current inflation epoch provisions value |
-| `GET`  | `/torque/inflation/v1/skipped_epochs`          | Gets current number of skipped epochs         |
-| `GET`  | `/torque/inflation/v1/total_supply`          | Gets current total supply                     |
-| `GET`  | `/torque/inflation/v1/inflation_rate`          | Gets current inflation rate                   |
-| `GET`  | `/torque/inflation/v1/params`                  | Gets current inflation parameters             |
+| `gRPC` | `fortress.inflation.v1.Query/Period`             | Gets current inflation period                 |
+| `gRPC` | `fortress.inflation.v1.Query/EpochMintProvision` | Gets current inflation epoch provisions value |
+| `gRPC` | `fortress.inflation.v1.Query/Params`             | Gets current inflation parameters             |
+| `gRPC` | `fortress.inflation.v1.Query/SkippedEpochs`      | Gets current number of skipped epochs         |
+| `gRPC` | `fortress.inflation.v1.Query/TotalSupply`        | Gets current total supply                     |
+| `gRPC` | `fortress.inflation.v1.Query/InflationRate`      | Gets current inflation rate                   |
+| `GET`  | `/fortress/inflation/v1/period`                  | Gets current inflation period                 |
+| `GET`  | `/fortress/inflation/v1/epoch_mint_provision`    | Gets current inflation epoch provisions value |
+| `GET`  | `/fortress/inflation/v1/skipped_epochs`          | Gets current number of skipped epochs         |
+| `GET`  | `/fortress/inflation/v1/total_supply`          | Gets current total supply                     |
+| `GET`  | `/fortress/inflation/v1/inflation_rate`          | Gets current inflation rate                   |
+| `GET`  | `/fortress/inflation/v1/params`                  | Gets current inflation parameters             |
